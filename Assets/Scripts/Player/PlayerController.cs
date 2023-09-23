@@ -252,6 +252,13 @@ public class PlayerController : MonoBehaviour
     }
 
 
+
+
+    public bool GetIsGroundPounding()
+    {
+        return isGroundPounding;
+    }
+
     private void OnEnable()
     {
         playerInput.ActivateInput();

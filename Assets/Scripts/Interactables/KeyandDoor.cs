@@ -18,6 +18,12 @@ public class KeyandDoor : MonoBehaviour, R4Activatable
     public void Activate()
     {
         doorKey.gameObject.SetActive(true);
+        isDoorActive = true;
+    }
+    public void Deactivate() 
+    {
+        if(doorKey != null) doorKey.gameObject.SetActive(false);
+        isDoorActive=false;
     }
 
 
@@ -58,7 +64,7 @@ public class KeyandDoor : MonoBehaviour, R4Activatable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider == playerCollider && keyPickedUp)
+        if (collision.collider == playerCollider && keyPickedUp && isDoorActive)
         {
             //Door opened.
             Debug.Log("Unlocked " + doorColorString + " door");

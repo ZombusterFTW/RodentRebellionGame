@@ -87,6 +87,7 @@ public class RadiationCanister : MonoBehaviour
 public interface R4Activatable
 {
     void Activate();
+    void Deactivate();
 }
 
 
