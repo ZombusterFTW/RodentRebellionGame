@@ -45,14 +45,18 @@ public class PlayerController : MonoBehaviour
     private Color debugColor = Color.red;
 
 
-    
-    // Start is called before the first frame update
-    void Start()
+
+
+    private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
         playerDoubleJumpsRemaining = playerMaxJumpCount;
     }
 
@@ -242,7 +246,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    public Collider2D GetPlayerCollider()
+    {
+        return playerCollider;
+    }
 
 
     private void OnEnable()
