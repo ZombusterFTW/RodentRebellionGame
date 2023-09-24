@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 15f;
     [SerializeField] private float wallSlideSpeed = 3f;
     [SerializeField] private float groundPoundVel = 20f;
+    [SerializeField] private float airControlLerpTime = 0.75f;
     [SerializeField] private int playerMaxJumpCount = 1;
     private int playerDoubleJumpsRemaining;
     [SerializeField] private LayerMask groundLayer;
@@ -74,13 +75,17 @@ public class PlayerController : MonoBehaviour
     {
         //https://www.youtube.com/watch?v=STyY26a_dPY
         //Make player have the ability to "claw" into a wall and fall slowly. By doing this they can then jump which will cause them to do the up wall jump.
-        if (canMove && !wallJumped) playerRigidBody.velocity = new Vector2(movementDirection.x * playerSpeed, playerRigidBody.velocity.y);
+        if (canMove && !wallJumped && onGround) playerRigidBody.velocity = new Vector2(movementDirection.x * playerSpeed, playerRigidBody.velocity.y);
         else if(canMove && wallJumped && !onWall) playerRigidBody.velocity = Vector2.Lerp(playerRigidBody.velocity, (new Vector2(movementDirection.x * playerSpeed, playerRigidBody.velocity.y)), lerpTime * Time.deltaTime);
+        else if (canMove && !wallJumped && !onGround) playerRigidBody.velocity = Vector2.Lerp((new Vector2(movementDirection.x * playerSpeed, playerRigidBody.velocity.y)), playerRigidBody.velocity, airControlLerpTime * Time.deltaTime);
 
         if (onWall && !onGround && canMove && !isGroundPounding)
         {
+            float wallDir = onRightWall ? -2 : 2;
+
             //Wall slide
-            playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, -wallSlideSpeed);
+            wallDir = Mathf.Lerp(playerRigidBody.velocity.x, wallDir, lerpTime * Time.deltaTime);
+            playerRigidBody.velocity = new Vector2(wallDir, -wallSlideSpeed);
         }
 
         
