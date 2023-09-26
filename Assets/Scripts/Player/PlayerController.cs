@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
     private int playerDoubleJumpsRemaining;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask movingPlatformLayer;
-    
+    [SerializeField] private SpawnPoint currentSpawn;
+
 
 
 
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public float collisionRadius = 0.25f;
     public Vector2 bottomOffset, rightOffset, leftOffset;
     private Color debugColor = Color.red;
+    [SerializeField] private Health playerHealth;
 
 
 
@@ -54,6 +56,7 @@ public class PlayerController : MonoBehaviour
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerHealth = GetComponent<Health>();
     }
     // Start is called before the first frame update
     void Start()
@@ -148,7 +151,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(DisableMovement(wallJumpTime));
         //check direction
         Vector2 wallDir = onRightWall ? Vector2.left : Vector2.right;
-        playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, 0);
+        playerRigidBody.velocity = new Vector2(0, 0);
         playerRigidBody.velocity += (wallDir/1.5f + Vector2.up) * jumpForce;
     }
 
@@ -257,6 +260,28 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.GetComponent<SpawnPoint>() != null && collision.GetComponent<SpawnPoint>() != currentSpawn && collision.GetComponent<SpawnPoint>().GetIsActive()) 
+        {
+            SpawnPoint spawnPoint = collision.GetComponent<SpawnPoint>();
+            SetSpawn(spawnPoint);
+        }
+    }
+
+    public void SetSpawn(SpawnPoint spawn)
+    {
+        Debug.Log("Set spawn");
+
+        if(currentSpawn != null) currentSpawn.UnlinkSpawn();
+        currentSpawn = spawn;
+        currentSpawn.LinkSpawn();
+    }
+
+    public SpawnPoint GetSpawn()
+    {
+        return currentSpawn;
+    }
 
 
     public bool GetIsGroundPounding()
@@ -272,6 +297,38 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         playerInput.DeactivateInput();
+    }
+
+
+    public void RespawnPlayer()
+    {
+        //If the player dies we respawn them. 
+        StopCoroutine(DisableMovement(0));
+        StartCoroutine(DisableMovement(1f));
+        playerRigidBody.velocity = Vector3.zero;
+        gameObject.transform.position = currentSpawn.transform.position;
+        playerHealth.HealthToMax();
+    }
+
+    public Health GetHealthComponent()
+    {
+        return playerHealth;
+    }
+
+
+    public void RadiationCanisterPickup(UpgradeType upgradeType)
+    {
+        //Handle radiation canister upgrades/pickups.
+        switch (upgradeType) 
+        {
+            case UpgradeType.Health_Upgrade:
+                playerHealth.IncreaseHealthCap(0.15f);
+                break;
+            case UpgradeType.Attack_Upgrade: break; 
+            case UpgradeType.GroundPound_Ability: break;
+            case UpgradeType.WallClimb_Ability: break;
+            case UpgradeType.DoubleJump_Ability: break; 
+        }
     }
 }
 

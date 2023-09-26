@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4303945893481719249}
   - component: {fileID: 396199845695998313}
   - component: {fileID: 8713833070728161251}
+  - component: {fileID: 4599413665136947856}
+  - component: {fileID: 7126309013924363222}
   - component: {fileID: 8459652423362751434}
   - component: {fileID: 5169012110108082315}
   m_Layer: 0
@@ -160,6 +162,30 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &4599413665136947856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340353098062905101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea2f708eb822e44aaa472e824b25e4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7126309013924363222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340353098062905101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985606a1ae6e4bd4f8e5fe4e74ba6715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8459652423362751434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,15 +198,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 333f94232f74672488e6ba07418602e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 400
-  jumpForce: 20
+  playerSpeed: 3
+  jumpForce: 8
+  wallSlideSpeed: 1
+  groundPoundVel: 45
+  airControlLerpTime: 0.75
   playerMaxJumpCount: 1
-  platformMask:
+  groundLayer:
     serializedVersion: 2
     m_Bits: 8
   movingPlatformLayer:
     serializedVersion: 2
     m_Bits: 0
+  onGround: 1
+  isJumping: 0
+  canJump: 1
+  onWall: 0
+  canMove: 1
+  lerpTime: 0.35
+  wallJumpTime: 0.15
+  wallJumped: 0
+  onLeftWall: 0
+  onRightWall: 0
+  isGroundPounding: 0
+  canGroundPound: 1
+  collisionRadius: 0.15
+  bottomOffset: {x: 0, y: -0.4}
+  rightOffset: {x: 0.4, y: 0}
+  leftOffset: {x: -0.4, y: 0}
 --- !u!114 &5169012110108082315
 MonoBehaviour:
   m_ObjectHideFlags: 0

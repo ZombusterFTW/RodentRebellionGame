@@ -34,6 +34,7 @@ public class RadiationCanister : MonoBehaviour
         {
             Debug.Log(upgradeType.ToString() + " picked up");
             if(activatesItems) ActivateItems();
+            controller.RadiationCanisterPickup(upgradeType);
             Destroy(gameObject);
         }
     }
