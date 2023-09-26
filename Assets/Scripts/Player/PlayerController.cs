@@ -262,11 +262,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<SpawnPoint>() != null && collision.GetComponent<SpawnPoint>() != currentSpawn && collision.GetComponent<SpawnPoint>().GetIsActive()) 
+        if (collision.GetComponent<SpawnPoint>() != null && collision.GetComponent<SpawnPoint>() != currentSpawn && collision.GetComponent<SpawnPoint>().GetIsActive())
         {
             SpawnPoint spawnPoint = collision.GetComponent<SpawnPoint>();
             SetSpawn(spawnPoint);
         }
+        //Trigger the trap if it exists.
+        else if (collision.GetComponent<R4ActivatableTrap>() != null) collision.GetComponent<R4ActivatableTrap>().TriggerTrap();
     }
 
     public void SetSpawn(SpawnPoint spawn)
