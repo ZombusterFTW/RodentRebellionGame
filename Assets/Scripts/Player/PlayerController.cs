@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float groundPoundVel = 20f;
     [SerializeField] private float airControlLerpTime = 0.75f;
     [SerializeField] private int playerMaxJumpCount = 1;
+
+    private float playerSpeed_Game;
     private int playerDoubleJumpsRemaining;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask movingPlatformLayer;
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerDoubleJumpsRemaining = playerMaxJumpCount;
+        playerSpeed_Game = playerSpeed; 
     }
 
     // Update is called once per frame
@@ -78,9 +81,9 @@ public class PlayerController : MonoBehaviour
     {
         //https://www.youtube.com/watch?v=STyY26a_dPY
         //Make player have the ability to "claw" into a wall and fall slowly. By doing this they can then jump which will cause them to do the up wall jump.
-        if (canMove && !wallJumped && onGround) playerRigidBody.velocity = new Vector2(movementDirection.x * playerSpeed, playerRigidBody.velocity.y);
-        else if(canMove && wallJumped && !onWall) playerRigidBody.velocity = Vector2.Lerp(playerRigidBody.velocity, (new Vector2(movementDirection.x * playerSpeed, playerRigidBody.velocity.y)), lerpTime * Time.deltaTime);
-        else if (canMove && !wallJumped && !onGround) playerRigidBody.velocity = Vector2.Lerp((new Vector2(movementDirection.x * playerSpeed, playerRigidBody.velocity.y)), playerRigidBody.velocity, airControlLerpTime * Time.deltaTime);
+        if (canMove && !wallJumped && onGround) playerRigidBody.velocity = new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y);
+        else if(canMove && wallJumped && !onWall) playerRigidBody.velocity = Vector2.Lerp(playerRigidBody.velocity, (new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), lerpTime * Time.deltaTime);
+        else if (canMove && !wallJumped && !onGround) playerRigidBody.velocity = Vector2.Lerp((new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), playerRigidBody.velocity, airControlLerpTime * Time.deltaTime);
 
         if (onWall && !onGround && canMove && !isGroundPounding)
         {
@@ -254,7 +257,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public Collider2D GetPlayerCollider()
+    public BoxCollider2D GetPlayerCollider()
     {
         return playerCollider;
     }
@@ -268,7 +271,7 @@ public class PlayerController : MonoBehaviour
             SetSpawn(spawnPoint);
         }
         //Trigger the trap if it exists.
-        else if (collision.GetComponent<R4ActivatableTrap>() != null) collision.GetComponent<R4ActivatableTrap>().TriggerTrap();
+        if (collision.GetComponent<R4ActivatableTrap>() != null) collision.GetComponent<R4ActivatableTrap>().TriggerTrap();
     }
 
     public void SetSpawn(SpawnPoint spawn)

@@ -10,7 +10,6 @@ public class AutomaticDoor : MonoBehaviour, R4Activatable
     [Tooltip("The right door will move to the center of this object when activated")][SerializeField] private GameObject rightDoorTarget;
     [Tooltip("The speed the door will open and close")][SerializeField] private float openCloseSpeed = 8.5f;
     bool isActivated = false;
-    bool isMoving = false;
     Vector2 leftDoorStartPos;
     Vector2 rightDoorStartPos;
     Vector2 leftDoorTargetPos;
@@ -19,7 +18,7 @@ public class AutomaticDoor : MonoBehaviour, R4Activatable
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         leftDoorStartPos = leftDoor.transform.position;
         rightDoorStartPos = rightDoor.transform.position;   
@@ -33,6 +32,7 @@ public class AutomaticDoor : MonoBehaviour, R4Activatable
 
     public void Activate()
     {
+        isActivated = true;
         //Activated the door.
         Debug.Log("Opening Door");
         StopCoroutine(OpenCloseDoor());
@@ -42,6 +42,7 @@ public class AutomaticDoor : MonoBehaviour, R4Activatable
     }
     public void Deactivate() 
     {
+        isActivated = false;    
         Debug.Log("Closing Door");
         StopCoroutine(OpenCloseDoor());
         leftDoorTargetPos = leftDoorStartPos;
