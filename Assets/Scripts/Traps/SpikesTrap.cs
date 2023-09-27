@@ -11,6 +11,8 @@ public class SpikesTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     [Tooltip("How long the trap takes to reset if a player isn't touching it.")][SerializeField] private float isPlayerTouchingDelay = 0.75f;
     [Tooltip("How high the spikes will come out of the ground")][SerializeField] private float spikeHeight = 0.63f;
     [Tooltip("The speed the spikes will come out of the ground.")][SerializeField] private float spikeSpeed = 5f;
+    [Tooltip("The trigger for the trap to activate in self activating mode.")][SerializeField] private BoxCollider2D trapTrigger;
+    [Tooltip("The collider of the spikes. ")][SerializeField] private BoxCollider2D trapSpikes;
     [Tooltip("The color of the spikes when they aren't activated.")][SerializeField] private Color spikesDeactivatedColor = Color.green;
     [Tooltip("The color of the spikes when they are activated.")][SerializeField] private Color spikesActivatedColor = Color.red;
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -18,25 +20,19 @@ public class SpikesTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     private Vector3 startingPos;
     private Vector3 triggeredPos;
     private bool isTriggered = false;
-
-    [Tooltip("The trigger for the trap to activate in self activating mode.")][SerializeField] private BoxCollider2D trapTrigger;
-    [Tooltip("The collider of the spikes. ")][SerializeField] private BoxCollider2D trapSpikes;
-
-
-
-
+    
     // Start is called before the first frame update
     void Awake()
     {
         startingPos = trapSpikes.gameObject.transform.position; 
         triggeredPos = trapSpikes.gameObject.transform.position + new Vector3(0, spikeHeight, 0);
+        if (selfActivating) isActive = false;
     }
 
     private void Start()
     {
         controller = FindObjectOfType<PlayerController>();
         playerCollider = controller.GetPlayerCollider();
-        if (selfActivating) isActive = false;
         spriteRenderer.color = spikesDeactivatedColor;
 
         if (isActive)
@@ -152,6 +148,11 @@ public class SpikesTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
             yield return null;
         }
     }
+
+    public void DealPlayerDamage(bool damage)
+    {
+        //throw new System.NotImplementedException();
+    }
 }
 
 
@@ -160,4 +161,5 @@ public class SpikesTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
 public interface R4ActivatableTrap
 {
     public void TriggerTrap();
+    public void DealPlayerDamage(bool damage);
 }

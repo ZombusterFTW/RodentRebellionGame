@@ -11,7 +11,9 @@ public class SpawnPoint : MonoBehaviour, R4Activatable
     [Tooltip("The color of the spawn point when it is not active")][SerializeField] private Color deactivatedColor = Color.white;
     [Tooltip("The color of the spawn point when it is disabled")][SerializeField] private Color disabledColor = Color.red;
     private SpriteRenderer spriteRenderer;
-    [SerializeField] private CircleCollider2D circleCollider;    
+    [SerializeField] private CircleCollider2D circleCollider;
+
+    private bool firstActivation = true;
 
 
 
@@ -58,6 +60,11 @@ public class SpawnPoint : MonoBehaviour, R4Activatable
         {
             spriteRenderer.color = activatedColor;
             isSelected = true;
+        }
+        if(firstActivation)
+        {
+            firstActivation = false;
+            playerController.GetComponent<Health>().HealthToMax();
         }
     }
 

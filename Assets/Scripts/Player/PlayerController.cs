@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, R4MovementComponent
 {
     private PlayerInput playerInput;
     [SerializeField] private float playerSpeed = 500f;
@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int playerMaxJumpCount = 1;
 
     private float playerSpeed_Game;
+    private float jumpForce_Game;
     private int playerDoubleJumpsRemaining;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask movingPlatformLayer;
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool canGroundPound = true;
 
 
-
+    private bool isAlive = true;
     private Vector2 movementDirection;
     private Rigidbody2D playerRigidBody;
     private BoxCollider2D playerCollider;
@@ -64,7 +65,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerDoubleJumpsRemaining = playerMaxJumpCount;
-        playerSpeed_Game = playerSpeed; 
+        playerSpeed_Game = playerSpeed;
+        jumpForce_Game = jumpForce;
     }
 
     // Update is called once per frame
@@ -133,13 +135,13 @@ public class PlayerController : MonoBehaviour
             if (onGround)
             {
                 playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, 0);
-                playerRigidBody.velocity += Vector2.up * jumpForce;
+                playerRigidBody.velocity += Vector2.up * jumpForce_Game;
                 Debug.Log("Normal jump");
             }
             else if (!onGround && !onWall && playerDoubleJumpsRemaining > 0)
             {
                 playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, 0);
-                playerRigidBody.velocity += Vector2.up * jumpForce;
+                playerRigidBody.velocity += Vector2.up * jumpForce_Game;
                 playerDoubleJumpsRemaining--;
                 Debug.Log("Dbl jump");
             }
@@ -155,7 +157,7 @@ public class PlayerController : MonoBehaviour
         //check direction
         Vector2 wallDir = onRightWall ? Vector2.left : Vector2.right;
         playerRigidBody.velocity = new Vector2(0, 0);
-        playerRigidBody.velocity += (wallDir/1.5f + Vector2.up) * jumpForce;
+        playerRigidBody.velocity += (wallDir/1.5f + Vector2.up) * jumpForce_Game;
     }
 
     private void GroundPound()
@@ -274,6 +276,25 @@ public class PlayerController : MonoBehaviour
         if (collision.GetComponent<R4ActivatableTrap>() != null) collision.GetComponent<R4ActivatableTrap>().TriggerTrap();
     }
 
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.GetComponent<R4ActivatableTrap>() != null && isAlive)
+        {
+            collision.GetComponent<R4ActivatableTrap>().DealPlayerDamage(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        //Reset movement speed
+        if (collision.GetComponent<R4ActivatableTrap>() != null)
+        {
+            Debug.Log("Left trigger");
+            collision.GetComponent<R4ActivatableTrap>().DealPlayerDamage(false);
+        }
+    }
+
     public void SetSpawn(SpawnPoint spawn)
     {
         Debug.Log("Set spawn");
@@ -308,11 +329,13 @@ public class PlayerController : MonoBehaviour
     public void RespawnPlayer()
     {
         //If the player dies we respawn them. 
+        isAlive = false;
         StopCoroutine(DisableMovement(0));
         StartCoroutine(DisableMovement(1f));
         playerRigidBody.velocity = Vector3.zero;
         gameObject.transform.position = currentSpawn.transform.position;
         playerHealth.HealthToMax();
+        isAlive = true;
     }
 
     public Health GetHealthComponent()
@@ -335,5 +358,27 @@ public class PlayerController : MonoBehaviour
             case UpgradeType.DoubleJump_Ability: break; 
         }
     }
+
+    public float GetActiveMovementSpeed()
+    {
+        return playerSpeed_Game;
+    }
+    public float GetMovementSpeed()
+    {
+        return playerSpeed;
+    }
+    public void SetMovementSpeed(float setSpeed)
+    {
+        playerSpeed_Game = setSpeed;
+
+        if (playerSpeed_Game < playerSpeed) canJump = false;
+        else canJump = true;    
+    }
 }
 
+public interface R4MovementComponent
+{
+    public float GetMovementSpeed();
+    public float GetActiveMovementSpeed();
+    public void SetMovementSpeed(float setSpeed);
+}

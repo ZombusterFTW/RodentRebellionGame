@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [Tooltip("How much health the player starts with")][SerializeField] private float healthCount = 100f;
-    private float healthCountCurrent;
+    [SerializeField] private float healthCountCurrent;
     [SerializeField] private PlayerController playerController;
 
 
