@@ -8,13 +8,14 @@ public class Health : MonoBehaviour
     [SerializeField] private float healthCountCurrent;
     [SerializeField] private PlayerController playerController;
 
-
+    private PlayerUI playerUIManager;
 
     // Start is called before the first frame update
     void Start()
     {
         healthCountCurrent = healthCount;
         playerController = GetComponent<PlayerController>();
+        playerUIManager = playerController.GetPlayerUI();
     }
 
     
@@ -22,6 +23,7 @@ public class Health : MonoBehaviour
     {
         healthCountCurrent = Mathf.Clamp(healthCountCurrent-healthToLose, 0, healthCount);  
         if(healthCountCurrent == 0 ) playerController.RespawnPlayer();
+        playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
         return healthCountCurrent;
     }
 
@@ -29,6 +31,7 @@ public class Health : MonoBehaviour
     public float AddToHealth(float healthToGain)
     {
         healthCountCurrent = Mathf.Clamp(healthCountCurrent + healthToGain, 0, healthCount);
+        playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
         return healthCountCurrent;
     }
 
@@ -37,6 +40,7 @@ public class Health : MonoBehaviour
     {
         healthCount += healthCount * healthCapIncreasePercentage;
         healthCountCurrent = healthCount;
+        playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
     }
 
     public float GetCurrentHealth()
@@ -46,7 +50,8 @@ public class Health : MonoBehaviour
 
     public void HealthToMax()
     {
-        healthCountCurrent = healthCount; 
+        healthCountCurrent = healthCount;
+        playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
     }
 
 

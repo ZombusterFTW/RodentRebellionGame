@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour, R4MovementComponent
+public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatformAnchor
 {
     private PlayerInput playerInput;
     [SerializeField] private float playerSpeed = 500f;
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent
     private float jumpForce_Game;
     private int playerDoubleJumpsRemaining;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private LayerMask movingPlatformLayer;
+    [SerializeField] private GameObject movingPlatform;
     [SerializeField] private SpawnPoint currentSpawn;
 
 
@@ -49,12 +49,13 @@ public class PlayerController : MonoBehaviour, R4MovementComponent
     public Vector2 bottomOffset, rightOffset, leftOffset;
     private Color debugColor = Color.red;
     [SerializeField] private Health playerHealth;
-
-
+    [SerializeField] private GameObject playerUIPrefab;
+    public PlayerUI playerUI;
 
 
     private void Awake()
     {
+        playerUI  = Instantiate(playerUIPrefab).GetComponent<PlayerUI>();
         playerInput = GetComponent<PlayerInput>();
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
@@ -77,15 +78,23 @@ public class PlayerController : MonoBehaviour, R4MovementComponent
         //IsTouchingWall();
     }
 
+    public PlayerUI GetPlayerUI()
+    {
+        return playerUI;    
+    }
 
 
     void HandleInput()
     {
         //https://www.youtube.com/watch?v=STyY26a_dPY
         //Make player have the ability to "claw" into a wall and fall slowly. By doing this they can then jump which will cause them to do the up wall jump.
+        //x velocity should be unchanged unless the player is pressing a key
+
         if (canMove && !wallJumped && onGround) playerRigidBody.velocity = new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y);
+        else if (canMove && !wallJumped && onGround && movingPlatform != null && movementDirection.x == 0) playerRigidBody.velocity = playerRigidBody.velocity;
         else if(canMove && wallJumped && !onWall) playerRigidBody.velocity = Vector2.Lerp(playerRigidBody.velocity, (new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), lerpTime * Time.deltaTime);
-        else if (canMove && !wallJumped && !onGround) playerRigidBody.velocity = Vector2.Lerp((new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), playerRigidBody.velocity, airControlLerpTime * Time.deltaTime);
+        else if (canMove && !wallJumped && !onGround && movementDirection.x != 0) playerRigidBody.velocity = Vector2.Lerp((new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), playerRigidBody.velocity, airControlLerpTime * Time.deltaTime);
+        else if (canMove && !wallJumped && !onGround && movementDirection.x == 0) playerRigidBody.velocity = Vector2.Lerp((new Vector2(playerRigidBody.velocity.x, playerRigidBody.velocity.y)), playerRigidBody.velocity, airControlLerpTime * Time.deltaTime);
 
         if (onWall && !onGround && canMove && !isGroundPounding)
         {
@@ -374,6 +383,35 @@ public class PlayerController : MonoBehaviour, R4MovementComponent
         if (playerSpeed_Game < playerSpeed) canJump = false;
         else canJump = true;    
     }
+
+    public void SetMovingPlatform(GameObject platform)
+    {
+       movingPlatform = platform;
+       gameObject.transform.parent = movingPlatform.transform;
+    }
+
+    public void UnlinkPlatform(GameObject platform)
+    {
+        movingPlatform = null;
+        gameObject.transform.parent = null;
+    }
+
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.GetComponentInParent<MovingPlatform>() != null)
+        {
+            SetMovingPlatform(collision.gameObject);
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponentInParent<MovingPlatform>() != null)
+        {
+            UnlinkPlatform(collision.gameObject);
+        }
+    }
 }
 
 public interface R4MovementComponent
@@ -381,4 +419,10 @@ public interface R4MovementComponent
     public float GetMovementSpeed();
     public float GetActiveMovementSpeed();
     public void SetMovementSpeed(float setSpeed);
+}
+
+public interface MovingPlatformAnchor
+{
+    public void SetMovingPlatform(GameObject platform);
+    public void UnlinkPlatform(GameObject platform);
 }
