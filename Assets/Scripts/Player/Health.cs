@@ -51,7 +51,7 @@ public class Health : MonoBehaviour
     public void HealthToMax()
     {
         healthCountCurrent = healthCount;
-        playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
+        if(playerUIManager != null) playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
     }
 
 

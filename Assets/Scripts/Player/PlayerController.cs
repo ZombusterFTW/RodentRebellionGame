@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private SpawnPoint currentSpawn;
 
 
-
+    //Make laser gun work with mouse targeting
+    //Laser rifle beam like EM1 from Advanced Warfare.
 
 
 
@@ -284,7 +285,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         //Trigger the trap if it exists.
         if (collision.GetComponent<R4ActivatableTrap>() != null) collision.GetComponent<R4ActivatableTrap>().TriggerTrap();
     }
-
+    
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -378,6 +379,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     }
     public void SetMovementSpeed(float setSpeed)
     {
+        Debug.Log("Set player speed");
         playerSpeed_Game = setSpeed;
 
         if (playerSpeed_Game < playerSpeed) canJump = false;
