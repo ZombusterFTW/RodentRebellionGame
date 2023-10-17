@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatformAnchor
 {
     private PlayerInput playerInput;
+    [SerializeField] private GameObject playerSpriteContainer;
+    private SpriteRenderer playerSprite;
+    private Animator playerAnimator;
     [SerializeField] private float playerSpeed = 500f;
     [SerializeField] private float jumpForce = 15f;
     [SerializeField] private float wallSlideSpeed = 3f;
@@ -19,7 +22,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private GameObject movingPlatform;
     [SerializeField] private SpawnPoint currentSpawn;
-
+    [SerializeField] private LayerMask playerWalls;
+    [SerializeField] private LayerMask playerGround;
+    [SerializeField] private PlayerWeaponType playerWeaponType = PlayerWeaponType.None;
 
     //Make laser gun work with mouse targeting
     //Laser rifle beam like EM1 from Advanced Warfare.
@@ -39,7 +44,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private bool onRightWall = false;
     [SerializeField] private bool isGroundPounding = false;
     [SerializeField] private bool canGroundPound = true;
-
+    private bool isMoving = false;
 
     private bool isAlive = true;
     private Vector2 movementDirection;
@@ -50,18 +55,22 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     public Vector2 bottomOffset, rightOffset, leftOffset;
     private Color debugColor = Color.red;
     [SerializeField] private Health playerHealth;
+    [SerializeField] private Upgrade playerUpgrade;
     [SerializeField] private GameObject playerUIPrefab;
     public PlayerUI playerUI;
 
 
     private void Awake()
     {
+        playerSprite = playerSpriteContainer.GetComponent<SpriteRenderer>();
+        playerAnimator = playerSpriteContainer.GetComponent<Animator>();
         playerUI  = Instantiate(playerUIPrefab).GetComponent<PlayerUI>();
         playerInput = GetComponent<PlayerInput>();
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerHealth = GetComponent<Health>();
+        playerUpgrade = GetComponent<Upgrade>();
     }
     // Start is called before the first frame update
     void Start()
@@ -75,9 +84,14 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     void Update()
     {
         HandleInput();
-        CheckGrounding();
         //IsTouchingWall();
     }
+
+    void FixedUpdate()
+    {
+        CheckGrounding();
+    }
+
 
     public PlayerUI GetPlayerUI()
     {
@@ -91,6 +105,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         //Make player have the ability to "claw" into a wall and fall slowly. By doing this they can then jump which will cause them to do the up wall jump.
         //x velocity should be unchanged unless the player is pressing a key
 
+        isMoving = playerRigidBody.velocity.x != 0 && movementDirection.x != 0;
+
+
         if (canMove && !wallJumped && onGround) playerRigidBody.velocity = new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y);
         else if (canMove && !wallJumped && onGround && movingPlatform != null && movementDirection.x == 0) playerRigidBody.velocity = playerRigidBody.velocity;
         else if(canMove && wallJumped && !onWall) playerRigidBody.velocity = Vector2.Lerp(playerRigidBody.velocity, (new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), lerpTime * Time.deltaTime);
@@ -99,13 +116,27 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
         if (onWall && !onGround && canMove && !isGroundPounding)
         {
-            float wallDir = onRightWall ? -2 : 2;
-
+            float wallDir = onRightWall ? 2 : -2;
+            if (wallDir < 0) playerSprite.flipX = true;
+            else playerSprite.flipX = false;
+            Debug.Log("Wall sliding");
             //Wall slide
             wallDir = Mathf.Lerp(playerRigidBody.velocity.x, wallDir, lerpTime * Time.deltaTime);
             playerRigidBody.velocity = new Vector2(wallDir, -wallSlideSpeed);
         }
 
+        if (movementDirection.x != 0 && !onWall && onGround && isMoving)
+        {
+            playerAnimator.SetBool("MovingOnGround", true);
+        }
+        else if(movementDirection == Vector2.zero && !onWall && onGround && !isMoving)
+        {
+            playerAnimator.SetBool("MovingOnGround", false);
+            playerAnimator.SetBool("IsFalling", false);
+            playerAnimator.SetBool("IsJumping", false);
+            playerAnimator.SetBool("IsOnWall", false);
+            playerAnimator.SetBool("IsGroundpounding", false);
+        }
         
         
     }
@@ -159,6 +190,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         }
     }
 
+
     private void WallJump()
     {
         wallJumped = true;
@@ -166,6 +198,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         StartCoroutine(DisableMovement(wallJumpTime));
         //check direction
         Vector2 wallDir = onRightWall ? Vector2.left : Vector2.right;
+        if(wallDir == Vector2.left) playerSprite.flipX = true;
+        else playerSprite.flipX = false;
+
+
         playerRigidBody.velocity = new Vector2(0, 0);
         playerRigidBody.velocity += (wallDir/1.5f + Vector2.up) * jumpForce_Game;
     }
@@ -208,6 +244,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         movementDirection = context.ReadValue<Vector2>();
         movementDirection.Normalize();
+        if(movementDirection != Vector2.zero) playerSprite.flipX = movementDirection.x < 0? true : false;
         Debug.Log(movementDirection);
     }
     public void OnJump(InputAction.CallbackContext context)
@@ -282,6 +319,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             SpawnPoint spawnPoint = collision.GetComponent<SpawnPoint>();
             SetSpawn(spawnPoint);
         }
+        
         //Trigger the trap if it exists.
         if (collision.GetComponent<R4ActivatableTrap>() != null) collision.GetComponent<R4ActivatableTrap>().TriggerTrap();
     }
@@ -302,6 +340,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         {
             Debug.Log("Left trigger");
             collision.GetComponent<R4ActivatableTrap>().DealPlayerDamage(false);
+        }
+        if (collision.gameObject.GetComponentInParent<MovingPlatform>() != null)
+        {
+            UnlinkPlatform(collision.gameObject);
         }
     }
 
@@ -398,22 +440,15 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         gameObject.transform.parent = null;
     }
 
-
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponentInParent<MovingPlatform>() != null)
+        if (collision.gameObject.GetComponentInParent<MovingPlatform>() != null)
         {
             SetMovingPlatform(collision.gameObject);
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponentInParent<MovingPlatform>() != null)
-        {
-            UnlinkPlatform(collision.gameObject);
-        }
-    }
+
+
 }
 
 public interface R4MovementComponent
@@ -427,4 +462,11 @@ public interface MovingPlatformAnchor
 {
     public void SetMovingPlatform(GameObject platform);
     public void UnlinkPlatform(GameObject platform);
+}
+
+public enum PlayerWeaponType
+{
+    None,
+    Dagger,
+    LaserGun
 }

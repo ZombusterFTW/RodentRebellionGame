@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 464152854147143465}
   - component: {fileID: 6533046111362176187}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MovingPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7852855808432011080}
   - component: {fileID: 470551359179242248}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlatformEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,8 @@ GameObject:
   - component: {fileID: 6839640210779358682}
   - component: {fileID: 7481692339364959020}
   - component: {fileID: 8806696160486683766}
-  m_Layer: 0
+  - component: {fileID: 8064332929396799607}
+  m_Layer: 3
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,6 +289,51 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!61 &8064332929396799607
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3316440786718933605}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 3.56}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 6}
+  m_EdgeRadius: 0
 --- !u!1 &5149676717948550401
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2181740035683612666}
   - component: {fileID: 3944124113756418079}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlatformStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
