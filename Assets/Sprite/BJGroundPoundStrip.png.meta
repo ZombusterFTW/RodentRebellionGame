@@ -1,0 +1,2309 @@
+fileFormatVersion: 2
+guid: 2472afcdee89b4844b136234ec6580db
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 227
+        width: 851
+        height: 773
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff4531acd269218428d60cb6f3675177
+      internalID: -1929716149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_1
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 244
+        width: 663
+        height: 756
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 183c4d0c7bc21bf44907659749ca4f6b
+      internalID: 249987898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_2
+      rect:
+        serializedVersion: 2
+        x: 2136
+        y: 112
+        width: 660
+        height: 887
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d60ff5ac267d47b43a8afa57096ad5ad
+      internalID: -1714492852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_3
+      rect:
+        serializedVersion: 2
+        x: 2479
+        y: 990
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ad6b58357a3c86479412d5703fc4f16
+      internalID: 386783042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_6
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 971
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 206952fa4a873b04ba2baa88679dfa82
+      internalID: 1821638751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_11
+      rect:
+        serializedVersion: 2
+        x: 3521
+        y: 916
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 809f3a2f6efa0f547bf44c95d831318a
+      internalID: 612369024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_13
+      rect:
+        serializedVersion: 2
+        x: 3216
+        y: 5
+        width: 769
+        height: 908
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e986bfda5da6084f977ab64be3e783d
+      internalID: -185195944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_14
+      rect:
+        serializedVersion: 2
+        x: 3532
+        y: 904
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63654a1c69e013f49a948792c39403d1
+      internalID: -1727031151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_15
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 850
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4030031c47be414182173ce9589bcbe
+      internalID: 1072093111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_16
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 829
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac52206ad00ab67489051fd337ac2201
+      internalID: -1878261844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_17
+      rect:
+        serializedVersion: 2
+        x: 2108
+        y: 834
+        width: 31
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51f4351e79dbcbd47b39b924918dd3c6
+      internalID: -1858783684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_19
+      rect:
+        serializedVersion: 2
+        x: 3982
+        y: 843
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c741ae0d9675bc049aef9c182e47c631
+      internalID: -661661494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_20
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 815
+        width: 26
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 193ff18d9a48c8c4faa9e02d2b147ff7
+      internalID: -1010907651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_21
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 830
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c10e5e913f016954e91f1987241462de
+      internalID: 394144107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_23
+      rect:
+        serializedVersion: 2
+        x: 2107
+        y: 809
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a79f27c97240b24abcabbd78439785a
+      internalID: 91851044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_25
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 764
+        width: 11
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e18a33e33fcd0f4d901f41276bfdf95
+      internalID: -1643065086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_26
+      rect:
+        serializedVersion: 2
+        x: 2105
+        y: 799
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e98f374d78d455045b2d9de9af334a1e
+      internalID: -1985307486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_27
+      rect:
+        serializedVersion: 2
+        x: 3192
+        y: 795
+        width: 23
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 328b4a06815f0ad4cb8b5c9d1fd18bf1
+      internalID: -1400288942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_28
+      rect:
+        serializedVersion: 2
+        x: 2092
+        y: 785
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8e58726478bf71479f14a2e817aaa0a
+      internalID: 2081923057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_29
+      rect:
+        serializedVersion: 2
+        x: 2104
+        y: 783
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37905c716332fc5448ccf00a9b357930
+      internalID: -75733780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_30
+      rect:
+        serializedVersion: 2
+        x: 2113
+        y: 779
+        width: 5
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26dbd77ab08c08f4fa581aa47e632c35
+      internalID: 1766765837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_31
+      rect:
+        serializedVersion: 2
+        x: 3134
+        y: 781
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48238e93f1e67344d8c0b2ba8c342be5
+      internalID: -379467790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_32
+      rect:
+        serializedVersion: 2
+        x: 3154
+        y: 773
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35366db548fa9b44dbf2461a44894707
+      internalID: 1506150374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_33
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 767
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8276a5b114dd5994e85b2c1915317741
+      internalID: 454836910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_34
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 760
+        width: 6
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cc1397208642624c9e7b71b76ec6342
+      internalID: -1657059562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_35
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 742
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08c863d050333214ba8a57d7a77be944
+      internalID: 1996285592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_36
+      rect:
+        serializedVersion: 2
+        x: 2125
+        y: 760
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6a5ab2cacbfa954a8a88fe2339a7b93
+      internalID: -856287447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_38
+      rect:
+        serializedVersion: 2
+        x: 3173
+        y: 754
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f010771e89c2f3b47b78085778470728
+      internalID: -253575537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_39
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 760
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a00f713c5ae1bf44e87dcf6798934af0
+      internalID: -1073538952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_40
+      rect:
+        serializedVersion: 2
+        x: 2122
+        y: 756
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87ae42e3d6b0c3c4287d6d12e994deb3
+      internalID: -1667462583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_41
+      rect:
+        serializedVersion: 2
+        x: 3163
+        y: 750
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36e52e9ff431499458a573f81574320e
+      internalID: 1468789528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_43
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 707
+        width: 94
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d4ee36cfa69a5147a7625a534f0d7db
+      internalID: 1031543441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_44
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 736
+        width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 955fc273c4326cf4597eb41f6405b9c3
+      internalID: -2039677338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_45
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 725
+        width: 22
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8edec7d47eb8d2428f62b3d3f1a7154
+      internalID: -2064846145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_46
+      rect:
+        serializedVersion: 2
+        x: 2127
+        y: 729
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13e4b17d57e2b3d42b328a5b46ff9511
+      internalID: 2113050358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_48
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 703
+        width: 24
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bef5edd7f03b7424ba36ee3c51bfb64a
+      internalID: -1458515878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_49
+      rect:
+        serializedVersion: 2
+        x: 2029
+        y: 725
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06fa710ee380de44fbcbdc1b33c06711
+      internalID: 1465516310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_50
+      rect:
+        serializedVersion: 2
+        x: 3194
+        y: 702
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 062f6af94098dcc458267245fd18a861
+      internalID: 1368977794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_51
+      rect:
+        serializedVersion: 2
+        x: 1076
+        y: 693
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5523caa188cb69c4a82c016696f80291
+      internalID: 301322666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_52
+      rect:
+        serializedVersion: 2
+        x: 3207
+        y: 649
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 196047f8ec8779443a46b11979d3a9f4
+      internalID: -122395053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_53
+      rect:
+        serializedVersion: 2
+        x: 2799
+        y: 621
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 628eb2c694db9dc4f82422fe7ffc157e
+      internalID: 1535373587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_54
+      rect:
+        serializedVersion: 2
+        x: 3209
+        y: 633
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61e94be40e945234a90202f6b2e8b5d8
+      internalID: 1814564967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_55
+      rect:
+        serializedVersion: 2
+        x: 1727
+        y: 611
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72dedbdb27eeae745a7bb70deb77cb58
+      internalID: -879690578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_57
+      rect:
+        serializedVersion: 2
+        x: 2907
+        y: 589
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7d5d6da41cb24f41be3344574bc3152
+      internalID: -189713339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_58
+      rect:
+        serializedVersion: 2
+        x: 2815
+        y: 552
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4edf9be4ce94be4dba02f1ddd77bca1
+      internalID: -54046541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_59
+      rect:
+        serializedVersion: 2
+        x: 3195
+        y: 531
+        width: 10
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 624fbcbd202d7044a958782157f4fee8
+      internalID: 2096215387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_60
+      rect:
+        serializedVersion: 2
+        x: 1741
+        y: 532
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7db6d17fe9d813b4daa84372fe4bc26e
+      internalID: -1517687741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_61
+      rect:
+        serializedVersion: 2
+        x: 2131
+        y: 526
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0886a30ea132db94c965bdb1354bc0e3
+      internalID: 340906405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_62
+      rect:
+        serializedVersion: 2
+        x: 3174
+        y: 520
+        width: 12
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c45e31ee5d6e72e4884a1c793dfb835c
+      internalID: -1241892598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_63
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 506
+        width: 11
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89193fb63d877a1488d5ca40e0b0bfe1
+      internalID: -1327117131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_64
+      rect:
+        serializedVersion: 2
+        x: 3989
+        y: 461
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39f3712c0f89c2e4682fb82b238b3941
+      internalID: 26255883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_65
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 408
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c08235b8bb1f4e945a3e1af93bb55c36
+      internalID: 1014782965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_66
+      rect:
+        serializedVersion: 2
+        x: 2895
+        y: 408
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f9eac20a2220c24a9c001ad77cfcadb
+      internalID: 1344629087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_67
+      rect:
+        serializedVersion: 2
+        x: 1822
+        y: 389
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fef9002290a69a04f9080ac64b543832
+      internalID: 879314221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_68
+      rect:
+        serializedVersion: 2
+        x: 1439
+        y: 218
+        width: 42
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc92bdeefeddeca4680a6a5eed8be3ea
+      internalID: 1127502316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_69
+      rect:
+        serializedVersion: 2
+        x: 1531
+        y: 244
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f626c71e0eb4103418ffddd9b5118e68
+      internalID: 933567989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_70
+      rect:
+        serializedVersion: 2
+        x: 1535
+        y: 235
+        width: 51
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2f81673802051247be78f91d885f3f8
+      internalID: 1202545745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_71
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 246
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0830e7575453c85438c81211f4b56ec3
+      internalID: 1371291477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_72
+      rect:
+        serializedVersion: 2
+        x: 1492
+        y: 232
+        width: 24
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47b7f8090de7e9946a1925f0934aeb0a
+      internalID: 960722979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_73
+      rect:
+        serializedVersion: 2
+        x: 1563
+        y: 230
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e3ebfd9e3f314f4491fb7f9580bfc9f
+      internalID: 1292936770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_74
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 184
+        width: 21
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9591d2523d0b3249a001a0c4aaa5a82
+      internalID: 336630538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_75
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 221
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ef2c23436abbb04c85418c6356abe31
+      internalID: 952855095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_76
+      rect:
+        serializedVersion: 2
+        x: 1482
+        y: 217
+        width: 55
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60334340c7619fb4c80da34e7d746365
+      internalID: -1149636711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_78
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 213
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8f0855c86b5d904db8d9aff9a278383
+      internalID: -1502553428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_79
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 166
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d42dbd13b4537c443a3342191881f302
+      internalID: -329962172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_81
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 149
+        width: 47
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70658b734a61e0c47bfb955b97fe72b1
+      internalID: -922315507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_82
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 119
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3da658f89b605e54383c451b06b82e37
+      internalID: 174878673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_83
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 115
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cd06e88fc78a7e41b575e84f7020f23
+      internalID: 1042523517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_84
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 119
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7216680353391d4cb1c211980a7fe47
+      internalID: -1743152156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_86
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 118
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 055c8508df1b5824da2ed239a74d4df1
+      internalID: -371681106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_87
+      rect:
+        serializedVersion: 2
+        x: 2340
+        y: 113
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3606837aff9347f44aacb0e67b51a6e6
+      internalID: 1123583547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_88
+      rect:
+        serializedVersion: 2
+        x: 2353
+        y: 119
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa9d574fa6e05974f94e273070025ba3
+      internalID: -1587961908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_89
+      rect:
+        serializedVersion: 2
+        x: 2361
+        y: 115
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6d2a055996e239418cd8b132d4c9680
+      internalID: -802715020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_90
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 117
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4421cdf560178a14cafa502c1cd7dbd2
+      internalID: -2025889041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_91
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 111
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8951c916b374125438d03636b60a24ae
+      internalID: -1662207681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_92
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 96
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 232eb573b89a423458c9b51d20ecbb92
+      internalID: 181327210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_93
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 92
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bb07ee2c00373c41954c9d5d9419b3f
+      internalID: -644810891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_94
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 94
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebcdce8d2fc0e194fa4b50a06d567687
+      internalID: -854565447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_95
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 100
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81dfa165d1e4d2943919a20032943933
+      internalID: -2049440151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_96
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 99
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c11b70bfb928654caef7cb38fb7a0c6
+      internalID: 502920447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_97
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 87
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1301fde8b2753645959f1d4d6ca08d3
+      internalID: -133841121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_98
+      rect:
+        serializedVersion: 2
+        x: 2335
+        y: 86
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa8aca97fb0e4984da07735419bd5af7
+      internalID: 1432142748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_99
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 68
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e834b06954ee5f94683cef79fa4c05a9
+      internalID: 368335026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_103
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 0
+        width: 98
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53c20ef2921cecf47826b27096e02887
+      internalID: 1455907930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_104
+      rect:
+        serializedVersion: 2
+        x: 1319
+        y: 0
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcff034e68a5cc044bdfb837f9828d9e
+      internalID: 218430866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_105
+      rect:
+        serializedVersion: 2
+        x: 1321
+        y: 35
+        width: 34
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b249f59acd566b429b923063e3ccaf1
+      internalID: -597665296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_106
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 2
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fea47f56cb780f41a88404eb2d486d8
+      internalID: -344217275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_107
+      rect:
+        serializedVersion: 2
+        x: 2264
+        y: 13
+        width: 97
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f99ebb83274164fbc59e8cd38a13a8
+      internalID: 1093844868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_108
+      rect:
+        serializedVersion: 2
+        x: 2389
+        y: 14
+        width: 23
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b843931cdf8641f4db97286ab9abd989
+      internalID: -1992702960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_109
+      rect:
+        serializedVersion: 2
+        x: 2393
+        y: 54
+        width: 35
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78397794cb502f749b1c9e37c94a615a
+      internalID: 359619334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_110
+      rect:
+        serializedVersion: 2
+        x: 2484
+        y: 0
+        width: 51
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd2605a15bde8ac4cb47b759d4214488
+      internalID: -1106624473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_42
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 727
+        width: 16
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 126331375cea17f46a9112dae0d3ebd8
+      internalID: -951275033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_77
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 203
+        width: 41
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 767a89364e5e3f645b5676e5c3ffe761
+      internalID: -28578483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_80
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 170
+        width: 45
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff96c387d6c93c9498ccf74ff33047d3
+      internalID: -1106990055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_85
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 115
+        width: 9
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a45f9476937a0c24fb6f9277167c91d8
+      internalID: -150076201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_100
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 13
+        width: 100
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22897b67747a56d4b8fb98db0edab01a
+      internalID: -245304244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_101
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 16
+        width: 25
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7e7a3ff63063a34cb1b6d156f174e91
+      internalID: -457648652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJGroundPoundStrip_102
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 171
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5a52b84e20de8f4fa2e58d0b4c647d8
+      internalID: 654525898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BJGroundPoundStrip_0: -1929716149
+      BJGroundPoundStrip_1: 249987898
+      BJGroundPoundStrip_10: -1925786422
+      BJGroundPoundStrip_100: -245304244
+      BJGroundPoundStrip_101: -457648652
+      BJGroundPoundStrip_102: 654525898
+      BJGroundPoundStrip_103: 1455907930
+      BJGroundPoundStrip_104: 218430866
+      BJGroundPoundStrip_105: -597665296
+      BJGroundPoundStrip_106: -344217275
+      BJGroundPoundStrip_107: 1093844868
+      BJGroundPoundStrip_108: -1992702960
+      BJGroundPoundStrip_109: 359619334
+      BJGroundPoundStrip_11: 612369024
+      BJGroundPoundStrip_110: -1106624473
+      BJGroundPoundStrip_12: -1249920969
+      BJGroundPoundStrip_13: -185195944
+      BJGroundPoundStrip_14: -1727031151
+      BJGroundPoundStrip_15: 1072093111
+      BJGroundPoundStrip_16: -1878261844
+      BJGroundPoundStrip_17: -1858783684
+      BJGroundPoundStrip_18: -524111882
+      BJGroundPoundStrip_19: -661661494
+      BJGroundPoundStrip_2: -1714492852
+      BJGroundPoundStrip_20: -1010907651
+      BJGroundPoundStrip_21: 394144107
+      BJGroundPoundStrip_22: 1277123055
+      BJGroundPoundStrip_23: 91851044
+      BJGroundPoundStrip_24: -1719701604
+      BJGroundPoundStrip_25: -1643065086
+      BJGroundPoundStrip_26: -1985307486
+      BJGroundPoundStrip_27: -1400288942
+      BJGroundPoundStrip_28: 2081923057
+      BJGroundPoundStrip_29: -75733780
+      BJGroundPoundStrip_3: 386783042
+      BJGroundPoundStrip_30: 1766765837
+      BJGroundPoundStrip_31: -379467790
+      BJGroundPoundStrip_32: 1506150374
+      BJGroundPoundStrip_33: 454836910
+      BJGroundPoundStrip_34: -1657059562
+      BJGroundPoundStrip_35: 1996285592
+      BJGroundPoundStrip_36: -856287447
+      BJGroundPoundStrip_37: -2068259556
+      BJGroundPoundStrip_38: -253575537
+      BJGroundPoundStrip_39: -1073538952
+      BJGroundPoundStrip_4: 1594832992
+      BJGroundPoundStrip_40: -1667462583
+      BJGroundPoundStrip_41: 1468789528
+      BJGroundPoundStrip_42: -951275033
+      BJGroundPoundStrip_43: 1031543441
+      BJGroundPoundStrip_44: -2039677338
+      BJGroundPoundStrip_45: -2064846145
+      BJGroundPoundStrip_46: 2113050358
+      BJGroundPoundStrip_47: 1496520253
+      BJGroundPoundStrip_48: -1458515878
+      BJGroundPoundStrip_49: 1465516310
+      BJGroundPoundStrip_5: 1815767252
+      BJGroundPoundStrip_50: 1368977794
+      BJGroundPoundStrip_51: 301322666
+      BJGroundPoundStrip_52: -122395053
+      BJGroundPoundStrip_53: 1535373587
+      BJGroundPoundStrip_54: 1814564967
+      BJGroundPoundStrip_55: -879690578
+      BJGroundPoundStrip_56: 1586610870
+      BJGroundPoundStrip_57: -189713339
+      BJGroundPoundStrip_58: -54046541
+      BJGroundPoundStrip_59: 2096215387
+      BJGroundPoundStrip_6: 1821638751
+      BJGroundPoundStrip_60: -1517687741
+      BJGroundPoundStrip_61: 340906405
+      BJGroundPoundStrip_62: -1241892598
+      BJGroundPoundStrip_63: -1327117131
+      BJGroundPoundStrip_64: 26255883
+      BJGroundPoundStrip_65: 1014782965
+      BJGroundPoundStrip_66: 1344629087
+      BJGroundPoundStrip_67: 879314221
+      BJGroundPoundStrip_68: 1127502316
+      BJGroundPoundStrip_69: 933567989
+      BJGroundPoundStrip_7: 444353927
+      BJGroundPoundStrip_70: 1202545745
+      BJGroundPoundStrip_71: 1371291477
+      BJGroundPoundStrip_72: 960722979
+      BJGroundPoundStrip_73: 1292936770
+      BJGroundPoundStrip_74: 336630538
+      BJGroundPoundStrip_75: 952855095
+      BJGroundPoundStrip_76: -1149636711
+      BJGroundPoundStrip_77: -28578483
+      BJGroundPoundStrip_78: -1502553428
+      BJGroundPoundStrip_79: -329962172
+      BJGroundPoundStrip_8: -1551056502
+      BJGroundPoundStrip_80: -1106990055
+      BJGroundPoundStrip_81: -922315507
+      BJGroundPoundStrip_82: 174878673
+      BJGroundPoundStrip_83: 1042523517
+      BJGroundPoundStrip_84: -1743152156
+      BJGroundPoundStrip_85: -150076201
+      BJGroundPoundStrip_86: -371681106
+      BJGroundPoundStrip_87: 1123583547
+      BJGroundPoundStrip_88: -1587961908
+      BJGroundPoundStrip_89: -802715020
+      BJGroundPoundStrip_9: 325534594
+      BJGroundPoundStrip_90: -2025889041
+      BJGroundPoundStrip_91: -1662207681
+      BJGroundPoundStrip_92: 181327210
+      BJGroundPoundStrip_93: -644810891
+      BJGroundPoundStrip_94: -854565447
+      BJGroundPoundStrip_95: -2049440151
+      BJGroundPoundStrip_96: 502920447
+      BJGroundPoundStrip_97: -133841121
+      BJGroundPoundStrip_98: 1432142748
+      BJGroundPoundStrip_99: 368335026
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

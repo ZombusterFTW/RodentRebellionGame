@@ -33,21 +33,29 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     //Do box trace down to figure out if the player is grounded.
     [SerializeField] private bool onGround = true;
+    [SerializeField] private bool isFalling = false;
     [SerializeField] private bool isJumping = false;
     [SerializeField] private bool canJump = true;
     [SerializeField] private bool onWall = false;
     [SerializeField] private bool canMove = true;
     [SerializeField] private float lerpTime = 0.5f;
     [SerializeField] private float wallJumpTime = 0.15f;
+    [SerializeField] private float dashTimer = 0.25f;
+    [SerializeField] private float dashThrust = 75f;
+    [SerializeField] private int maxDashes = 2;
+    private int remainingDashes = 0;
     [SerializeField] private bool wallJumped = false;
     [SerializeField] private bool onLeftWall = false;
     [SerializeField] private bool onRightWall = false;
     [SerializeField] private bool isGroundPounding = false;
     [SerializeField] private bool canGroundPound = true;
+    [SerializeField] private bool isDashing = false;
+    [SerializeField] private bool canDash = true;
     private bool isMoving = false;
 
     private bool isAlive = true;
     private Vector2 movementDirection;
+    private Vector2 lastDirection;
     private Rigidbody2D playerRigidBody;
     private BoxCollider2D playerCollider;
     private SpriteRenderer spriteRenderer;
@@ -71,6 +79,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerHealth = GetComponent<Health>();
         playerUpgrade = GetComponent<Upgrade>();
+        remainingDashes = maxDashes;
     }
     // Start is called before the first frame update
     void Start()
@@ -105,12 +114,14 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         //Make player have the ability to "claw" into a wall and fall slowly. By doing this they can then jump which will cause them to do the up wall jump.
         //x velocity should be unchanged unless the player is pressing a key
 
-        isMoving = playerRigidBody.velocity.x != 0 && movementDirection.x != 0;
+        isMoving = (playerRigidBody.velocity.x != 0 && movementDirection.x != 0);
+        isFalling = (playerRigidBody.velocity.y < 0  && !onGround && !onWall && movingPlatform == null);
 
+        if(isFalling) isJumping = false;
 
         if (canMove && !wallJumped && onGround) playerRigidBody.velocity = new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y);
         else if (canMove && !wallJumped && onGround && movingPlatform != null && movementDirection.x == 0) playerRigidBody.velocity = playerRigidBody.velocity;
-        else if(canMove && wallJumped && !onWall) playerRigidBody.velocity = Vector2.Lerp(playerRigidBody.velocity, (new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), lerpTime * Time.deltaTime);
+        else if (canMove && wallJumped && !onWall) playerRigidBody.velocity = Vector2.Lerp(playerRigidBody.velocity, (new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), lerpTime * Time.deltaTime);
         else if (canMove && !wallJumped && !onGround && movementDirection.x != 0) playerRigidBody.velocity = Vector2.Lerp((new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), playerRigidBody.velocity, airControlLerpTime * Time.deltaTime);
         else if (canMove && !wallJumped && !onGround && movementDirection.x == 0) playerRigidBody.velocity = Vector2.Lerp((new Vector2(playerRigidBody.velocity.x, playerRigidBody.velocity.y)), playerRigidBody.velocity, airControlLerpTime * Time.deltaTime);
 
@@ -125,20 +136,17 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             playerRigidBody.velocity = new Vector2(wallDir, -wallSlideSpeed);
         }
 
-        if (movementDirection.x != 0 && !onWall && onGround && isMoving)
+        if (movementDirection.x != 0 && !onWall && onGround && isMoving && !isJumping)
         {
-            playerAnimator.SetBool("MovingOnGround", true);
+            playerAnimator.Play("BigJoeRun", 0);
         }
-        else if(movementDirection == Vector2.zero && !onWall && onGround && !isMoving)
+        else if((movementDirection == Vector2.zero && !onWall && onGround && !isMoving) && ( playerRigidBody.velocity == Vector2.zero || movingPlatform != null))
         {
-            playerAnimator.SetBool("MovingOnGround", false);
-            playerAnimator.SetBool("IsFalling", false);
-            playerAnimator.SetBool("IsJumping", false);
-            playerAnimator.SetBool("IsOnWall", false);
-            playerAnimator.SetBool("IsGroundpounding", false);
+            playerAnimator.Play("BigJoeIdle", 0);
         }
-        
-        
+        if(isFalling && !isGroundPounding && !isJumping) playerAnimator.Play("BigJoeFalling", 0);
+        if (movementDirection != Vector2.zero && !wallJumped) playerSprite.flipX = movementDirection.x < 0 ? true : false;
+
     }
 
     void CheckGrounding()
@@ -152,6 +160,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             GroundPound();
             wallJumped = false;
             ResetJumpCounter();
+            isJumping = false;
         }
        
     }
@@ -178,6 +187,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, 0);
                 playerRigidBody.velocity += Vector2.up * jumpForce_Game;
                 Debug.Log("Normal jump");
+                onGround = false; 
+                isJumping = true;
+                playerAnimator.Play("BigJoeJump", 0);
+                
             }
             else if (!onGround && !onWall && playerDoubleJumpsRemaining > 0)
             {
@@ -185,6 +198,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 playerRigidBody.velocity += Vector2.up * jumpForce_Game;
                 playerDoubleJumpsRemaining--;
                 Debug.Log("Dbl jump");
+                playerAnimator.Play("BigJoeJump", 0);
+                isJumping = true;
             }
             else if (!onGround && onWall) WallJump();
         }
@@ -213,21 +228,36 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             isGroundPounding = true;
             canJump = false;
             playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, -groundPoundVel);
+            playerAnimator.Play("BigJoeGroundPound", 0);
         }
         else if(onGround && isGroundPounding)
         {
             Debug.Log("Hit ground after ground pound");
+            //Shake camera here
             isGroundPounding = false;
             canJump = true;
+            playerAnimator.Play("BigJoeLand", 0);
         }
     }
 
 
+    IEnumerator ResetDashTimer()
+    {
+        playerRigidBody.drag = 25; 
+        canDash = false;
+        StartCoroutine(DisableMovement(dashTimer));
+        yield return new WaitForSeconds(dashTimer);
+        canDash = true;
+        isDashing = false;
+        playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
+        playerRigidBody.drag = 0f;
+    }
 
     IEnumerator DisableMovement(float timeToDisable)
     {
         canMove = false;
         yield return new WaitForSeconds(timeToDisable);
+        if (movementDirection != Vector2.zero && !wallJumped) playerSprite.flipX = movementDirection.x < 0 ? true : false;
         canMove = true;
     }
 
@@ -237,6 +267,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         //Reset the player jump variable to its default.
         playerDoubleJumpsRemaining = playerMaxJumpCount;
+        remainingDashes = maxDashes;
     }
 
 
@@ -246,23 +277,28 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         movementDirection.Normalize();
         if(movementDirection != Vector2.zero) playerSprite.flipX = movementDirection.x < 0? true : false;
         Debug.Log(movementDirection);
-    }
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        switch (context.phase)
+
+        if (movementDirection != Vector2.zero)
         {
-            case InputActionPhase.Performed:
-                {
-                    Debug.Log("Jump button pressed");
-                    Jump();
-                    break;
-                }
-            case InputActionPhase.Started:
-                break;
-            case InputActionPhase.Canceled:
-                break;
+            lastDirection = movementDirection.x < 0 ? Vector2.left : Vector2.right;
         }
     }
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            switch (context.phase)
+            {
+                case InputActionPhase.Performed:
+                    {
+                        Debug.Log("Jump button pressed");
+                        Jump();
+                        break;
+                    }
+                case InputActionPhase.Started:
+                    break;
+                case InputActionPhase.Canceled:
+                    break;
+            }
+        }
 
     public void OnGroundPound(InputAction.CallbackContext context)
     {
@@ -297,9 +333,18 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         switch (context.phase)
         {
             case InputActionPhase.Performed:
-                Debug.Log("Roll button pressed");
+                
                 break;
             case InputActionPhase.Started:
+                Debug.Log("Roll button pressed");
+                if (!isDashing && remainingDashes > 0 && canDash)
+                {
+                    if (!onGround) remainingDashes--;
+                    isDashing = true;
+                    playerRigidBody.AddForce(lastDirection * dashThrust, ForceMode2D.Impulse);
+                    StartCoroutine(ResetDashTimer());
+                    movingPlatform = null; 
+                }
                 break;
             case InputActionPhase.Canceled:
                 break;
