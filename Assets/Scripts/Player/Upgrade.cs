@@ -14,6 +14,9 @@ public class Upgrade : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         playerUIManager = playerController.GetPlayerUI();
+
+        damageCountCurrent = damageCount;
+
     }
 
     // Update is called once per frame
@@ -30,10 +33,10 @@ public class Upgrade : MonoBehaviour
         switch(attackType) 
         {
             default: return damageCount / 3;
-
-
-
-
+            case PlayerAttackType.DaggerStrike: return damageCountCurrent / 2;
+            case PlayerAttackType.GroundPound: return damageCountCurrent;
+            case PlayerAttackType.StandardAttack: return damageCountCurrent / 3;
+            case PlayerAttackType.LaserBlast: return damageCountCurrent / 5;    
         }
     }
 
@@ -43,7 +46,7 @@ public class Upgrade : MonoBehaviour
         switch (upgrade) 
         {
             default: return;
-
+            
 
         }
     }

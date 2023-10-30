@@ -42,9 +42,36 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Roll",
+                    "name": "Dash",
                     "type": "Button",
                     "id": "6a2820af-379f-45e6-aa6a-829b36427b43",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "90e27e4c-e5ed-4a8e-9ce4-62da6c492306",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LazerGunFire",
+                    "type": "Button",
+                    "id": "f4fb6ea9-7fe1-4285-bfdc-99211bfa48bb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LazerGunAlt",
+                    "type": "Button",
+                    "id": "12128e6e-be29-4064-8d18-c749af64f9b4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -154,7 +181,7 @@
                 {
                     "name": "",
                     "id": "719d495c-874a-4ed7-9a10-c34eee6c6a6d",
-                    "path": "",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -169,7 +196,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Roll",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "31415e5e-46dc-4a8d-a100-a05019e3c13d",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a62e04eb-1148-4b31-ae71-bdf4b4a13deb",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LazerGunFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50b404fa-f837-457e-b30b-ce10767813cd",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LazerGunAlt",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
