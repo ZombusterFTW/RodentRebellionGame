@@ -38,17 +38,20 @@ public class SoundManager : MonoBehaviour
         //bgm_source.clip = tracks[0]; //load init clip
         //bgm_source.Play(); //play on start
 
+        double startTime = AudioSettings.dspTime + 0.5; //delay for cleanliness
+
         //Load baselines
         bass_guitar_src.clip = bass_guitar[0];
         drum_kit_src.clip = drum_kit[0];
 
-        bass_guitar_src.Play();
-        drum_kit_src.Play();
+        bass_guitar_src.PlayScheduled(startTime);
+        drum_kit_src.PlayScheduled(startTime);
 
+        //set guitar to start after one loop of base line
+        double duration = (double)drum_kit[0].samples / drum_kit[0].frequency;
 
-
-        back_guitar_src.clip = tracks[1];
-        back_guitar_src.Play(); //temp...
+        bgm_source.clip = tracks[1];
+        bgm_source.PlayScheduled(startTime + duration);
 
     }
 
