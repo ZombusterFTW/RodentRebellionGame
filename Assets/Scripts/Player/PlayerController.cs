@@ -1,12 +1,15 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatformAnchor
+public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatformAnchor, ControlledCharacter
 {
     private PlayerInput playerInput;
     [SerializeField] private GameObject playerSpriteContainer;
+    public DashTrail dashTrail;
+    public DashTrailObject dashTrailObject;
     private SpriteRenderer playerSprite;
     private Animator playerAnimator;
     [SerializeField] private float playerSpeed = 500f;
@@ -52,10 +55,12 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private bool isDashing = false;
     [SerializeField] private bool canDash = true;
     private bool isMoving = false;
+    private bool isFiringLaser = false;
+    private bool isAttacking = false;   
 
     private bool isAlive = true;
     private Vector2 movementDirection;
-    private Vector2 lastDirection;
+    private Vector2 lastDirection = Vector2.right;
     private Rigidbody2D playerRigidBody;
     private BoxCollider2D playerCollider;
     private SpriteRenderer spriteRenderer;
@@ -66,6 +71,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private Upgrade playerUpgrade;
     [SerializeField] private GameObject playerUIPrefab;
     public PlayerUI playerUI;
+    [SerializeField] private LineRenderer laserBeam;
+    private Camera cam;
+    private Quaternion rotation;
+    private CinemachineVirtualCamera cineMachine;
 
 
     private void Awake()
@@ -80,6 +89,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         playerHealth = GetComponent<Health>();
         playerUpgrade = GetComponent<Upgrade>();
         remainingDashes = maxDashes;
+        cam = Camera.main;
     }
     // Start is called before the first frame update
     void Start()
@@ -87,6 +97,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         playerDoubleJumpsRemaining = playerMaxJumpCount;
         playerSpeed_Game = playerSpeed;
         jumpForce_Game = jumpForce;
+        
     }
 
     // Update is called once per frame
@@ -128,8 +139,16 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         if (onWall && !onGround && canMove && !isGroundPounding)
         {
             float wallDir = onRightWall ? 2 : -2;
-            if (wallDir < 0) playerSprite.flipX = true;
-            else playerSprite.flipX = false;
+            if (wallDir < 0) 
+            {
+                playerSprite.flipX = true;
+                dashTrailObject.GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else 
+            {
+                playerSprite.flipX = false;
+                dashTrailObject.GetComponent<SpriteRenderer>().flipX = false;
+            }
             Debug.Log("Wall sliding");
             //Wall slide
             wallDir = Mathf.Lerp(playerRigidBody.velocity.x, wallDir, lerpTime * Time.deltaTime);
@@ -145,7 +164,11 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             playerAnimator.Play("BigJoeIdle", 0);
         }
         if(isFalling && !isGroundPounding && !isJumping) playerAnimator.Play("BigJoeFalling", 0);
-        if (movementDirection != Vector2.zero && !wallJumped) playerSprite.flipX = movementDirection.x < 0 ? true : false;
+        if (movementDirection != Vector2.zero && !wallJumped)
+        {
+            playerSprite.flipX = movementDirection.x < 0 ? true : false;
+            dashTrailObject.GetComponent<SpriteRenderer>().flipX = playerSprite.flipX;
+        }
 
     }
 
@@ -243,10 +266,12 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     IEnumerator ResetDashTimer()
     {
+        dashTrail.SetEnabled(true);
         playerRigidBody.drag = 25; 
         canDash = false;
         StartCoroutine(DisableMovement(dashTimer));
         yield return new WaitForSeconds(dashTimer);
+        dashTrail.SetEnabled(false);
         canDash = true;
         isDashing = false;
         playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
@@ -350,6 +375,119 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 break;
         }
     }
+
+
+
+
+    IEnumerator UpdateLaserPos()
+    {
+        laserBeam.enabled = true;
+        while (isFiringLaser)
+        {
+            Vector3 pos =  cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.z));
+            laserBeam.SetPosition(0, (Vector2)transform.position);
+            laserBeam.SetPosition(1, (Vector2)pos);
+
+
+
+
+            Vector2 direction =  (Vector2)transform.position - (Vector2)pos;
+            RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, direction.normalized, Mathf.Infinity, groundLayer);
+
+
+            if(hit)
+            {
+                laserBeam.SetPosition(1, (Vector2)hit.point);
+                Debug.Log("Hit");
+
+                if (hit.collider.gameObject.GetComponent<EnemyScript>() != null)
+                {
+                    hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast));
+                }
+
+
+
+                //check if enemy here.
+            }
+
+            yield return null;  
+        }
+        laserBeam.enabled = false;
+    }
+
+
+    public void OnLazerFire(InputAction.CallbackContext context)
+    {
+        switch (context.phase)
+        {
+            case InputActionPhase.Performed:
+                break;
+            case InputActionPhase.Started:
+
+                isFiringLaser = true;
+                StartCoroutine(UpdateLaserPos());
+                Debug.Log("pRESS");
+                break;
+            case InputActionPhase.Canceled:
+                isFiringLaser = false;
+                //StopCoroutine(UpdateLaserPos());
+
+                break;
+        }
+    }
+
+    public void OnLazerAltFire(InputAction.CallbackContext context)
+    {
+        switch (context.phase)
+        {
+            case InputActionPhase.Performed:
+                break;
+            case InputActionPhase.Started:
+                Jump();
+                break;
+            case InputActionPhase.Canceled:
+                break;
+        }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        switch (context.phase)
+        {
+            case InputActionPhase.Performed:
+                break;
+            case InputActionPhase.Started:
+                Vector2 direction = ((Vector2)transform.position * (lastDirection));
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, direction.normalized, 1.5f, groundLayer);
+                if (hit)
+                {
+                    laserBeam.SetPosition(1, hit.point);
+                    Debug.Log("Hit");
+
+                    if (hit.collider.gameObject.GetComponent<EnemyScript>() != null)
+                    {
+                        hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
+                    }
+                    
+                }
+                break;
+            case InputActionPhase.Canceled:
+                break;
+        }
+    }
+
+
+    //For later
+    void RotateToMouse()
+    {
+        Vector2 direction = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        rotation.eulerAngles = new Vector3(0,0, angle);
+        transform.rotation = rotation;
+    }
+
+
+
 
     public BoxCollider2D GetPlayerCollider()
     {
@@ -487,10 +625,30 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Coll");
         if (collision.gameObject.GetComponentInParent<MovingPlatform>() != null)
         {
             SetMovingPlatform(collision.gameObject);
         }
+
+
+        if((isDashing || isGroundPounding || isAttacking) && (collision.gameObject.GetComponent<EnemyScript>() != null))
+        {
+            Debug.Log("Coll2");
+            if (isDashing)
+            {
+                collision.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike));
+            }
+            else if(isGroundPounding)
+            {
+                collision.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.GroundPound));
+            }
+            else if(isAttacking)
+            {
+                collision.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
+            }
+        }
+
     }
 
 
@@ -507,6 +665,12 @@ public interface MovingPlatformAnchor
 {
     public void SetMovingPlatform(GameObject platform);
     public void UnlinkPlatform(GameObject platform);
+}
+
+public interface ControlledCharacter
+{
+    public PlayerUI GetPlayerUI();
+    public void RespawnPlayer();
 }
 
 public enum PlayerWeaponType

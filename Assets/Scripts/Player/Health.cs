@@ -6,15 +6,15 @@ public class Health : MonoBehaviour
 {
     [Tooltip("How much health the player starts with")][SerializeField] private float healthCount = 100f;
     [SerializeField] private float healthCountCurrent;
-    [SerializeField] private PlayerController playerController;
+    [SerializeField] private ControlledCharacter playerController;
 
-    private PlayerUI playerUIManager;
+    [SerializeField] private PlayerUI playerUIManager;
 
     // Start is called before the first frame update
     void Start()
     {
         healthCountCurrent = healthCount;
-        playerController = GetComponent<PlayerController>();
+        playerController = GetComponent<ControlledCharacter>();
         playerUIManager = playerController.GetPlayerUI();
     }
 

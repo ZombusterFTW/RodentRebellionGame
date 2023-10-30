@@ -64,9 +64,36 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Roll"",
+                    ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""6a2820af-379f-45e6-aa6a-829b36427b43"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""90e27e4c-e5ed-4a8e-9ce4-62da6c492306"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LazerGunFire"",
+                    ""type"": ""Button"",
+                    ""id"": ""f4fb6ea9-7fe1-4285-bfdc-99211bfa48bb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LazerGunAlt"",
+                    ""type"": ""Button"",
+                    ""id"": ""12128e6e-be29-4064-8d18-c749af64f9b4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -176,7 +203,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""719d495c-874a-4ed7-9a10-c34eee6c6a6d"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -191,7 +218,40 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Roll"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31415e5e-46dc-4a8d-a100-a05019e3c13d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a62e04eb-1148-4b31-ae71-bdf4b4a13deb"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LazerGunFire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50b404fa-f837-457e-b30b-ce10767813cd"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LazerGunAlt"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -206,7 +266,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerControlActions_Jump = m_PlayerControlActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerControlActions_GroundPound = m_PlayerControlActions.FindAction("GroundPound", throwIfNotFound: true);
         m_PlayerControlActions_Interact = m_PlayerControlActions.FindAction("Interact", throwIfNotFound: true);
-        m_PlayerControlActions_Roll = m_PlayerControlActions.FindAction("Roll", throwIfNotFound: true);
+        m_PlayerControlActions_Dash = m_PlayerControlActions.FindAction("Dash", throwIfNotFound: true);
+        m_PlayerControlActions_Attack = m_PlayerControlActions.FindAction("Attack", throwIfNotFound: true);
+        m_PlayerControlActions_LazerGunFire = m_PlayerControlActions.FindAction("LazerGunFire", throwIfNotFound: true);
+        m_PlayerControlActions_LazerGunAlt = m_PlayerControlActions.FindAction("LazerGunAlt", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -272,7 +335,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControlActions_Jump;
     private readonly InputAction m_PlayerControlActions_GroundPound;
     private readonly InputAction m_PlayerControlActions_Interact;
-    private readonly InputAction m_PlayerControlActions_Roll;
+    private readonly InputAction m_PlayerControlActions_Dash;
+    private readonly InputAction m_PlayerControlActions_Attack;
+    private readonly InputAction m_PlayerControlActions_LazerGunFire;
+    private readonly InputAction m_PlayerControlActions_LazerGunAlt;
     public struct PlayerControlActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -281,7 +347,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_PlayerControlActions_Jump;
         public InputAction @GroundPound => m_Wrapper.m_PlayerControlActions_GroundPound;
         public InputAction @Interact => m_Wrapper.m_PlayerControlActions_Interact;
-        public InputAction @Roll => m_Wrapper.m_PlayerControlActions_Roll;
+        public InputAction @Dash => m_Wrapper.m_PlayerControlActions_Dash;
+        public InputAction @Attack => m_Wrapper.m_PlayerControlActions_Attack;
+        public InputAction @LazerGunFire => m_Wrapper.m_PlayerControlActions_LazerGunFire;
+        public InputAction @LazerGunAlt => m_Wrapper.m_PlayerControlActions_LazerGunAlt;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControlActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -303,9 +372,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
-            @Roll.started += instance.OnRoll;
-            @Roll.performed += instance.OnRoll;
-            @Roll.canceled += instance.OnRoll;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+            @LazerGunFire.started += instance.OnLazerGunFire;
+            @LazerGunFire.performed += instance.OnLazerGunFire;
+            @LazerGunFire.canceled += instance.OnLazerGunFire;
+            @LazerGunAlt.started += instance.OnLazerGunAlt;
+            @LazerGunAlt.performed += instance.OnLazerGunAlt;
+            @LazerGunAlt.canceled += instance.OnLazerGunAlt;
         }
 
         private void UnregisterCallbacks(IPlayerControlActionsActions instance)
@@ -322,9 +400,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
-            @Roll.started -= instance.OnRoll;
-            @Roll.performed -= instance.OnRoll;
-            @Roll.canceled -= instance.OnRoll;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+            @LazerGunFire.started -= instance.OnLazerGunFire;
+            @LazerGunFire.performed -= instance.OnLazerGunFire;
+            @LazerGunFire.canceled -= instance.OnLazerGunFire;
+            @LazerGunAlt.started -= instance.OnLazerGunAlt;
+            @LazerGunAlt.performed -= instance.OnLazerGunAlt;
+            @LazerGunAlt.canceled -= instance.OnLazerGunAlt;
         }
 
         public void RemoveCallbacks(IPlayerControlActionsActions instance)
@@ -348,6 +435,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnGroundPound(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
-        void OnRoll(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
+        void OnLazerGunFire(InputAction.CallbackContext context);
+        void OnLazerGunAlt(InputAction.CallbackContext context);
     }
 }
