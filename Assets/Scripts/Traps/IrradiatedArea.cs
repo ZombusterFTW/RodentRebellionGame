@@ -37,9 +37,7 @@ public class IrradiatedArea : MonoBehaviour,R4Activatable, R4ActivatableTrap
 
     public void DealPlayerDamage(bool damage)
     {
-        if (isTriggered && isActive)
-        {
-            if (damage)
+            if (damage && isActive)
             {
                 if (!isTriggered)
                 {
@@ -55,7 +53,6 @@ public class IrradiatedArea : MonoBehaviour,R4Activatable, R4ActivatableTrap
                 StopCoroutine(HealOverTime());
                 controller.GetComponent<R4MovementComponent>().SetMovementSpeed(controller.GetComponent<R4MovementComponent>().GetMovementSpeed());
             }
-        }
     }
 
 
