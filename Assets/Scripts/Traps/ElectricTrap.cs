@@ -95,10 +95,12 @@ public class ElectricTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
                     isDamaging = true;
                     StartCoroutine(DamageWait());
                     if(slowsVictim) controller.GetComponent<R4MovementComponent>().SetMovementSpeed(controller.GetComponent<R4MovementComponent>().GetMovementSpeed()*movementSlowPercentage);
+                    controller.PlayHurt();
                 }
             }
             else
             {
+                controller.StopHurt();
                 StopCoroutine(DamageWait());
                 controller.GetComponent<R4MovementComponent>().SetMovementSpeed(controller.GetComponent<R4MovementComponent>().GetMovementSpeed());
             }

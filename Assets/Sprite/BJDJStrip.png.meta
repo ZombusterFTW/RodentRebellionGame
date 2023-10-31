@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,490 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: BJDJStrip_0
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 214
+        width: 774
+        height: 786
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86522e33a3eef0d43ba0ce5c56260906
+      internalID: -1885385792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_1
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 115
+        width: 665
+        height: 885
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ce39d63a2431b45be3ee4653278d01
+      internalID: -1933294706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_2
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 205
+        width: 738
+        height: 795
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fb01b88f65467e49aece03e77b08d81
+      internalID: 122516078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_3
+      rect:
+        serializedVersion: 2
+        x: 3169
+        y: 0
+        width: 685
+        height: 875
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 570114b87a5eb4c4d850c1be6856f381
+      internalID: -359550159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_32
+      rect:
+        serializedVersion: 2
+        x: 2186
+        y: 168
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50f0f6771a6deb749944b038106c344d
+      internalID: 658139556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_34
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 153
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec5016d28d9599149b9cdaabcdbd8189
+      internalID: 727945471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_36
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 125
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f787b2e052ecdf746a07921ddbdd51a9
+      internalID: -12163419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_39
+      rect:
+        serializedVersion: 2
+        x: 2222
+        y: 121
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 658cb4dbbd4e3804c9f01077d105a1b0
+      internalID: -1736793436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_40
+      rect:
+        serializedVersion: 2
+        x: 2230
+        y: 119
+        width: 9
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f22c0a873b160e41997ebdf7ac5017d
+      internalID: -665340390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_41
+      rect:
+        serializedVersion: 2
+        x: 2276
+        y: 120
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c710b337f02465c49b2ed977e2c9ce37
+      internalID: -680548888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_42
+      rect:
+        serializedVersion: 2
+        x: 2125
+        y: 121
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2534d71144d524da456f3fd4721713
+      internalID: -1710044276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_43
+      rect:
+        serializedVersion: 2
+        x: 2209
+        y: 116
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55390bb5e0394e6448ac8830be9f3160
+      internalID: 1205232384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_45
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 105
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4094986aef9657448c41da397b084d5
+      internalID: -111292968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_46
+      rect:
+        serializedVersion: 2
+        x: 2121
+        y: 113
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 291da2413b4ef8d4e85cfa4b19cfdd02
+      internalID: -2037379170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_47
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 98
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcdef0de2dadb9e4cb8f7184a8432662
+      internalID: 1325252903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_48
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 100
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f6199881d64e8842a3c5aa5c501dd3d
+      internalID: -2026393006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_49
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 106
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b785d57944c99a542b7afeed5b1f63d0
+      internalID: 1128573724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_50
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 92
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2f326fd57064aa418768d02bb75f59d
+      internalID: -915324852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_51
+      rect:
+        serializedVersion: 2
+        x: 2203
+        y: 89
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2865248747df27841990c28c3b1e82f3
+      internalID: -1986317592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_52
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 74
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3df27b17ce5e04e46a7306e1f456e593
+      internalID: 833855530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_53
+      rect:
+        serializedVersion: 2
+        x: 1246
+        y: 60
+        width: 37
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fe34c227e9e19c4eb20598eea6b543c
+      internalID: -1795810088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_60
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 20
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6674c84988d74246ba24e52f8b1cb32
+      internalID: 975133294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDJStrip_61
+      rect:
+        serializedVersion: 2
+        x: 1381
+        y: 0
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f1f2d742ed8f6e47b2cc57139e69c77
+      internalID: 1366334860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +615,70 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BJDJStrip_0: -1885385792
+      BJDJStrip_1: -1933294706
+      BJDJStrip_10: 1062873066
+      BJDJStrip_11: -2076408488
+      BJDJStrip_12: -1378518349
+      BJDJStrip_13: 1636655805
+      BJDJStrip_14: 1613471963
+      BJDJStrip_15: 943374558
+      BJDJStrip_16: -1799198251
+      BJDJStrip_17: 211584162
+      BJDJStrip_18: 78864566
+      BJDJStrip_19: 1690839806
+      BJDJStrip_2: 122516078
+      BJDJStrip_20: -1823643709
+      BJDJStrip_21: 2052560311
+      BJDJStrip_22: 260242401
+      BJDJStrip_23: -46651778
+      BJDJStrip_24: 1729423347
+      BJDJStrip_25: -689738245
+      BJDJStrip_26: 607901960
+      BJDJStrip_27: 1622196173
+      BJDJStrip_28: -1446807306
+      BJDJStrip_29: -302139570
+      BJDJStrip_3: -359550159
+      BJDJStrip_30: 1817291506
+      BJDJStrip_31: -1945761082
+      BJDJStrip_32: 658139556
+      BJDJStrip_33: -992600895
+      BJDJStrip_34: 727945471
+      BJDJStrip_35: 108289846
+      BJDJStrip_36: -12163419
+      BJDJStrip_37: -1991244413
+      BJDJStrip_38: -1775870329
+      BJDJStrip_39: -1736793436
+      BJDJStrip_4: -662377996
+      BJDJStrip_40: -665340390
+      BJDJStrip_41: -680548888
+      BJDJStrip_42: -1710044276
+      BJDJStrip_43: 1205232384
+      BJDJStrip_44: -624904950
+      BJDJStrip_45: -111292968
+      BJDJStrip_46: -2037379170
+      BJDJStrip_47: 1325252903
+      BJDJStrip_48: -2026393006
+      BJDJStrip_49: 1128573724
+      BJDJStrip_5: -160139761
+      BJDJStrip_50: -915324852
+      BJDJStrip_51: -1986317592
+      BJDJStrip_52: 833855530
+      BJDJStrip_53: -1795810088
+      BJDJStrip_54: -1314919752
+      BJDJStrip_55: -1474165912
+      BJDJStrip_56: -973395002
+      BJDJStrip_57: 2084090637
+      BJDJStrip_58: 64559796
+      BJDJStrip_59: 288523834
+      BJDJStrip_6: 347248632
+      BJDJStrip_60: 975133294
+      BJDJStrip_61: 1366334860
+      BJDJStrip_62: -2136635698
+      BJDJStrip_7: -1841438837
+      BJDJStrip_8: -1096005487
+      BJDJStrip_9: -1683529672
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

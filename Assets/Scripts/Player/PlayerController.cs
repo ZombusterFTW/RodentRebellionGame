@@ -1,4 +1,5 @@
 using Cinemachine;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,8 +75,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private LineRenderer laserBeam;
     private Camera cam;
     private Quaternion rotation;
-    private CinemachineVirtualCamera cineMachine;
-
+    private bool iFramesActive = false;
+    private Coroutine hurtCoroutine;
+    [SerializeField] private bool disableAllMoves = false;
 
     private void Awake()
     {
@@ -129,41 +131,44 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         isFalling = (playerRigidBody.velocity.y < 0  && !onGround && !onWall && movingPlatform == null);
 
         if(isFalling) isJumping = false;
-
-        if (canMove && !wallJumped && onGround) playerRigidBody.velocity = new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y);
-        else if (canMove && !wallJumped && onGround && movingPlatform != null && movementDirection.x == 0) playerRigidBody.velocity = playerRigidBody.velocity;
-        else if (canMove && wallJumped && !onWall) playerRigidBody.velocity = Vector2.Lerp(playerRigidBody.velocity, (new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), lerpTime * Time.deltaTime);
-        else if (canMove && !wallJumped && !onGround && movementDirection.x != 0) playerRigidBody.velocity = Vector2.Lerp((new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), playerRigidBody.velocity, airControlLerpTime * Time.deltaTime);
-        else if (canMove && !wallJumped && !onGround && movementDirection.x == 0) playerRigidBody.velocity = Vector2.Lerp((new Vector2(playerRigidBody.velocity.x, playerRigidBody.velocity.y)), playerRigidBody.velocity, airControlLerpTime * Time.deltaTime);
-
-        if (onWall && !onGround && canMove && !isGroundPounding)
+        if(!disableAllMoves)
         {
-            float wallDir = onRightWall ? 2 : -2;
-            if (wallDir < 0) 
+            if (canMove && !wallJumped && onGround) playerRigidBody.velocity = new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y);
+            else if (canMove && !wallJumped && onGround && movingPlatform != null && movementDirection.x == 0) playerRigidBody.velocity = playerRigidBody.velocity;
+            else if (canMove && wallJumped && !onWall) playerRigidBody.velocity = Vector2.Lerp(playerRigidBody.velocity, (new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), lerpTime * Time.deltaTime);
+            else if (canMove && !wallJumped && !onGround && movementDirection.x != 0) playerRigidBody.velocity = Vector2.Lerp((new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), playerRigidBody.velocity, airControlLerpTime * Time.deltaTime);
+            else if (canMove && !wallJumped && !onGround && movementDirection.x == 0) playerRigidBody.velocity = Vector2.Lerp((new Vector2(playerRigidBody.velocity.x, playerRigidBody.velocity.y)), playerRigidBody.velocity, airControlLerpTime * Time.deltaTime);
+
+            if (onWall && !onGround && canMove && !isGroundPounding)
             {
-                playerSprite.flipX = true;
-                dashTrailObject.GetComponent<SpriteRenderer>().flipX = false;
+                float wallDir = onRightWall ? 2 : -2;
+                if (wallDir < 0)
+                {
+                    playerSprite.flipX = true;
+                    dashTrailObject.GetComponent<SpriteRenderer>().flipX = false;
+                }
+                else
+                {
+                    playerSprite.flipX = false;
+                    dashTrailObject.GetComponent<SpriteRenderer>().flipX = false;
+                }
+                Debug.Log("Wall sliding");
+                //Wall slide
+                wallDir = Mathf.Lerp(playerRigidBody.velocity.x, wallDir, lerpTime * Time.deltaTime);
+                playerRigidBody.velocity = new Vector2(wallDir, -wallSlideSpeed);
             }
-            else 
-            {
-                playerSprite.flipX = false;
-                dashTrailObject.GetComponent<SpriteRenderer>().flipX = false;
-            }
-            Debug.Log("Wall sliding");
-            //Wall slide
-            wallDir = Mathf.Lerp(playerRigidBody.velocity.x, wallDir, lerpTime * Time.deltaTime);
-            playerRigidBody.velocity = new Vector2(wallDir, -wallSlideSpeed);
         }
+        
 
         if (movementDirection.x != 0 && !onWall && onGround && isMoving && !isJumping)
         {
-            playerAnimator.Play("BigJoeRun", 0);
+            if(!iFramesActive)playerAnimator.Play("BigJoeRun", 0);
         }
         else if((movementDirection == Vector2.zero && !onWall && onGround && !isMoving) && ( playerRigidBody.velocity == Vector2.zero || movingPlatform != null))
         {
-            playerAnimator.Play("BigJoeIdle", 0);
+            if (!iFramesActive) playerAnimator.Play("BigJoeIdle", 0);
         }
-        if(isFalling && !isGroundPounding && !isJumping) playerAnimator.Play("BigJoeFalling", 0);
+        if(isFalling && !isGroundPounding && !isJumping) if (!iFramesActive) playerAnimator.Play("BigJoeFalling", 0);
         if (movementDirection != Vector2.zero && !wallJumped)
         {
             playerSprite.flipX = movementDirection.x < 0 ? true : false;
@@ -203,7 +208,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     private void Jump()
     {
-        if(canJump)
+        if(canJump && !disableAllMoves)
         {
             if (onGround)
             {
@@ -221,10 +226,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 playerRigidBody.velocity += Vector2.up * jumpForce_Game;
                 playerDoubleJumpsRemaining--;
                 Debug.Log("Dbl jump");
-                playerAnimator.Play("BigJoeJump", 0);
+                playerAnimator.Play("BigJoeDJ", 0);
                 isJumping = true;
             }
-            else if (!onGround && onWall) WallJump();
+            else if (!onGround && onWall && !disableAllMoves) WallJump();
         }
     }
 
@@ -246,7 +251,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     private void GroundPound()
     {
-        if(!onGround && canGroundPound && !isGroundPounding)
+        if(!onGround && canGroundPound && !isGroundPounding&& !disableAllMoves)
         {
             isGroundPounding = true;
             canJump = false;
@@ -255,6 +260,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         }
         else if(onGround && isGroundPounding)
         {
+            cam.transform.DOComplete();
+            cam.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
             Debug.Log("Hit ground after ground pound");
             //Shake camera here
             isGroundPounding = false;
@@ -266,6 +273,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     IEnumerator ResetDashTimer()
     {
+        cam.transform.DOComplete();
+        cam.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
         dashTrail.SetEnabled(true);
         playerRigidBody.drag = 25; 
         canDash = false;
@@ -298,15 +307,21 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     public void OnMovement(InputAction.CallbackContext context)
     {
-        movementDirection = context.ReadValue<Vector2>();
-        movementDirection.Normalize();
-        if(movementDirection != Vector2.zero) playerSprite.flipX = movementDirection.x < 0? true : false;
-        Debug.Log(movementDirection);
-
-        if (movementDirection != Vector2.zero)
+        if (!disableAllMoves)
         {
-            lastDirection = movementDirection.x < 0 ? Vector2.left : Vector2.right;
+            movementDirection = context.ReadValue<Vector2>();
+            movementDirection.Normalize();
+            if (movementDirection != Vector2.zero) playerSprite.flipX = movementDirection.x < 0 ? true : false;
+            Debug.Log(movementDirection);
+
+            if (movementDirection != Vector2.zero)
+            {
+                //lastDirection = movementDirection.x < 0 ? Vector2.left : Vector2.right;
+                lastDirection = movementDirection;
+            }
         }
+        else movementDirection = Vector2.zero;
+
     }
         public void OnJump(InputAction.CallbackContext context)
         {
@@ -362,7 +377,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 break;
             case InputActionPhase.Started:
                 Debug.Log("Roll button pressed");
-                if (!isDashing && remainingDashes > 0 && canDash)
+                if (!isDashing && remainingDashes > 0 && canDash && !disableAllMoves)
                 {
                     if (!onGround) remainingDashes--;
                     isDashing = true;
@@ -423,10 +438,12 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             case InputActionPhase.Performed:
                 break;
             case InputActionPhase.Started:
-
-                isFiringLaser = true;
-                StartCoroutine(UpdateLaserPos());
-                Debug.Log("pRESS");
+                if(!disableAllMoves)
+                {
+                    isFiringLaser = true;
+                    StartCoroutine(UpdateLaserPos());
+                    Debug.Log("pRESS");
+                }
                 break;
             case InputActionPhase.Canceled:
                 isFiringLaser = false;
@@ -452,28 +469,32 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        switch (context.phase)
+        if(!disableAllMoves)
         {
-            case InputActionPhase.Performed:
-                break;
-            case InputActionPhase.Started:
-                Vector2 direction = ((Vector2)transform.position * (lastDirection));
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, direction.normalized, 1.5f, groundLayer);
-                if (hit)
-                {
-                    laserBeam.SetPosition(1, hit.point);
-                    Debug.Log("Hit");
-
-                    if (hit.collider.gameObject.GetComponent<EnemyScript>() != null)
+            switch (context.phase)
+            {
+                case InputActionPhase.Performed:
+                    break;
+                case InputActionPhase.Started:
+                    Vector2 direction = ((Vector2)transform.position * (lastDirection));
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, direction.normalized, 1.5f, groundLayer);
+                    if (hit)
                     {
-                        hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
+                        laserBeam.SetPosition(1, hit.point);
+                        Debug.Log("Hit");
+
+                        if (hit.collider.gameObject.GetComponent<EnemyScript>() != null)
+                        {
+                            hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
+                        }
+
                     }
-                    
-                }
-                break;
-            case InputActionPhase.Canceled:
-                break;
+                    break;
+                case InputActionPhase.Canceled:
+                    break;
+            }
         }
+        
     }
 
 
@@ -512,8 +533,36 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         if(collision.GetComponent<R4ActivatableTrap>() != null && isAlive)
         {
-            collision.GetComponent<R4ActivatableTrap>().DealPlayerDamage(true);
+                collision.GetComponent<R4ActivatableTrap>().DealPlayerDamage(true);                
         }
+    }
+
+    IEnumerator IFrames()
+    {
+        iFramesActive = true;
+        yield return new WaitForSeconds(1);
+        iFramesActive = false;
+    }
+
+    IEnumerator PlayHurtAnim()
+    {
+        iFramesActive = true;
+        while (iFramesActive)
+        {
+            playerAnimator.Play("BigJoeHurt", 0);
+            yield return new WaitForSeconds(0.5f);
+        }
+        
+    }
+
+    public void PlayHurt()
+    {
+        hurtCoroutine = StartCoroutine(PlayHurtAnim());
+    }
+    public void StopHurt()
+    {
+        iFramesActive = false;
+        if (hurtCoroutine != null) StopCoroutine(hurtCoroutine);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -528,6 +577,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         {
             UnlinkPlatform(collision.gameObject);
         }
+        
     }
 
     public void SetSpawn(SpawnPoint spawn)
