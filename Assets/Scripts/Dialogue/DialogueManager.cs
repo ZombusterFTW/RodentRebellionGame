@@ -124,7 +124,7 @@ public class DialogueManager : MonoBehaviour
         // NOTE: The 'currentStory.currentChoiecs.Count == 0' part was to fix a bug after the Youtube video was made
         if (canContinueToNextLine 
             && currentStory.currentChoices.Count == 0 
-            && InputManager.GetInstance().GetSubmitPressed())
+            && GameObject.FindObjectOfType<PlayerController>().GetSpacePressed())
         {
             ContinueStory();
         }
@@ -148,6 +148,8 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator ExitDialogueMode() 
     {
+
+        GameObject.FindObjectOfType<PlayerController>().DisableControls(false);
         yield return new WaitForSeconds(0.2f);
 
         dialogueVariables.StopListening(currentStory);
@@ -197,11 +199,11 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in line.ToCharArray())
         {
             // if the submit button is pressed, finish up displaying the line right away
-            if (InputManager.GetInstance().GetSubmitPressed()) 
-            {
-                dialogueText.maxVisibleCharacters = line.Length;
-                break;
-            }
+            //if (GameObject.FindObjectOfType<PlayerController>().GetSpacePressed()) 
+            //{
+              //  dialogueText.maxVisibleCharacters = line.Length;
+           // //    break;
+           // }
 
             // check for rich text tag, if found, add it without waiting
             if (letter == '<' || isAddingRichTextTag) 
@@ -370,7 +372,7 @@ public class DialogueManager : MonoBehaviour
         {
             currentStory.ChooseChoiceIndex(choiceIndex);
             // NOTE: The below two lines were added to fix a bug after the Youtube video was made
-            InputManager.GetInstance().RegisterSubmitPressed(); // this is specific to my InputManager script
+            GameObject.FindObjectOfType<PlayerController>().GetInteractPressed(); // this is specific to my InputManager script
             ContinueStory();
         }
     }

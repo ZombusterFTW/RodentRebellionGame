@@ -23,8 +23,9 @@ public class DialogueTrigger : MonoBehaviour
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying) 
         {
             visualCue.SetActive(true);
-            if (InputManager.GetInstance().GetInteractPressed()) 
+            if (GameObject.FindObjectOfType<PlayerController>().GetInteractPressed()) 
             {
+                GameObject.FindObjectOfType<PlayerController>().DisableControls(true);
                 DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
             }
         }

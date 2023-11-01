@@ -78,7 +78,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     private bool iFramesActive = false;
     private Coroutine hurtCoroutine;
     [SerializeField] private bool disableAllMoves = false;
-
+    private bool jumpButtonPressed;
+    private bool interactPressed;
     private void Awake()
     {
         playerSprite = playerSpriteContainer.GetComponent<SpriteRenderer>();
@@ -329,6 +330,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             {
                 case InputActionPhase.Performed:
                     {
+                        jumpButtonPressed = true;
                         Debug.Log("Jump button pressed");
                         Jump();
                         break;
@@ -336,6 +338,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 case InputActionPhase.Started:
                     break;
                 case InputActionPhase.Canceled:
+                    jumpButtonPressed = false;
                     break;
             }
         }
@@ -361,13 +364,27 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         {
             case InputActionPhase.Performed:
                 Debug.Log("Interact button pressed");
+                interactPressed = true;
                 break;
             case InputActionPhase.Started:
                 break;
             case InputActionPhase.Canceled:
+                interactPressed = false;
                 break;
         }
     }
+
+    public bool GetInteractPressed()
+    { return interactPressed; }
+
+    public bool GetSpacePressed()
+    { return jumpButtonPressed; }
+
+    public void DisableControls(bool disabled)
+    {
+        disableAllMoves = disabled;
+    }
+
     public void OnRoll(InputAction.CallbackContext context)
     {
         switch (context.phase)

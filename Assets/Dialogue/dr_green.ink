@@ -1,18 +1,22 @@
-Hello there! #speaker:Dr. Green #portrait:dr_green_neutral #layout:left #audio:animal_crossing_mid
+Oh if it isn't the fabled <color=\#F8FF30>Big Joe!</color> #speaker:Fellow Rat #portrait:dr_green_neutral #layout:left #audio:animal_crossing_mid
 -> main
 
 === main ===
-How are you feeling today?
-+ [Happy]
-    That makes me feel <color=\#F8FF30>happy</color> as well! #portrait:dr_green_happy
-+ [Sad]
-    Oh, well that makes me <color=\#5B81FF>sad</color> too. #portrait:dr_green_sad
+ How are you doing on this fine evening?
++ [Good]
+    That makes me feel <color=\#F8FF30>EPIC</color>! #portrait:momheart_ratr_st
+    ->lastquestion
++ [TERRIBLE]
+    <color=\#5B81FF>L Bozo</color> get out of here. NOW! #portrait:momheart_rat_sd
+    ->END
     
-- Don't trust him, he's <b><color=\#FF1E35>not</color></b> a real doctor! #speaker:Ms. Yellow #portrait:ms_yellow_neutral #layout:right #audio:animal_crossing_high
-
-Well, do you have any more questions? #speaker:Dr. Green #portrait:dr_green_neutral #layout:left #audio:animal_crossing_mid
+    
+    
+    ===lastquestion===
+Do you wanna grab some cheese later?  #speaker:Fellow Rat #portrait:momheart_rat_sd #layout:left #audio:animal_crossing_mid
 + [Yes]
-    -> main
+    I'll see you then!
+    -> END
 + [No]
     Goodbye then!
     -> END
