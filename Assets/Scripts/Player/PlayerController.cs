@@ -131,7 +131,11 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         isMoving = (playerRigidBody.velocity.x != 0 && movementDirection.x != 0);
         isFalling = (playerRigidBody.velocity.y < 0  && !onGround && !onWall && movingPlatform == null);
 
-        if(isFalling) isJumping = false;
+        playerAnimator.SetBool("IsFalling", isFalling);
+        playerAnimator.SetBool("MovingOnGround", isMoving);
+        playerAnimator.SetBool("OnGround", onGround);
+
+        if (isFalling) isJumping = false;
         if(!disableAllMoves)
         {
             if (canMove && !wallJumped && onGround) playerRigidBody.velocity = new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y);
@@ -160,7 +164,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             }
         }
         
-
+        /*
         if (movementDirection.x != 0 && !onWall && onGround && isMoving && !isJumping)
         {
             if(!iFramesActive)playerAnimator.Play("BigJoeRun", 0);
@@ -170,6 +174,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             if (!iFramesActive) playerAnimator.Play("BigJoeIdle", 0);
         }
         if(isFalling && !isGroundPounding && !isJumping) if (!iFramesActive) playerAnimator.Play("BigJoeFalling", 0);
+        */
         if (movementDirection != Vector2.zero && !wallJumped)
         {
             playerSprite.flipX = movementDirection.x < 0 ? true : false;
@@ -218,8 +223,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 Debug.Log("Normal jump");
                 onGround = false; 
                 isJumping = true;
-                playerAnimator.Play("BigJoeJump", 0);
-                
+                //playerAnimator.Play("BigJoeJump", 0);
+                playerAnimator.SetTrigger("Jump");
+
             }
             else if (!onGround && !onWall && playerDoubleJumpsRemaining > 0)
             {
@@ -227,7 +233,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 playerRigidBody.velocity += Vector2.up * jumpForce_Game;
                 playerDoubleJumpsRemaining--;
                 Debug.Log("Dbl jump");
-                playerAnimator.Play("BigJoeDJ", 0);
+                //playerAnimator.Play("BigJoeDJ", 0);
+                playerAnimator.SetTrigger("DoubleJump");
                 isJumping = true;
             }
             else if (!onGround && onWall && !disableAllMoves) WallJump();
@@ -244,8 +251,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         Vector2 wallDir = onRightWall ? Vector2.left : Vector2.right;
         if(wallDir == Vector2.left) playerSprite.flipX = true;
         else playerSprite.flipX = false;
-
-
+        //playerAnimator.Play("BigJoeWallJump", 0);
+        playerAnimator.SetTrigger("WallJump");
         playerRigidBody.velocity = new Vector2(0, 0);
         playerRigidBody.velocity += (wallDir/1.5f + Vector2.up) * jumpForce_Game;
     }
@@ -257,7 +264,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             isGroundPounding = true;
             canJump = false;
             playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, -groundPoundVel);
-            playerAnimator.Play("BigJoeGroundPound", 0);
+            //playerAnimator.Play("BigJoeGroundPound", 0);
+            playerAnimator.SetTrigger("GroundPound");
         }
         else if(onGround && isGroundPounding)
         {
@@ -267,7 +275,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             //Shake camera here
             isGroundPounding = false;
             canJump = true;
-            playerAnimator.Play("BigJoeLand", 0);
+            //playerAnimator.Play("BigJoeLand", 0);
+            playerAnimator.SetTrigger("Land");
         }
     }
 
@@ -495,16 +504,14 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 case InputActionPhase.Started:
                     Vector2 direction = ((Vector2)transform.position * (lastDirection));
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, direction.normalized, 1.5f, groundLayer);
+                    playerAnimator.SetTrigger("Stab");
                     if (hit)
                     {
-                        laserBeam.SetPosition(1, hit.point);
                         Debug.Log("Hit");
-
                         if (hit.collider.gameObject.GetComponent<EnemyScript>() != null)
                         {
                             hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
                         }
-
                     }
                     break;
                 case InputActionPhase.Canceled:
