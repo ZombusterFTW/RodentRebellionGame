@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageCount: 12
   damageCountCurrent: 0
+  frenzyMultiplier: 2
   playerController: {fileID: 0}
 --- !u!114 &8459652423362751434
 MonoBehaviour:
@@ -175,6 +176,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   playerWeaponType: 0
+  frenzyIdentifierText: {fileID: 3326960352619200342, guid: 6fac9bbc3d0b23544a87c04092b825c9, type: 3}
   onGround: 1
   isFalling: 0
   isJumping: 0

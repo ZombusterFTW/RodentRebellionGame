@@ -2,6 +2,7 @@ using Cinemachine;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private LayerMask playerWalls;
     [SerializeField] private LayerMask playerGround;
     [SerializeField] private PlayerWeaponType playerWeaponType = PlayerWeaponType.None;
-
+    [SerializeField] private GameObject frenzyIdentifierText;
     //Make laser gun work with mouse targeting
     //Laser rifle beam like EM1 from Advanced Warfare.
 
@@ -80,6 +81,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private bool disableAllMoves = false;
     private bool jumpButtonPressed;
     private bool interactPressed;
+    public bool frenzyActivated { get; private set; } = false;
+    private int frenzyCounter;
+    private int frenzyCount = 3;
+    private Coroutine frenzyCoroutine;
     public LayerMask enemyLayer;
     private void Awake()
     {
@@ -181,7 +186,6 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             playerSprite.flipX = movementDirection.x < 0 ? true : false;
             dashTrailObject.GetComponent<SpriteRenderer>().flipX = playerSprite.flipX;
         }
-
     }
 
     void CheckGrounding()
@@ -289,13 +293,43 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         dashTrail.SetEnabled(true);
         playerRigidBody.drag = 25; 
         canDash = false;
+        frenzyCounter++;
+        if(frenzyCoroutine == null) frenzyCoroutine = StartCoroutine(FrenzyTimer());
         StartCoroutine(DisableMovement(dashTimer));
         yield return new WaitForSeconds(dashTimer);
         dashTrail.SetEnabled(false);
-        canDash = true;
+        if(!frenzyActivated)
+        {
+            canDash = true;
+        }
         isDashing = false;
         playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
         playerRigidBody.drag = 0f;
+    }
+
+    IEnumerator FrenzyTimer()
+    {
+        float frenzyTimer = 1.5f;
+        while(frenzyCounter < frenzyCount)
+        {
+            yield return new WaitForEndOfFrame();
+            frenzyTimer -= Time.deltaTime;
+            if (frenzyTimer <= 0) break;
+        }
+        if (frenzyCounter < frenzyCount)
+        {
+            frenzyCoroutine = null;
+            yield break;
+        }
+        //Spawn frenzy text here
+        Instantiate(frenzyIdentifierText);
+        canDash = false;
+        frenzyActivated = true;
+        yield return new WaitForSecondsRealtime(7.5f);
+        canDash = true;
+        frenzyActivated = false;
+        frenzyCounter = 0;
+        frenzyCoroutine = null;
     }
 
     IEnumerator DisableMovement(float timeToDisable)
@@ -726,7 +760,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     }
 
-
+  
 }
 
 public interface R4MovementComponent

@@ -6,6 +6,7 @@ public class Upgrade : MonoBehaviour
 {
     [SerializeField] float damageCount = 12f;
     [SerializeField] float damageCountCurrent = 0;
+    [SerializeField] float frenzyMultiplier = 2f;
     [SerializeField] PlayerController playerController;
     private PlayerUI playerUIManager;
     private List<Upgrade> upgradeList;
@@ -30,14 +31,24 @@ public class Upgrade : MonoBehaviour
 
     public float GetAttackDamage(PlayerAttackType attackType)
     {
+        float temp;
         switch(attackType) 
         {
             default: return damageCount / 3;
-            case PlayerAttackType.DaggerStrike: return damageCountCurrent / 2;
-            case PlayerAttackType.GroundPound: return damageCountCurrent;
-            case PlayerAttackType.StandardAttack: return damageCountCurrent / 3;
-            case PlayerAttackType.LaserBlast: return damageCountCurrent / 5;    
+            case PlayerAttackType.DaggerStrike: temp = damageCountCurrent / 2;
+                break;
+            case PlayerAttackType.GroundPound: temp =  damageCountCurrent;
+                break;
+            case PlayerAttackType.StandardAttack: temp =  damageCountCurrent / 3;
+                break;
+            case PlayerAttackType.LaserBlast: temp =  damageCountCurrent / 5;
+                break;
         }
+
+        if (playerController.frenzyActivated) temp *= frenzyMultiplier;
+
+        return temp;
+
     }
 
     public void UnlockAbility(UpgradeType upgrade)
