@@ -12,12 +12,13 @@ public class FireTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     [Tooltip("How much damage the trap will do per second")][SerializeField] private float dmgPerTick = 0.75f;
     [Tooltip("The trigger for the trap to activate in self activating mode.")][SerializeField] private BoxCollider2D trapTrigger;
     [Tooltip("The collider of the fire. ")][SerializeField] private BoxCollider2D trapFire;
-    [Tooltip("The color of the fire when is isnt activated.")][SerializeField] private Color fireDeactivatedColor = Color.green;
-    [Tooltip("The color of the fire when is isnt activated.")][SerializeField] private Color fireActivatedColor = Color.red;
+    //[Tooltip("The color of the fire when is isnt activated.")][SerializeField] private Color fireDeactivatedColor = Color.green;
+    //[Tooltip("The color of the fire when is isnt activated.")][SerializeField] private Color fireActivatedColor = Color.red;
     [SerializeField] SpriteRenderer spriteRenderer;
     BoxCollider2D playerCollider;
     private bool isTriggered = false;
     private bool isDamaging = false;
+    [SerializeField] private Animator fireTrapAnimator;
 
     // Start is called before the first frame update
     void Awake()
@@ -30,12 +31,13 @@ public class FireTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
         spriteRenderer = GetComponent<SpriteRenderer>();    
         controller = FindObjectOfType<PlayerController>();
         playerCollider = controller.GetPlayerCollider();
-        spriteRenderer.color = fireDeactivatedColor;
-
+        //spriteRenderer.color = fireDeactivatedColor;
+        fireTrapAnimator.Play("FireTrap_Idle");
         if (isActive)
         {
-            spriteRenderer.color = fireActivatedColor;
+            //spriteRenderer.color = fireActivatedColor;
             isTriggered = true;
+            fireTrapAnimator.Play("FireTrap_Active");
         }
         else trapFire.enabled = false;
     }
@@ -116,14 +118,16 @@ public class FireTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     {
         trapFire.enabled = true;
         isTriggered = true;
-        spriteRenderer.color = fireActivatedColor;
+        //spriteRenderer.color = fireActivatedColor;
+        fireTrapAnimator.Play("FireTrap_Active");
     }
 
     private void ResetTrap()
     {
         isTriggered = false;
         trapFire.enabled = false;
-        spriteRenderer.color = fireDeactivatedColor;
+        //spriteRenderer.color = fireDeactivatedColor;
+        fireTrapAnimator.Play("FireTrapEnd");
     }
 
 
