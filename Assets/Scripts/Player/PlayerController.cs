@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private bool disableAllMoves = false;
     private bool jumpButtonPressed;
     private bool interactPressed;
+    public LayerMask enemyLayer;
     private void Awake()
     {
         playerSprite = playerSpriteContainer.GetComponent<SpriteRenderer>();
@@ -433,7 +434,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
 
             Vector2 direction =  (Vector2)transform.position - (Vector2)pos;
-            RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, direction.normalized, Mathf.Infinity, groundLayer);
+            RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, direction.normalized, Mathf.Infinity, enemyLayer);
 
 
             if(hit)
@@ -502,8 +503,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 case InputActionPhase.Performed:
                     break;
                 case InputActionPhase.Started:
-                    Vector2 direction = ((Vector2)transform.position * (lastDirection));
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, direction.normalized, 1.5f, groundLayer);
+                    //Vector2 direction = ((lastDirection) - (Vector2)transform.position);
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection.normalized, 2f, enemyLayer);
                     playerAnimator.SetTrigger("Stab");
                     if (hit)
                     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour, ControlledCharacter
@@ -22,7 +23,8 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
     // Start is called before the first frame update
     void Awake()
     {
-        UIClone = Instantiate(playerUI, transform.position + new Vector3(0,1,0), Quaternion.identity);
+        UIClone = Instantiate(playerUI, transform.position + new Vector3(0,2,0), Quaternion.identity);
+        UIClone.transform.parent = transform;
         //UIClone.GetComponent<Canvas>().worldCamera = Camera.main;
         health = GetComponent<Health>();    
     }

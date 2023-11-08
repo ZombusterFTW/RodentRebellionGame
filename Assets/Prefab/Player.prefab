@@ -202,6 +202,10 @@ MonoBehaviour:
   playerUIPrefab: {fileID: 2242242107883657181, guid: 19d7d4ee0f886104397a19f4f200c307, type: 3}
   playerUI: {fileID: 0}
   laserBeam: {fileID: 8045921163535921977}
+  disableAllMoves: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &5169012110108082315
 MonoBehaviour:
   m_ObjectHideFlags: 0
