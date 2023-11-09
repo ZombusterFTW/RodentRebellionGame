@@ -181,6 +181,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         }
         if(isFalling && !isGroundPounding && !isJumping) if (!iFramesActive) playerAnimator.Play("BigJoeFalling", 0);
         */
+
         if (movementDirection != Vector2.zero && !wallJumped)
         {
             playerSprite.flipX = movementDirection.x < 0 ? true : false;
@@ -309,12 +310,12 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     IEnumerator FrenzyTimer()
     {
-        float frenzyTimer = 1.5f;
+        float frenzyTimer = 1;
         while(frenzyCounter < frenzyCount)
         {
-            yield return new WaitForEndOfFrame();
             frenzyTimer -= Time.deltaTime;
             if (frenzyTimer <= 0) break;
+            yield return null;
         }
         if (frenzyCounter < frenzyCount)
         {
@@ -608,7 +609,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         iFramesActive = true;
         while (iFramesActive)
         {
-            playerAnimator.Play("BigJoeHurt", 0);
+           // playerAnimator.Play("BigJoeHurt", 0);
             yield return new WaitForSeconds(0.5f);
         }
         
@@ -760,7 +761,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     }
 
-  
+    public void PlayDamagedAnim()
+    {
+        playerAnimator.Play("BigJoeHurt", 0);
+    }
 }
 
 public interface R4MovementComponent
@@ -780,6 +784,7 @@ public interface ControlledCharacter
 {
     public PlayerUI GetPlayerUI();
     public void RespawnPlayer();
+    public void PlayDamagedAnim();
 }
 
 public enum PlayerWeaponType

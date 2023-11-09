@@ -21,8 +21,9 @@ public class Health : MonoBehaviour
     
     public float SubtractFromHealth(float healthToLose)
     {
-        healthCountCurrent = Mathf.Clamp(healthCountCurrent-healthToLose, 0, healthCount);  
-        if(healthCountCurrent == 0 ) playerController.RespawnPlayer();
+        healthCountCurrent = Mathf.Clamp(healthCountCurrent-healthToLose, 0, healthCount);
+        if (healthCountCurrent == 0) playerController.RespawnPlayer();
+        else playerController.PlayDamagedAnim();
         playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
         return healthCountCurrent;
     }
