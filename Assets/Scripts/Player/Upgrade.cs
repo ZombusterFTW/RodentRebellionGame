@@ -8,6 +8,7 @@ public class Upgrade : MonoBehaviour
     [SerializeField] float damageCountCurrent = 0;
     [SerializeField] float frenzyMultiplier = 2f;
     [SerializeField] PlayerController playerController;
+    public PlayerWeaponType playerWeaponType = PlayerWeaponType.None;
     private PlayerUI playerUIManager;
     private List<Upgrade> upgradeList;
     // Start is called before the first frame update
@@ -81,4 +82,11 @@ public enum PlayerAttackType
     GroundPound,
     StandardAttack,
     LaserBlast
+}
+
+public enum PlayerWeaponType
+{
+    None,
+    Dagger,
+    LaserGun
 }

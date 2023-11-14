@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private SpawnPoint currentSpawn;
     [SerializeField] private LayerMask playerWalls;
     [SerializeField] private LayerMask playerGround;
-    [SerializeField] private PlayerWeaponType playerWeaponType = PlayerWeaponType.None;
     [SerializeField] private GameObject frenzyIdentifierText;
     //Make laser gun work with mouse targeting
     //Laser rifle beam like EM1 from Advanced Warfare.
@@ -86,6 +85,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     private int frenzyCount = 3;
     private Coroutine frenzyCoroutine;
     public LayerMask enemyLayer;
+    public ParticleSystem frenzyLines;
     private void Awake()
     {
         playerSprite = playerSpriteContainer.GetComponent<SpriteRenderer>();
@@ -324,9 +324,11 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         }
         //Spawn frenzy text here
         Instantiate(frenzyIdentifierText);
+        frenzyLines.Play();
         canDash = false;
         frenzyActivated = true;
         yield return new WaitForSecondsRealtime(7.5f);
+        frenzyLines.Stop();
         canDash = true;
         frenzyActivated = false;
         frenzyCounter = 0;
@@ -464,10 +466,6 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             Vector3 pos =  cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.z));
             laserBeam.SetPosition(0, (Vector2)transform.position);
             laserBeam.SetPosition(1, (Vector2)pos);
-
-
-
-
             Vector2 direction =  (Vector2)transform.position - (Vector2)pos;
             RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, direction.normalized, Mathf.Infinity, enemyLayer);
 
@@ -500,7 +498,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             case InputActionPhase.Performed:
                 break;
             case InputActionPhase.Started:
-                if(!disableAllMoves)
+                if(!disableAllMoves && playerUpgrade.playerWeaponType == PlayerWeaponType.LaserGun)
                 {
                     isFiringLaser = true;
                     StartCoroutine(UpdateLaserPos());
@@ -539,16 +537,34 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                     break;
                 case InputActionPhase.Started:
                     //Vector2 direction = ((lastDirection) - (Vector2)transform.position);
+                    //Detect which weapon a player has to determine their damage
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection.normalized, 2f, enemyLayer);
-                    playerAnimator.SetTrigger("Stab");
-                    if (hit)
+                    if(playerUpgrade.playerWeaponType == PlayerWeaponType.Dagger)
                     {
-                        Debug.Log("Hit");
-                        if (hit.collider.gameObject.GetComponent<EnemyScript>() != null)
+                        playerAnimator.SetTrigger("Stab");
+                        if (hit)
                         {
-                            hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
+                            Debug.Log("Hit");
+                            if (hit.collider.gameObject.GetComponent<EnemyScript>() != null)
+                            {
+                                hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike));
+                            }
                         }
                     }
+                    else if (playerUpgrade.playerWeaponType == PlayerWeaponType.None)
+                    {
+                        //replace me with standard attack
+                        playerAnimator.SetTrigger("Stab");
+                        if (hit)
+                        {
+                            Debug.Log("Hit");
+                            if (hit.collider.gameObject.GetComponent<EnemyScript>() != null)
+                            {
+                                hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
+                            }
+                        }
+                    }
+                    
                     break;
                 case InputActionPhase.Canceled:
                     break;
@@ -787,9 +803,3 @@ public interface ControlledCharacter
     public void PlayDamagedAnim();
 }
 
-public enum PlayerWeaponType
-{
-    None,
-    Dagger,
-    LaserGun
-}

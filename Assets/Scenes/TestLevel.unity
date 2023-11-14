@@ -5418,6 +5418,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4064f9eaa41766479d70077c47502db, type: 3}
+--- !u!198 &1474413674 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6459269101314280610, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
+  m_PrefabInstance: {fileID: 8237137914714281781}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1606427506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6782,6 +6787,18 @@ PrefabInstance:
       propertyPath: m_UIInputModule
       value: 
       objectReference: {fileID: 1614604420}
+    - target: {fileID: 6459269101314280610, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7126309013924363222, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
+      propertyPath: playerWeaponType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459652423362751434, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
+      propertyPath: frenzyLines
+      value: 
+      objectReference: {fileID: 1474413674}
     - target: {fileID: 8686200487451471497, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 59.23
@@ -6896,7 +6913,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 619394802}
   - {fileID: 1614604419}
   - {fileID: 849120779}
   - {fileID: 1122834300}
@@ -6929,3 +6945,4 @@ SceneRoots:
   - {fileID: 6381423359839158149}
   - {fileID: 1833190520}
   - {fileID: 1192485948}
+  - {fileID: 619394802}
