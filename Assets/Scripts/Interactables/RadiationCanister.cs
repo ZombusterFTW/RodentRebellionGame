@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class RadiationCanister : MonoBehaviour
@@ -11,6 +12,11 @@ public class RadiationCanister : MonoBehaviour
     [Tooltip("Color of health upgrade.")][SerializeField] private Color healthUpgradeColor = Color.green;
     [Tooltip("Color of attack upgrade.")][SerializeField] private Color attackUpgradeColor = Color.red;
     [Tooltip("Color of ability upgrade.")][SerializeField] private Color abilityUpgradeColor = Color.yellow;
+    public GameObject upgradeHintObject;
+
+
+    public Sprite laserGunWeaponImage;
+    public Sprite daggerWeaponImage;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +38,8 @@ public class RadiationCanister : MonoBehaviour
 
         if(controller != null) 
         {
+            GameObject hintText = Instantiate(upgradeHintObject);
+            hintText.GetComponentInChildren<TextMeshProUGUI>().text = upgradeType.ToString() + " Acquired!";
             Debug.Log(upgradeType.ToString() + " picked up");
             if(activatesItems) ActivateItems();
             controller.RadiationCanisterPickup(upgradeType);
@@ -78,6 +86,14 @@ public class RadiationCanister : MonoBehaviour
             case UpgradeType.DoubleJump_Ability:
                 spriteRenderer.color = abilityUpgradeColor;
                 break;
+            case UpgradeType.Dagger_Weapon:
+                spriteRenderer.sprite = daggerWeaponImage;
+                spriteRenderer.color = Color.white;
+                break;
+            case UpgradeType.LaserGun_Weapon:
+                spriteRenderer.sprite = laserGunWeaponImage;
+                spriteRenderer.color = Color.white;
+                break;
         }
     }
 
@@ -99,5 +115,7 @@ public enum UpgradeType
     GroundPound_Ability,
     WallClimb_Ability,
     WallJump_Ability,
-    DoubleJump_Ability
+    DoubleJump_Ability,
+    Dagger_Weapon,
+    LaserGun_Weapon
 }

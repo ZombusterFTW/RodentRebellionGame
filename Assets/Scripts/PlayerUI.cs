@@ -8,6 +8,7 @@ public class PlayerUI : MonoBehaviour
 
     private Health playerHealth;
     public Image healthBarFill;
+    public Image frenzyBarFill;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,12 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UpdateFrenzyBar(float currentFrenzyLevel, float maxFrenzyLevel)
+    {
+        float frenzyPercentage = currentFrenzyLevel / maxFrenzyLevel;
+        frenzyBarFill.fillAmount = frenzyPercentage;
     }
 
     public void UpdateHealthBar(float currentHealth, float maxHealth)

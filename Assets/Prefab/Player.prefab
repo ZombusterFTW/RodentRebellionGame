@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4790753245553538709}
   - component: {fileID: 6459269101314280610}
   - component: {fileID: 5171325584418949963}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FrenzyLines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4845,6 +4845,7 @@ GameObject:
   - component: {fileID: 7126309013924363222}
   - component: {fileID: 8459652423362751434}
   - component: {fileID: 5169012110108082315}
+  - component: {fileID: 8808171176064296708}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4974,7 +4975,7 @@ MonoBehaviour:
   damageCountCurrent: 0
   frenzyMultiplier: 2
   playerController: {fileID: 0}
-  playerWeaponType: 0
+  playerWeaponType: 1
 --- !u!114 &8459652423362751434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5023,9 +5024,7 @@ MonoBehaviour:
   onLeftWall: 0
   onRightWall: 0
   isGroundPounding: 0
-  canGroundPound: 1
   isDashing: 0
-  canDash: 1
   collisionRadius: 0.17
   bottomOffset: {x: 0, y: -0.58}
   rightOffset: {x: 0.45, y: 0}
@@ -5039,7 +5038,12 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  frenzyLines: {fileID: 0}
+  frenzyLines: {fileID: 6459269101314280610}
+  canWallClimb: 1
+  canDash: 1
+  canGroundPound: 1
+  canDoubleJump: 1
+  canWallJump: 1
 --- !u!114 &5169012110108082315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5198,6 +5202,21 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerControlActions
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &8808171176064296708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340353098062905101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 353c17b337093e844b1f8bc22c8f33e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frenzyMaxAmount: 7.5
+  frenzyAmountCurrent: 0
+  playerUIManager: {fileID: 0}
 --- !u!1 &2755830922902485884
 GameObject:
   m_ObjectHideFlags: 0
@@ -5286,7 +5305,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

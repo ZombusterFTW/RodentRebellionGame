@@ -13,9 +13,7 @@ public class SpikesTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     [Tooltip("The speed the spikes will come out of the ground.")][SerializeField] private float spikeSpeed = 5f;
     [Tooltip("The trigger for the trap to activate in self activating mode.")][SerializeField] private BoxCollider2D trapTrigger;
     [Tooltip("The collider of the spikes. ")][SerializeField] private BoxCollider2D trapSpikes;
-    [Tooltip("The color of the spikes when they aren't activated.")][SerializeField] private Color spikesDeactivatedColor = Color.green;
-    [Tooltip("The color of the spikes when they are activated.")][SerializeField] private Color spikesActivatedColor = Color.red;
-    [SerializeField] SpriteRenderer spriteRenderer;
+    public Animator spikeAnimator;
     BoxCollider2D playerCollider;
     private Vector3 startingPos;
     private Vector3 triggeredPos;
@@ -33,11 +31,11 @@ public class SpikesTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     {
         controller = FindObjectOfType<PlayerController>();
         playerCollider = controller.GetPlayerCollider();
-        spriteRenderer.color = spikesDeactivatedColor;
+        
 
         if (isActive)
         {
-            spriteRenderer.color = spikesActivatedColor;
+            spikeAnimator.SetTrigger("Triggered");
             trapSpikes.gameObject.transform.position = triggeredPos;
             isTriggered = true;
         }
@@ -108,9 +106,10 @@ public class SpikesTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     {
         trapSpikes.enabled = true;
         isTriggered = true;
+        spikeAnimator.SetTrigger("Triggered");
         StopCoroutine(MoveTrapSpikes(startingPos));
         StartCoroutine(MoveTrapSpikes(triggeredPos));
-        spriteRenderer.color = spikesActivatedColor;
+        //spriteRenderer.color = spikesActivatedColor;
     }
 
     private void ResetTrap()
@@ -119,7 +118,8 @@ public class SpikesTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
         trapSpikes.enabled = false;
         StopCoroutine(MoveTrapSpikes(triggeredPos));
         StartCoroutine(MoveTrapSpikes(startingPos));
-        spriteRenderer.color = spikesDeactivatedColor;
+        spikeAnimator.SetTrigger("Reset");
+        //spriteRenderer.color = spikesDeactivatedColor;
     }
 
     IEnumerator TrapActivationProximity()

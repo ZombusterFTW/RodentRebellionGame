@@ -52,9 +52,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private bool onLeftWall = false;
     [SerializeField] private bool onRightWall = false;
     [SerializeField] private bool isGroundPounding = false;
-    [SerializeField] private bool canGroundPound = true;
+    
     [SerializeField] private bool isDashing = false;
-    [SerializeField] private bool canDash = true;
+    
     private bool isMoving = false;
     private bool isFiringLaser = false;
     private bool isAttacking = false;   
@@ -81,11 +81,22 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     private bool jumpButtonPressed;
     private bool interactPressed;
     public bool frenzyActivated { get; private set; } = false;
-    private int frenzyCounter;
-    private int frenzyCount = 3;
-    private Coroutine frenzyCoroutine;
     public LayerMask enemyLayer;
     public ParticleSystem frenzyLines;
+    private FrenzyManager frenzyManager;
+
+
+
+    //Ability Unlocks
+    [SerializeField] private bool canWallClimb = true;
+    [SerializeField] private bool canDash = true;
+    [SerializeField] private bool canGroundPound = true;
+    [SerializeField] private bool canDoubleJump = true;
+    [SerializeField] private bool canWallJump = true;
+
+
+
+
     private void Awake()
     {
         playerSprite = playerSpriteContainer.GetComponent<SpriteRenderer>();
@@ -98,6 +109,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         playerHealth = GetComponent<Health>();
         playerUpgrade = GetComponent<Upgrade>();
         remainingDashes = maxDashes;
+        frenzyManager = GetComponent<FrenzyManager>();  
         cam = Camera.main;
     }
     // Start is called before the first frame update
@@ -170,18 +182,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             }
         }
         
-        /*
-        if (movementDirection.x != 0 && !onWall && onGround && isMoving && !isJumping)
-        {
-            if(!iFramesActive)playerAnimator.Play("BigJoeRun", 0);
-        }
-        else if((movementDirection == Vector2.zero && !onWall && onGround && !isMoving) && ( playerRigidBody.velocity == Vector2.zero || movingPlatform != null))
-        {
-            if (!iFramesActive) playerAnimator.Play("BigJoeIdle", 0);
-        }
-        if(isFalling && !isGroundPounding && !isJumping) if (!iFramesActive) playerAnimator.Play("BigJoeFalling", 0);
-        */
-
+       
         if (movementDirection != Vector2.zero && !wallJumped)
         {
             playerSprite.flipX = movementDirection.x < 0 ? true : false;
@@ -192,9 +193,17 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     void CheckGrounding()
     {
         onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, groundLayer);
-        onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer) || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
-        onRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer);
-        onLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
+        //Prevent wall climb if player lacks the ability.
+        if(canWallClimb)
+        {
+            onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer) || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
+            onRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer);
+            onLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
+        }
+        else
+        {
+            onWall = false; onRightWall = false; onRightWall = false;
+        }
         if (onGround)
         {
             GroundPound();
@@ -233,7 +242,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 playerAnimator.SetTrigger("Jump");
 
             }
-            else if (!onGround && !onWall && playerDoubleJumpsRemaining > 0)
+            else if (!onGround && !onWall && playerDoubleJumpsRemaining > 0 && canDoubleJump)
             {
                 playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, 0);
                 playerRigidBody.velocity += Vector2.up * jumpForce_Game;
@@ -243,7 +252,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 playerAnimator.SetTrigger("DoubleJump");
                 isJumping = true;
             }
-            else if (!onGround && onWall && !disableAllMoves) WallJump();
+            else if (!onGround && onWall && !disableAllMoves && canWallJump) WallJump();
         }
     }
 
@@ -294,46 +303,39 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         dashTrail.SetEnabled(true);
         playerRigidBody.drag = 25; 
         canDash = false;
-        frenzyCounter++;
-        if(frenzyCoroutine == null) frenzyCoroutine = StartCoroutine(FrenzyTimer());
         StartCoroutine(DisableMovement(dashTimer));
         yield return new WaitForSeconds(dashTimer);
         dashTrail.SetEnabled(false);
-        if(!frenzyActivated)
-        {
-            canDash = true;
-        }
+        canDash = true;
         isDashing = false;
         playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
         playerRigidBody.drag = 0f;
     }
 
-    IEnumerator FrenzyTimer()
+
+
+    public void ActivateFrenzy(bool activate)
     {
-        float frenzyTimer = 1;
-        while(frenzyCounter < frenzyCount)
+        if(activate)
         {
-            frenzyTimer -= Time.deltaTime;
-            if (frenzyTimer <= 0) break;
-            yield return null;
+            //Spawn frenzy text here
+            Instantiate(frenzyIdentifierText);
+            frenzyLines.Play();
+            canDash = false;
+            frenzyActivated = true;
+            dashTrail.SetEnabled(true);
         }
-        if (frenzyCounter < frenzyCount)
+        else
         {
-            frenzyCoroutine = null;
-            yield break;
+            frenzyLines.Stop();
+            canDash = true;
+            frenzyActivated = false;
+            dashTrail.SetEnabled(false);
         }
-        //Spawn frenzy text here
-        Instantiate(frenzyIdentifierText);
-        frenzyLines.Play();
-        canDash = false;
-        frenzyActivated = true;
-        yield return new WaitForSecondsRealtime(7.5f);
-        frenzyLines.Stop();
-        canDash = true;
-        frenzyActivated = false;
-        frenzyCounter = 0;
-        frenzyCoroutine = null;
     }
+
+
+
 
     IEnumerator DisableMovement(float timeToDisable)
     {
@@ -437,9 +439,12 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         switch (context.phase)
         {
             case InputActionPhase.Performed:
-                
+                //Attempt to activate frenzy mode.
+                frenzyManager.ActivateFrenzyMeter();
                 break;
             case InputActionPhase.Started:
+                break;
+            case InputActionPhase.Canceled:
                 Debug.Log("Roll button pressed");
                 if (!isDashing && remainingDashes > 0 && canDash && !disableAllMoves)
                 {
@@ -447,10 +452,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                     isDashing = true;
                     playerRigidBody.AddForce(lastDirection * dashThrust, ForceMode2D.Impulse);
                     StartCoroutine(ResetDashTimer());
-                    movingPlatform = null; 
+                    movingPlatform = null;
                 }
-                break;
-            case InputActionPhase.Canceled:
                 break;
         }
     }
@@ -479,9 +482,6 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 {
                     hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast));
                 }
-
-
-
                 //check if enemy here.
             }
 
@@ -538,6 +538,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 case InputActionPhase.Started:
                     //Vector2 direction = ((lastDirection) - (Vector2)transform.position);
                     //Detect which weapon a player has to determine their damage
+
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection.normalized, 2f, enemyLayer);
                     if(playerUpgrade.playerWeaponType == PlayerWeaponType.Dagger)
                     {
@@ -554,7 +555,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                     else if (playerUpgrade.playerWeaponType == PlayerWeaponType.None)
                     {
                         //replace me with standard attack
-                        playerAnimator.SetTrigger("Stab");
+                        playerAnimator.SetTrigger("StandardAttack");
                         if (hit)
                         {
                             Debug.Log("Hit");
@@ -563,8 +564,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                                 hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
                             }
                         }
-                    }
-                    
+                    }  
                     break;
                 case InputActionPhase.Canceled:
                     break;
@@ -708,15 +708,32 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     public void RadiationCanisterPickup(UpgradeType upgradeType)
     {
         //Handle radiation canister upgrades/pickups.
-        switch (upgradeType) 
+        switch (upgradeType)
         {
             case UpgradeType.Health_Upgrade:
                 playerHealth.IncreaseHealthCap(0.15f);
                 break;
-            case UpgradeType.Attack_Upgrade: break; 
-            case UpgradeType.GroundPound_Ability: break;
-            case UpgradeType.WallClimb_Ability: break;
-            case UpgradeType.DoubleJump_Ability: break; 
+            case UpgradeType.Attack_Upgrade:
+                playerUpgrade.UpgradeAttackDamage(0.15f);
+                break;
+            case UpgradeType.GroundPound_Ability:
+                canGroundPound = true;
+                break;
+            case UpgradeType.WallClimb_Ability: 
+                canWallClimb = true;
+                break;
+            case UpgradeType.DoubleJump_Ability: 
+                canDoubleJump = true;
+                break;
+            case UpgradeType.WallJump_Ability:
+                canWallJump = true;
+                break;
+            case UpgradeType.Dagger_Weapon:
+                playerUpgrade.playerWeaponType = PlayerWeaponType.Dagger;
+                break;
+            case UpgradeType.LaserGun_Weapon:
+                playerUpgrade.playerWeaponType = PlayerWeaponType.LaserGun;
+                break;
         }
     }
 

@@ -14,12 +14,10 @@ public class ElectricTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     [Tooltip("How much damage the trap will do per second")][SerializeField] private float dmgPerTick = 0.75f;
     [Tooltip("The trigger for the trap to activate in self activating mode.")][SerializeField] private BoxCollider2D trapTrigger;
     [Tooltip("The collider of the electricity. ")][SerializeField] private BoxCollider2D trapElectric;
-    [Tooltip("The color of the electricity when is isnt activated.")][SerializeField] private Color electricityDeactivatedColor = Color.green;
-    [Tooltip("The color of the electricity when is isnt activated.")][SerializeField] private Color electricityActivatedColor = Color.blue;
-    [SerializeField] SpriteRenderer spriteRenderer;
     BoxCollider2D playerCollider;
     private bool isTriggered = false;
     private bool isDamaging = false;
+    public Animator electricTrapAnimator;
 
     // Start is called before the first frame update
     void Awake()
@@ -29,14 +27,12 @@ public class ElectricTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         controller = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         playerCollider = controller.GetPlayerCollider();
-        spriteRenderer.color = electricityDeactivatedColor;
 
         if (isActive)
         {
-            spriteRenderer.color = electricityActivatedColor;
+            electricTrapAnimator.SetTrigger("Trigger");
             isTriggered = true;
         }
         else trapElectric.enabled = false;
@@ -121,14 +117,16 @@ public class ElectricTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     {
         trapElectric.enabled = true;
         isTriggered = true;
-        spriteRenderer.color = electricityActivatedColor;
+        //spriteRenderer.color = electricityActivatedColor;
+        electricTrapAnimator.SetTrigger("Trigger");
     }
 
     private void ResetTrap()
     {
         isTriggered = false;
         trapElectric.enabled = false;
-        spriteRenderer.color = electricityDeactivatedColor;
+        //spriteRenderer.color = electricityDeactivatedColor;
+        electricTrapAnimator.SetTrigger("Reset");
     }
 
 

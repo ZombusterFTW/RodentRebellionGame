@@ -215,7 +215,7 @@
                     "name": "",
                     "id": "096f922b-6b13-49a3-8be1-3b96bd7ec43b",
                     "path": "<Keyboard>/leftShift",
-                    "interactions": "",
+                    "interactions": "Hold(duration=1)",
                     "processors": "",
                     "groups": "",
                     "action": "Dash",

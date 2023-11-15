@@ -139,3 +139,6 @@ MonoBehaviour:
   healthUpgradeColor: {r: 0, g: 1, b: 0, a: 1}
   attackUpgradeColor: {r: 1, g: 0, b: 0, a: 1}
   abilityUpgradeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  upgradeHintObject: {fileID: 3326960352619200342, guid: 6fac9bbc3d0b23544a87c04092b825c9, type: 3}
+  laserGunWeaponImage: {fileID: 21300020, guid: a0e7f1167efba544bb8d6e3198ae44f9, type: 3}
+  daggerWeaponImage: {fileID: 21300000, guid: 1a74006a192372d45af9cf6c7d73d1d5, type: 3}
