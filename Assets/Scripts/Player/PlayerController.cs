@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private float groundPoundVel = 20f;
     [SerializeField] private float airControlLerpTime = 0.75f;
     [SerializeField] private int playerMaxJumpCount = 1;
+    public GameObject laserStartPosRight;
+    public GameObject laserStartPosLeft;
 
     private float playerSpeed_Game;
     private float jumpForce_Game;
@@ -324,6 +326,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             canDash = false;
             frenzyActivated = true;
             dashTrail.SetEnabled(true);
+            playerAnimator.SetBool("FrenzyActive", true);
+            playerAnimator.SetTrigger("ActivateFrenzy");
+            
         }
         else
         {
@@ -331,6 +336,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             canDash = true;
             frenzyActivated = false;
             dashTrail.SetEnabled(false);
+            playerAnimator.SetBool("FrenzyActive", false);
+            playerAnimator.SetTrigger("DeactivateFrenzy");
+            
         }
     }
 
@@ -464,29 +472,42 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     IEnumerator UpdateLaserPos()
     {
         laserBeam.enabled = true;
-        while (isFiringLaser)
+        playerAnimator.SetTrigger("Laser");
+            Vector3 pos =  cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20));
+
+        int laserDir = (int)(-transform.position.x * pos.y + transform.position.y * pos.x);
+        Vector2 laserFireDirection;
+        if (laserDir < 0)
         {
-            Vector3 pos =  cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cam.transform.position.z));
-            laserBeam.SetPosition(0, (Vector2)transform.position);
+            playerSprite.flipX = true;
+            laserFireDirection = (Vector2)laserStartPosLeft.transform.position;
+        }
+        else
+        {
+            playerSprite.flipX = false;
+            laserFireDirection = (Vector2)laserStartPosRight.transform.position;
+        }
+
+
+
+
+            laserBeam.SetPosition(0, new Vector2(laserFireDirection.x, laserFireDirection.y));
             laserBeam.SetPosition(1, (Vector2)pos);
             Vector2 direction =  (Vector2)transform.position - (Vector2)pos;
             RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, direction.normalized, Mathf.Infinity, enemyLayer);
-
-
             if(hit)
             {
                 laserBeam.SetPosition(1, (Vector2)hit.point);
                 Debug.Log("Hit");
-
                 if (hit.collider.gameObject.GetComponent<EnemyScript>() != null)
                 {
                     hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast));
                 }
                 //check if enemy here.
             }
-
-            yield return null;  
-        }
+            yield return new WaitForSecondsRealtime(0.125f);
+   
+        isFiringLaser = false;
         laserBeam.enabled = false;
     }
 

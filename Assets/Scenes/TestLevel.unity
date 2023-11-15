@@ -6855,6 +6855,14 @@ PrefabInstance:
       propertyPath: m_UIInputModule
       value: 
       objectReference: {fileID: 1614604420}
+    - target: {fileID: 8045921163535921977, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.0056037903
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045921163535921977, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.031345367
+      objectReference: {fileID: 0}
     - target: {fileID: 8686200487451471497, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 59.23

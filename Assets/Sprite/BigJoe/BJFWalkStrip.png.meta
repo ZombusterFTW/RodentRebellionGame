@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ed751f3994014474fadee509ba7db77f
+guid: 09a1d7494b97e95489abd3ef5e2b7c02
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,43 +123,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BJLaserstrip_0
+      name: BJFWalkStrip_0
       rect:
         serializedVersion: 2
-        x: 53
+        x: 0
         y: 0
-        width: 766
-        height: 910
+        width: 802
+        height: 1000
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82bdeb5cb26ccca45885656082dc4433
-      internalID: 1709529330
+      spriteID: 6fc08b04fed0722429331a7dd26102ce
+      internalID: -1099893842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BJLaserstrip_1
+      name: BJFWalkStrip_4
       rect:
         serializedVersion: 2
-        x: 1080
+        x: 1042
         y: 0
-        width: 739
-        height: 950
+        width: 639
+        height: 1000
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 292129d56f8017c4f9f62997f4828f94
-      internalID: -1189897192
+      spriteID: 080179b8001693a48ac20665d7c478bc
+      internalID: -1075324043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFWalkStrip_7
+      rect:
+        serializedVersion: 2
+        x: 2110
+        y: 0
+        width: 737
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f5b9b658e173354198e871224083aee
+      internalID: -845434376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFWalkStrip_10
+      rect:
+        serializedVersion: 2
+        x: 3276
+        y: 0
+        width: 670
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25d3b415b67359f41ab696420b42c7dc
+      internalID: 2005780428
       vertices: []
       indices: 
       edges: []
@@ -175,10 +217,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BJLaserstrip_0: 1709529330
-      BJLaserstrip_1: -1189897192
-      BJLaserstrip_2: 553313836
-      BJLaserstrip_3: 45976273
+      BJFWalkStrip_0: -1099893842
+      BJFWalkStrip_1: 589670936
+      BJFWalkStrip_10: 2005780428
+      BJFWalkStrip_11: 555818917
+      BJFWalkStrip_12: -585886294
+      BJFWalkStrip_13: -1690211916
+      BJFWalkStrip_14: 464214348
+      BJFWalkStrip_15: 856224075
+      BJFWalkStrip_16: 791818137
+      BJFWalkStrip_17: 1939383194
+      BJFWalkStrip_18: 104159234
+      BJFWalkStrip_2: -2009363975
+      BJFWalkStrip_3: 181149693
+      BJFWalkStrip_4: -1075324043
+      BJFWalkStrip_5: 135060991
+      BJFWalkStrip_6: -107792470
+      BJFWalkStrip_7: -845434376
+      BJFWalkStrip_8: -1466957437
+      BJFWalkStrip_9: -804021396
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

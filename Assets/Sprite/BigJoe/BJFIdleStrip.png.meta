@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: BJFIdleStrip_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 694
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 209eadab7be7f884b8534dd22017c968
+      internalID: -1391632680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFIdleStrip_3
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 0
+        width: 622
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53cf5e0b46a69fa42a2b51436bb7681f
+      internalID: 725186785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFIdleStrip_4
+      rect:
+        serializedVersion: 2
+        x: 2223
+        y: 0
+        width: 620
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 272d65c288f37304db81b9eb66ea7dd9
+      internalID: 1252251485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFIdleStrip_6
+      rect:
+        serializedVersion: 2
+        x: 3383
+        y: 0
+        width: 620
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf8eea6cdf1980c499e4a6c67bfd4d5d
+      internalID: 28013731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFIdleStrip_7
+      rect:
+        serializedVersion: 2
+        x: 4381
+        y: 0
+        width: 618
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43c662971645c85429f1e05534bf163b
+      internalID: -774807500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +237,31 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BJFIdleStrip_0: -1391632680
+      BJFIdleStrip_1: 2094892920
+      BJFIdleStrip_10: -380893744
+      BJFIdleStrip_11: 566336776
+      BJFIdleStrip_12: -768665809
+      BJFIdleStrip_13: 1022094838
+      BJFIdleStrip_14: 1112411110
+      BJFIdleStrip_15: -873062162
+      BJFIdleStrip_16: -368149411
+      BJFIdleStrip_17: 1741287467
+      BJFIdleStrip_18: 381983939
+      BJFIdleStrip_19: 1009698587
+      BJFIdleStrip_2: -1064734955
+      BJFIdleStrip_20: 1474888742
+      BJFIdleStrip_21: 1916023193
+      BJFIdleStrip_22: -1468196739
+      BJFIdleStrip_23: -1797232493
+      BJFIdleStrip_3: 725186785
+      BJFIdleStrip_4: 1252251485
+      BJFIdleStrip_5: 348573894
+      BJFIdleStrip_6: 28013731
+      BJFIdleStrip_7: -774807500
+      BJFIdleStrip_8: -559421010
+      BJFIdleStrip_9: -511742330
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

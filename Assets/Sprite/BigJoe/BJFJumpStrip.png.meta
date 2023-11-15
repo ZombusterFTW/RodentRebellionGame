@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ed751f3994014474fadee509ba7db77f
+guid: 062d5d2b394ffc943bc001134e72874d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,43 +123,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BJLaserstrip_0
+      name: BJFJumpStrip_0
       rect:
         serializedVersion: 2
-        x: 53
+        x: 127
         y: 0
-        width: 766
-        height: 910
+        width: 616
+        height: 1000
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82bdeb5cb26ccca45885656082dc4433
-      internalID: 1709529330
+      spriteID: ed8b2ba9953b03e44bd7e4b513a050cb
+      internalID: -1562923318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BJLaserstrip_1
+      name: BJFJumpStrip_1
       rect:
         serializedVersion: 2
-        x: 1080
-        y: 0
-        width: 739
-        height: 950
+        x: 1092
+        y: 189
+        width: 765
+        height: 811
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 292129d56f8017c4f9f62997f4828f94
-      internalID: -1189897192
+      spriteID: 671b6597dca43e84dad8862c061a118c
+      internalID: -936090606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFJumpStrip_3
+      rect:
+        serializedVersion: 2
+        x: 2204
+        y: 0
+        width: 696
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a12f26c5baf02145bb8341be13659c1
+      internalID: -634900000
       vertices: []
       indices: 
       edges: []
@@ -175,10 +196,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BJLaserstrip_0: 1709529330
-      BJLaserstrip_1: -1189897192
-      BJLaserstrip_2: 553313836
-      BJLaserstrip_3: 45976273
+      BJFJumpStrip_0: -1562923318
+      BJFJumpStrip_1: -936090606
+      BJFJumpStrip_10: -1739590340
+      BJFJumpStrip_11: -2058668694
+      BJFJumpStrip_12: 489392211
+      BJFJumpStrip_13: -1130485733
+      BJFJumpStrip_14: -1926133532
+      BJFJumpStrip_15: 2137501467
+      BJFJumpStrip_16: 1786371766
+      BJFJumpStrip_17: 1025555859
+      BJFJumpStrip_18: -1680209838
+      BJFJumpStrip_19: -1980243265
+      BJFJumpStrip_2: -885398645
+      BJFJumpStrip_3: -634900000
+      BJFJumpStrip_4: -48966900
+      BJFJumpStrip_5: 182319547
+      BJFJumpStrip_6: -92290900
+      BJFJumpStrip_7: -639480011
+      BJFJumpStrip_8: -1097793099
+      BJFJumpStrip_9: -1458921354
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
