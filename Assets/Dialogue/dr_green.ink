@@ -1,22 +1,26 @@
-Oh if it isn't the fabled <color=\#F8FF30>Big Joe!</color> #speaker:Fellow Rat #portrait:dr_green_neutral #layout:left #audio:animal_crossing_mid
+Oh if it isn't the fabled <color=\#F8FF30>Big Joe!</color> #speaker:Fellow Rat #portrait:heartratstanding #layout:right #audio:animal_crossing_mid
 -> main
 
 === main ===
  How are you doing on this fine evening?
-+ [Good]
-    That makes me feel <color=\#F8FF30>EPIC</color>! #portrait:momheart_ratr_st
++ [Good] 
+    I'm doing good. #layout:left #portrait:bigjoeneut #audio:animal_crossing_high #speaker:Big Joe
+    That makes me feel <color=\#F8FF30>EPIC</color>! #portrait:heartratstanding #speaker:Fellow Rat #layout:right
     ->lastquestion
 + [TERRIBLE]
-    <color=\#5B81FF>L Bozo</color> get out of here. NOW! #portrait:momheart_rat_sd
+    I'm doing absolutely terrible fam #layout:left #portrait:bigjoewut #audio:animal_crossing_high #speaker:Big Joe
+    <color=\#5B81FF>L Bozo</color> get out of here. NOW! #portrait:heartratsitting #layout:right #audio:animal_crossing_mid #speaker:Fellow Rat
     ->END
     
     
     
     ===lastquestion===
-Do you wanna grab some cheese later?  #speaker:Fellow Rat #portrait:momheart_rat_sd #layout:left #audio:animal_crossing_mid
+Do you wanna grab some cheese later?  #speaker:Fellow Rat #portrait:heartratstanding #layout:right #audio:animal_crossing_mid
 + [Yes]
-    I'll see you then!
+    Sure! #layout:left #portrait:bigjoewut #audio:animal_crossing_high #speaker:Big Joe
+    I'll see you then! #speaker:Fellow Rat #portrait:heartratstanding #layout:right #audio:animal_crossing_mid
     -> END
 + [No]
-    Goodbye then!
+    Not feeling it. #layout:left #portrait:bigjoewut #audio:animal_crossing_high #speaker:Big Joe
+    Goodbye then!#speaker:Fellow Rat #portrait:heartratstanding #layout:right #audio:animal_crossing_mid
     -> END

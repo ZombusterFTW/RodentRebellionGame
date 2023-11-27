@@ -39,7 +39,7 @@ public class RadiationCanister : MonoBehaviour
         if(controller != null) 
         {
             GameObject hintText = Instantiate(upgradeHintObject);
-            hintText.GetComponentInChildren<TextMeshProUGUI>().text = upgradeType.ToString() + " Acquired!";
+            hintText.GetComponentInChildren<TextMeshProUGUI>().text = HandleUpgradeHint(upgradeType) + " Acquired!";
             Debug.Log(upgradeType.ToString() + " picked up");
             if(activatesItems) ActivateItems();
             controller.RadiationCanisterPickup(upgradeType);
@@ -94,6 +94,31 @@ public class RadiationCanister : MonoBehaviour
                 spriteRenderer.sprite = laserGunWeaponImage;
                 spriteRenderer.color = Color.white;
                 break;
+        }
+    }
+
+    private string HandleUpgradeHint(UpgradeType upgradeType)
+    {
+        //Return string based on what the upgrade is
+        switch (upgradeType)
+        {
+            default: return "Error";
+            case UpgradeType.Health_Upgrade:
+                return "15% Health Upgrade";
+            case UpgradeType.Attack_Upgrade:
+                return "15% Attack Upgrade";
+            case UpgradeType.GroundPound_Ability:
+                return "Ground Pound Ability";
+            case UpgradeType.WallClimb_Ability:
+                return "Wall Climb Ability";
+            case UpgradeType.WallJump_Ability:
+                return "Wall Jump Ability";
+            case UpgradeType.DoubleJump_Ability:
+                return "Double Jump Ability";
+            case UpgradeType.Dagger_Weapon:
+                return "Dagger";
+            case UpgradeType.LaserGun_Weapon:
+                return "Laser Gun";
         }
     }
 

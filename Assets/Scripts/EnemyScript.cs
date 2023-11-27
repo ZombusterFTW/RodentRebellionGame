@@ -117,6 +117,11 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
     {
         enemyAnimator.SetTrigger("Damaged");
     }
+
+    public PlayerController GetPlayerController()
+    {
+        throw new System.NotImplementedException();
+    }
 }
 
 

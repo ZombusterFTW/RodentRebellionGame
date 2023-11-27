@@ -819,6 +819,11 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         playerAnimator.Play("BigJoeHurt", 0);
     }
+
+    public PlayerController GetPlayerController()
+    {
+        return this;
+    }
 }
 
 public interface R4MovementComponent
@@ -839,5 +844,6 @@ public interface ControlledCharacter
     public PlayerUI GetPlayerUI();
     public void RespawnPlayer();
     public void PlayDamagedAnim();
+    public PlayerController GetPlayerController();
 }
 

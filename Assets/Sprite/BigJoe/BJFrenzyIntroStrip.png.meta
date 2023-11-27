@@ -1,0 +1,362 @@
+fileFormatVersion: 2
+guid: dfd2b4b3f2b499f4db48ca07c927ac58
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BJFrenzyIntroStrip_1
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 0
+        width: 738
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aff8b70f32200540892a46835c4531c
+      internalID: 794066025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFrenzyIntroStrip_3
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 0
+        width: 690
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d77f1c7098d58e4459acb50d8417b9b3
+      internalID: 1331803145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFrenzyIntroStrip_6
+      rect:
+        serializedVersion: 2
+        x: 2063
+        y: 2
+        width: 739
+        height: 934
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b21556f4dfae81489ca140563e4d69d
+      internalID: -1711277182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFrenzyIntroStrip_8
+      rect:
+        serializedVersion: 2
+        x: 3136
+        y: 0
+        width: 659
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b71c05cd21f317847b16c741a5f050af
+      internalID: 508996028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFrenzyIntroStrip_9
+      rect:
+        serializedVersion: 2
+        x: 4151
+        y: 0
+        width: 742
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5574d5008b4dd8e47a92747c44e58982
+      internalID: -1363523698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFrenzyIntroStrip_11
+      rect:
+        serializedVersion: 2
+        x: 5219
+        y: 0
+        width: 689
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11dc041dfade8244990b38106e85fe06
+      internalID: -1342588719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFrenzyIntroStrip_13
+      rect:
+        serializedVersion: 2
+        x: 6212
+        y: 0
+        width: 742
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89ef85431370bd243bfabb53e80851fd
+      internalID: -477778816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFrenzyIntroStrip_15
+      rect:
+        serializedVersion: 2
+        x: 7214
+        y: 0
+        width: 659
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6db7258c9c96e8243882ea1ddb833758
+      internalID: -1962680139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJFrenzyIntroStrip_16
+      rect:
+        serializedVersion: 2
+        x: 8141
+        y: 0
+        width: 738
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58e4bff7688be4d48b3de5f16032aee5
+      internalID: -670577087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BJFrenzyIntroStrip_0: 1747206053
+      BJFrenzyIntroStrip_1: 794066025
+      BJFrenzyIntroStrip_10: -632457583
+      BJFrenzyIntroStrip_11: -1342588719
+      BJFrenzyIntroStrip_12: 1888052595
+      BJFrenzyIntroStrip_13: -477778816
+      BJFrenzyIntroStrip_14: -1052565080
+      BJFrenzyIntroStrip_15: -1962680139
+      BJFrenzyIntroStrip_16: -670577087
+      BJFrenzyIntroStrip_17: -652891416
+      BJFrenzyIntroStrip_18: -1552037698
+      BJFrenzyIntroStrip_19: 764721716
+      BJFrenzyIntroStrip_2: -1293735262
+      BJFrenzyIntroStrip_20: 1073688922
+      BJFrenzyIntroStrip_21: -881791964
+      BJFrenzyIntroStrip_22: -432661267
+      BJFrenzyIntroStrip_23: 1265336045
+      BJFrenzyIntroStrip_24: 594264089
+      BJFrenzyIntroStrip_25: 1973928677
+      BJFrenzyIntroStrip_26: 335904492
+      BJFrenzyIntroStrip_27: 1691102162
+      BJFrenzyIntroStrip_28: 1927424438
+      BJFrenzyIntroStrip_29: 1648262377
+      BJFrenzyIntroStrip_3: 1331803145
+      BJFrenzyIntroStrip_30: -1988436724
+      BJFrenzyIntroStrip_31: 1215945931
+      BJFrenzyIntroStrip_32: -888669742
+      BJFrenzyIntroStrip_4: -633992409
+      BJFrenzyIntroStrip_5: 2077351034
+      BJFrenzyIntroStrip_6: -1711277182
+      BJFrenzyIntroStrip_7: -1637287781
+      BJFrenzyIntroStrip_8: 508996028
+      BJFrenzyIntroStrip_9: -1363523698
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
