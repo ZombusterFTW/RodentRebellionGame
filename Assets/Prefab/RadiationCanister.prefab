@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.4606743, y: 0.36609626, z: 0}
-  m_LocalScale: {x: 0.52, y: 0.52, z: 0.52}
+  m_LocalScale: {x: 0.09, y: 0.09, z: 0.09}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: db3d22615b752e845872767e75c1b2d1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae160fe6265ec35468f3983ae57aa19c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,7 +119,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.99999994, y: 1.9999999}
+  m_Size: {x: 7.4, y: 13.7}
   m_Direction: 0
 --- !u!114 &9003417552762851014
 MonoBehaviour:
@@ -136,9 +136,9 @@ MonoBehaviour:
   upgradeType: 0
   activatesItems: 0
   objectsToActivate: []
-  healthUpgradeColor: {r: 0, g: 1, b: 0, a: 1}
-  attackUpgradeColor: {r: 1, g: 0, b: 0, a: 1}
-  abilityUpgradeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   upgradeHintObject: {fileID: 3326960352619200342, guid: 6fac9bbc3d0b23544a87c04092b825c9, type: 3}
+  attackCanisterImage: {fileID: 21300000, guid: b0a4a01eb6a823b44ba02e0d2dfdd0c5, type: 3}
+  abilityCanisterImage: {fileID: 21300000, guid: 8392b6ad44a48bf4abb3767738a6891f, type: 3}
+  healthCanisterImage: {fileID: 21300000, guid: ae160fe6265ec35468f3983ae57aa19c, type: 3}
   laserGunWeaponImage: {fileID: 21300020, guid: a0e7f1167efba544bb8d6e3198ae44f9, type: 3}
   daggerWeaponImage: {fileID: 21300000, guid: 1a74006a192372d45af9cf6c7d73d1d5, type: 3}

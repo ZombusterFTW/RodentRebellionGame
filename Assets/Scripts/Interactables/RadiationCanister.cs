@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+[ExecuteInEditMode]
 public class RadiationCanister : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     [Tooltip("The upgrade that the raditation canister will grant")][SerializeField] private UpgradeType upgradeType;
     [Tooltip("Wether or not picking up the upgrade can activate items that implement the R4Activatable interface.")][SerializeField] private bool activatesItems = false;
     [Tooltip("The list of doors to open or traps to trigger")][SerializeField] private List<GameObject> objectsToActivate = new List<GameObject>();
-    [Tooltip("Color of health upgrade.")][SerializeField] private Color healthUpgradeColor = Color.green;
-    [Tooltip("Color of attack upgrade.")][SerializeField] private Color attackUpgradeColor = Color.red;
-    [Tooltip("Color of ability upgrade.")][SerializeField] private Color abilityUpgradeColor = Color.yellow;
+    //[Tooltip("Color of health upgrade.")][SerializeField] private Color healthUpgradeColor = Color.green;
+   // [Tooltip("Color of attack upgrade.")][SerializeField] private Color attackUpgradeColor = Color.red;
+   // [Tooltip("Color of ability upgrade.")][SerializeField] private Color abilityUpgradeColor = Color.yellow;
     public GameObject upgradeHintObject;
 
-
+    public Sprite attackCanisterImage;
+    public Sprite abilityCanisterImage;
+    public Sprite healthCanisterImage;
     public Sprite laserGunWeaponImage;
     public Sprite daggerWeaponImage;
 
@@ -65,26 +67,27 @@ public class RadiationCanister : MonoBehaviour
 
     void HandleUpgradeColor()
     {
-        //Set color of canister based on the upgrade type enum.
-        switch(upgradeType) 
+        //Set sprite of canister based on the upgrade type enum.
+        spriteRenderer.color = Color.white;
+        switch (upgradeType) 
         {
             case UpgradeType.Health_Upgrade:
-                spriteRenderer.color = healthUpgradeColor;
+                spriteRenderer.sprite = healthCanisterImage;
                 break;
-            case UpgradeType.Attack_Upgrade: 
-                spriteRenderer.color = attackUpgradeColor;
+            case UpgradeType.Attack_Upgrade:
+                spriteRenderer.sprite = attackCanisterImage;
                 break;
             case UpgradeType.GroundPound_Ability:
-                spriteRenderer.color = abilityUpgradeColor;
+                spriteRenderer.sprite = abilityCanisterImage;
                 break;
             case UpgradeType.WallClimb_Ability:
-                spriteRenderer.color = abilityUpgradeColor;
+                spriteRenderer.sprite = abilityCanisterImage;
                 break;
             case UpgradeType.WallJump_Ability:
-                spriteRenderer.color = abilityUpgradeColor;
+                spriteRenderer.sprite = abilityCanisterImage;
                 break;
             case UpgradeType.DoubleJump_Ability:
-                spriteRenderer.color = abilityUpgradeColor;
+                spriteRenderer.sprite = abilityCanisterImage;
                 break;
             case UpgradeType.Dagger_Weapon:
                 spriteRenderer.sprite = daggerWeaponImage;
@@ -95,7 +98,8 @@ public class RadiationCanister : MonoBehaviour
                 spriteRenderer.color = Color.white;
                 break;
         }
-    }
+
+}
 
     private string HandleUpgradeHint(UpgradeType upgradeType)
     {

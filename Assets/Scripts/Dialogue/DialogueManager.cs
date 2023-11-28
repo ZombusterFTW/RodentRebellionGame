@@ -49,6 +49,7 @@ public class DialogueManager : MonoBehaviour
 
     private DialogueVariables dialogueVariables;
 
+    private string anim;
     private void Awake() 
     {
         if (instance != null)
@@ -184,6 +185,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator DisplayLine(string line) 
     {
+        portraitAnimator.speed = 1;
         // set the text to the full line, but set the visible characters to 0
         dialogueText.text = line;
         dialogueText.maxVisibleCharacters = 0;
@@ -226,7 +228,9 @@ public class DialogueManager : MonoBehaviour
         // actions to take after the entire line has finished displaying
         continueIcon.SetActive(true);
         DisplayChoices();
-
+        //Ensure that the anim ends on a closed mouth pic
+        portraitAnimator.speed =0;
+        portraitAnimator.Play(anim, 0, 0);
         canContinueToNextLine = true;
     }
 
@@ -315,6 +319,7 @@ public class DialogueManager : MonoBehaviour
                     break;
                 case PORTRAIT_TAG:
                     portraitAnimator.Play(tagValue);
+                    anim = tagValue;
                     break;
                 case LAYOUT_TAG:
                     layoutAnimator.Play(tagValue);
@@ -353,7 +358,7 @@ public class DialogueManager : MonoBehaviour
         {
             choices[i].gameObject.SetActive(false);
         }
-
+        
         StartCoroutine(SelectFirstChoice());
     }
 
