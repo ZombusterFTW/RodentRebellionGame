@@ -4995,16 +4995,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29662c00e8db0444ab7a762e06e0aa3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepSource: {fileID: 0}
+  movementSource: {fileID: 2970288858478862370}
   attackSource: {fileID: 6850238604872117297}
   hurtSource: {fileID: 2859165634427156221}
-  movementSource: {fileID: 3655667016866378393}
+  footstepSource: {fileID: 3655667016866378393}
   weaponSource: {fileID: 4886214215794297894}
   attackSounds:
   - {fileID: 8300000, guid: 5fbe7cb467e6aaa479ce90bc2240f669, type: 3}
   - {fileID: 8300000, guid: 5eb02aef1cbc04c4d89447e79408de78, type: 3}
   - {fileID: 8300000, guid: c93b485ffd98d72418043fc4411bcffa, type: 3}
   - {fileID: 8300000, guid: 3056db3bca58c3148b8b08cb5974b4e3, type: 3}
+  landingSounds:
+  - {fileID: 8300000, guid: 93a59b3ceba039340a0b3508638f0dd5, type: 3}
   hurtSounds:
   - {fileID: 8300000, guid: d494cce34d5926a4aa54247804ae746b, type: 3}
   - {fileID: 8300000, guid: 13a5e1aa6cd4a26489ecc14ee3cf1505, type: 3}
@@ -5701,6 +5703,7 @@ Transform:
   - {fileID: 4486787822344978338}
   - {fileID: 757952264260668564}
   - {fileID: 4243324227113051736}
+  - {fileID: 7483716248185240926}
   - {fileID: 4857808256898235985}
   m_Father: {fileID: 8686200487451471497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5859,6 +5862,134 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &4318350355144099505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7483716248185240926}
+  - component: {fileID: 2970288858478862370}
+  m_Layer: 0
+  m_Name: MovementSounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7483716248185240926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4318350355144099505}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3744038790241716754}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &2970288858478862370
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4318350355144099505}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a35ec44331d4b514cabf31e928f058b5, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -6110,7 +6241,7 @@ GameObject:
   - component: {fileID: 4243324227113051736}
   - component: {fileID: 3655667016866378393}
   m_Layer: 0
-  m_Name: Movement
+  m_Name: Footsteps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6141,7 +6272,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a35ec44331d4b514cabf31e928f058b5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ceac0656423577a43bb365ec523d5117, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

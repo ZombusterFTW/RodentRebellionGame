@@ -5,13 +5,14 @@ using UnityEngine;
 public class CharacterSoundManager : MonoBehaviour
 {
 
-    [SerializeField] private AudioSource footstepSource;
+    [SerializeField] private AudioSource movementSource;
     [SerializeField] private AudioSource attackSource;
     [SerializeField] private AudioSource hurtSource;
-    [SerializeField] private AudioSource movementSource;
+    [SerializeField] private AudioSource footstepSource;
     [SerializeField] private AudioSource weaponSource;
 
     [SerializeField] private AudioClip[] attackSounds;
+    [SerializeField] private AudioClip[] landingSounds;
     [SerializeField] private AudioClip[] hurtSounds;
     [SerializeField] private AudioClip deathSound;
 
@@ -19,7 +20,6 @@ public class CharacterSoundManager : MonoBehaviour
     [SerializeField] private AudioClip weapon2Sound;
     [SerializeField] private AudioClip noWeaponSound;
     [SerializeField] private AudioClip movementLoop;
-
 
     public bool movementPlaying = false;
 
@@ -77,6 +77,12 @@ public class CharacterSoundManager : MonoBehaviour
                 if (hurtSource.clip != null) hurtSource.Play();
                 clipToReturn = hurtSource.clip;
                 break;
+            case CharacterAudioCallout.Land:
+                movementSource.Stop();
+                movementSource.clip = landingSounds[Random.Range(0, hurtSounds.Length)];
+                if (movementSource.clip != null) movementSource.Play();
+                clipToReturn = movementSource.clip;
+                break;
         }
         return clipToReturn;
     }
@@ -86,12 +92,12 @@ public class CharacterSoundManager : MonoBehaviour
         if(activate && !movementPlaying)
         {
             movementPlaying = true;
-            movementSource.Play();
+            footstepSource.Play();
         }
         else
         {
             movementPlaying = false;
-            movementSource.Stop();
+            footstepSource.Stop();
         }
     }
 }
@@ -105,5 +111,6 @@ public enum CharacterAudioCallout
     Weapon1,
     Weapon2,
     NoWeapon,
-    Hurt
+    Hurt,
+    Land
 }

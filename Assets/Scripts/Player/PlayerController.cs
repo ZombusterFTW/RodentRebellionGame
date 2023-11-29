@@ -313,6 +313,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             canJump = true;
             //playerAnimator.Play("BigJoeLand", 0);
             playerAnimator.SetTrigger("Land");
+            characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Land);
         }
     }
 

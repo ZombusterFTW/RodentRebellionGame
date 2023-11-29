@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: rubberRoom_wallPiece1_1
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 422
+        width: 905
+        height: 1351
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2a54afdf9a69904cac8cfc11bdbed62
+      internalID: -1073726092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rubberRoom_wallPiece1_4
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 940
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fa03685fc838cc44b22bedc2149e9b4
+      internalID: -772051289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rubberRoom_wallPiece1_5
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 916
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 813c30930d65b4e4f82d94acbd472dd0
+      internalID: 336325056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rubberRoom_wallPiece1_6
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 861
+        width: 6
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee59854b80d386e41838166d31e79ed3
+      internalID: 1827863240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rubberRoom_wallPiece1_7
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 827
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0a2e083870d1f44daa1197aae8d76db
+      internalID: 173689593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +237,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      rubberRoom_wallPiece1_0: -2075514187
+      rubberRoom_wallPiece1_1: -1073726092
+      rubberRoom_wallPiece1_2: 1346502420
+      rubberRoom_wallPiece1_3: 1439231942
+      rubberRoom_wallPiece1_4: -772051289
+      rubberRoom_wallPiece1_5: 336325056
+      rubberRoom_wallPiece1_6: 1827863240
+      rubberRoom_wallPiece1_7: 173689593
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
