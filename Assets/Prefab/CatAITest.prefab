@@ -125,6 +125,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerUI: {fileID: 2242242107883657181, guid: 8108fa41987221346bcccebd5055a2a5, type: 3}
+  currentState: 0
+  searchDirection: {x: -1, y: 0}
+  sightRange: 10
+  speed: 25
+  attackDistance: 1.5
+  attackDelay: 1
+  searchDistance: 25
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  isMiniBoss: 0
 --- !u!114 &7089696292267492994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthCount: 100
   healthCountCurrent: 0
+  isPlayer: 0
   playerUIManager: {fileID: 0}
 --- !u!50 &1177429491352995047
 Rigidbody2D:
@@ -151,12 +163,12 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 18.88
-  m_LinearDrag: 0.07
-  m_AngularDrag: 0.05
+  m_UseAutoMass: 1
+  m_Mass: 1.6560364
+  m_LinearDrag: 0
+  m_AngularDrag: 0
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8530afe967415ad4cb5619ebbef73725, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -165,7 +177,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &3170311231849562287
 CapsuleCollider2D:
@@ -176,7 +188,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 3241092906166705404}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8530afe967415ad4cb5619ebbef73725, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -249,7 +261,7 @@ AreaEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   m_UseGlobalAngle: 1
   m_ForceAngle: 0
   m_ForceMagnitude: 200

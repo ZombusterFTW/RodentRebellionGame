@@ -2399,20 +2399,8 @@ PrefabInstance:
       value: CatAITest
       objectReference: {fileID: 0}
     - target: {fileID: 4522899874748311073, guid: cf7ac35b8573bd7449acdd669d0ee916, type: 3}
-      propertyPath: speed
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 4522899874748311073, guid: cf7ac35b8573bd7449acdd669d0ee916, type: 3}
-      propertyPath: attackDistance
-      value: 5.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4522899874748311073, guid: cf7ac35b8573bd7449acdd669d0ee916, type: 3}
-      propertyPath: searchDistance
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4522899874748311073, guid: cf7ac35b8573bd7449acdd669d0ee916, type: 3}
-      propertyPath: playerLayer.m_Bits
-      value: 256
+      propertyPath: searchDelay
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

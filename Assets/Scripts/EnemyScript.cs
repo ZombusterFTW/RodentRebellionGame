@@ -13,14 +13,26 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
     private Animator enemyAnimator;
     public EnemyStates currentState = EnemyStates.Searching;
     private GameObject target = null;
-    private Vector2 searchDirection = Vector2.left;
+    [SerializeField] private Vector2 searchDirection = Vector2.left;
     private Vector2 targetPosition;
+    private Vector2 startingPos;
     public float sightRange = 25.0f;
-    public float speed = 50.0f;
+    public float speed = 150.0f;
     public float attackDistance = 5f;
-    public float searchDistance;
+    public float attackDelay = 1f;
+    private bool attackDelayActive;
+    public float searchDelay = 1.5f;
+    [SerializeField] private bool searchDelayActive = false;
+
+
+
+
+    public float searchDistance = 50f;
     public LayerMask playerLayer;
     private Rigidbody2D enemyRB;
+    [SerializeField] bool isMiniBoss = false;
+    private Coroutine attackCooldown;
+    private Coroutine searchCooldown;
 
     public PlayerUI GetPlayerUI()
     {
@@ -29,29 +41,38 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
 
     public void RespawnPlayer()
     {
+        //Add to player frenzy meter here/
+        if(isMiniBoss) GameObject.FindObjectOfType<FrenzyManager>()?.AddToFrenzyMeter(0.50f);
+        else GameObject.FindObjectOfType<FrenzyManager>()?.AddToFrenzyMeter(0.15f);
         Destroy(gameObject);
+
     }
 
     // Start is called before the first frame update
     void Awake()
     {
+        startingPos = transform.position;
         UIClone = Instantiate(playerUI, transform.position + new Vector3(0,2,0), Quaternion.identity);
         UIClone.transform.parent = transform;
         //UIClone.GetComponent<Canvas>().worldCamera = Camera.main;
         health = GetComponent<Health>();
         enemyAnimator = GetComponent<Animator>();
-        targetPosition = transform.position;
+        targetPosition = ((Vector2)transform.position + (searchDirection* searchDistance));
         enemyRB = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();    
+        if(GameObject.FindObjectOfType<PlayerController>() != null ) 
+        {
+            target = GameObject.FindObjectOfType<PlayerController>().gameObject;
+        }
     }
     public Health GetHealth() { return health; }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-
         UpdateState();
         spriteRenderer.flipX = enemyRB.velocity.x > 0;
+        Debug.Log(targetPosition);
     }
 
 
@@ -60,30 +81,40 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
     {
         if (currentState == EnemyStates.Searching)
         {
-            if (Physics2D.Raycast((Vector2)transform.position, Vector2.left, sightRange, playerLayer) || Physics2D.Raycast((Vector2)transform.position, Vector2.right, sightRange, playerLayer))
+            Debug.Log(Vector2.Distance((Vector2)target.transform.position, (Vector2)transform.position));
+            if ((target != null) && Vector2.Distance((Vector2)target.transform.position, (Vector2)transform.position) <= sightRange)
             {
-                RaycastHit2D hitLeft = Physics2D.Raycast((Vector2)transform.position, Vector2.left, sightRange, playerLayer);
-                RaycastHit2D hitRight = Physics2D.Raycast((Vector2)transform.position, Vector2.right, sightRange, playerLayer);
-
-                if (hitLeft) target = hitLeft.collider.gameObject;
-                if (hitRight) target = hitRight.collider.gameObject;
-                if (target != null) currentState = EnemyStates.Pursuing;
+                Debug.Log("player in range");
+                currentState = EnemyStates.Pursuing;
             }
             else
             {
-                Vector2 direction = targetPosition - (Vector2)transform.position;
-                if((Vector2)transform.position != targetPosition)
+                if(Vector2.Distance(targetPosition, (Vector2)transform.position) > 0.00000000001f)
                 {
-                    enemyAnimator.SetBool("IsMoving", true);
-                    enemyRB.AddForce(direction*speed, ForceMode2D.Force);
+                    if (searchDelayActive == false)
+                    {
+                        Vector2 direction = targetPosition - (Vector2)transform.position;
+                        Debug.Log("moving");
+                        enemyAnimator.SetBool("IsMoving", true);
+                        enemyRB.AddForce(direction * speed * Time.deltaTime, ForceMode2D.Force);
+                    }
+                    else Debug.Log("Movement delay active");
+                    
                 }
                 else
                 {
+                    Debug.Log("arrived");
+                    enemyRB.velocity = Vector2.zero;
                     enemyAnimator.SetBool("IsMoving", false);
                     if (searchDirection == Vector2.left) searchDirection = Vector2.right;
                     else searchDirection = Vector2.left;
-                    targetPosition = ((Vector2)transform.position + searchDirection) * searchDistance;
-                    
+                    targetPosition = ((Vector2)transform.position + (searchDirection * searchDistance));
+                    if (searchCooldown == null)
+                    {
+                        searchDelayActive = true;
+                        searchCooldown = StartCoroutine(SearchDelayTimer());
+                    }
+
                 }
             }
         }
@@ -91,26 +122,52 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
         {
             Vector2 direction = (Vector2)target.transform.position - (Vector2)transform.position;
             enemyAnimator.SetBool("IsMoving", true);
-            enemyRB.AddForce(direction * speed, ForceMode2D.Force);
+            enemyRB.AddForce(direction * speed * Time.deltaTime, ForceMode2D.Force);
             if (Vector2.Distance((Vector2)target.transform.position, (Vector2)transform.position) <= attackDistance)
             {
-                targetPosition = gameObject.transform.position;
+                targetPosition = startingPos;
                 currentState = EnemyStates.Attacking;
+            }
+            else if(Vector2.Distance((Vector2)target.transform.position, (Vector2)transform.position) > sightRange)
+            {
+                currentState = EnemyStates.Searching;
             }
         }
         else if(currentState == EnemyStates.Attacking) 
         {
-            if (target != null)
+            if (target != null && !attackDelayActive)
             {
+                enemyRB.velocity = Vector2.zero;
                 enemyAnimator.SetTrigger("Attack");
                 target.GetComponent<Health>().SubtractFromHealth(5f);
                 currentState = EnemyStates.Searching;
                 targetPosition = (Vector2)target.transform.position;
+                //only run coroutine if it isn't already active.
+                if(attackCooldown == null) attackCooldown = StartCoroutine(AttackDelayTimer());
+            }
+            else
+            {
+                currentState = EnemyStates.Pursuing;
             }
         }
+    }
 
 
+    //Cooldown to prevent crazy unfair attacks and movement.
+    IEnumerator SearchDelayTimer()
+    {
+        searchDelayActive = true;
+        yield return new WaitForSeconds(searchDelay);
+        searchDelayActive = false;
+        searchCooldown = null;
+    }
 
+    IEnumerator AttackDelayTimer()
+    {
+        attackDelayActive = true;
+        yield return new WaitForSeconds(attackDelay);
+        attackDelayActive = false;
+        attackCooldown = null;
     }
 
     public void PlayDamagedAnim()

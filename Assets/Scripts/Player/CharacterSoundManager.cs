@@ -79,7 +79,7 @@ public class CharacterSoundManager : MonoBehaviour
                 break;
             case CharacterAudioCallout.Land:
                 movementSource.Stop();
-                movementSource.clip = landingSounds[Random.Range(0, hurtSounds.Length)];
+                movementSource.clip = landingSounds[0];
                 if (movementSource.clip != null) movementSource.Play();
                 clipToReturn = movementSource.clip;
                 break;
