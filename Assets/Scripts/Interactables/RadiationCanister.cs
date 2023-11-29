@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 [ExecuteInEditMode]
 public class RadiationCanister : MonoBehaviour
@@ -13,12 +14,13 @@ public class RadiationCanister : MonoBehaviour
    // [Tooltip("Color of attack upgrade.")][SerializeField] private Color attackUpgradeColor = Color.red;
    // [Tooltip("Color of ability upgrade.")][SerializeField] private Color abilityUpgradeColor = Color.yellow;
     public GameObject upgradeHintObject;
-
+    public AudioSource pickupSound;
     public Sprite attackCanisterImage;
     public Sprite abilityCanisterImage;
     public Sprite healthCanisterImage;
     public Sprite laserGunWeaponImage;
     public Sprite daggerWeaponImage;
+    [SerializeField] private Collider2D pickupCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +47,10 @@ public class RadiationCanister : MonoBehaviour
             Debug.Log(upgradeType.ToString() + " picked up");
             if(activatesItems) ActivateItems();
             controller.RadiationCanisterPickup(upgradeType);
-            Destroy(gameObject);
+            pickupSound.Play();
+            spriteRenderer.enabled = false;
+            pickupCollider.enabled = false;
+            Destroy(gameObject, 3.5f);
         }
     }
 
@@ -108,21 +113,21 @@ public class RadiationCanister : MonoBehaviour
         {
             default: return "Error";
             case UpgradeType.Health_Upgrade:
-                return "15% Health Upgrade";
+                return "<color=green>15% Health Upgrade";
             case UpgradeType.Attack_Upgrade:
-                return "15% Attack Upgrade";
+                return "<color=red>15% Attack Upgrade";
             case UpgradeType.GroundPound_Ability:
-                return "Ground Pound Ability";
+                return "<color=yellow>Ground Pound Ability";
             case UpgradeType.WallClimb_Ability:
-                return "Wall Climb Ability";
+                return "<color=yellow>Wall Climb Ability";
             case UpgradeType.WallJump_Ability:
-                return "Wall Jump Ability";
+                return "<color=yellow>Wall Jump Ability";
             case UpgradeType.DoubleJump_Ability:
-                return "Double Jump Ability";
+                return "<color=yellow>Double Jump Ability";
             case UpgradeType.Dagger_Weapon:
-                return "Dagger";
+                return "<color=white>Dagger";
             case UpgradeType.LaserGun_Weapon:
-                return "Laser Gun";
+                return "<color=white>Laser Gun";
         }
     }
 

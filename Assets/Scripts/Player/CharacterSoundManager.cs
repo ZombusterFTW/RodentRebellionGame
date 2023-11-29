@@ -20,7 +20,8 @@ public class CharacterSoundManager : MonoBehaviour
     [SerializeField] private AudioClip noWeaponSound;
     [SerializeField] private AudioClip movementLoop;
 
-    [SerializeField] private float walkCadence = 1.0f;
+
+    public bool movementPlaying = false;
 
     // private Coroutine movementLoop;
 
@@ -82,12 +83,14 @@ public class CharacterSoundManager : MonoBehaviour
 
     public void ActivateMovementLoopSound(bool activate)
     {
-        if(activate && movementSource.isPlaying == false)
+        if(activate && !movementPlaying)
         {
+            movementPlaying = true;
             movementSource.Play();
         }
         else
         {
+            movementPlaying = false;
             movementSource.Stop();
         }
     }

@@ -94,12 +94,12 @@ public class FireTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
                 {
                     isDamaging = true;
                     StartCoroutine(DamageWait());
-                    controller.PlayHurt();
+                    //controller.PlayHurt();
                 }
             }
             else
             {
-                controller.StopHurt();
+                //controller.StopHurt();
                 StopCoroutine(DamageWait());
             }
         }

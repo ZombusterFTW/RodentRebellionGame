@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class KeyandDoor : MonoBehaviour, R4Activatable
@@ -13,8 +14,9 @@ public class KeyandDoor : MonoBehaviour, R4Activatable
     private BoxCollider2D doorCollider;
     private PlayerController playerController;
     private Collider2D playerCollider;
-
-
+    [SerializeField] AudioSource keyAudio;
+    [SerializeField] AudioSource doorAudio;
+    [SerializeField] GameObject doorKeyHint;
     public void Activate()
     {
         doorKey.gameObject.SetActive(true);
@@ -30,7 +32,8 @@ public class KeyandDoor : MonoBehaviour, R4Activatable
     // Start is called before the first frame update
     void Start()
     {
-        if(doorColorString == null) doorColorString = doorColor.ToString();
+        doorCollider = GetComponent<BoxCollider2D>();   
+        if (doorColorString == null) doorColorString = doorColor.ToString();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         playerCollider = playerController.GetPlayerCollider();
         GetComponent<SpriteRenderer>().color = doorColor;
@@ -51,11 +54,18 @@ public class KeyandDoor : MonoBehaviour, R4Activatable
     {
         if(!keyPickedUp)
         {
-            if (keyCollider !=null && keyCollider.IsTouching(playerCollider))
+            if (keyCollider != null && keyCollider.IsTouching(playerCollider))
             {
+                GameObject hintText = Instantiate(doorKeyHint);
+                hintText.GetComponentInChildren<TextMeshProUGUI>().text = "Picked up " + doorColorString + " door key";
+                hintText.GetComponentInChildren<TextMeshProUGUI>().color = doorColor;
                 Debug.Log("Picked up " + doorColorString + " door key");
                 keyPickedUp = true;
-                Destroy(doorKey.gameObject);
+                keyAudio.Play();
+                doorKey.GetComponent<SpriteRenderer>().enabled = false;
+                doorKey.GetComponent<CircleCollider2D>().enabled = false;
+                Destroy(doorKey.gameObject, 3.5f);
+                
             }
         }
     }
@@ -68,7 +78,13 @@ public class KeyandDoor : MonoBehaviour, R4Activatable
         {
             //Door opened.
             Debug.Log("Unlocked " + doorColorString + " door");
-            Destroy(gameObject);
+            GameObject hintText = Instantiate(doorKeyHint);
+            hintText.GetComponentInChildren<TextMeshProUGUI>().text = "Unlocked " + doorColorString + " door";
+            hintText.GetComponentInChildren<TextMeshProUGUI>().color = doorColor;
+            doorAudio.Play();
+            doorCollider.enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(gameObject, 3.5f);
         }
     }
 }

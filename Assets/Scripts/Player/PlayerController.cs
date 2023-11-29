@@ -199,11 +199,16 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         }
 
         //Activate sound when the player moves
-        if (isMoving)
+        if (isMoving && onGround)
         {
-            characterSoundManager.ActivateMovementLoopSound(true);
+            //Debug.Log("Moving");
+            if(characterSoundManager.movementPlaying == false) characterSoundManager.ActivateMovementLoopSound(true);
         }
-        else characterSoundManager.ActivateMovementLoopSound(false);
+        else
+        {
+            //Debug.Log("Not moving");
+            if (characterSoundManager.movementPlaying == true) characterSoundManager.ActivateMovementLoopSound(false);
+        }
     }
 
     void CheckGrounding()
@@ -652,33 +657,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         }
     }
 
-    IEnumerator IFrames()
-    {
-        iFramesActive = true;
-        yield return new WaitForSeconds(1);
-        iFramesActive = false;
-    }
 
-    IEnumerator PlayHurtAnim()
-    {
-        iFramesActive = true;
-        while (iFramesActive)
-        {
-           // playerAnimator.Play("BigJoeHurt", 0);
-            yield return new WaitForSeconds(0.5f);
-        }
-        
-    }
 
-    public void PlayHurt()
-    {
-        hurtCoroutine = StartCoroutine(PlayHurtAnim());
-    }
-    public void StopHurt()
-    {
-        iFramesActive = false;
-        if (hurtCoroutine != null) StopCoroutine(hurtCoroutine);
-    }
+
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -844,7 +826,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     IEnumerator PlayHurtSound()
     {
         //We use coroutines to prevent a sound playing every frame and absoloutely obliterating the player's ears
-        yield return new WaitForSeconds(characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Hurt).length);
+        yield return new WaitForSeconds(characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Hurt).length + 0.5f);
         hurtCoroutine = null;
     }
 
