@@ -96,7 +96,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private bool canDoubleJump = true;
     [SerializeField] private bool canWallJump = true;
 
-
+    //Audio Manager Class
+    [SerializeField] private CharacterSoundManager characterSoundManager;
+    private Coroutine hurtSound;
 
 
     private void Awake()
@@ -183,13 +185,25 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 playerRigidBody.velocity = new Vector2(wallDir, -wallSlideSpeed);
             }
         }
-        
+        else
+        {
+            //Stop movement during dialouge
+            playerRigidBody.velocity = Vector2.zero;
+            movementDirection = Vector2.zero;
+        }
        
         if (movementDirection != Vector2.zero && !wallJumped)
         {
             playerSprite.flipX = movementDirection.x < 0 ? true : false;
             dashTrailObject.GetComponent<SpriteRenderer>().flipX = playerSprite.flipX;
         }
+
+        //Activate sound when the player moves
+        if (isMoving)
+        {
+            characterSoundManager.ActivateMovementLoopSound(true);
+        }
+        else characterSoundManager.ActivateMovementLoopSound(false);
     }
 
     void CheckGrounding()
@@ -521,6 +535,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             case InputActionPhase.Started:
                 if(!disableAllMoves && playerUpgrade.playerWeaponType == PlayerWeaponType.LaserGun)
                 {
+                    //play lazer sound
+                    characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon2);
                     isFiringLaser = true;
                     StartCoroutine(UpdateLaserPos());
                     Debug.Log("pRESS");
@@ -541,7 +557,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             case InputActionPhase.Performed:
                 break;
             case InputActionPhase.Started:
-                Jump();
+               // Jump();
                 break;
             case InputActionPhase.Canceled:
                 break;
@@ -559,10 +575,11 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 case InputActionPhase.Started:
                     //Vector2 direction = ((lastDirection) - (Vector2)transform.position);
                     //Detect which weapon a player has to determine their damage
-
+                    characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection.normalized, 2f, enemyLayer);
                     if(playerUpgrade.playerWeaponType == PlayerWeaponType.Dagger)
                     {
+                        characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon1);
                         playerAnimator.SetTrigger("Stab");
                         if (hit)
                         {
@@ -575,6 +592,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                     }
                     else if (playerUpgrade.playerWeaponType == PlayerWeaponType.None)
                     {
+                        characterSoundManager.PlayAudioCallout(CharacterAudioCallout.NoWeapon);
                         //replace me with standard attack
                         playerAnimator.SetTrigger("StandardAttack");
                         if (hit)
@@ -710,6 +728,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     public void RespawnPlayer()
     {
+        //Play the death sound
+        characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Death);
         //If the player dies we respawn them. 
         isAlive = false;
         StopCoroutine(DisableMovement(0));
@@ -818,6 +838,14 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     public void PlayDamagedAnim()
     {
         playerAnimator.Play("BigJoeHurt", 0);
+        if(hurtCoroutine == null) hurtCoroutine = StartCoroutine(PlayHurtSound());
+    }
+
+    IEnumerator PlayHurtSound()
+    {
+        //We use coroutines to prevent a sound playing every frame and absoloutely obliterating the player's ears
+        yield return new WaitForSeconds(characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Hurt).length);
+        hurtCoroutine = null;
     }
 
     public PlayerController GetPlayerController()

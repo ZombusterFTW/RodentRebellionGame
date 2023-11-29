@@ -19,7 +19,7 @@ Well, do you want me to teach him a lesson?  #speaker:Fellow Rat(cooler) #portra
 + [Yes]
     Yes #layout:left #portrait:bigjoeneut #audio:animal_crossing_high #speaker:Big Joe
     He'll be gone soon #speaker:Fellow Rat(cooler) #portrait:rat2talkin #layout:right #audio:animal_crossing_low
-    ........ #layout:left #portrait:bigjoewut #audio:animal_crossing_high #speaker:Big Joe
+    ........ #layout:left #portrait:bigjoewut #audio:animal_crossing_mid #speaker:Big Joe
     -> END
 + [No]
     Guess you really are an <color=\#5B81FF>L Bozo</color> #speaker:Fellow Rat(cooler) #portrait:rat2talkin #layout:right #audio:animal_crossing_low

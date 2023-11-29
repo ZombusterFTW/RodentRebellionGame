@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: animal_crossing_mid
   dialogueTypingSoundClips:
-  - {fileID: 8300000, guid: f7507f9aebfa98b409b02c2ca8c463f2, type: 3}
-  - {fileID: 8300000, guid: 2ec4cccb92c9b9e41b200604b7369c26, type: 3}
-  - {fileID: 8300000, guid: 2c9ba4d542d1bc946b29b76cde154976, type: 3}
-  - {fileID: 8300000, guid: c2c32706459a553498320dad0ff33793, type: 3}
-  - {fileID: 8300000, guid: 396ee13792631444c91de3b77986a3cf, type: 3}
-  - {fileID: 8300000, guid: bb619f478c51c9a4d9d0250b61f71e0e, type: 3}
+  - {fileID: 8300000, guid: 71f0b9f34b433e04b94ec858244d3293, type: 3}
+  - {fileID: 8300000, guid: e76e0522a4836a74f827c984c2c1efe6, type: 3}
+  - {fileID: 8300000, guid: 8e9d04e56571d6a4b98dc86b87016411, type: 3}
+  - {fileID: 8300000, guid: 8a84137587c2c2b488da900052fb4149, type: 3}
+  - {fileID: 8300000, guid: fb49e12d469c2d046947d08629726d08, type: 3}
+  - {fileID: 8300000, guid: 0af72a00e66a4c8428fd983b7c82ff68, type: 3}
   frequencyLevel: 2
   minPitch: 1
   maxPitch: 1.2

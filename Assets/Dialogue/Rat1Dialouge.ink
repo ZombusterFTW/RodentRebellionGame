@@ -5,7 +5,7 @@ Oh if it isn't the fabled <color=\#F8FF30>Big Joe!</color> #speaker:Fellow Rat #
  How are you doing on this fine evening?
 + [Good] 
     I'm doing good. #layout:left #portrait:bigjoeneut #audio:animal_crossing_high #speaker:Big Joe
-    That makes me feel <color=\#F8FF30>EPIC</color>! #portrait:rat1talkin #speaker:Fellow Rat #layout:right
+    That makes me feel <color=\#F8FF30>EPIC</color>! #portrait:rat1talkin #speaker:Fellow Rat #layout:right #audio:animal_crossing_mid
     ->lastquestion
 + [TERRIBLE]
     I'm doing absolutely terrible fam #layout:left #portrait:bigjoewut #audio:animal_crossing_high #speaker:Big Joe

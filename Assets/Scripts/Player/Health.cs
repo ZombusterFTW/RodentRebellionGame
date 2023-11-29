@@ -27,7 +27,10 @@ public class Health : MonoBehaviour
             healthToLose /= 2;
         }
         healthCountCurrent = Mathf.Clamp(healthCountCurrent-healthToLose, 0, healthCount);
-        if (healthCountCurrent == 0) playerController.RespawnPlayer();
+        if (healthCountCurrent == 0)
+        {
+            playerController.RespawnPlayer();
+        }
         else playerController.PlayDamagedAnim();
         playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
         return healthCountCurrent;
