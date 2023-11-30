@@ -9843,18 +9843,6 @@ PrefabInstance:
       propertyPath: m_UIInputModule
       value: 
       objectReference: {fileID: 1614604420}
-    - target: {fileID: 6433276216578075541, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: m_Color.b
-      value: 0.7924528
-      objectReference: {fileID: 0}
-    - target: {fileID: 6433276216578075541, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: m_Color.g
-      value: 0.7924528
-      objectReference: {fileID: 0}
-    - target: {fileID: 6433276216578075541, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: m_Color.r
-      value: 0.7924528
-      objectReference: {fileID: 0}
     - target: {fileID: 8686200487451471497, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.92
