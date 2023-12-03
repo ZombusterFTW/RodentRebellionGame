@@ -39,7 +39,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Backing Guitar
+  m_Name: Chords Guitar
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 6efd4875431f92441b555d092280ea56
   m_Children: []
@@ -63,6 +63,7 @@ AudioMixerController:
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
+  - {fileID: 9021233450941342456}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -78,7 +79,7 @@ AudioMixerController:
     - 8201ffc510aeccb40ac89b20a1c03d27
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500006}
+  m_TargetSnapshot: {fileID: 9021233450941342456}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -127,7 +128,12 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: e8cd1c61517e88e42918af934ccefd38
   m_FloatValues:
-    37917c0e1913b6a4b9f9fdc4beb71575: -2.8722944
+    58859700ba9cb304b89fcaf5c55df5a8: 0
+    2b57a354b6a56fb43b5a2af70808f4a1: -10.345207
+    7d74d968968919c49abeaa7ee4d00b62: -10.345207
+    d066c63af90c7a746a405854f64e2b90: -10.345207
+    9c8aab0b025e6d941b8a0b1ee1c3ab54: -10.345207
+    37917c0e1913b6a4b9f9fdc4beb71575: -10
   m_TransitionOverrides: {}
 --- !u!244 &3025017811744536450
 AudioMixerEffectController:
@@ -182,7 +188,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BGM
+  m_Name: Intro
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: b14de7bb7c630e546bb44f4cd30451ae
   m_Children: []
@@ -223,6 +229,23 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!245 &9021233450941342456
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Dialogue
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 46498d212ad0c174ea6dafdc04dab045
+  m_FloatValues:
+    58859700ba9cb304b89fcaf5c55df5a8: -9.833291
+    2b57a354b6a56fb43b5a2af70808f4a1: -5
+    7d74d968968919c49abeaa7ee4d00b62: -30
+    d066c63af90c7a746a405854f64e2b90: -30
+    9c8aab0b025e6d941b8a0b1ee1c3ab54: -10
+    37917c0e1913b6a4b9f9fdc4beb71575: -25.086687
+  m_TransitionOverrides: {}
 --- !u!243 &9141203009683788340
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
