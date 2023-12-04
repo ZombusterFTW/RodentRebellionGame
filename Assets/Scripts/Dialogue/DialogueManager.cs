@@ -140,6 +140,10 @@ public class DialogueManager : MonoBehaviour
 
         dialogueVariables.StartListening(currentStory);
 
+
+        currentStory.BindExternalFunction("dialougeActivate", (string objectTag) => GameObject.FindGameObjectWithTag(objectTag)?.GetComponent<DialougeActivated>()?.Activate());
+        currentStory.BindExternalFunction("dialougeDeactivate", (string objectTag) => GameObject.FindGameObjectWithTag(objectTag)?.GetComponent<DialougeActivated>()?.Deactivate());
+
         // reset portrait, layout, and speaker
         displayNameText.text = "???";
         portraitAnimator.Play("default");
@@ -155,6 +159,10 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         dialogueVariables.StopListening(currentStory);
+
+        currentStory.UnbindExternalFunction("dialougeActivate");
+        currentStory.UnbindExternalFunction("dialougeDeactivate");
+
 
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
@@ -201,13 +209,14 @@ public class DialogueManager : MonoBehaviour
         // display each letter one at a time
         foreach (char letter in line.ToCharArray())
         {
+            
             // if the submit button is pressed, finish up displaying the line right away
             //if (GameObject.FindObjectOfType<PlayerController>().GetSpacePressed()) 
             //{
-              //  dialogueText.maxVisibleCharacters = line.Length;
-           // //    break;
-           // }
-
+             // dialogueText.maxVisibleCharacters = line.Length;
+             // break;
+            //}
+            
             // check for rich text tag, if found, add it without waiting
             if (letter == '<' || isAddingRichTextTag) 
             {
@@ -224,13 +233,14 @@ public class DialogueManager : MonoBehaviour
                 dialogueText.maxVisibleCharacters++;
                 yield return new WaitForSeconds(typingSpeed);
             }
+
         }
 
         // actions to take after the entire line has finished displaying
         continueIcon.SetActive(true);
         DisplayChoices();
         //Ensure that the anim ends on a closed mouth pic
-        portraitAnimator.speed =0;
+        portraitAnimator.speed = 0;
         portraitAnimator.Play(anim, 0, 0);
         canContinueToNextLine = true;
     }

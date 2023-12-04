@@ -39,7 +39,7 @@ public class PlayerCameraManager : MonoBehaviour
 
     public void ForceCameraLookat(string objectTag)
     {
-        //Force the camera to look at an object during a dialouge segment.
+        //Force the camera to look at an object during a dialouge segment. 
         if (GameObject.FindGameObjectWithTag(objectTag) != null)
         {
             virtualCamera.LookAt = GameObject.FindGameObjectWithTag(objectTag).transform;
@@ -48,7 +48,16 @@ public class PlayerCameraManager : MonoBehaviour
         else Debug.Log("Could not find an object with that tag.");
     }
 
-
+    public void ForceCameraLookat(GameObject objectToLookAt)
+    {
+        //Force the camera to look at an object during a dialouge segment. For GameObject
+        if (objectToLookAt != null)
+        {
+            virtualCamera.LookAt = objectToLookAt.transform;
+            virtualCamera.Follow = objectToLookAt.transform;
+        }
+        else Debug.Log("Could not find an object with that tag.");
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {

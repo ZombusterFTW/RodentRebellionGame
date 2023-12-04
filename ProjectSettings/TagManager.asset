@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Music Checkpoint
+  - npc2
+  - npc1
+  - npc3
+  - questitem1
+  - questitem2
+  - questitem3
   layers:
   - Default
   - TransparentFX

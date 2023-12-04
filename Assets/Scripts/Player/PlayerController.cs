@@ -455,7 +455,12 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     { return interactPressed; }
 
     public bool GetSpacePressed()
-    { return jumpButtonPressed; }
+    {
+
+        //Change to use new input system later
+        // return jumpButtonPressed; 
+        return Input.GetKeyDown(KeyCode.Space);
+    }
 
     public void DisableControls(bool disabled)
     {
