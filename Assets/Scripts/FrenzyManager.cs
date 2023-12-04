@@ -11,10 +11,27 @@ public class FrenzyManager : MonoBehaviour
     private PlayerController playerController;
     [SerializeField] private PlayerUI playerUIManager;
     private Coroutine frenzyBarAnimation;
-    private bool frenzyActive = false;
+    public bool frenzyActive { get; private set; } = false;
+
+
+    //Static reference so it can be referenced in any script easily.
+    public static FrenzyManager instance;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        if(instance == null) 
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if(instance != null && instance != this)
+        {
+            Debug.Log("A player with a frenzy manager already exists. Deleting duplicate");
+            Destroy(gameObject);
+        }
         frenzyAmountCurrent = frenzyStartingValue;
         playerController = GetComponent<PlayerController>();
         playerUIManager = playerController.GetPlayerUI();
@@ -74,6 +91,7 @@ public class FrenzyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!frenzyActive) AddToFrenzyMeter(Time.deltaTime);
+        //For testing 
+        if (!frenzyActive) AddToFrenzyMeter(0.001f*Time.deltaTime);
     }
 }
