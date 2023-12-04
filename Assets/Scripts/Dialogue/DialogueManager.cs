@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+using DG.Tweening;
+using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -19,6 +22,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI displayNameText;
     [SerializeField] private Animator portraitAnimator;
+    [SerializeField] private GameObject dialogueBGDampen;
     private Animator layoutAnimator;
 
     [Header("Choices UI")]
@@ -144,8 +148,7 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(true);
 
         dialogueVariables.StartListening(currentStory);
-
-
+        dialogueBGDampen.GetComponent<Image>().DOFade(0.5f, 0.25f);
         currentStory.BindExternalFunction("dialougeActivate", (string objectTag) => GameObject.FindGameObjectWithTag(objectTag)?.GetComponent<DialougeActivated>()?.Activate());
         currentStory.BindExternalFunction("dialougeDeactivate", (string objectTag) => GameObject.FindGameObjectWithTag(objectTag)?.GetComponent<DialougeActivated>()?.Deactivate());
 
@@ -159,6 +162,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator ExitDialogueMode() 
     {
+        dialogueBGDampen.GetComponent<Image>().DOFade(0, 0.25f);
         if (dialougeContainerGameObject != null && destroyDialougeParentOnExit)
         {
             DestroyImmediate(dialougeContainerGameObject);
@@ -182,6 +186,11 @@ public class DialogueManager : MonoBehaviour
 
         // go back to default audio
         SetCurrentAudioInfo(defaultAudioInfo.id);
+        //Set time scale back to normal if we slowed it.
+        if(Time.timeScale != 1.0f)
+        {
+            DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1, 0.25f);
+        }
     }
 
     private void ContinueStory() 

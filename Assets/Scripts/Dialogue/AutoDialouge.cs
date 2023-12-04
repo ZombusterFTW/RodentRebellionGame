@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class AutoDialouge : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class AutoDialouge : MonoBehaviour
     [SerializeField] bool playDialougeAutomatically;
     [SerializeField] float dialougeDelay;
     [SerializeField] bool cleanupOnDialougeExit = false;
+    [SerializeField] bool stopTime = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +36,21 @@ public class AutoDialouge : MonoBehaviour
         {
             GameObject.FindObjectOfType<PlayerController>().DisableControls(true);
             DialogueManager.GetInstance().EnterDialogueMode(inkJSON, gameObject, cleanupOnDialougeExit);
+            if(stopTime)
+            {
+                DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 0.25f);
+                
+            }
         }
     }
     private void PlayDialougeScheduled()
     {
             GameObject.FindObjectOfType<PlayerController>().DisableControls(true);
             DialogueManager.GetInstance().EnterDialogueMode(inkJSON, gameObject, cleanupOnDialougeExit);
+            if (stopTime)
+            {
+                DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 0.25f);
+
+            }
     }
 }

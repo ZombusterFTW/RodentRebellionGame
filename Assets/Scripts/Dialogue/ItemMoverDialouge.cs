@@ -12,21 +12,27 @@ public class ItemMoverDialouge : MonoBehaviour, DialougeActivated
     [SerializeField] private GameObject itemToMove;
     [SerializeField] private float itemMoveTime;
     [SerializeField] private bool startInvisible = false;
-
-
-   private bool moveFinished = false;
+    [SerializeField] private bool freezePlayer = false;
+    private bool moveInProgress = false;    
+    private bool moveFinished = false;
+    PlayerController player;
+    [SerializeField] private bool persistAfterMove = false;
+    Tween itemMoveTween;
     public void Activate()
     {
         if(itemToMove != null)
         {
             itemToMove.gameObject.SetActive(true);
-            itemToMove.transform.DOMove(itemEndLocation.transform.position, itemMoveTime);
+            moveInProgress = true;
+            itemToMove.transform.DOMove(itemEndLocation.transform.position, itemMoveTime).OnComplete(() => ItemMoveCompleted());
             PlayerCameraManager.instance.ForceCameraLookat(itemToMove);
+            player.DisableControls(true);
         }
     }
 
     public void Deactivate()
     {
+        //Not really supported yet
         if (itemToMove != null)
         {
             itemToMove.gameObject.SetActive(true);
@@ -34,11 +40,39 @@ public class ItemMoverDialouge : MonoBehaviour, DialougeActivated
         }
     }
 
+
+    private void Update()
+    {
+        if(this != null)
+        {
+            if(moveInProgress == true)
+            {
+                player.DisableControls(true);
+            }
+        }
+    }
+
+
+    private void ItemMoveCompleted()
+    {
+        player.DisableControls(true);
+        Debug.Log("Move done");
+        moveInProgress = false;
+        moveFinished = true;
+        PlayerCameraManager.instance.ForceCameraLookat("Player");
+        player.DisableControls(false);
+        if (!persistAfterMove)
+        {
+            this.enabled = false;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindObjectOfType<PlayerController>();
         if (itemStartLocation.GetComponent<SpriteRenderer>() != null) itemStartLocation.GetComponent<SpriteRenderer>().enabled = false;
-       if (itemStartLocation.GetComponent<SpriteRenderer>() != null) itemEndLocation.GetComponent<SpriteRenderer>().enabled = false;
+        if (itemStartLocation.GetComponent<SpriteRenderer>() != null) itemEndLocation.GetComponent<SpriteRenderer>().enabled = false;
         itemToMove.transform.position = itemStartLocation.transform.position;
         if(startInvisible)
         {
@@ -46,15 +80,7 @@ public class ItemMoverDialouge : MonoBehaviour, DialougeActivated
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(itemToMove != null && itemToMove.transform.position == itemEndLocation.transform.position && !moveFinished)
-        {
-            moveFinished = true;
-            PlayerCameraManager.instance.ForceCameraLookat("Player");
-        }
-    }
+
 }
 
 public interface DialougeActivated

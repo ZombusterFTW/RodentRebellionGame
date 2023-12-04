@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     private void Awake()
     {
+        Time.timeScale = 1;
         playerSprite = playerSpriteContainer.GetComponent<SpriteRenderer>();
         playerAnimator = playerSpriteContainer.GetComponent<Animator>();
         playerUI  = Instantiate(playerUIPrefab).GetComponent<PlayerUI>();

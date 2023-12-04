@@ -44,6 +44,10 @@ public class PlayerCameraManager : MonoBehaviour
         {
             virtualCamera.LookAt = GameObject.FindGameObjectWithTag(objectTag).transform;
             virtualCamera.Follow = GameObject.FindGameObjectWithTag(objectTag).transform;
+            if (objectTag == "Player") 
+            {
+                virtualCamera.ForceCameraPosition(new Vector3(GameObject.FindGameObjectWithTag(objectTag).transform.position.x, GameObject.FindGameObjectWithTag(objectTag).transform.position.y, virtualCamera.transform.position.z), Quaternion.identity);
+            }
         }
         else Debug.Log("Could not find an object with that tag.");
     }
