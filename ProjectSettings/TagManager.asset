@@ -11,6 +11,7 @@ TagManager:
   - questitem1
   - questitem2
   - questitem3
+  - UIEventSystem
   layers:
   - Default
   - TransparentFX

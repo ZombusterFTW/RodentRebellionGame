@@ -1,10 +1,13 @@
 using Cinemachine;
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatformAnchor, ControlledCharacter
 {
@@ -123,7 +126,17 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         playerDoubleJumpsRemaining = playerMaxJumpCount;
         playerSpeed_Game = playerSpeed;
         jumpForce_Game = jumpForce;
+        SceneManager.activeSceneChanged += OnSceneChange;
         
+    }
+
+    private void OnSceneChange(Scene arg0, Scene arg1)
+    {
+        //On a given scene change we set the UI input to the correct value
+        if(GameObject.FindGameObjectWithTag("UIEventSystem") != null)
+        {
+            playerInput.uiInputModule = GameObject.FindGameObjectWithTag("UIEventSystem")?.GetComponent<InputSystemUIInputModule>();
+        }
     }
 
     // Update is called once per frame

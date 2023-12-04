@@ -60,6 +60,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "MouseSubmit",
+                    "type": "Button",
+                    "id": "c673bbb2-0b6c-4dc3-975c-bedc54bb821f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "LazerGunFire",
                     "type": "Button",
                     "id": "f4fb6ea9-7fe1-4285-bfdc-99211bfa48bb",
@@ -73,6 +82,15 @@
                     "type": "Button",
                     "id": "12128e6e-be29-4064-8d18-c749af64f9b4",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "PassThrough",
+                    "id": "dd31eef8-8ee1-41d4-bb2b-9294d7437061",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -252,6 +270,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "LazerGunAlt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "36670db4-6e1a-4433-a092-dc168d3ad2b7",
+                    "path": "<Mouse>/{Point}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "529f4fbd-5b72-4abb-8a9f-4afcf4938f3e",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseSubmit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

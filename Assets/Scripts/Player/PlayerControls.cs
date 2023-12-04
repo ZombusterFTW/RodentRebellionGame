@@ -82,6 +82,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""MouseSubmit"",
+                    ""type"": ""Button"",
+                    ""id"": ""c673bbb2-0b6c-4dc3-975c-bedc54bb821f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""LazerGunFire"",
                     ""type"": ""Button"",
                     ""id"": ""f4fb6ea9-7fe1-4285-bfdc-99211bfa48bb"",
@@ -95,6 +104,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""12128e6e-be29-4064-8d18-c749af64f9b4"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""dd31eef8-8ee1-41d4-bb2b-9294d7437061"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -276,6 +294,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""LazerGunAlt"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36670db4-6e1a-4433-a092-dc168d3ad2b7"",
+                    ""path"": ""<Mouse>/{Point}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""529f4fbd-5b72-4abb-8a9f-4afcf4938f3e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseSubmit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -290,8 +330,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerControlActions_Interact = m_PlayerControlActions.FindAction("Interact", throwIfNotFound: true);
         m_PlayerControlActions_Dash = m_PlayerControlActions.FindAction("Dash", throwIfNotFound: true);
         m_PlayerControlActions_Attack = m_PlayerControlActions.FindAction("Attack", throwIfNotFound: true);
+        m_PlayerControlActions_MouseSubmit = m_PlayerControlActions.FindAction("MouseSubmit", throwIfNotFound: true);
         m_PlayerControlActions_LazerGunFire = m_PlayerControlActions.FindAction("LazerGunFire", throwIfNotFound: true);
         m_PlayerControlActions_LazerGunAlt = m_PlayerControlActions.FindAction("LazerGunAlt", throwIfNotFound: true);
+        m_PlayerControlActions_MousePosition = m_PlayerControlActions.FindAction("MousePosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -359,8 +401,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControlActions_Interact;
     private readonly InputAction m_PlayerControlActions_Dash;
     private readonly InputAction m_PlayerControlActions_Attack;
+    private readonly InputAction m_PlayerControlActions_MouseSubmit;
     private readonly InputAction m_PlayerControlActions_LazerGunFire;
     private readonly InputAction m_PlayerControlActions_LazerGunAlt;
+    private readonly InputAction m_PlayerControlActions_MousePosition;
     public struct PlayerControlActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -371,8 +415,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_PlayerControlActions_Interact;
         public InputAction @Dash => m_Wrapper.m_PlayerControlActions_Dash;
         public InputAction @Attack => m_Wrapper.m_PlayerControlActions_Attack;
+        public InputAction @MouseSubmit => m_Wrapper.m_PlayerControlActions_MouseSubmit;
         public InputAction @LazerGunFire => m_Wrapper.m_PlayerControlActions_LazerGunFire;
         public InputAction @LazerGunAlt => m_Wrapper.m_PlayerControlActions_LazerGunAlt;
+        public InputAction @MousePosition => m_Wrapper.m_PlayerControlActions_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControlActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -400,12 +446,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
+            @MouseSubmit.started += instance.OnMouseSubmit;
+            @MouseSubmit.performed += instance.OnMouseSubmit;
+            @MouseSubmit.canceled += instance.OnMouseSubmit;
             @LazerGunFire.started += instance.OnLazerGunFire;
             @LazerGunFire.performed += instance.OnLazerGunFire;
             @LazerGunFire.canceled += instance.OnLazerGunFire;
             @LazerGunAlt.started += instance.OnLazerGunAlt;
             @LazerGunAlt.performed += instance.OnLazerGunAlt;
             @LazerGunAlt.canceled += instance.OnLazerGunAlt;
+            @MousePosition.started += instance.OnMousePosition;
+            @MousePosition.performed += instance.OnMousePosition;
+            @MousePosition.canceled += instance.OnMousePosition;
         }
 
         private void UnregisterCallbacks(IPlayerControlActionsActions instance)
@@ -428,12 +480,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
+            @MouseSubmit.started -= instance.OnMouseSubmit;
+            @MouseSubmit.performed -= instance.OnMouseSubmit;
+            @MouseSubmit.canceled -= instance.OnMouseSubmit;
             @LazerGunFire.started -= instance.OnLazerGunFire;
             @LazerGunFire.performed -= instance.OnLazerGunFire;
             @LazerGunFire.canceled -= instance.OnLazerGunFire;
             @LazerGunAlt.started -= instance.OnLazerGunAlt;
             @LazerGunAlt.performed -= instance.OnLazerGunAlt;
             @LazerGunAlt.canceled -= instance.OnLazerGunAlt;
+            @MousePosition.started -= instance.OnMousePosition;
+            @MousePosition.performed -= instance.OnMousePosition;
+            @MousePosition.canceled -= instance.OnMousePosition;
         }
 
         public void RemoveCallbacks(IPlayerControlActionsActions instance)
@@ -459,7 +517,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnMouseSubmit(InputAction.CallbackContext context);
         void OnLazerGunFire(InputAction.CallbackContext context);
         void OnLazerGunAlt(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
     }
 }
