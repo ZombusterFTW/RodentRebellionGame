@@ -4,64 +4,144 @@ using UnityEngine;
 
 using UnityEngine.Audio;
 
+//reference: https://johnleonardfrench.com/ultimate-guide-to-playscheduled-in-unity/
+
 public class SoundManager : MonoBehaviour
 {
 
-    [Header("Instrument Tracks")] // track list per instrument
-    public AudioClip[] tracks; //list of full tracks (for testing)
-    public AudioClip[] lead_guitar;
-    public AudioClip[] back_guitar;
-    public AudioClip[] bass_guitar;
-    public AudioClip[] drum_kit;
-
+    //Public Values!!!
     [Header("Audio Sources")]
-    public AudioSource bgm_source;
-    public AudioSource lead_guitar_src;
-    public AudioSource bass_guitar_src;
-    public AudioSource back_guitar_src;
-    public AudioSource drum_kit_src;
+    //these are all lists so they can be cylced through
+    public AudioSource[] introSrcArr;
+    public AudioSource[] leadGSrcArr;
+    public AudioSource[] bassGSrcArr;
+    public AudioSource[] chordGSrcArr;
+    public AudioSource[] drumSrcArr;
 
-    [Header("Audio Mixers")]
-    public AudioMixer bgm_mixer; //not really using this rn, but setting it up for future
+    [Header("Number of Looping Audio Clips")]
+    public int numLoopingClips;
 
-    public float bpm = 140.0f;
-    public int numBeatsPerMeasure = 32;
+    [Header("Audio Clips")]
+    public AudioClip[] introClipsArr;
+    public AudioClip[] leadGClipsArr;
+    public AudioClip[] bassGClipsArr;
+    public AudioClip[] chordGClipsArr;
+    public AudioClip[] drumClipsArr;
 
-    private double nextEventTime;
+    [Header("Audio Mixer")]
+    public AudioMixerGroup mainMixer;
+    public AudioMixer audioMixer;
     
+    //Private Values!!!
+    private double introDuration;
+    private double nextStartTime;
+    private int toggle = 0; //toggles audio sources
+    private int nextClip = 0; //iterates through audio clips per source
+
+    private DialogueManager dialogueManager; //grab active dialogue manager instance
+
+    private bool justExitedDialogue = false;
 
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("SoundManager::Start()");
 
-        //bgm_source.clip = tracks[0]; //load init clip
-        //bgm_source.Play(); //play on start
+        //get dialogue manager
+        dialogueManager = DialogueManager.GetInstance();
 
-        double startTime = AudioSettings.dspTime + 0.5; //delay for cleanliness
+        double startTime = AudioSettings.dspTime + 0.2; //add 2 ms for lag
 
-        //Load baselines
-        bass_guitar_src.clip = bass_guitar[0];
-        drum_kit_src.clip = drum_kit[0];
+        //play intro at start
+        LoadIntroBGM();
+        PlayIntroBGM(startTime);
+        //all intro sources are set to play on awake with no loop
+        // should be able to just calculate when they end to start the looping section
 
-        bass_guitar_src.PlayScheduled(startTime);
-        drum_kit_src.PlayScheduled(startTime);
+        //calculate length of intro, start rest of audio after that
+        introDuration = (double) introClipsArr[0].samples / introClipsArr[0].frequency; //duration
 
-        //set guitar to start after one loop of base line
-        double duration = (double)drum_kit[0].samples / drum_kit[0].frequency;
+        nextStartTime = startTime + introDuration; //set time for loop section to start
+    }
 
-        bgm_source.clip = tracks[1];
-        bgm_source.PlayScheduled(startTime + duration);
+    private void LoadIntroBGM() {
 
+        Debug.Log("SoundManager::LoadIntroBGM()");
+
+        for (int i = 0; i < introSrcArr.Length; i++)
+        {
+            introSrcArr[i].clip = introClipsArr[i];
+        }
+    }
+
+    private void PlayIntroBGM(double start) {
+        Debug.Log("SoundManager::PlayIntroBGM()");
+        for(int i = 0; i < introSrcArr.Length; i++)
+        {
+            introSrcArr[i].PlayScheduled(start);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        //nextEventTime += 60.0f / bpm * numBeatsPerMeasure;
-        //back_guitar_src.PlayScheduled(nextEventTime);
-        
+        if (dialogueManager.dialogueIsPlaying)
+        {
+            //Debug.Log("SoundManager::Update() - Dialogue is Playing!!!");
 
+            //enter dialogue snapshot
+            AudioMixerSnapshot dialougeSnap = audioMixer.FindSnapshot("Dialogue");
+            dialougeSnap.TransitionTo(0.5f);
+            
+        }else
+        {
+            AudioMixerSnapshot snap = audioMixer.FindSnapshot("Snapshot");
+            snap.TransitionTo(0.5f);
+        }
+        
+        if(AudioSettings.dspTime > nextStartTime - 1)
+        {
+           
+            leadGSrcArr[toggle].clip = leadGClipsArr[nextClip];
+            bassGSrcArr[toggle].clip = bassGClipsArr[nextClip];
+            chordGSrcArr[toggle].clip = chordGClipsArr[nextClip];
+            drumSrcArr[toggle].clip = drumClipsArr[nextClip];
+
+            leadGSrcArr[toggle].PlayScheduled(nextStartTime);
+            bassGSrcArr[toggle].PlayScheduled(nextStartTime);
+            chordGSrcArr[toggle].PlayScheduled(nextStartTime);
+            drumSrcArr[toggle].PlayScheduled(nextStartTime);
+
+
+            //check duration of next clip to update next start time
+                //all clips should be same length so use lead guitar as reference
+            double duration = (double)leadGClipsArr[nextClip].samples / leadGClipsArr[nextClip].frequency;
+            //nextStartTime = nextStartTime + duration;
+            nextStartTime += duration;
+
+            //switch audio sources
+            toggle = 1 - toggle; // 1 - 0 = 1 -> 1 - 1 = 0
+
+            //a nice terinary for array indexing
+            //TODO: numLoopingClips edited when checkpoint is met so loops are changed "dynamically"
+            nextClip = nextClip < numLoopingClips - 1 ? nextClip + 1 : 0;
+
+        }
+    }
+
+    void PauseMusic()
+    {
+
+        //might want to leave bass line unpaused...
+        //bass_guitar_src.ignoreListenerPause = true;
+
+        AudioListener.pause = true; //should pause all audio sources
+        
+    }
+
+    void UnPauseMusic()
+    {
+        AudioListener.pause = false; //should unpause all audio sources
     }
 }
