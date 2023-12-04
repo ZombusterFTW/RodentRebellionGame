@@ -49,8 +49,12 @@ public class DialogueManager : MonoBehaviour
     private const string CAMERA_TAG = "camera";
 
     private DialogueVariables dialogueVariables;
+    private bool destroyDialougeParentOnExit;
 
     private string anim;
+
+    //If defined this gameobject is an in-game npc or tutorial dialouge trigger
+    private GameObject dialougeContainerGameObject;
     private void Awake() 
     {
         if (instance != null)
@@ -132,8 +136,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON) 
+    public void EnterDialogueMode(TextAsset inkJSON, GameObject dialougeGameObj = null, bool destroyDialougeParentOnExit = false) 
     {
+        dialougeContainerGameObject = dialougeGameObj;
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
@@ -154,15 +159,22 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator ExitDialogueMode() 
     {
-
+        if (dialougeContainerGameObject != null && destroyDialougeParentOnExit)
+        {
+            DestroyImmediate(dialougeContainerGameObject);
+        }
         GameObject.FindObjectOfType<PlayerController>().DisableControls(false);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSecondsRealtime(0.2f);
 
         dialogueVariables.StopListening(currentStory);
 
         currentStory.UnbindExternalFunction("dialougeActivate");
         currentStory.UnbindExternalFunction("dialougeDeactivate");
 
+        if(dialougeContainerGameObject != null) 
+        {
+            DestroyImmediate(dialougeContainerGameObject);
+        }
 
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
@@ -231,7 +243,7 @@ public class DialogueManager : MonoBehaviour
             {
                 PlayDialogueSound(dialogueText.maxVisibleCharacters, dialogueText.text[dialogueText.maxVisibleCharacters]);
                 dialogueText.maxVisibleCharacters++;
-                yield return new WaitForSeconds(typingSpeed);
+                yield return new WaitForSecondsRealtime(typingSpeed);
             }
 
         }

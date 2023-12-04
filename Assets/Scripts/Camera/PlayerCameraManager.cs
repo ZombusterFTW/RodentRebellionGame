@@ -67,4 +67,12 @@ public class PlayerCameraManager : MonoBehaviour
             cameraConfiner.m_BoundingShape2D = collision.gameObject.GetComponent<CameraBoundsSwitcher>()?.cameraBounds;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.GetComponent<AutoDialouge>() != null)
+        {
+            collision.GetComponent<AutoDialouge>().PlayDialouge();  
+        }
+    }
 }

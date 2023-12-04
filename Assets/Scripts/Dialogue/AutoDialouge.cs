@@ -9,7 +9,8 @@ public class AutoDialouge : MonoBehaviour
     [Header("Ink JSON")]
     [SerializeField] private TextAsset inkJSON;
     [SerializeField] bool playDialougeAutomatically;
-    [SerializeField] float dialougeDelay;   
+    [SerializeField] float dialougeDelay;
+    [SerializeField] bool cleanupOnDialougeExit = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,13 +25,20 @@ public class AutoDialouge : MonoBehaviour
     {
         //Wait for the delay and enter dialouge mode.
         yield return new WaitForSeconds(dialougeDelay);
-        PlayDialouge();
+        PlayDialougeScheduled();
     }
 
     public void PlayDialouge()
     {
-        GameObject.FindObjectOfType<PlayerController>().DisableControls(true);
-        DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+        if(!playDialougeAutomatically)
+        {
+            GameObject.FindObjectOfType<PlayerController>().DisableControls(true);
+            DialogueManager.GetInstance().EnterDialogueMode(inkJSON, gameObject, cleanupOnDialougeExit);
+        }
     }
-
+    private void PlayDialougeScheduled()
+    {
+            GameObject.FindObjectOfType<PlayerController>().DisableControls(true);
+            DialogueManager.GetInstance().EnterDialogueMode(inkJSON, gameObject, cleanupOnDialougeExit);
+    }
 }
