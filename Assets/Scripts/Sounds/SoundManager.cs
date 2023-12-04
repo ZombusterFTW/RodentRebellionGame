@@ -8,8 +8,13 @@ using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
-
     //Public Values!!!
+
+    [Header("Audio Mixer")]
+    public AudioMixerGroup mainMixer;
+    public AudioMixer audioMixer;
+
+    
     [Header("Audio Sources")]
     //these are all lists so they can be cylced through
     public AudioSource[] introSrcArr;
@@ -27,10 +32,10 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] bassGClipsArr;
     public AudioClip[] chordGClipsArr;
     public AudioClip[] drumClipsArr;
-
-    [Header("Audio Mixer")]
-    public AudioMixerGroup mainMixer;
-    public AudioMixer audioMixer;
+    
+    [Header("Frenzy Mode!!")]
+    public AudioSource[] frenzySrcArr;
+    public AudioClip[] frenzyClipsArr;
     
     //Private Values!!!
     private double introDuration;
@@ -39,8 +44,7 @@ public class SoundManager : MonoBehaviour
     private int nextClip = 0; //iterates through audio clips per source
 
     private DialogueManager dialogueManager; //grab active dialogue manager instance
-
-    private bool justExitedDialogue = false;
+    private FrenzyManager frenzyManager;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +53,7 @@ public class SoundManager : MonoBehaviour
 
         //get dialogue manager
         dialogueManager = DialogueManager.GetInstance();
+        frenzyManager = FrenzyManager.instance; //get FrenzyManager instance
 
         double startTime = AudioSettings.dspTime + 0.2; //add 2 ms for lag
 
@@ -57,6 +62,9 @@ public class SoundManager : MonoBehaviour
         PlayIntroBGM(startTime);
         //all intro sources are set to play on awake with no loop
         // should be able to just calculate when they end to start the looping section
+
+        //load frenzy clips
+        LoadFrenzyBGM();
 
         //calculate length of intro, start rest of audio after that
         introDuration = (double) introClipsArr[0].samples / introClipsArr[0].frequency; //duration
@@ -74,6 +82,16 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private void LoadFrenzyBGM()
+    {
+        //load at start for ease - its the same the whole time
+        Debug.Log("SoundManager::LoadFrenzyBGM()");
+        for(int i = 0; i < frenzySrcArr.Length; i++)
+        {
+            frenzySrcArr[i].clip = frenzyClipsArr[i];
+        }
+    }
+
     private void PlayIntroBGM(double start) {
         Debug.Log("SoundManager::PlayIntroBGM()");
         for(int i = 0; i < introSrcArr.Length; i++)
@@ -86,19 +104,26 @@ public class SoundManager : MonoBehaviour
     void Update()
     {
 
+        //check dialogue mode
         if (dialogueManager.dialogueIsPlaying)
         {
-            //Debug.Log("SoundManager::Update() - Dialogue is Playing!!!");
-
             //enter dialogue snapshot
-            AudioMixerSnapshot dialougeSnap = audioMixer.FindSnapshot("Dialogue");
-            dialougeSnap.TransitionTo(0.5f);
+            audioMixer.FindSnapshot("Dialogue").TransitionTo(0.2f);
             
         }else
         {
-            AudioMixerSnapshot snap = audioMixer.FindSnapshot("Snapshot");
-            snap.TransitionTo(0.5f);
+            audioMixer.FindSnapshot("Gameplay").TransitionTo(0.5f);
         }
+
+        //check frenzy mode
+        if (frenzyManager.frenzyActive)
+        {
+            PlayFrenzyBGM();
+        }else
+        {
+            StopFrenzyBGM();
+        }
+        
         
         if(AudioSettings.dspTime > nextStartTime - 1)
         {
@@ -112,7 +137,6 @@ public class SoundManager : MonoBehaviour
             bassGSrcArr[toggle].PlayScheduled(nextStartTime);
             chordGSrcArr[toggle].PlayScheduled(nextStartTime);
             drumSrcArr[toggle].PlayScheduled(nextStartTime);
-
 
             //check duration of next clip to update next start time
                 //all clips should be same length so use lead guitar as reference
@@ -128,6 +152,41 @@ public class SoundManager : MonoBehaviour
             nextClip = nextClip < numLoopingClips - 1 ? nextClip + 1 : 0;
 
         }
+    }
+
+    private void PlayFrenzyBGM()
+    {
+
+        leadGSrcArr[toggle].Pause();
+        bassGSrcArr[toggle].Pause();
+        chordGSrcArr[toggle].Pause();
+        drumSrcArr[toggle].Pause();
+
+        for (int i = 0; i < frenzySrcArr.Length; i++)
+        {
+
+            if (!frenzySrcArr[i].isPlaying) //if not already playing -> account for update() loop
+            {
+                frenzySrcArr[i].Play(); //set them all to play
+            }
+        }
+
+        audioMixer.FindSnapshot("Frenzy").TransitionTo(0.01f); //trainsition to frenzy mixer
+    }
+
+    private void StopFrenzyBGM()
+    {
+
+        leadGSrcArr[toggle].UnPause();
+        bassGSrcArr[toggle].UnPause();
+        chordGSrcArr[toggle].UnPause();
+        drumSrcArr[toggle].UnPause();
+
+        for (int i = 0; i < frenzySrcArr.Length; i++)
+        {
+            frenzySrcArr[i].Stop(); //stop all audio
+        }
+        audioMixer.FindSnapshot("Gameplay").TransitionTo(0.01f); //back to gameplay
     }
 
     void PauseMusic()
