@@ -46,6 +46,7 @@ public class DialogueManager : MonoBehaviour
     private const string PORTRAIT_TAG = "portrait";
     private const string LAYOUT_TAG = "layout";
     private const string AUDIO_TAG = "audio";
+    private const string CAMERA_TAG = "camera";
 
     private DialogueVariables dialogueVariables;
 
@@ -326,6 +327,13 @@ public class DialogueManager : MonoBehaviour
                     break;
                 case AUDIO_TAG: 
                     SetCurrentAudioInfo(tagValue);
+                    break;
+                case CAMERA_TAG:
+                    if(PlayerCameraManager.instance != null) 
+                    {
+                        //If looking at another gameobject is desiered make sure big joe is always set at the end of the dialouge!
+                        PlayerCameraManager.instance.ForceCameraLookat(tagValue);
+                    }
                     break;
                 default:
                     Debug.LogWarning("Tag came in but is not currently being handled: " + tag);
