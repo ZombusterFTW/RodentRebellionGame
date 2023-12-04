@@ -9919,6 +9919,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1796743163}
     m_Modifications:
+    - target: {fileID: 1578620140974666152, guid: d9a72db7172b4564881d0eae7193ff56, type: 3}
+      propertyPath: doorColor.b
+      value: 0.4339623
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578620140974666152, guid: d9a72db7172b4564881d0eae7193ff56, type: 3}
+      propertyPath: doorColor.g
+      value: 0.4339623
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578620140974666152, guid: d9a72db7172b4564881d0eae7193ff56, type: 3}
+      propertyPath: doorColor.r
+      value: 0.4339623
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578620140974666152, guid: d9a72db7172b4564881d0eae7193ff56, type: 3}
+      propertyPath: doorColorString
+      value: Big Joe's Cell
+      objectReference: {fileID: 0}
     - target: {fileID: 2496702365748756350, guid: d9a72db7172b4564881d0eae7193ff56, type: 3}
       propertyPath: m_Name
       value: DoorAndKey
@@ -12362,18 +12378,18 @@ PrefabInstance:
     - target: {fileID: 3271972373544077028, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
-      objectReference: {fileID: 1793162232}
+      objectReference: {fileID: 2112903552}
     - target: {fileID: 5169012110108082315, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_UIInputModule
       value: 
       objectReference: {fileID: 1614604420}
     - target: {fileID: 7236839450530248994, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.112341724
+      value: 16.013348
       objectReference: {fileID: 0}
     - target: {fileID: 7236839450530248994, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.60518664
+      value: 0.43890676
       objectReference: {fileID: 0}
     - target: {fileID: 8686200487451471497, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.x
