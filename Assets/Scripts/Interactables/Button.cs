@@ -28,6 +28,10 @@ public class Button : MonoBehaviour
         {
             ActivateButton();
         }
+        else
+        {
+            DeactivateButton();
+        }
     }
 
     // Update is called once per frame

@@ -21,7 +21,11 @@ public class AutomaticDoor : MonoBehaviour, R4Activatable
     void Awake()
     {
         leftDoorStartPos = leftDoor.transform.position;
-        rightDoorStartPos = rightDoor.transform.position;   
+        rightDoorStartPos = rightDoor.transform.position;
+
+
+        leftDoorTarget.GetComponent<SpriteRenderer>().enabled = false;
+        rightDoorTarget.GetComponent<SpriteRenderer>().enabled = false; 
     }
 
     // Update is called once per frame

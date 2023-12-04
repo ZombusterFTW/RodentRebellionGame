@@ -757,7 +757,7 @@ AnimatorState:
   m_PrefabAsset: {fileID: 0}
   m_Name: BigJoeIdle
   m_Speed: 0.25
-  m_CycleOffset: 0
+  m_CycleOffset: 1
   m_Transitions:
   - {fileID: -7551378314730570932}
   - {fileID: 7610306613358849503}

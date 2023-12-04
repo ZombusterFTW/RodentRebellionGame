@@ -41,6 +41,8 @@ public class MovingPlatform : MonoBehaviour, R4Activatable
     // Start is called before the first frame update
     void Start()
     {
+        platformStart.GetComponent<SpriteRenderer>().enabled = false;
+        platformEnd.GetComponent<SpriteRenderer>().enabled = false; 
         //Move platform to its start or end. 
         if (startAtEnd)
         {
