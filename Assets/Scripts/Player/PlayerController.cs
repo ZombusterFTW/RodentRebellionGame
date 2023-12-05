@@ -487,7 +487,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         {
             case InputActionPhase.Performed:
                 //Attempt to activate frenzy mode.
-                frenzyManager.ActivateFrenzyMeter();
+                if(!disableAllMoves) frenzyManager.ActivateFrenzyMeter();
                 break;
             case InputActionPhase.Started:
                 break;
