@@ -42,6 +42,7 @@ public class SpawnPoint : MonoBehaviour, R4Activatable
         if (playerController != null && playerController.GetSpawn() == null && isStartingSpawn && isActive) 
         {
             playerController.SetSpawn(spawnPoint);
+            playerController.transform.position = spawnPoint.transform.position;
         }
         if(!isActive) spriteRenderer.color = disabledColor;
     }

@@ -46,6 +46,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Back/Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""c0febae3-9de3-4a4a-a0f3-4296b1f88e18"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=2)"",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""GroundPound"",
                     ""type"": ""Button"",
                     ""id"": ""319eb477-dd2d-4476-b0f0-76dad6a7598a"",
@@ -112,7 +121,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""MousePosition"",
                     ""type"": ""PassThrough"",
                     ""id"": ""dd31eef8-8ee1-41d4-bb2b-9294d7437061"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -316,6 +325,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""MouseSubmit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""93903e5d-5127-40c5-95a0-67787f022ccf"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back/Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f43edd4d-2880-4ad3-b9e0-6319d21ddae7"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back/Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -326,6 +357,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerControlActions = asset.FindActionMap("PlayerControlActions", throwIfNotFound: true);
         m_PlayerControlActions_Movement = m_PlayerControlActions.FindAction("Movement", throwIfNotFound: true);
         m_PlayerControlActions_Jump = m_PlayerControlActions.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerControlActions_BackPause = m_PlayerControlActions.FindAction("Back/Pause", throwIfNotFound: true);
         m_PlayerControlActions_GroundPound = m_PlayerControlActions.FindAction("GroundPound", throwIfNotFound: true);
         m_PlayerControlActions_Interact = m_PlayerControlActions.FindAction("Interact", throwIfNotFound: true);
         m_PlayerControlActions_Dash = m_PlayerControlActions.FindAction("Dash", throwIfNotFound: true);
@@ -397,6 +429,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IPlayerControlActionsActions> m_PlayerControlActionsActionsCallbackInterfaces = new List<IPlayerControlActionsActions>();
     private readonly InputAction m_PlayerControlActions_Movement;
     private readonly InputAction m_PlayerControlActions_Jump;
+    private readonly InputAction m_PlayerControlActions_BackPause;
     private readonly InputAction m_PlayerControlActions_GroundPound;
     private readonly InputAction m_PlayerControlActions_Interact;
     private readonly InputAction m_PlayerControlActions_Dash;
@@ -411,6 +444,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public PlayerControlActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerControlActions_Movement;
         public InputAction @Jump => m_Wrapper.m_PlayerControlActions_Jump;
+        public InputAction @BackPause => m_Wrapper.m_PlayerControlActions_BackPause;
         public InputAction @GroundPound => m_Wrapper.m_PlayerControlActions_GroundPound;
         public InputAction @Interact => m_Wrapper.m_PlayerControlActions_Interact;
         public InputAction @Dash => m_Wrapper.m_PlayerControlActions_Dash;
@@ -434,6 +468,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @BackPause.started += instance.OnBackPause;
+            @BackPause.performed += instance.OnBackPause;
+            @BackPause.canceled += instance.OnBackPause;
             @GroundPound.started += instance.OnGroundPound;
             @GroundPound.performed += instance.OnGroundPound;
             @GroundPound.canceled += instance.OnGroundPound;
@@ -468,6 +505,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @BackPause.started -= instance.OnBackPause;
+            @BackPause.performed -= instance.OnBackPause;
+            @BackPause.canceled -= instance.OnBackPause;
             @GroundPound.started -= instance.OnGroundPound;
             @GroundPound.performed -= instance.OnGroundPound;
             @GroundPound.canceled -= instance.OnGroundPound;
@@ -513,6 +553,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnBackPause(InputAction.CallbackContext context);
         void OnGroundPound(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);

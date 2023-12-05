@@ -16,8 +16,9 @@ public class DialogueManager : MonoBehaviour
     [Header("Load Globals JSON")]
     [SerializeField] private TextAsset loadGlobalsJSON;
 
+
+    public GameObject dialoguePanel;
     [Header("Dialogue UI")]
-    [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private GameObject continueIcon;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private TextMeshProUGUI displayNameText;
@@ -160,7 +161,7 @@ public class DialogueManager : MonoBehaviour
         ContinueStory();
     }
 
-    private IEnumerator ExitDialogueMode() 
+    public IEnumerator ExitDialogueMode() 
     {
         dialogueBGDampen.GetComponent<Image>().DOFade(0, 0.25f);
         if (dialougeContainerGameObject != null && destroyDialougeParentOnExit)

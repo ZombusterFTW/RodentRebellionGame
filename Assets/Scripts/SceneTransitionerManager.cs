@@ -20,6 +20,10 @@ public class SceneTransitionerManager : MonoBehaviour
     public Animator transitionShowcaseAnimator;
     [SerializeField] private TextMeshProUGUI gameHintsText;
     private int lastScreen = 0;
+    [SerializeField] private float sceneTransitionTime = 2f;
+    private bool transitionInProgress = false;
+
+
     public static SceneTransitionerManager instance { get; private set; }
     // Start is called before the first frame update
     void Start()
@@ -33,22 +37,26 @@ public class SceneTransitionerManager : MonoBehaviour
         }
         else if (instance != null && instance != this)
         {
-            Debug.Log("Scene transitioner already exists. Deleting clone");
-            DestroyImmediate(gameObject);
+            Debug.Log("Scene transitioner already exists. Deleting copy");
         }
     }
 
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         //Play animator animation
-        if(this != null && transitionAnimator != null) transitionAnimator.Play("BoxWipe_End");
+        if (this != null && transitionAnimator != null)
+        {
+            transitionAnimator.Play("BoxWipe_End");
+            transitionInProgress = false;
+        }
         //gameHintsText.text = gameHints[Random.Range(0, gameHints.Length)];
     }
 
-    public void StartTransition()
+    public void StartTransition(string sceneToGo = "MainMenu")
     {
-        if (!SceneTransitionerManager.instance.transitionAnimator.GetCurrentAnimatorStateInfo(0).IsName("BoxWipe_Start"))
+        if (!SceneTransitionerManager.instance.transitionAnimator.GetCurrentAnimatorStateInfo(0).IsName("BoxWipe_Start") && SceneManager.GetActiveScene() != SceneManager.GetSceneByName(sceneToGo) && !transitionInProgress)
         {
+            transitionInProgress= true;
             //For demonstration purposes a text hint is directly linked to an animation that would play with it.
             //Screens are random but they cannot be the same twice in a row
             int index = Random.Range(0, gameHints.Length);
@@ -59,9 +67,24 @@ public class SceneTransitionerManager : MonoBehaviour
             lastScreen = index;
             transitionAnimator.SetTrigger("Transition");
             gameHintsText.text = gameHints[index];
-            if(gameHintAnimations[index] != null) transitionShowcaseAnimator.Play(gameHintAnimations[index]);
+            //Commented until anims are added
+            //if(gameHintAnimations[index] != null) transitionShowcaseAnimator.Play(gameHintAnimations[index], 1);
+            StartCoroutine(SceneTransition(sceneToGo));
         }
        
+    }
+
+
+
+    IEnumerator SceneTransition(string sceneToGo)
+    {
+        //Future, include a pause menu with options. For now just return to the main menu if the player hits escape.
+        Time.timeScale = 0;
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToGo);
+        asyncLoad.allowSceneActivation = false;
+        yield return new WaitForSecondsRealtime(sceneTransitionTime);
+        asyncLoad.allowSceneActivation = true;
+        Time.timeScale = 1; 
     }
 
     // Update is called once per frame

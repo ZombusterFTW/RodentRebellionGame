@@ -11,6 +11,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatformAnchor, ControlledCharacter
 {
+    SceneTransitionerManager sceneTransitionerManager;
     private PlayerInput playerInput;
     [SerializeField] private GameObject playerSpriteContainer;
     public DashTrail dashTrail;
@@ -106,10 +107,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     private void Awake()
     {
-        Time.timeScale = 1;
         playerSprite = playerSpriteContainer.GetComponent<SpriteRenderer>();
         playerAnimator = playerSpriteContainer.GetComponent<Animator>();
         playerUI  = Instantiate(playerUIPrefab).GetComponent<PlayerUI>();
+        DontDestroyOnLoad(playerUI);
         playerInput = GetComponent<PlayerInput>();
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
@@ -126,18 +127,27 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         playerDoubleJumpsRemaining = playerMaxJumpCount;
         playerSpeed_Game = playerSpeed;
         jumpForce_Game = jumpForce;
-        SceneManager.activeSceneChanged += OnSceneChange;
-        
+        SceneManager.sceneLoaded += OnSceneChange;
+        sceneTransitionerManager = SceneTransitionerManager.instance;
     }
 
-    private void OnSceneChange(Scene arg0, Scene arg1)
+    private void OnSceneChange(Scene arg0, LoadSceneMode arg1)
     {
-        //On a given scene change we set the UI input to the correct value
-        if(GameObject.FindGameObjectWithTag("UIEventSystem") != null)
+        if(this != null)
         {
-            playerInput.uiInputModule = GameObject.FindGameObjectWithTag("UIEventSystem")?.GetComponent<InputSystemUIInputModule>();
+            //On a given scene change we set the UI input to the correct value
+            if (GameObject.FindGameObjectWithTag("UIEventSystem") != null)
+            {
+                playerInput.uiInputModule = GameObject.FindGameObjectWithTag("UIEventSystem")?.GetComponent<InputSystemUIInputModule>();
+            }
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                StopAllCoroutines();
+                DestroyImmediate(gameObject);
+            }
         }
     }
+
 
     // Update is called once per frame
     void Update()
@@ -835,6 +845,18 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             }
         }
 
+    }
+
+
+    public void OnBack()
+    {
+        Debug.Log("HI");
+        if (sceneTransitionerManager != null)
+        {
+            sceneTransitionerManager.StartTransition();
+        }
+        
+        
     }
 
     public void PlayDamagedAnim()

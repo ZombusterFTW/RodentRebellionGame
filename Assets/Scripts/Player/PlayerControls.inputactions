@@ -24,6 +24,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Back/Pause",
+                    "type": "Button",
+                    "id": "c0febae3-9de3-4a4a-a0f3-4296b1f88e18",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=2)",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "GroundPound",
                     "type": "Button",
                     "id": "319eb477-dd2d-4476-b0f0-76dad6a7598a",
@@ -90,7 +99,7 @@
                     "name": "MousePosition",
                     "type": "PassThrough",
                     "id": "dd31eef8-8ee1-41d4-bb2b-9294d7437061",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -292,6 +301,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "MouseSubmit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93903e5d-5127-40c5-95a0-67787f022ccf",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back/Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f43edd4d-2880-4ad3-b9e0-6319d21ddae7",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back/Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -20,7 +20,7 @@ public class FrenzyManager : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if(instance == null) 
         {
@@ -33,6 +33,10 @@ public class FrenzyManager : MonoBehaviour
             Destroy(gameObject);
         }
         frenzyAmountCurrent = frenzyStartingValue;
+        
+    }
+    private void Start()
+    {
         playerController = GetComponent<PlayerController>();
         playerUIManager = playerController.GetPlayerUI();
     }
