@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6264f5f5c8de7e247af35b85e9a2ba3c
+guid: 8b7578d54d5f59644b8cf855d823d051
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: miniBoss_damage_0
+      name: bionicCat_death_0
       rect:
         serializedVersion: 2
-        x: 374
-        y: 13
-        width: 650
-        height: 1186
+        x: 240
+        y: 101
+        width: 910
+        height: 1004
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c285486d76c2b2545a6911978b6fb822
-      internalID: -178284086
+      spriteID: abb821fe55a22a94eadeb81f5faf6479
+      internalID: 587686052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_damage_1
+      name: bionicCat_death_1
       rect:
         serializedVersion: 2
-        x: 1490
-        y: 10
-        width: 694
-        height: 1159
+        x: 1469
+        y: 520
+        width: 16
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5573ab8ef92080746a375f430b8b41c5
-      internalID: 1263652768
+      spriteID: 6d4bef3039a47a34cb2028fc37f3e7bc
+      internalID: 1218536226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_damage_2
+      name: bionicCat_death_2
       rect:
         serializedVersion: 2
-        x: 2158
-        y: 60
-        width: 21
-        height: 38
+        x: 1457
+        y: 102
+        width: 885
+        height: 980
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +179,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba823035e1627574093d4caac53f02d0
-      internalID: 195647829
+      spriteID: 235a4294fc48aad45865f20dc79f12b3
+      internalID: -1300557112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bionicCat_death_3
+      rect:
+        serializedVersion: 2
+        x: 2650
+        y: 110
+        width: 891
+        height: 916
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f52307aa56240499b91f3ef7435801
+      internalID: -883830772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bionicCat_death_4
+      rect:
+        serializedVersion: 2
+        x: 3766
+        y: 130
+        width: 979
+        height: 805
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9373798e552731044ad89b0363585104
+      internalID: -1642876942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bionicCat_death_5
+      rect:
+        serializedVersion: 2
+        x: 4856
+        y: 127
+        width: 1084
+        height: 662
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7a229d4951942741a337c448c37bbd3
+      internalID: 1967374959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bionicCat_death_6
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 497
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f14553ca40309044b84e62dd52b619c
+      internalID: 1657070072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bionicCat_death_7
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 481
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 437e208664b6fd941b6e5cd400328867
+      internalID: -1436315185
       vertices: []
       indices: 
       edges: []
@@ -196,9 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      miniBoss_damage_0: -178284086
-      miniBoss_damage_1: 1263652768
-      miniBoss_damage_2: 195647829
+      bionicCat_death_0: 587686052
+      bionicCat_death_1: 1218536226
+      bionicCat_death_2: -1300557112
+      bionicCat_death_3: -883830772
+      bionicCat_death_4: -1642876942
+      bionicCat_death_5: 1967374959
+      bionicCat_death_6: 1657070072
+      bionicCat_death_7: -1436315185
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

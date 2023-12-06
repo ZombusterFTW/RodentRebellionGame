@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 699c11900cd8b8b46b9375134984092c
+guid: 106afc0120c99454691190c892c19562
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: mutatedCat_death_0
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 72
+        width: 691
+        height: 1036
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6627a5d8e266634d9aa086f9f23ce02
+      internalID: 2070141513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mutatedCat_death_1
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 81
+        width: 683
+        height: 901
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eec6cb8cf441c7d4e803d9eb14fbeff1
+      internalID: 1128060366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mutatedCat_death_2
+      rect:
+        serializedVersion: 2
+        x: 2594
+        y: 48
+        width: 841
+        height: 852
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf44ab387f3694340a3ca7b55e54fa03
+      internalID: 1038198070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mutatedCat_death_3
+      rect:
+        serializedVersion: 2
+        x: 3696
+        y: 75
+        width: 940
+        height: 687
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22908c2db785e8d41bf9302e0bec26d6
+      internalID: 1055743868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +216,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mutatedCat_death_0: 2070141513
+      mutatedCat_death_1: 1128060366
+      mutatedCat_death_2: 1038198070
+      mutatedCat_death_3: 1055743868
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

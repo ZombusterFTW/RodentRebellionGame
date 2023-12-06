@@ -1,0 +1,3308 @@
+fileFormatVersion: 2
+guid: 32e592c6fbe307b4bb2f430341eaea19
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BJDeathStrip_0
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 882
+        width: 279
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46d5e9ab2cc2f394cbf190aa653e3596
+      internalID: 1783201964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_1
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 895
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a91e0e9d0114734c975cbf6a6774a5a
+      internalID: -1166129965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_2
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 753
+        width: 142
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a45d873b8271de3449dc6f5d517f2ff9
+      internalID: 1148013291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_3
+      rect:
+        serializedVersion: 2
+        x: 1886
+        y: 691
+        width: 428
+        height: 309
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b88c5b0d19b8a5847afeeaea63d64bb0
+      internalID: 750510363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_4
+      rect:
+        serializedVersion: 2
+        x: 3005
+        y: 592
+        width: 959
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccce86a1c96b599409d2e358d96d0820
+      internalID: -683241331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_5
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 0
+        width: 499
+        height: 893
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a450ffb58b75ca41969b35c83acdf04
+      internalID: -1409014407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_6
+      rect:
+        serializedVersion: 2
+        x: 1421
+        y: 819
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d29a90645bbe1b44db74d7c09e623bd9
+      internalID: 1576370516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_7
+      rect:
+        serializedVersion: 2
+        x: 1432
+        y: 807
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 815df13b23e429a49ae98f915fb54945
+      internalID: -2130920358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_8
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 784
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: effc7b3cc1934c24d90c5a7fba091e75
+      internalID: 1966947400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_9
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 779
+        width: 16
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b146d0299fe47544d9bddd3a1c02bf5f
+      internalID: -794012522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_10
+      rect:
+        serializedVersion: 2
+        x: 1234
+        y: 765
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 044fabf44e6f4154682f918c02cfadd0
+      internalID: 1689437834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_11
+      rect:
+        serializedVersion: 2
+        x: 1242
+        y: 766
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a19182eaa496ccb4791323a67e28f8c2
+      internalID: -2117905020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_12
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 776
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28b2676d9f0550f428f5bfd5572e027b
+      internalID: -677507148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_13
+      rect:
+        serializedVersion: 2
+        x: 1377
+        y: 768
+        width: 8
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 376bb0c1201518b47aaf7ae9d10a79c9
+      internalID: 1577933027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_14
+      rect:
+        serializedVersion: 2
+        x: 1430
+        y: 775
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56a7be4ebd86d4949965fb15ae38de05
+      internalID: -1983946299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_15
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 766
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1ef109c18d9b5e4d9554eae46a59aad
+      internalID: -768813846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_16
+      rect:
+        serializedVersion: 2
+        x: 1577
+        y: 768
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a1f50e4d3da85e4692a65006fc56342
+      internalID: 307735684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_17
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 0
+        width: 792
+        height: 756
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2227c780bc9c6984db64cbe8416a47f6
+      internalID: -79170412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_18
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 743
+        width: 22
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21bb5056017be17449a8e243420d3023
+      internalID: -1390995254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_19
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 744
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b1792ecf74bd79488938e35575da552
+      internalID: 892522387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_20
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 751
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5123a8777055dce4ea754d01a233cc14
+      internalID: 1552995674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_21
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 748
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1b8306ce65c1c7468f6fb03a2b42973
+      internalID: 671248917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_22
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 736
+        width: 36
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f371e5edf2a47c43be6c2833f8b9568
+      internalID: 2050500493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_23
+      rect:
+        serializedVersion: 2
+        x: 1271
+        y: 746
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d35ab6dcb69d9a41bb3da93e72b05a2
+      internalID: 758897772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_24
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 734
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d4ae7067d55dfd4fae7ae2e4eb72819
+      internalID: 1920524263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_25
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 734
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25b0f3652a7e02b4795e16a3ce8f0198
+      internalID: -657070561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_26
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 711
+        width: 5
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9316240088712043940bf50244ef853
+      internalID: -973656607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_27
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 690
+        width: 6
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: befa77b664c73a6489c5e1e40e47b132
+      internalID: -474586423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_28
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 687
+        width: 17
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0681785abfd7c344dab6d6f19ce74cd0
+      internalID: -1630411005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_29
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 684
+        width: 59
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76cc2fb762ddcee49a094ae9b358f796
+      internalID: -1385497941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_30
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 683
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16c139799bfc7bd40a42d4a1e0602947
+      internalID: 449128986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_31
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 678
+        width: 38
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16c468bd98bd27e4e852c6e894998c57
+      internalID: 1012745755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_32
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 693
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3368d36be1f827840a9e903bcbb4139d
+      internalID: -2043886995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_33
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 691
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5e0ab30314f96a4bbce36527be0c5c1
+      internalID: 1272259977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_34
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 681
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54a39a2c4807a9440a714c32784998ef
+      internalID: -1374205846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_35
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 623
+        width: 13
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3bd64d7578c0b1459e108b2e61ff1fa
+      internalID: -1360730594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_36
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 676
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4967788ea9542c545b173359afea35c7
+      internalID: 1610249965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_37
+      rect:
+        serializedVersion: 2
+        x: 2316
+        y: 674
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfb2c6904b433cb47a718461f6887399
+      internalID: -1860871111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_38
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 669
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb649562edf8db444bbc33d8d7b0b64b
+      internalID: -667387164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_39
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 660
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 650af096d2b099c4682de4a880d5f474
+      internalID: 395676437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_40
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 668
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49f1d314e7a7c714aadf26ccb7391192
+      internalID: -739240381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_41
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 652
+        width: 5
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a68a648c4aed09468cccb03efe15ad8
+      internalID: -1786637813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_42
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 667
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2128a630fd9715a4aa74dd865515b531
+      internalID: 945427466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_43
+      rect:
+        serializedVersion: 2
+        x: 2318
+        y: 639
+        width: 43
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca6256cc2ae823e41aea572d4a682068
+      internalID: 1898139871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_44
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 631
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0514ca6dd5835b34facce6fec78f67cc
+      internalID: -2021477518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_45
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 602
+        width: 23
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c52792ad87fa8d409db8726bf5759d1
+      internalID: 1523911236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_46
+      rect:
+        serializedVersion: 2
+        x: 2335
+        y: 631
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efba2a9ff05c6064c821c01e9c54ca05
+      internalID: -780786356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_47
+      rect:
+        serializedVersion: 2
+        x: 2339
+        y: 619
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edf8c1ede9223bd42bcca473b8ace6bd
+      internalID: -1918193847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_48
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 594
+        width: 6
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7465b8ea996ca92498ed7e26898c4a55
+      internalID: 959506159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_49
+      rect:
+        serializedVersion: 2
+        x: 2341
+        y: 601
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f0b707bc219e81409bd2ef04af72c53
+      internalID: 319404156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_50
+      rect:
+        serializedVersion: 2
+        x: 2342
+        y: 607
+        width: 35
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc320ef1d773254e96e0af696ec6e8d
+      internalID: -1722962918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_51
+      rect:
+        serializedVersion: 2
+        x: 2415
+        y: 600
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33e7d7ee613282f4093580a54acf3280
+      internalID: -1001163683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_52
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 592
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 383a62214ed9d8241b3819cb74a0dd36
+      internalID: 205430681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_53
+      rect:
+        serializedVersion: 2
+        x: 2370
+        y: 597
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f9ca672414fc444ba1c117ef437668f
+      internalID: -318984431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_54
+      rect:
+        serializedVersion: 2
+        x: 2396
+        y: 592
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fc530f101d397940a107854d94b0627
+      internalID: -777556236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_55
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 555
+        width: 27
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69e32d01de7a25b4c95a1f1128f5f896
+      internalID: -1127978163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_56
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 556
+        width: 17
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cb927cfa4edf0a4dbf984ca4e6bd252
+      internalID: -1044673536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_57
+      rect:
+        serializedVersion: 2
+        x: 2353
+        y: 576
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 769706a4abae034478d75dd0a4f45d31
+      internalID: -56164664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_58
+      rect:
+        serializedVersion: 2
+        x: 2375
+        y: 587
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fca467e0f70c6624eb31ed28433a2b24
+      internalID: 1047115902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_59
+      rect:
+        serializedVersion: 2
+        x: 2469
+        y: 582
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b1f68f936ea29244a7591048c1e29cd
+      internalID: -799035734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_60
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 555
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 077630fea589a9b45bd3e204056eb697
+      internalID: 1835558843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_61
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 515
+        width: 43
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a802fbab36cc05a4198f753181a4b32b
+      internalID: -1962017580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_62
+      rect:
+        serializedVersion: 2
+        x: 2318
+        y: 551
+        width: 34
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7f2d3296c8212d44b1476046ff13502
+      internalID: -2035869838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_63
+      rect:
+        serializedVersion: 2
+        x: 2389
+        y: 562
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a25d2745e7220be46bdfb5a8bf416c7c
+      internalID: -566797399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_64
+      rect:
+        serializedVersion: 2
+        x: 2393
+        y: 550
+        width: 50
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60c52df1ccf0008468ac8ce39559e10b
+      internalID: -9667275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_65
+      rect:
+        serializedVersion: 2
+        x: 3722
+        y: 518
+        width: 28
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a93f8363feb6d2d44974d71cb5269956
+      internalID: 263457138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_66
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 533
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa3efa98853291c4a8cb42d32c69fd3d
+      internalID: -443084774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_67
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 518
+        width: 20
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2f1e43517529ab4fbab61f12ee14027
+      internalID: 1099207740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_68
+      rect:
+        serializedVersion: 2
+        x: 1816
+        y: 0
+        width: 954
+        height: 550
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee94ea1ca7255b344bcc8ac5f90301e6
+      internalID: 1418846647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_69
+      rect:
+        serializedVersion: 2
+        x: 2361
+        y: 549
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f98928ffdd269f74f8c3e53ed2d5188c
+      internalID: 1193598600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_70
+      rect:
+        serializedVersion: 2
+        x: 2377
+        y: 543
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f55bf9e78415944794fe988dc8fb217
+      internalID: -880718824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_71
+      rect:
+        serializedVersion: 2
+        x: 2605
+        y: 548
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c946fcfec83595d4bb017243dc1b1dbe
+      internalID: -1890404654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_72
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 520
+        width: 15
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 841cd54ec28146b4b8213d1d8af41130
+      internalID: 1553507355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_73
+      rect:
+        serializedVersion: 2
+        x: 3459
+        y: 520
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 810b5c32329bb804c90d73bcc40909ba
+      internalID: 813303979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_74
+      rect:
+        serializedVersion: 2
+        x: 3725
+        y: 514
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2361cf55977bdfd469e6a75901aa3123
+      internalID: 202837213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_75
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 488
+        width: 34
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de468cdff3fa98a4da945d560bfd8ac7
+      internalID: 1262954823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_76
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 483
+        width: 7
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a68476a0f76ac414d9cef93d9ab4546f
+      internalID: -1459528003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_77
+      rect:
+        serializedVersion: 2
+        x: 3722
+        y: 500
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5328a8c28e2bdf4aa9685c1a79cd6cf
+      internalID: -693915832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_78
+      rect:
+        serializedVersion: 2
+        x: 3723
+        y: 483
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc736d1fb8dfae4dba5b004f4328a15
+      internalID: -742116022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_79
+      rect:
+        serializedVersion: 2
+        x: 3448
+        y: 494
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c89a40f7a9ef0a24c8de85a152c477ea
+      internalID: 1816099967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_80
+      rect:
+        serializedVersion: 2
+        x: 3716
+        y: 490
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cb8de00e4d42354f84505fa333c495e
+      internalID: -1030374353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_81
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 459
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8246eabd6eda014284d1e944e47b015
+      internalID: 912412887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_82
+      rect:
+        serializedVersion: 2
+        x: 3482
+        y: 484
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd51c6b7d006e234d9838805c34cb843
+      internalID: -646467124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_83
+      rect:
+        serializedVersion: 2
+        x: 3504
+        y: 455
+        width: 27
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98c554c59ac196f4fb86f3ded3ca296a
+      internalID: -64367414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_84
+      rect:
+        serializedVersion: 2
+        x: 3400
+        y: 459
+        width: 43
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d19bc54cb6b6d044d87a62dd15113180
+      internalID: -353637270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_85
+      rect:
+        serializedVersion: 2
+        x: 3552
+        y: 471
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf59f9c58d1d77945964d276dd3ced1b
+      internalID: 353405952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_86
+      rect:
+        serializedVersion: 2
+        x: 3740
+        y: 474
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5031d24e9c400494d839813cccfd76f3
+      internalID: 306410477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_87
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 457
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7374860ef6ab6a439a1229cb5240c86
+      internalID: 1839016233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_88
+      rect:
+        serializedVersion: 2
+        x: 3377
+        y: 453
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9692ce43c40444840accae77aa075a0e
+      internalID: 993195915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_89
+      rect:
+        serializedVersion: 2
+        x: 3674
+        y: 452
+        width: 63
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57e4c47727290904daa95c17358b681e
+      internalID: 241327825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_90
+      rect:
+        serializedVersion: 2
+        x: 3740
+        y: 463
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56516f37ab66fa3419675a89b33ef3e3
+      internalID: -740504115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_91
+      rect:
+        serializedVersion: 2
+        x: 3754
+        y: 457
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb3bb729986bc0d42ac76575d7f176c3
+      internalID: 2103708848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_92
+      rect:
+        serializedVersion: 2
+        x: 3784
+        y: 460
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d96268a97a306b4595d5637fcf70d48
+      internalID: 2011110159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_93
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 416
+        width: 46
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b908c03c25ef30c4c925b535704c7e9e
+      internalID: -1887005514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_94
+      rect:
+        serializedVersion: 2
+        x: 3361
+        y: 440
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 531b9f4d58c46124bad32c24e2cbb9b0
+      internalID: -1843447571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_95
+      rect:
+        serializedVersion: 2
+        x: 3367
+        y: 437
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7fca486db85a3744866317ca2597098
+      internalID: 869584945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_96
+      rect:
+        serializedVersion: 2
+        x: 3537
+        y: 439
+        width: 25
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bb724aac09544547a67b35cdf48f5af
+      internalID: 477730298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_97
+      rect:
+        serializedVersion: 2
+        x: 3567
+        y: 441
+        width: 37
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49460ec05c78c854580f3370c8e51d50
+      internalID: -1277018332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_98
+      rect:
+        serializedVersion: 2
+        x: 3582
+        y: 450
+        width: 28
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a53d7efb6ab94a43984747f8a1c736e
+      internalID: 2019429662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_99
+      rect:
+        serializedVersion: 2
+        x: 3654
+        y: 424
+        width: 59
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1282978cca90fd9448e4b1e90bc0b3f8
+      internalID: 1589791941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_100
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 393
+        width: 16
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 129c8ea99201b6043899ee8e0e74a5ee
+      internalID: -910708437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_101
+      rect:
+        serializedVersion: 2
+        x: 3348
+        y: 376
+        width: 45
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0f3e2dc3b7d3d54880242a6082e7f5d
+      internalID: -383945966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_102
+      rect:
+        serializedVersion: 2
+        x: 3414
+        y: 444
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bd79666bf85ea9498b7bd6fc586bebb
+      internalID: -15125639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_103
+      rect:
+        serializedVersion: 2
+        x: 3607
+        y: 421
+        width: 38
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fff7fd08c7c5bc7448928b893d18fa73
+      internalID: 1904233800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_104
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 438
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bffc6fb4b518ec45bd08937c37ce2fe
+      internalID: 52464948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_105
+      rect:
+        serializedVersion: 2
+        x: 3572
+        y: 429
+        width: 28
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29b961ea8b61d634d9e959e88ff1d273
+      internalID: -275499853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_106
+      rect:
+        serializedVersion: 2
+        x: 3646
+        y: 432
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3e0df8df1bf78045bdddd314f221586
+      internalID: 1072628555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_107
+      rect:
+        serializedVersion: 2
+        x: 3742
+        y: 435
+        width: 26
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4903dad14e827f942a9bb58882030097
+      internalID: 2050169458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_108
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 425
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76b53780055c4404996e8ca97be62ce9
+      internalID: -1853552439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_109
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 407
+        width: 8
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f15594aeca45834d8f353ebd29b6307
+      internalID: -520242255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_110
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 414
+        width: 6
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c06d560edf912c4a836f6a1a371e013
+      internalID: 205806002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_111
+      rect:
+        serializedVersion: 2
+        x: 3337
+        y: 402
+        width: 37
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d76d77dc5004c124e99df333857a5c6b
+      internalID: 868382290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_112
+      rect:
+        serializedVersion: 2
+        x: 3398
+        y: 419
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9de5bca2c0982f42a32ca77d7911c07
+      internalID: -206707431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_113
+      rect:
+        serializedVersion: 2
+        x: 3609
+        y: 412
+        width: 36
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7942d281d4ecf604fa1568536739d8d8
+      internalID: 1283934331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_114
+      rect:
+        serializedVersion: 2
+        x: 3723
+        y: 422
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc56b239f628dd14cbbed12cd090d914
+      internalID: -488229086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_115
+      rect:
+        serializedVersion: 2
+        x: 3741
+        y: 419
+        width: 41
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2bbb059dbfcfbc459987cd84dc6864b
+      internalID: 1568857187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_116
+      rect:
+        serializedVersion: 2
+        x: 3334
+        y: 418
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f37b5e2b6802248ac2d2a8bab8393a
+      internalID: 1892828881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_117
+      rect:
+        serializedVersion: 2
+        x: 3537
+        y: 418
+        width: 21
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c51a5b971add2f049b95021158e70af2
+      internalID: 2105950421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_118
+      rect:
+        serializedVersion: 2
+        x: 3789
+        y: 420
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26f14d2c6e4145c4e99a91b58142bc3e
+      internalID: -1144673454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_119
+      rect:
+        serializedVersion: 2
+        x: 3824
+        y: 420
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daa79837bb060ed489c44aafc0a91e17
+      internalID: -794355546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_120
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 375
+        width: 47
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db0853c656eeb7b4687290aa5db7a0be
+      internalID: -1101383017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_121
+      rect:
+        serializedVersion: 2
+        x: 2997
+        y: 0
+        width: 977
+        height: 417
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71e3e93bf425fbb429a806248673ccde
+      internalID: -1257931738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_122
+      rect:
+        serializedVersion: 2
+        x: 3392
+        y: 411
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34733c3e62e75a841829fac7d844552d
+      internalID: 926910929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_123
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 353
+        width: 46
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71869b7ba7260244aaf17e7a03d74088
+      internalID: 386561275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_124
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 379
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10bd263282142c84d819d66392d425be
+      internalID: -25572011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_125
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 330
+        width: 49
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ffe3697828ce5e4492ac509df5315ab
+      internalID: 1039270816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_126
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 361
+        width: 4
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b40f2a52a396ba84aa410b8dbe33efa2
+      internalID: 1654941300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_127
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 360
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8b2069000d2d484f8c4a0fbe8bf43cf
+      internalID: 783382943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_128
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 340
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 241c807103ce2974fb0e07bce212a0bb
+      internalID: -1723916137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_129
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 319
+        width: 49
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c797e49f233b2548a4ea65402feb04d
+      internalID: 1437346145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_130
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 339
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a745ce8781349b64d886846822d9534f
+      internalID: 1001421633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_131
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 313
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f013d7ef84f6bf42b5ef3dd94ec61cb
+      internalID: -414847164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_132
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 299
+        width: 62
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bc6003d52b7a7f41bb53ce12761d3d4
+      internalID: 1588711806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_133
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 283
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39804155e7a2ccd468e22cc2ee62e58f
+      internalID: 2001321273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_134
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 311
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cb14a61eba4718489eba16166cc2037
+      internalID: -1816473612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_135
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 279
+        width: 45
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96e7a5e5ed34a0845a9a27b3080192f0
+      internalID: -1655985118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_136
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 292
+        width: 25
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92d18206dbff761409c3d6de6ad60ce2
+      internalID: 1488675102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_137
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 292
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b063949f9bfb37a44b4f6071fe2a6d4e
+      internalID: 1041850093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_138
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 277
+        width: 27
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e8e02466de5f52469412b8078aa483a
+      internalID: 696714450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_139
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 267
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba3641e2668507a4eab24e9ce17d3070
+      internalID: 111095105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_140
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 263
+        width: 19
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e436fa5c5c1c74449a4668b5daf249e4
+      internalID: 657763339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_141
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 254
+        width: 25
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 819ff0da47705914a8b987cf7a7fbee7
+      internalID: -1791659527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_142
+      rect:
+        serializedVersion: 2
+        x: 3979
+        y: 176
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d25e09e286c0514eb1a9dad63b13948
+      internalID: 1204710005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDeathStrip_143
+      rect:
+        serializedVersion: 2
+        x: 3972
+        y: 131
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 030da62b65ae6344e88878b0e48e43da
+      internalID: 1282975406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BJDeathStrip_0: 1783201964
+      BJDeathStrip_1: -1166129965
+      BJDeathStrip_10: 1689437834
+      BJDeathStrip_100: -910708437
+      BJDeathStrip_101: -383945966
+      BJDeathStrip_102: -15125639
+      BJDeathStrip_103: 1904233800
+      BJDeathStrip_104: 52464948
+      BJDeathStrip_105: -275499853
+      BJDeathStrip_106: 1072628555
+      BJDeathStrip_107: 2050169458
+      BJDeathStrip_108: -1853552439
+      BJDeathStrip_109: -520242255
+      BJDeathStrip_11: -2117905020
+      BJDeathStrip_110: 205806002
+      BJDeathStrip_111: 868382290
+      BJDeathStrip_112: -206707431
+      BJDeathStrip_113: 1283934331
+      BJDeathStrip_114: -488229086
+      BJDeathStrip_115: 1568857187
+      BJDeathStrip_116: 1892828881
+      BJDeathStrip_117: 2105950421
+      BJDeathStrip_118: -1144673454
+      BJDeathStrip_119: -794355546
+      BJDeathStrip_12: -677507148
+      BJDeathStrip_120: -1101383017
+      BJDeathStrip_121: -1257931738
+      BJDeathStrip_122: 926910929
+      BJDeathStrip_123: 386561275
+      BJDeathStrip_124: -25572011
+      BJDeathStrip_125: 1039270816
+      BJDeathStrip_126: 1654941300
+      BJDeathStrip_127: 783382943
+      BJDeathStrip_128: -1723916137
+      BJDeathStrip_129: 1437346145
+      BJDeathStrip_13: 1577933027
+      BJDeathStrip_130: 1001421633
+      BJDeathStrip_131: -414847164
+      BJDeathStrip_132: 1588711806
+      BJDeathStrip_133: 2001321273
+      BJDeathStrip_134: -1816473612
+      BJDeathStrip_135: -1655985118
+      BJDeathStrip_136: 1488675102
+      BJDeathStrip_137: 1041850093
+      BJDeathStrip_138: 696714450
+      BJDeathStrip_139: 111095105
+      BJDeathStrip_14: -1983946299
+      BJDeathStrip_140: 657763339
+      BJDeathStrip_141: -1791659527
+      BJDeathStrip_142: 1204710005
+      BJDeathStrip_143: 1282975406
+      BJDeathStrip_15: -768813846
+      BJDeathStrip_16: 307735684
+      BJDeathStrip_17: -79170412
+      BJDeathStrip_18: -1390995254
+      BJDeathStrip_19: 892522387
+      BJDeathStrip_2: 1148013291
+      BJDeathStrip_20: 1552995674
+      BJDeathStrip_21: 671248917
+      BJDeathStrip_22: 2050500493
+      BJDeathStrip_23: 758897772
+      BJDeathStrip_24: 1920524263
+      BJDeathStrip_25: -657070561
+      BJDeathStrip_26: -973656607
+      BJDeathStrip_27: -474586423
+      BJDeathStrip_28: -1630411005
+      BJDeathStrip_29: -1385497941
+      BJDeathStrip_3: 750510363
+      BJDeathStrip_30: 449128986
+      BJDeathStrip_31: 1012745755
+      BJDeathStrip_32: -2043886995
+      BJDeathStrip_33: 1272259977
+      BJDeathStrip_34: -1374205846
+      BJDeathStrip_35: -1360730594
+      BJDeathStrip_36: 1610249965
+      BJDeathStrip_37: -1860871111
+      BJDeathStrip_38: -667387164
+      BJDeathStrip_39: 395676437
+      BJDeathStrip_4: -683241331
+      BJDeathStrip_40: -739240381
+      BJDeathStrip_41: -1786637813
+      BJDeathStrip_42: 945427466
+      BJDeathStrip_43: 1898139871
+      BJDeathStrip_44: -2021477518
+      BJDeathStrip_45: 1523911236
+      BJDeathStrip_46: -780786356
+      BJDeathStrip_47: -1918193847
+      BJDeathStrip_48: 959506159
+      BJDeathStrip_49: 319404156
+      BJDeathStrip_5: -1409014407
+      BJDeathStrip_50: -1722962918
+      BJDeathStrip_51: -1001163683
+      BJDeathStrip_52: 205430681
+      BJDeathStrip_53: -318984431
+      BJDeathStrip_54: -777556236
+      BJDeathStrip_55: -1127978163
+      BJDeathStrip_56: -1044673536
+      BJDeathStrip_57: -56164664
+      BJDeathStrip_58: 1047115902
+      BJDeathStrip_59: -799035734
+      BJDeathStrip_6: 1576370516
+      BJDeathStrip_60: 1835558843
+      BJDeathStrip_61: -1962017580
+      BJDeathStrip_62: -2035869838
+      BJDeathStrip_63: -566797399
+      BJDeathStrip_64: -9667275
+      BJDeathStrip_65: 263457138
+      BJDeathStrip_66: -443084774
+      BJDeathStrip_67: 1099207740
+      BJDeathStrip_68: 1418846647
+      BJDeathStrip_69: 1193598600
+      BJDeathStrip_7: -2130920358
+      BJDeathStrip_70: -880718824
+      BJDeathStrip_71: -1890404654
+      BJDeathStrip_72: 1553507355
+      BJDeathStrip_73: 813303979
+      BJDeathStrip_74: 202837213
+      BJDeathStrip_75: 1262954823
+      BJDeathStrip_76: -1459528003
+      BJDeathStrip_77: -693915832
+      BJDeathStrip_78: -742116022
+      BJDeathStrip_79: 1816099967
+      BJDeathStrip_8: 1966947400
+      BJDeathStrip_80: -1030374353
+      BJDeathStrip_81: 912412887
+      BJDeathStrip_82: -646467124
+      BJDeathStrip_83: -64367414
+      BJDeathStrip_84: -353637270
+      BJDeathStrip_85: 353405952
+      BJDeathStrip_86: 306410477
+      BJDeathStrip_87: 1839016233
+      BJDeathStrip_88: 993195915
+      BJDeathStrip_89: 241327825
+      BJDeathStrip_9: -794012522
+      BJDeathStrip_90: -740504115
+      BJDeathStrip_91: 2103708848
+      BJDeathStrip_92: 2011110159
+      BJDeathStrip_93: -1887005514
+      BJDeathStrip_94: -1843447571
+      BJDeathStrip_95: 869584945
+      BJDeathStrip_96: 477730298
+      BJDeathStrip_97: -1277018332
+      BJDeathStrip_98: 2019429662
+      BJDeathStrip_99: 1589791941
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

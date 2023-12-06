@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatformAnchor, ControlledCharacter
 {
@@ -103,6 +104,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     //Audio Manager Class
     [SerializeField] private CharacterSoundManager characterSoundManager;
     private Coroutine hurtSound;
+    private Coroutine respawnJoe;
 
 
     private void Awake()
@@ -204,10 +206,12 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                     dashTrailObject.GetComponent<SpriteRenderer>().flipX = false;
                 }
                 Debug.Log("Wall sliding");
+                playerAnimator.SetBool("OnWall", true);
                 //Wall slide
                 wallDir = Mathf.Lerp(playerRigidBody.velocity.x, wallDir, lerpTime * Time.deltaTime);
                 playerRigidBody.velocity = new Vector2(wallDir, -wallSlideSpeed);
             }
+            else playerAnimator.SetBool("OnWall", false);
         }
         else
         {
@@ -294,7 +298,16 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 playerDoubleJumpsRemaining--;
                 Debug.Log("Dbl jump");
                 //playerAnimator.Play("BigJoeDJ", 0);
-                playerAnimator.SetTrigger("DoubleJump");
+
+                //Rare play of flip anim
+                if(Random.Range(0, 5) == 1)
+                {
+                    playerAnimator.SetTrigger("Flip");
+                }
+                else playerAnimator.SetTrigger("DoubleJump");
+
+
+
                 isJumping = true;
             }
             else if (!onGround && onWall && !disableAllMoves && canWallJump) WallJump();
@@ -740,18 +753,32 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     public void RespawnPlayer()
     {
-        //Unlink the platform on a player death.
-        UnlinkPlatform(movingPlatform);
-        //Play the death sound
-        characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Death);
-        //If the player dies we respawn them. 
-        isAlive = false;
-        StopCoroutine(DisableMovement(0));
-        StartCoroutine(DisableMovement(1f));
-        playerRigidBody.velocity = Vector3.zero;
-        gameObject.transform.position = currentSpawn.transform.position;
+        if(isAlive)
+        {
+            //Unlink the platform on a player death.
+            UnlinkPlatform(movingPlatform);
+            //Play the death sound
+            characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Death);
+            //If the player dies we respawn them. 
+            isAlive = false;
+            StopCoroutine(DisableMovement(0));
+            StartCoroutine(DisableMovement(1f));
+            playerRigidBody.velocity = Vector3.zero;
+            if(respawnJoe == null) StartCoroutine(RespawnJoe());
+        }
+    }
+
+
+    IEnumerator RespawnJoe()
+    {
+        playerAnimator.SetTrigger("Death");
+        yield return new WaitForSeconds(1);
+        spriteRenderer.DOFade(0, 1);
+        yield return new WaitForSeconds(1);
+        spriteRenderer.DOFade(1, .5f);
         playerHealth.HealthToMax();
         isAlive = true;
+        gameObject.transform.position = currentSpawn.transform.position;
     }
 
     public Health GetHealthComponent()

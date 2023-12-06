@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: miniBoss_walk_0
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 1215
+        width: 650
+        height: 1184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 871b562ad6e6698499390b014b8f9eaf
+      internalID: -2008218500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_walk_1
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 1215
+        width: 692
+        height: 1183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b8df3a1bf037e7468f31631b662c138
+      internalID: -1007567686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_walk_2
+      rect:
+        serializedVersion: 2
+        x: 2773
+        y: 1212
+        width: 691
+        height: 1187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbf27c6078a5eea4fad6e6678c712a99
+      internalID: 1557246723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_walk_3
+      rect:
+        serializedVersion: 2
+        x: 3971
+        y: 1197
+        width: 653
+        height: 1203
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97f074d9c62f2fb46b326b3034f8fb1b
+      internalID: -39142428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_walk_4
+      rect:
+        serializedVersion: 2
+        x: 5172
+        y: 1212
+        width: 653
+        height: 1187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3dc3bc8df173064e8e65471462128da
+      internalID: -1849954948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_walk_5
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 13
+        width: 650
+        height: 1186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 739900c1738ea9b46afedb11fbe1dce9
+      internalID: -1218046627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_walk_6
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 10
+        width: 653
+        height: 1189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e73c774ef7b459740984c63212a336c3
+      internalID: -712632080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +279,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      miniBoss_walk_0: -2008218500
+      miniBoss_walk_1: -1007567686
+      miniBoss_walk_2: 1557246723
+      miniBoss_walk_3: -39142428
+      miniBoss_walk_4: -1849954948
+      miniBoss_walk_5: -1218046627
+      miniBoss_walk_6: -712632080
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

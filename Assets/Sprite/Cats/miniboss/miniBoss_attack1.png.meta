@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,259 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: miniBoss_attack1_0
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 1215
+        width: 650
+        height: 1184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9b4325c70d465249992cdac116f18f8
+      internalID: -1561263083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_attack1_1
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1215
+        width: 861
+        height: 1084
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f00e9f7f0bc4faf4da614a9f29c1987f
+      internalID: -483019104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_attack1_2
+      rect:
+        serializedVersion: 2
+        x: 2773
+        y: 1215
+        width: 652
+        height: 1184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4ed28ab1c80b834583d500f08e45511
+      internalID: 1737099287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_attack1_3
+      rect:
+        serializedVersion: 2
+        x: 3908
+        y: 1215
+        width: 716
+        height: 1175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b044b5d87ee76142b48920566d7c450
+      internalID: 1499077738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_attack1_4
+      rect:
+        serializedVersion: 2
+        x: 5108
+        y: 1215
+        width: 717
+        height: 1175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 458c851d3d9d85841a3b08f74203de20
+      internalID: -2145906650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_attack1_5
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 13
+        width: 718
+        height: 1177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba8b7bb53ec8e3c459cf2489284c2a93
+      internalID: -2093197257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_attack1_6
+      rect:
+        serializedVersion: 2
+        x: 1507
+        y: 13
+        width: 727
+        height: 1177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24d1234d8a5c1b44e821c107cc5c7087
+      internalID: 474975032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_attack1_7
+      rect:
+        serializedVersion: 2
+        x: 2679
+        y: 898
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7097cb303faf17e45b63aa2b9f8da427
+      internalID: -1855237408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_attack1_8
+      rect:
+        serializedVersion: 2
+        x: 2709
+        y: 13
+        width: 716
+        height: 1175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65bc33c084a67e84ea7801ce4785ccbc
+      internalID: -1006417020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_attack1_9
+      rect:
+        serializedVersion: 2
+        x: 3819
+        y: 892
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b07f9d6cedcdec34bae6f003752033c7
+      internalID: 1772912233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_attack1_10
+      rect:
+        serializedVersion: 2
+        x: 3908
+        y: 13
+        width: 727
+        height: 1177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c94865a3d09ef40841b5acadbef453
+      internalID: 1931173659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_attack1_11
+      rect:
+        serializedVersion: 2
+        x: 3403
+        y: 78
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d547b42ca4e36a4ea1eecde759e161d
+      internalID: -874163928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +384,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      miniBoss_attack1_0: -1561263083
+      miniBoss_attack1_1: -483019104
+      miniBoss_attack1_10: 1931173659
+      miniBoss_attack1_11: -874163928
+      miniBoss_attack1_2: 1737099287
+      miniBoss_attack1_3: 1499077738
+      miniBoss_attack1_4: -2145906650
+      miniBoss_attack1_5: -2093197257
+      miniBoss_attack1_6: 474975032
+      miniBoss_attack1_7: -1855237408
+      miniBoss_attack1_8: -1006417020
+      miniBoss_attack1_9: 1772912233
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

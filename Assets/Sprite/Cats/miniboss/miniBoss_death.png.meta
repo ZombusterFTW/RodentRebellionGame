@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6264f5f5c8de7e247af35b85e9a2ba3c
+guid: 699c11900cd8b8b46b9375134984092c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,64 +123,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: miniBoss_damage_0
+      name: miniBoss_death_0
       rect:
         serializedVersion: 2
         x: 374
-        y: 13
+        y: 1215
         width: 650
-        height: 1186
+        height: 1185
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c285486d76c2b2545a6911978b6fb822
-      internalID: -178284086
+      spriteID: d101802b81fd31645972c2396abd0c53
+      internalID: -1960331842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_damage_1
+      name: miniBoss_death_1
       rect:
         serializedVersion: 2
         x: 1490
-        y: 10
-        width: 694
-        height: 1159
+        y: 1212
+        width: 679
+        height: 1157
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5573ab8ef92080746a375f430b8b41c5
-      internalID: 1263652768
+      spriteID: 14c6aba22d5f5a048bee9095306583ce
+      internalID: 454212140
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_damage_2
+      name: miniBoss_death_2
       rect:
         serializedVersion: 2
         x: 2158
-        y: 60
-        width: 21
+        y: 1259
+        width: 22
         height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba823035e1627574093d4caac53f02d0
-      internalID: 195647829
+      spriteID: 53a2b28be83ca6f4791c1d56a427d6e7
+      internalID: -1116931554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_death_3
+      rect:
+        serializedVersion: 2
+        x: 2752
+        y: 1203
+        width: 616
+        height: 1175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3496d03dddd42ca49ae56d72823c2afe
+      internalID: 628061751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_death_4
+      rect:
+        serializedVersion: 2
+        x: 3910
+        y: 1202
+        width: 659
+        height: 1117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7efc9082f2f8834883079957264870e
+      internalID: -1358280100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_death_5
+      rect:
+        serializedVersion: 2
+        x: 5055
+        y: 1197
+        width: 750
+        height: 1029
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7327e5f5b724816488c6bd74b5aafdd9
+      internalID: -614233661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: miniBoss_death_6
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 0
+        width: 712
+        height: 1012
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9fadce5b33ec914c82fc594120cee76
+      internalID: 121403925
       vertices: []
       indices: 
       edges: []
@@ -196,9 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      miniBoss_damage_0: -178284086
-      miniBoss_damage_1: 1263652768
-      miniBoss_damage_2: 195647829
+      miniBoss_death_0: -1960331842
+      miniBoss_death_1: 454212140
+      miniBoss_death_2: -1116931554
+      miniBoss_death_3: 628061751
+      miniBoss_death_4: -1358280100
+      miniBoss_death_5: -614233661
+      miniBoss_death_6: 121403925
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
