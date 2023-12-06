@@ -7,13 +7,16 @@ public class AutoDialouge : MonoBehaviour, R4Activatable
 {
     //This class allows a dialouge segment to trigger without a player needing to go up to a character and interact with them.
 
-    [Header("Ink JSON")]
     [SerializeField] private TextAsset inkJSON;
     [SerializeField] bool playDialougeAutomatically;
     [SerializeField] float dialougeDelay;
     [SerializeField] bool cleanupOnDialougeExit = false;
     [SerializeField] bool stopTime = false;
     [SerializeField] bool activatedByGameObject = false;
+    [SerializeField] bool activatesItems = false;
+    [SerializeField] GameObject[] itemsToActivate;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -73,5 +76,17 @@ public class AutoDialouge : MonoBehaviour, R4Activatable
     public void Deactivate()
     {
         Debug.Log("cannot deactivate autodialouge");
+    }
+
+    private void OnDestroy()
+    {
+        //Activate items after the dialouge has completed. If its set.
+        if(activatesItems)
+        {
+            foreach(var item in itemsToActivate)
+            {
+                item.GetComponent<R4Activatable>()?.Activate();
+            }
+        }
     }
 }

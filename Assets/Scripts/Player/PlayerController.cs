@@ -774,11 +774,13 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 break;
             case UpgradeType.WallClimb_Ability: 
                 canWallClimb = true;
+                canWallJump = true;
                 break;
             case UpgradeType.DoubleJump_Ability: 
                 canDoubleJump = true;
                 break;
             case UpgradeType.WallJump_Ability:
+                canWallClimb = true;
                 canWallJump = true;
                 break;
             case UpgradeType.Dagger_Weapon:
