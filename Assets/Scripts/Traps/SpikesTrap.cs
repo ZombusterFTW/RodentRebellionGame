@@ -13,6 +13,7 @@ public class SpikesTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     [Tooltip("The speed the spikes will come out of the ground.")][SerializeField] private float spikeSpeed = 5f;
     [Tooltip("The trigger for the trap to activate in self activating mode.")][SerializeField] private BoxCollider2D trapTrigger;
     [Tooltip("The collider of the spikes. ")][SerializeField] private BoxCollider2D trapSpikes;
+    public GameObject spikeEndPoint;
     public Animator spikeAnimator;
     BoxCollider2D playerCollider;
     private Vector3 startingPos;
@@ -23,7 +24,7 @@ public class SpikesTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     void Awake()
     {
         startingPos = trapSpikes.gameObject.transform.position; 
-        triggeredPos = trapSpikes.gameObject.transform.position + new Vector3(0, spikeHeight, 0);
+        triggeredPos = spikeEndPoint.gameObject.transform.position;
         if (selfActivating) isActive = false;
     }
 

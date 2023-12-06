@@ -9,7 +9,7 @@ public class AutomaticDoor : MonoBehaviour, R4Activatable
     [Tooltip("The left door will move to the center of this object when activated")][SerializeField] private GameObject leftDoorTarget;
     [Tooltip("The right door will move to the center of this object when activated")][SerializeField] private GameObject rightDoorTarget;
     [Tooltip("The speed the door will open and close")][SerializeField] private float openCloseSpeed = 8.5f;
-    bool isActivated = false;
+    [SerializeField] bool isActivated = false;
     Vector2 leftDoorStartPos;
     Vector2 rightDoorStartPos;
     Vector2 leftDoorTargetPos;
@@ -26,6 +26,17 @@ public class AutomaticDoor : MonoBehaviour, R4Activatable
 
         leftDoorTarget.GetComponent<SpriteRenderer>().enabled = false;
         rightDoorTarget.GetComponent<SpriteRenderer>().enabled = false; 
+
+
+
+        if(isActivated)
+        {
+            Activate();
+        }
+        else
+        {
+            Deactivate();
+        }
     }
 
     // Update is called once per frame

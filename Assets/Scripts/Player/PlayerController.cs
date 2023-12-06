@@ -700,10 +700,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             Debug.Log("Left trigger");
             collision.GetComponent<R4ActivatableTrap>().DealPlayerDamage(false);
         }
-        if (collision.gameObject.GetComponentInParent<MovingPlatform>() != null)
-        {
-            UnlinkPlatform(collision.gameObject);
-        }
+        //if (collision.gameObject.GetComponentInParent<MovingPlatform>() != null)
+        //{
+            //UnlinkPlatform(collision.gameObject);
+       // }
         
     }
 
@@ -740,6 +740,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     public void RespawnPlayer()
     {
+        //Unlink the platform on a player death.
+        UnlinkPlatform(movingPlatform);
         //Play the death sound
         characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Death);
         //If the player dies we respawn them. 
@@ -789,6 +791,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             case UpgradeType.LaserGun_Weapon:
                 playerUpgrade.playerWeaponType = PlayerWeaponType.LaserGun;
                 break;
+            case UpgradeType.Dash_Ability:
+                //max dashes begins at 0
+                maxDashes = 2;
+                break;  
         }
     }
 
@@ -847,6 +853,13 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             }
         }
 
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponentInParent<MovingPlatform>() != null)
+        {
+            UnlinkPlatform(collision.gameObject);
+        }
     }
 
 

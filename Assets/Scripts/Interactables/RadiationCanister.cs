@@ -85,6 +85,9 @@ public class RadiationCanister : MonoBehaviour
             case UpgradeType.GroundPound_Ability:
                 spriteRenderer.sprite = abilityCanisterImage;
                 break;
+            case UpgradeType.Dash_Ability:
+                spriteRenderer.sprite = abilityCanisterImage;
+                break;
             case UpgradeType.WallClimb_Ability:
                 spriteRenderer.sprite = abilityCanisterImage;
                 break;
@@ -115,6 +118,8 @@ public class RadiationCanister : MonoBehaviour
             case UpgradeType.Health_Upgrade:
                 return "<color=green>15% Health Upgrade";
             case UpgradeType.Attack_Upgrade:
+                //Just for Vertical Slice so the player will have Frenzy when prompted.
+                GameObject.FindObjectOfType<FrenzyManager>()?.AddToFrenzyMeter(1f);
                 return "<color=red>15% Attack Upgrade";
             case UpgradeType.GroundPound_Ability:
                 return "<color=yellow>Ground Pound Ability";
@@ -124,6 +129,8 @@ public class RadiationCanister : MonoBehaviour
                 return "<color=yellow>Wall Jump Ability";
             case UpgradeType.DoubleJump_Ability:
                 return "<color=yellow>Double Jump Ability";
+            case UpgradeType.Dash_Ability:
+                return "<color=yellow>Dash Ability";
             case UpgradeType.Dagger_Weapon:
                 return "<color=white>Dagger";
             case UpgradeType.LaserGun_Weapon:
@@ -150,6 +157,7 @@ public enum UpgradeType
     WallClimb_Ability,
     WallJump_Ability,
     DoubleJump_Ability,
+    Dash_Ability,
     Dagger_Weapon,
     LaserGun_Weapon
 }

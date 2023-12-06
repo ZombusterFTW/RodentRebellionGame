@@ -1,5 +1,7 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
@@ -23,9 +25,9 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
     private bool attackDelayActive;
     public float searchDelay = 1.5f;
     [SerializeField] private bool searchDelayActive = false;
-
-
-
+    [SerializeField] private bool activateOnDeath = false;
+    [SerializeField] GameObject[] itemsToActivate;
+    bool isAlive = true;
 
     public float searchDistance = 50f;
     public LayerMask playerLayer;
@@ -33,6 +35,7 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
     [SerializeField] bool isMiniBoss = false;
     private Coroutine attackCooldown;
     private Coroutine searchCooldown;
+    private Coroutine death;
 
     public PlayerUI GetPlayerUI()
     {
@@ -41,18 +44,48 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
 
     public void RespawnPlayer()
     {
+        isAlive = false;
         //Add to player frenzy meter here/
-        if(isMiniBoss) GameObject.FindObjectOfType<FrenzyManager>()?.AddToFrenzyMeter(0.50f);
+        if (isMiniBoss) GameObject.FindObjectOfType<FrenzyManager>()?.AddToFrenzyMeter(0.50f);
         else GameObject.FindObjectOfType<FrenzyManager>()?.AddToFrenzyMeter(0.15f);
-        Destroy(gameObject);
-
+        enemyAnimator.SetTrigger("Death");
+        if(activateOnDeath)
+        {
+            foreach(var item in itemsToActivate)
+            {
+                item.GetComponent<R4Activatable>()?.Activate();
+            }
+        }
+        if (death == null)
+        {
+            StopAllCoroutines();
+            death = StartCoroutine(DeathDelay());
+        }
     }
+
+    IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(0.267f);
+        spriteRenderer.DOFade(0, 1f);
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
+    }
+
 
     // Start is called before the first frame update
     void Awake()
     {
         startingPos = transform.position;
-        UIClone = Instantiate(playerUI, transform.position + new Vector3(0,2,0), Quaternion.identity);
+
+
+        if (isMiniBoss) UIClone = Instantiate(playerUI, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+        else
+        {
+            UIClone = Instantiate(playerUI, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+            UIClone.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
+        }
+
+
         UIClone.transform.parent = transform;
         //UIClone.GetComponent<Canvas>().worldCamera = Camera.main;
         health = GetComponent<Health>();
@@ -70,9 +103,13 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
     // Update is called once per frame
     void FixedUpdate()
     {
-        UpdateState();
-        spriteRenderer.flipX = enemyRB.velocity.x > 0;
-        Debug.Log(targetPosition);
+        if(isAlive)
+        {
+            UpdateState();
+            spriteRenderer.flipX = enemyRB.velocity.x > 0;
+            Debug.Log(targetPosition);
+        }
+        
     }
 
 
@@ -127,6 +164,8 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
             {
                 targetPosition = startingPos;
                 currentState = EnemyStates.Attacking;
+                //Add here for projectile fire. Feature will be added in next semester. 
+                //Projectile fire is a mini boss exclusive feature. In the vertical slice mini bosses just have more health and are bigger.
             }
             else if(Vector2.Distance((Vector2)target.transform.position, (Vector2)transform.position) > sightRange)
             {

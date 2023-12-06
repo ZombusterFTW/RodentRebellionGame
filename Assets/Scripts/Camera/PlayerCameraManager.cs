@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerCameraManager : MonoBehaviour
 {
@@ -9,6 +12,12 @@ public class PlayerCameraManager : MonoBehaviour
     private CinemachineConfiner2D cameraConfiner;
 
     public static PlayerCameraManager instance;
+
+    public GameObject mapImage;
+    public Sprite level1Image;
+    public Sprite level2Image;
+    public Sprite level3Image;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +36,31 @@ public class PlayerCameraManager : MonoBehaviour
             virtualCamera = GetComponent<CinemachineVirtualCamera>();   
         }
         cameraConfiner = virtualCamera.GetComponent<CinemachineConfiner2D>();
+        SetLevelImage(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.sceneLoaded += OnSceneChanged;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnSceneChanged(Scene arg0, LoadSceneMode arg1)
     {
-        
+        SetLevelImage(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void SetLevelImage(int sceneIndex)
+    {
+        Debug.Log("Attempted to load image");
+        switch(sceneIndex) 
+        {
+            case 1:
+                mapImage.GetComponent<SpriteRenderer>().sprite = level1Image;
+                break;
+            case 2:
+                mapImage.GetComponent<SpriteRenderer>().sprite = level2Image;
+                break;
+            case 3:
+                mapImage.GetComponent<SpriteRenderer>().sprite = level3Image;
+                break;
+        }
+
     }
 
 
@@ -77,6 +105,10 @@ public class PlayerCameraManager : MonoBehaviour
         if(collision.GetComponent<AutoDialouge>() != null)
         {
             collision.GetComponent<AutoDialouge>().PlayDialouge();  
+        }
+        if(collision.GetComponent<TriggerActivater>() != null)
+        {
+            collision.GetComponent<TriggerActivater>().Trigger();
         }
     }
 }

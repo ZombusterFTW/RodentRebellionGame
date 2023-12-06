@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: radioactiveCat_death_0
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 63
+        width: 806
+        height: 1045
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49113e732d516194da7f839667bad87a
+      internalID: -3901279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioactiveCat_death_1
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 72
+        width: 779
+        height: 968
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c1d2ebcdf8160d4589669933864f7f2
+      internalID: 581610738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioactiveCat_death_2
+      rect:
+        serializedVersion: 2
+        x: 2542
+        y: 83
+        width: 846
+        height: 876
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28291dc075d329f459d288bffd3bb3b1
+      internalID: -268782189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioactiveCat_death_3
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 95
+        width: 955
+        height: 726
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb6be3a63fc495b4d9f5cfc0b3f4f776
+      internalID: 999480066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +216,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      radioactiveCat_death_0: -3901279
+      radioactiveCat_death_1: 581610738
+      radioactiveCat_death_2: -268782189
+      radioactiveCat_death_3: 999480066
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
