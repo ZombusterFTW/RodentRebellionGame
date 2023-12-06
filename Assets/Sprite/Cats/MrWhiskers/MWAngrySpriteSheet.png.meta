@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d73c2f035cec97241be165ca30038974
+guid: 7619b58cfae38094d932ee96af79e61e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,253 +123,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: miniBoss_attack1_0
+      name: MWAngrySpriteSheet_0
       rect:
         serializedVersion: 2
-        x: 374
-        y: 1215
-        width: 650
-        height: 1184
+        x: 549
+        y: 985
+        width: 5
+        height: 5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9b4325c70d465249992cdac116f18f8
-      internalID: -1561263083
+      spriteID: 58c581f2010ecea4abe76c0594eccc51
+      internalID: 1678309170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_attack1_1
+      name: MWAngrySpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 1440
-        y: 1215
-        width: 861
-        height: 1084
+        x: 560
+        y: 984
+        width: 11
+        height: 4
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f00e9f7f0bc4faf4da614a9f29c1987f
-      internalID: -483019104
+      spriteID: 3f4e9780b47ecd84e96435f12713f4ab
+      internalID: -830820424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_attack1_2
+      name: MWAngrySpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 2773
-        y: 1215
-        width: 652
-        height: 1184
+        x: 0
+        y: 0
+        width: 1000
+        height: 978
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4ed28ab1c80b834583d500f08e45511
-      internalID: 1737099287
+      spriteID: e47bb6645f3c10c48bbf4f3cfb721b8b
+      internalID: -1696594772
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_attack1_3
+      name: MWAngrySpriteSheet_3
       rect:
         serializedVersion: 2
-        x: 3908
-        y: 1215
-        width: 716
-        height: 1175
+        x: 426
+        y: 959
+        width: 8
+        height: 18
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b044b5d87ee76142b48920566d7c450
-      internalID: 1499077738
+      spriteID: 2e6b1406a3d801d4798eb567385cce16
+      internalID: 242782440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_attack1_4
+      name: MWAngrySpriteSheet_4
       rect:
         serializedVersion: 2
-        x: 5108
-        y: 1215
-        width: 717
-        height: 1175
+        x: 588
+        y: 965
+        width: 10
+        height: 12
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 458c851d3d9d85841a3b08f74203de20
-      internalID: -2145906650
+      spriteID: 68fc82ee65d33794aa2fe49ee4338db3
+      internalID: -1565043548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_attack1_5
+      name: MWAngrySpriteSheet_5
       rect:
         serializedVersion: 2
-        x: 309
-        y: 13
-        width: 718
-        height: 1177
+        x: 1553
+        y: 974
+        width: 5
+        height: 5
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba8b7bb53ec8e3c459cf2489284c2a93
-      internalID: -2093197257
+      spriteID: 476c921d5cf475b4d8e28d124318a819
+      internalID: 1370526228
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_attack1_6
+      name: MWAngrySpriteSheet_6
       rect:
         serializedVersion: 2
-        x: 1507
-        y: 13
-        width: 727
-        height: 1177
+        x: 1564
+        y: 973
+        width: 11
+        height: 4
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24d1234d8a5c1b44e821c107cc5c7087
-      internalID: 474975032
+      spriteID: 4444ff96d1e03b640b204a223e714b27
+      internalID: 1467886658
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_attack1_7
+      name: MWAngrySpriteSheet_7
       rect:
         serializedVersion: 2
-        x: 2679
-        y: 898
-        width: 44
-        height: 44
+        x: 348
+        y: 893
+        width: 73
+        height: 81
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7097cb303faf17e45b63aa2b9f8da427
-      internalID: -1855237408
+      spriteID: 8961aa0c2cfe6a341ad52127ff90a723
+      internalID: -1539266552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_attack1_8
+      name: MWAngrySpriteSheet_8
       rect:
         serializedVersion: 2
-        x: 2669
-        y: 13
-        width: 756
-        height: 1175
+        x: 1004
+        y: 0
+        width: 996
+        height: 967
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65bc33c084a67e84ea7801ce4785ccbc
-      internalID: -1006417020
+      spriteID: 7b9d0e3ac728d0542a8838bee0c2e036
+      internalID: -1142622245
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_attack1_9
+      name: MWAngrySpriteSheet_9
       rect:
         serializedVersion: 2
-        x: 3819
-        y: 892
-        width: 44
-        height: 44
+        x: 1352
+        y: 882
+        width: 73
+        height: 81
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b07f9d6cedcdec34bae6f003752033c7
-      internalID: 1772912233
+      spriteID: 1906dbfe864de5d4b9fbe25ebadf8285
+      internalID: -1941178999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_attack1_10
+      name: MWAngrySpriteSheet_10
       rect:
         serializedVersion: 2
-        x: 3816
-        y: 13
-        width: 819
-        height: 1177
+        x: 1430
+        y: 948
+        width: 8
+        height: 18
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2c94865a3d09ef40841b5acadbef453
-      internalID: 1931173659
+      spriteID: 9f0294ecbadc47643a77e715c6c194da
+      internalID: 1291015037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: miniBoss_attack1_11
+      name: MWAngrySpriteSheet_11
       rect:
         serializedVersion: 2
-        x: 3403
-        y: 78
-        width: 23
-        height: 31
+        x: 1592
+        y: 954
+        width: 10
+        height: 12
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d547b42ca4e36a4ea1eecde759e161d
-      internalID: -874163928
+      spriteID: ea2cdce9a4ce9bf46b18d6cfc46a478a
+      internalID: -2022424866
       vertices: []
       indices: 
       edges: []
@@ -385,18 +385,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      miniBoss_attack1_0: -1561263083
-      miniBoss_attack1_1: -483019104
-      miniBoss_attack1_10: 1931173659
-      miniBoss_attack1_11: -874163928
-      miniBoss_attack1_2: 1737099287
-      miniBoss_attack1_3: 1499077738
-      miniBoss_attack1_4: -2145906650
-      miniBoss_attack1_5: -2093197257
-      miniBoss_attack1_6: 474975032
-      miniBoss_attack1_7: -1855237408
-      miniBoss_attack1_8: -1006417020
-      miniBoss_attack1_9: 1772912233
+      MWAngrySpriteSheet_0: 1678309170
+      MWAngrySpriteSheet_1: -830820424
+      MWAngrySpriteSheet_10: 1291015037
+      MWAngrySpriteSheet_11: -2022424866
+      MWAngrySpriteSheet_2: -1696594772
+      MWAngrySpriteSheet_3: 242782440
+      MWAngrySpriteSheet_4: -1565043548
+      MWAngrySpriteSheet_5: 1370526228
+      MWAngrySpriteSheet_6: 1467886658
+      MWAngrySpriteSheet_7: -1539266552
+      MWAngrySpriteSheet_8: -1142622245
+      MWAngrySpriteSheet_9: -1941178999
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
