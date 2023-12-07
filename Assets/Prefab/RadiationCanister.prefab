@@ -270,6 +270,6 @@ MonoBehaviour:
   attackCanisterImage: {fileID: 21300000, guid: b0a4a01eb6a823b44ba02e0d2dfdd0c5, type: 3}
   abilityCanisterImage: {fileID: 21300000, guid: 8392b6ad44a48bf4abb3767738a6891f, type: 3}
   healthCanisterImage: {fileID: 21300000, guid: ae160fe6265ec35468f3983ae57aa19c, type: 3}
-  laserGunWeaponImage: {fileID: 21300020, guid: a0e7f1167efba544bb8d6e3198ae44f9, type: 3}
+  laserGunWeaponImage: {fileID: 21300000, guid: 43ae7fa4f48570c41a9162a2bf571d37, type: 3}
   daggerWeaponImage: {fileID: 21300000, guid: 1a74006a192372d45af9cf6c7d73d1d5, type: 3}
   pickupCollider: {fileID: 1757874432830270358}
