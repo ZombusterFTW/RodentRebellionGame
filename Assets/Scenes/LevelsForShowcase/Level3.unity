@@ -323,11 +323,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7236839450530248994, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.7557673
+      value: 2.4933085
       objectReference: {fileID: 0}
     - target: {fileID: 7236839450530248994, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.026200078
+      value: -0.26686674
       objectReference: {fileID: 0}
     - target: {fileID: 7236839450530248994, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1712,15 +1712,15 @@ PrefabInstance:
       objectReference: {fileID: 24300002, guid: ec079776826015b40aca0efab6d6c3dc, type: 2}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: numLoopingClips
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: drumClipsArr.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: bassGClipsArr.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: introClipsArr.Array.size
@@ -1728,16 +1728,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: leadGClipsArr.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: chordGClipsArr.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: drumClipsArr.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: b17ec97c5e43fca48a4a9ab20aa54be7, type: 3}
+      objectReference: {fileID: 8300000, guid: 4bccb757d38568a429d0bba41bc8b7df, type: 3}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: drumClipsArr.Array.data[1]
       value: 
@@ -1745,7 +1745,7 @@ PrefabInstance:
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: bassGClipsArr.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: fa98383072cb9d54491775b995766389, type: 3}
+      objectReference: {fileID: 8300000, guid: 4680e3516862d304a8d9506a9c969b08, type: 3}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: bassGClipsArr.Array.data[1]
       value: 
@@ -1753,23 +1753,23 @@ PrefabInstance:
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: introClipsArr.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 7adeeade5beab554eb438edcf2c5357c, type: 3}
+      objectReference: {fileID: 8300000, guid: 86ad85912e12f4d40b0d0ae01c85c9cd, type: 3}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: introClipsArr.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 0176835767b79f84bac5b8997ce1210f, type: 3}
+      objectReference: {fileID: 8300000, guid: 868a11b1e9dad2049ac67280e30c7592, type: 3}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: introClipsArr.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: 7adeeade5beab554eb438edcf2c5357c, type: 3}
+      objectReference: {fileID: 8300000, guid: 86ad85912e12f4d40b0d0ae01c85c9cd, type: 3}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: introClipsArr.Array.data[3]
       value: 
-      objectReference: {fileID: 8300000, guid: eb8c0ed04a1f3ff47a400efb8020c6e7, type: 3}
+      objectReference: {fileID: 8300000, guid: f3310881248d83a459d68e08eb3deb48, type: 3}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: leadGClipsArr.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: cd4c2d5450cdc0849843a4fc737a22c2, type: 3}
+      objectReference: {fileID: 8300000, guid: f41ad8abea095e946824246f47d57c9f, type: 3}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: leadGClipsArr.Array.data[1]
       value: 
@@ -1777,7 +1777,7 @@ PrefabInstance:
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: chordGClipsArr.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 8915f37b7c6fc7548b9617cdfdfa09a2, type: 3}
+      objectReference: {fileID: 8300000, guid: 86ad85912e12f4d40b0d0ae01c85c9cd, type: 3}
     - target: {fileID: 8302746326272165284, guid: bacd2787a55361b4c8b7bb100b4aa441, type: 3}
       propertyPath: chordGClipsArr.Array.data[1]
       value: 
