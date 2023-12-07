@@ -67,7 +67,7 @@ public class SoundManager : MonoBehaviour
         LoadFrenzyBGM();
 
         //calculate length of intro, start rest of audio after that
-        introDuration = (double) introClipsArr[0].samples / introClipsArr[0].frequency; //duration
+        introDuration = (double) introClipsArr[3].samples / introClipsArr[3].frequency; //duration
 
         nextStartTime = startTime + introDuration; //set time for loop section to start
     }
