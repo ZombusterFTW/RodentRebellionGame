@@ -92,7 +92,11 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
         targetPosition = ((Vector2)transform.position + (searchDirection* searchDistance));
         enemyRB = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();    
-        if(GameObject.FindObjectOfType<PlayerController>() != null ) 
+    }
+
+    private void Start()
+    {
+        if (GameObject.FindObjectOfType<PlayerController>() != null)
         {
             target = GameObject.FindObjectOfType<PlayerController>().gameObject;
         }

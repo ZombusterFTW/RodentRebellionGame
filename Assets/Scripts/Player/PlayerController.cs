@@ -541,12 +541,12 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         Vector2 laserFireDirection;
         if (laserDir < 0)
         {
-            playerSprite.flipX = true;
+            playerSprite.flipX = false;
             laserFireDirection = (Vector2)laserStartPosLeft.transform.position;
         }
         else
         {
-            playerSprite.flipX = false;
+            playerSprite.flipX = true;
             laserFireDirection = (Vector2)laserStartPosRight.transform.position;
         }
 
@@ -556,7 +556,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             laserBeam.SetPosition(0, new Vector2(laserFireDirection.x, laserFireDirection.y));
             laserBeam.SetPosition(1, (Vector2)pos);
             Vector2 direction =  (Vector2)transform.position - (Vector2)pos;
-            RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, direction.normalized, Mathf.Infinity, enemyLayer);
+            RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, -direction.normalized, Mathf.Infinity, enemyLayer);
             if(hit)
             {
                 laserBeam.SetPosition(1, (Vector2)hit.point);
