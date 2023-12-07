@@ -775,6 +775,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         yield return new WaitForSeconds(1);
         spriteRenderer.DOFade(0, 1);
         yield return new WaitForSeconds(1);
+        playerAnimator.Play("BigJoeIdle");
         spriteRenderer.DOFade(1, .5f);
         playerHealth.HealthToMax();
         isAlive = true;
