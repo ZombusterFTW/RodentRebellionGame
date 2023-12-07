@@ -25,12 +25,12 @@ public class FrenzyManager : MonoBehaviour
         if(instance == null) 
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else if(instance != null && instance != this)
         {
             Debug.Log("A player with a frenzy manager already exists. Deleting duplicate");
-            Destroy(gameObject);
+           // Destroy(gameObject);
         }
         frenzyAmountCurrent = frenzyStartingValue;
         

@@ -17,6 +17,7 @@ public class ItemMoverDialouge : MonoBehaviour, DialougeActivated
     private bool moveFinished = false;
     PlayerController player;
     [SerializeField] private bool persistAfterMove = false;
+    [SerializeField] private bool returnToMenuOnFinish = false;
     Tween itemMoveTween;
     public void Activate()
     {
@@ -29,6 +30,8 @@ public class ItemMoverDialouge : MonoBehaviour, DialougeActivated
             player.DisableControls(true);
         }
     }
+
+   
 
     public void Deactivate()
     {
@@ -59,7 +62,11 @@ public class ItemMoverDialouge : MonoBehaviour, DialougeActivated
         Debug.Log("Move done");
         moveInProgress = false;
         moveFinished = true;
-        PlayerCameraManager.instance.ForceCameraLookat("Player");
+        if(returnToMenuOnFinish)
+        {
+            SceneTransitionerManager.instance.StartTransition();
+        }
+        else PlayerCameraManager.instance.ForceCameraLookat("Player");
         player.DisableControls(false);
         if (!persistAfterMove)
         {

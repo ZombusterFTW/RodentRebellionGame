@@ -112,7 +112,6 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         playerSprite = playerSpriteContainer.GetComponent<SpriteRenderer>();
         playerAnimator = playerSpriteContainer.GetComponent<Animator>();
         playerUI  = Instantiate(playerUIPrefab).GetComponent<PlayerUI>();
-        DontDestroyOnLoad(playerUI);
         playerInput = GetComponent<PlayerInput>();
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
@@ -535,8 +534,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         laserBeam.enabled = true;
         playerAnimator.SetTrigger("Laser");
-            Vector3 pos =  cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20));
-
+        Vector3 pos =  cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20));
         int laserDir = (int)(-transform.position.x * pos.y + transform.position.y * pos.x);
         Vector2 laserFireDirection;
         if (laserDir < 0)
@@ -820,8 +818,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 playerUpgrade.playerWeaponType = PlayerWeaponType.LaserGun;
                 break;
             case UpgradeType.Dash_Ability:
-                //max dashes begins at 0
-                maxDashes = 2;
+                canDash = true;
                 break;  
         }
     }

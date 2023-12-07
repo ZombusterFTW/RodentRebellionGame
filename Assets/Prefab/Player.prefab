@@ -5087,7 +5087,7 @@ MonoBehaviour:
   damageCountCurrent: 0
   frenzyMultiplier: 2
   playerController: {fileID: 0}
-  playerWeaponType: 1
+  playerWeaponType: 0
 --- !u!114 &5990184564997095310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5193,11 +5193,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   frenzyLines: {fileID: 6459269101314280610}
-  canWallClimb: 1
-  canDash: 1
-  canGroundPound: 1
-  canDoubleJump: 1
-  canWallJump: 1
+  canWallClimb: 0
+  canDash: 0
+  canGroundPound: 0
+  canDoubleJump: 0
+  canWallJump: 0
   characterSoundManager: {fileID: 5990184564997095310}
 --- !u!114 &5169012110108082315
 MonoBehaviour:
