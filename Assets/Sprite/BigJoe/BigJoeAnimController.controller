@@ -559,9 +559,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: StandardAttack
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: FrenzyActive
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8707541297852714789}
   m_Solo: 0
@@ -1014,9 +1011,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Laser
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: FrenzyActive
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6921422363358343570}
   m_Solo: 0
@@ -1351,9 +1345,6 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: Stab
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: FrenzyActive
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7639867890798653357}

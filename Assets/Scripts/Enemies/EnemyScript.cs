@@ -96,6 +96,7 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
 
     private void Start()
     {
+        //Find the victim
         if (GameObject.FindObjectOfType<PlayerController>() != null)
         {
             target = GameObject.FindObjectOfType<PlayerController>().gameObject;
@@ -111,6 +112,10 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
             UpdateState();
             spriteRenderer.flipX = enemyRB.velocity.x > 0;
             Debug.Log(targetPosition);
+            if(target == null)
+            {
+                target = GameObject.FindObjectOfType<PlayerController>().gameObject;
+            }
         }
         
     }
