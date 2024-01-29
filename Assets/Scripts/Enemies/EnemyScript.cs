@@ -7,6 +7,10 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour, ControlledCharacter
 {
+    //Notes for production. This script works decently well for the less engaging enemies etc the small cats, but is relatively boring and simple for bosses. 
+    //Bosses need to have more attack states and intelligence. To acheive this I think its needed to create a new class that uses the majority of this class, but also include more code that allows for long range projectiles. 
+    //Mr whiskers will likely have his own class completely allowing for him to have a noticably different attack pattern.
+
     [SerializeField] GameObject playerUI;
     private GameObject UIClone;
     private Health health;
