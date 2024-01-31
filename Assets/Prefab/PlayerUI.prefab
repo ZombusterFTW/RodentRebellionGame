@@ -123,6 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5452389165436397674}
   - component: {fileID: 8386721820359415552}
+  - component: {fileID: 4489554545517984131}
   m_Layer: 0
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -160,6 +161,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarFill: {fileID: 6887740562662660540}
   frenzyBarFill: {fileID: 937907384087148738}
+--- !u!114 &4489554545517984131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2242242107883657181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6713da82150cef242a8636261689e599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 5471905256619667792}
 --- !u!1 &2545154216627362127
 GameObject:
   m_ObjectHideFlags: 0
