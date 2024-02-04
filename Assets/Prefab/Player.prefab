@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4464624938256684212}
   - component: {fileID: 1382101963416116978}
   - component: {fileID: 3271972373544077028}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 4790753245553538709}
   - component: {fileID: 6459269101314280610}
   - component: {fileID: 5171325584418949963}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: FrenzyLines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4953,7 +4953,7 @@ GameObject:
   - component: {fileID: 5169012110108082315}
   - component: {fileID: 8808171176064296708}
   - component: {fileID: 9192966572302598943}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -5191,7 +5191,10 @@ MonoBehaviour:
   disableAllMoves: 0
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1152
+  activatablesLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   frenzyLines: {fileID: 6459269101314280610}
   canWallClimb: 0
   canDash: 0
@@ -5423,7 +5426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 757952264260668564}
   - component: {fileID: 2859165634427156221}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HurtSounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5551,7 +5554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4857808256898235985}
   - component: {fileID: 4886214215794297894}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WeaponSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5680,7 +5683,7 @@ GameObject:
   - component: {fileID: 3393599931394508248}
   - component: {fileID: 544452334827039573}
   - component: {fileID: 7089429490021801630}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DashTrailObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5779,7 +5782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6152988664617231753}
   - component: {fileID: 4080388893489414594}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DashTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5826,7 +5829,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3744038790241716754}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SoundSources
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5864,7 +5867,7 @@ GameObject:
   - component: {fileID: 1371656776845913155}
   - component: {fileID: 7930560147535226134}
   - component: {fileID: 8372939343219787593}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpriteContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5971,7 +5974,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4486787822344978338}
   - component: {fileID: 6850238604872117297}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackSounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6099,7 +6102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7483716248185240926}
   - component: {fileID: 2970288858478862370}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MovementSounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6226,7 +6229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3463285582514019923}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LazerStartLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6259,7 +6262,7 @@ GameObject:
   - component: {fileID: 4619669111445356607}
   - component: {fileID: 2187846496764236799}
   - component: {fileID: 3237268177181536667}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: NoPostMalone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6385,7 +6388,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4091394943094392363}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MapImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6418,7 +6421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4243324227113051736}
   - component: {fileID: 3655667016866378393}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Footsteps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6547,7 +6550,7 @@ GameObject:
   - component: {fileID: 4847862531682165859}
   - component: {fileID: 6810276509211829054}
   - component: {fileID: 7130522119856922711}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6634,7 +6637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 460291222041109648}
   - component: {fileID: 8045921163535921977}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6773,7 +6776,7 @@ GameObject:
   - component: {fileID: 6613477394432856725}
   - component: {fileID: 6572032027893730308}
   - component: {fileID: 602294716457344572}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -6948,7 +6951,7 @@ GameObject:
   - component: {fileID: 6433276216578075541}
   - component: {fileID: 8652423749717817413}
   - component: {fileID: 5165289264907287157}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: rubberRoom_wallImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7081,7 +7084,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4067709660907342006}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LazerStartRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7111,6 +7114,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8686200487451471497}
     m_Modifications:
+    - target: {fileID: 327907892667558096, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550519002394044975, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901364891354718220, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609669899702526780, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2745749636804009575, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3105660980434532646, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3232989841799679517, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7151,9 +7178,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3543833099294925115, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4407149580350721065, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798197072113188376, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5085406285883334259, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493312347065193639, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504581633398393772, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5550732670669498188, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
       propertyPath: m_Name
       value: DialogueManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5550732670669498188, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6679413079707469587, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342017241012915997, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8076158141542493174, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511242332317445469, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9005693108390191789, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

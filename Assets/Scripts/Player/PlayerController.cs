@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     private bool jumpButtonPressed;
     private bool interactPressed;
     public bool frenzyActivated { get; private set; } = false;
+    //Note activatable switches are considered enemies.
     public LayerMask enemyLayer;
     public ParticleSystem frenzyLines;
     private FrenzyManager frenzyManager;
@@ -563,8 +564,12 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 {
                     hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast));
                 }
-                //check if enemy here.
-            }
+                if (hit.collider.gameObject.GetComponent<Switch>() != null)
+                {
+                    hit.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.LaserBlast);
+                }
+            //check if enemy here.
+        }
             yield return new WaitForSecondsRealtime(0.125f);
    
         isFiringLaser = false;
@@ -634,6 +639,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                             {
                                 hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike));
                             }
+                            if(hit.collider.gameObject.GetComponent<Switch>() != null)
+                            {
+                                hit.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.DaggerStrike);
+                            }
                         }
                     }
                     else if (playerUpgrade.playerWeaponType == PlayerWeaponType.None)
@@ -647,6 +656,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                             if (hit.collider.gameObject.GetComponent<EnemyScript>() != null)
                             {
                                 hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
+                            }
+                            if (hit.collider.gameObject.GetComponent<Switch>() != null)
+                            {
+                                hit.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.StandardAttack);
                             }
                         }
                     }  
@@ -861,7 +874,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         }
 
 
-        if((isDashing || isGroundPounding || isAttacking) && (collision.gameObject.GetComponent<EnemyScript>() != null))
+        if((isDashing || isGroundPounding) && (collision.gameObject.GetComponent<EnemyScript>() != null))
         {
             Debug.Log("Coll2");
             if (isDashing)
@@ -872,11 +885,21 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             {
                 collision.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.GroundPound));
             }
-            else if(isAttacking)
+        }
+
+        //To activate switches
+        if ((isDashing) && (collision.gameObject.GetComponent<Switch>() != null))
+        {
+            Debug.Log("Coll2");
+            if (isDashing)
             {
-                collision.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
+                collision.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.DaggerStrike);
             }
         }
+
+
+
+        
 
     }
     private void OnCollisionExit2D(Collision2D collision)

@@ -12,6 +12,7 @@ TagManager:
   - questitem2
   - questitem3
   - UIEventSystem
+  - SceneTransitioner
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Enemy
   - Player
   - Background
-  - 
+  - Switch
   - 
   - 
   - 

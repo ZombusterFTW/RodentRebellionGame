@@ -12,10 +12,10 @@ public class MovingPlatform : MonoBehaviour, R4Activatable
     [Tooltip("Set to true for platform to begin moving.")][SerializeField] private bool isActive = false;
     [Tooltip("The speed the platform will move at.")][SerializeField] private float platformSpeed = 8f;
     [Tooltip("How long the platform will wait once it reaches destination")][SerializeField] private float platformWaitTime = 5f;
-
-
     private Vector3 currentTarget;
 
+
+    private Coroutine movingPlatformLoop;
 
 
 
@@ -23,8 +23,8 @@ public class MovingPlatform : MonoBehaviour, R4Activatable
     {
         if(!isActive) 
         {
-            StartCoroutine(MovePlatform());
             isActive = true;
+            movingPlatformLoop = StartCoroutine(MovePlatform());
         }
     }
 
@@ -32,8 +32,8 @@ public class MovingPlatform : MonoBehaviour, R4Activatable
     {
         if (isActive)
         {
-            StopCoroutine(MovePlatform());
             isActive = false;
+            StopCoroutine(movingPlatformLoop);
         }
     }
 
@@ -54,7 +54,7 @@ public class MovingPlatform : MonoBehaviour, R4Activatable
             movingPlatform.transform.position = platformStart.transform.position;
             currentTarget = platformEnd.transform.position;
         }
-        if(isActive)StartCoroutine(MovePlatform());
+        if(isActive) movingPlatformLoop = StartCoroutine(MovePlatform());
     }
 
 
@@ -63,7 +63,8 @@ public class MovingPlatform : MonoBehaviour, R4Activatable
     {
         while(isActive)
         {
-            yield return new WaitForSeconds(platformWaitTime);
+            //Only stop if the platform has reached its start or end so if the platform is reactivated it moves instantly.
+            if(movingPlatform.transform.position == platformStart.transform.position || movingPlatform.transform.position == platformEnd.transform.position) yield return new WaitForSeconds(platformWaitTime);
             while (movingPlatform.transform.position != currentTarget)
             {
                 movingPlatform.transform.position = Vector3.MoveTowards(movingPlatform.transform.position, currentTarget, platformSpeed * Time.deltaTime);
