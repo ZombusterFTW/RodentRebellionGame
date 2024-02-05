@@ -362,13 +362,25 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         dashTrail.SetEnabled(true);
         playerRigidBody.drag = 25; 
         canDash = false;
+        DashWallHandler(true);
         StartCoroutine(DisableMovement(dashTimer));
         yield return new WaitForSeconds(dashTimer);
         dashTrail.SetEnabled(false);
         canDash = true;
+        DashWallHandler(false);
         isDashing = false;
         playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
         playerRigidBody.drag = 0f;
+    }
+
+    private void DashWallHandler(bool wallPassable)
+    {
+        DashWall[] dashWalls = GameObject.FindObjectsOfType<DashWall>();
+        //Make change to the dash wall script so audio from dash walls near the player will play.
+        foreach (DashWall dashWall in dashWalls)
+        {
+            dashWall.TogglePassableState(wallPassable);
+        }
     }
 
 
@@ -784,10 +796,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         playerAnimator.SetTrigger("Death");
         yield return new WaitForSeconds(1);
-        spriteRenderer.DOFade(0, 1);
+        playerSprite.DOFade(0, 1);
         yield return new WaitForSeconds(1);
         playerAnimator.Play("BigJoeIdle");
-        spriteRenderer.DOFade(1, .5f);
+        playerSprite.DOFade(1, .5f);
         playerHealth.HealthToMax();
         isAlive = true;
         gameObject.transform.position = currentSpawn.transform.position;
