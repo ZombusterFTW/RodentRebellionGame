@@ -12,7 +12,7 @@ public class DashWall : MonoBehaviour, R4Activatable
     private SpriteRenderer dashWallRenderer;
     private bool isActive = false;
     //For debug
-    [SerializeField] private bool isPassable = false;
+    private bool isPassable = false;
 
 
 
