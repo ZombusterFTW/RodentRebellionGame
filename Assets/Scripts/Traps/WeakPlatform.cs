@@ -38,7 +38,7 @@ public class WeakPlatform : MonoBehaviour, R4Activatable
     void TriggerPlatform()
     {
        //Prevent more than one coroutine running on this script. 
-       if(platformLoop == null) platformLoop = StartCoroutine(FallingPlatformLoop());
+       if(platformLoop == null && isActive) platformLoop = StartCoroutine(FallingPlatformLoop());
     }
 
     IEnumerator FallingPlatformLoop()
@@ -88,7 +88,7 @@ public class WeakPlatform : MonoBehaviour, R4Activatable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && !platformDurability)
+        if (collision.gameObject.tag == "Player" && !platformDurability && isActive)
         {
             //Moving platforms should only be triggered by the player. If its decided to let enemies affect them, check for the R4 movement component instead.
             TriggerPlatform();
@@ -98,7 +98,7 @@ public class WeakPlatform : MonoBehaviour, R4Activatable
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player" && platformDurability)
+        if(collision.gameObject.tag == "Player" && platformDurability && isActive)
         {
             platformTouchedSeconds += Time.deltaTime;
             if (platformTouchedSeconds >= platformFallDelay)
