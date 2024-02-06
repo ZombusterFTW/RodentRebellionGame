@@ -68,7 +68,7 @@ public class WeakPlatform : MonoBehaviour, R4Activatable
     void CleanupPlatform()
     {
         //Destroy is delayed to allow the coroutine time to end.
-        Destroy(gameObject, 0.25f);
+        Destroy(gameObject);
     }
 
 
