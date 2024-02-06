@@ -85,7 +85,7 @@ public class Button : MonoBehaviour
         foreach (var item in itemsToActivate)
         {
             //Check if item has the activatable interface and if so, we activate.
-            if (item.GetComponent<R4Activatable>() != null)
+            if (item != null && item.GetComponent<R4Activatable>() != null)
             {
                 item.GetComponent<R4Activatable>().Activate();
             }
@@ -100,7 +100,7 @@ public class Button : MonoBehaviour
         foreach (var item in itemsToActivate)
         {
             //Check if item has the activatable interface and if so, we deactivate.
-            if (item.GetComponent<R4Activatable>() != null)
+            if (item != null && item.GetComponent<R4Activatable>() != null)
             {
                 item.GetComponent<R4Activatable>().Deactivate();
             }
