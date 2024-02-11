@@ -58,7 +58,8 @@ public class DashTrail : MonoBehaviour
 			foreach (GameObject trail in mTrailObjectsInUse)
 			{
 				trail.GetComponent<SpriteRenderer>().flipX = mLeadingSprite.flipX;
-			}
+                trail.GetComponent<SpriteRenderer>().flipY = mLeadingSprite.flipY;
+            }
 		}
 		
 	}

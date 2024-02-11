@@ -36,16 +36,17 @@ public class RadiationCanister : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerController controller = collision.gameObject.GetComponent<PlayerController>();
 
-        if(controller != null) 
+        if (controller != null)
         {
             GameObject hintText = Instantiate(upgradeHintObject);
             hintText.GetComponentInChildren<TextMeshProUGUI>().text = HandleUpgradeHint(upgradeType) + " Acquired!";
             Debug.Log(upgradeType.ToString() + " picked up");
-            if(activatesItems) ActivateItems();
+            if (activatesItems) ActivateItems();
             controller.RadiationCanisterPickup(upgradeType);
             pickupSound.Play();
             spriteRenderer.enabled = false;
@@ -53,7 +54,6 @@ public class RadiationCanister : MonoBehaviour
             Destroy(gameObject, 3.5f);
         }
     }
-
 
     void ActivateItems()
     {

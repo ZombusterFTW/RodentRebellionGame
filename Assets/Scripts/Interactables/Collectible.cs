@@ -50,7 +50,12 @@ public class Collectible : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
         {
             PlayerController controller = collision.gameObject.GetComponent<PlayerController>();
             switch (collectibleType)
@@ -63,7 +68,7 @@ public class Collectible : MonoBehaviour
                 case CollectibleType.Coin:
                     {
                         //Add to the coin collector.
-                        if(GameObject.FindObjectOfType<CoinCollectibleManager>() != null)
+                        if (GameObject.FindObjectOfType<CoinCollectibleManager>() != null)
                         {
                             GameObject.FindObjectOfType<CoinCollectibleManager>().CollectCoin();
                         }
@@ -86,6 +91,8 @@ public class Collectible : MonoBehaviour
         Destroy(gameObject);
     }
 }
+
+
 
 public enum CollectibleType
 {

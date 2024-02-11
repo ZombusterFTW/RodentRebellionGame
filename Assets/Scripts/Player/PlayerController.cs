@@ -175,6 +175,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         playerSprite.flipY = !isFlipped;
         if (!isFlipped)
         {
+            dashTrailObject.GetComponent<SpriteRenderer>().flipY = false;
             isFlipped = true;
             playerRigidBody.gravityScale = -2;
             
@@ -183,6 +184,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         {
             isFlipped = false;
             playerRigidBody.gravityScale = 2;
+            dashTrailObject.GetComponent<SpriteRenderer>().flipY = true;
         }
     }
 
@@ -381,8 +383,6 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         cam.transform.DOComplete();
         cam.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
         dashTrail.SetEnabled(true);
-        if (isFlipped == false) dashTrailObject.GetComponent<SpriteRenderer>().flipY = false;
-        else dashTrailObject.GetComponent<SpriteRenderer>().flipY = true;
         playerRigidBody.drag = 25; 
         canDash = false;
         DashWallHandler(true);
