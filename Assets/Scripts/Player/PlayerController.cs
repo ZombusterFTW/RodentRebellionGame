@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private bool canJump = true;
     [SerializeField] private bool onWall = false;
     [SerializeField] private bool canMove = true;
+    [SerializeField] private bool isFlipped = false;
     [SerializeField] private float lerpTime = 0.5f;
     [SerializeField] private float wallJumpTime = 0.15f;
     [SerializeField] private float dashTimer = 0.25f;
@@ -71,9 +72,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     private Vector2 lastDirection = Vector2.right;
     private Rigidbody2D playerRigidBody;
     private BoxCollider2D playerCollider;
-    private SpriteRenderer spriteRenderer;
+    //private SpriteRenderer spriteRenderer;
     public float collisionRadius = 0.25f;
-    public Vector2 bottomOffset, rightOffset, leftOffset;
+    public Vector2 bottomOffset, rightOffset, leftOffset, topOffset;
     private Color debugColor = Color.red;
     [SerializeField] private Health playerHealth;
     [SerializeField] private Upgrade playerUpgrade;
@@ -116,7 +117,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         playerInput = GetComponent<PlayerInput>();
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
         playerHealth = GetComponent<Health>();
         playerUpgrade = GetComponent<Upgrade>();
         remainingDashes = maxDashes;
@@ -169,6 +170,22 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         return playerUI;    
     }
 
+    public void ToggleGravityFlip()
+    {
+        playerSprite.flipY = !isFlipped;
+        if (!isFlipped)
+        {
+            isFlipped = true;
+            playerRigidBody.gravityScale = -2;
+            
+        }
+        else
+        {
+            isFlipped = false;
+            playerRigidBody.gravityScale = 2;
+        }
+    }
+
 
     void HandleInput()
     {
@@ -177,7 +194,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         //x velocity should be unchanged unless the player is pressing a key
 
         isMoving = (playerRigidBody.velocity.x != 0 && movementDirection.x != 0);
-        isFalling = (playerRigidBody.velocity.y < 0  && !onGround && !onWall && movingPlatform == null);
+        isFalling = ((playerRigidBody.velocity.y < 0 || playerRigidBody.velocity.y > 0 && isFlipped)  && !onGround && !onWall && movingPlatform == null);
 
         playerAnimator.SetBool("IsFalling", isFalling);
         playerAnimator.SetBool("MovingOnGround", isMoving);
@@ -209,7 +226,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 playerAnimator.SetBool("OnWall", true);
                 //Wall slide
                 wallDir = Mathf.Lerp(playerRigidBody.velocity.x, wallDir, lerpTime * Time.deltaTime);
-                playerRigidBody.velocity = new Vector2(wallDir, -wallSlideSpeed);
+                if(isFlipped == false) playerRigidBody.velocity = new Vector2(wallDir, -wallSlideSpeed);
+                else playerRigidBody.velocity = new Vector2(wallDir, wallSlideSpeed);
             }
             else playerAnimator.SetBool("OnWall", false);
         }
@@ -241,9 +259,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     void CheckGrounding()
     {
-        onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, groundLayer);
+        if(isFlipped == false) onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, groundLayer);
+        else onGround = Physics2D.OverlapCircle((Vector2)transform.position + topOffset, collisionRadius, groundLayer);
         //Prevent wall climb if player lacks the ability.
-        if(canWallClimb)
+        if (canWallClimb)
         {
             onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer) || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
             onRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer);
@@ -268,11 +287,12 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         Gizmos.color = debugColor;
 
-        var positions = new Vector2[] {bottomOffset, rightOffset, leftOffset};
+        var positions = new Vector2[] {bottomOffset, rightOffset, leftOffset, topOffset};
 
         Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collisionRadius);
         Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
         Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
+        Gizmos.DrawSphere((Vector2)transform.position + topOffset, collisionRadius);
     }
 
 
@@ -283,7 +303,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             if (onGround)
             {
                 playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, 0);
-                playerRigidBody.velocity += Vector2.up * jumpForce_Game;
+                if(isFlipped == false) playerRigidBody.velocity += Vector2.up * jumpForce_Game;
+                else playerRigidBody.velocity += Vector2.down * jumpForce_Game;
                 Debug.Log("Normal jump");
                 onGround = false; 
                 isJumping = true;
@@ -294,7 +315,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             else if (!onGround && !onWall && playerDoubleJumpsRemaining > 0 && canDoubleJump)
             {
                 playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, 0);
-                playerRigidBody.velocity += Vector2.up * jumpForce_Game;
+                if (isFlipped == false) playerRigidBody.velocity += Vector2.up * jumpForce_Game;
+                else playerRigidBody.velocity += Vector2.down * jumpForce_Game;
                 playerDoubleJumpsRemaining--;
                 Debug.Log("Dbl jump");
                 //playerAnimator.Play("BigJoeDJ", 0);
@@ -324,7 +346,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         //playerAnimator.Play("BigJoeWallJump", 0);
         playerAnimator.SetTrigger("WallJump");
         playerRigidBody.velocity = new Vector2(0, 0);
-        playerRigidBody.velocity += (wallDir/1.5f + Vector2.up) * jumpForce_Game;
+        if(isFlipped == false) playerRigidBody.velocity += (wallDir/1.5f + Vector2.up) * jumpForce_Game;
+        else playerRigidBody.velocity += (wallDir / 1.5f + Vector2.down) * jumpForce_Game;
     }
 
     private void GroundPound()
@@ -333,7 +356,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         {
             isGroundPounding = true;
             canJump = false;
-            playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, -groundPoundVel);
+            if(isFlipped == false) playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, -groundPoundVel);
+            else playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, groundPoundVel);
             //playerAnimator.Play("BigJoeGroundPound", 0);
             playerAnimator.SetTrigger("GroundPound");
         }
@@ -357,12 +381,15 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         cam.transform.DOComplete();
         cam.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
         dashTrail.SetEnabled(true);
+        if (isFlipped == false) dashTrailObject.GetComponent<SpriteRenderer>().flipY = false;
+        else dashTrailObject.GetComponent<SpriteRenderer>().flipY = true;
         playerRigidBody.drag = 25; 
         canDash = false;
         DashWallHandler(true);
         StartCoroutine(DisableMovement(dashTimer));
         yield return new WaitForSeconds(dashTimer);
         dashTrail.SetEnabled(false);
+       
         canDash = true;
         DashWallHandler(false);
         isDashing = false;

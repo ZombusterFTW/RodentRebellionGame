@@ -5183,6 +5183,7 @@ MonoBehaviour:
   bottomOffset: {x: 0, y: -0.58}
   rightOffset: {x: 0.45, y: 0}
   leftOffset: {x: -0.45, y: 0}
+  topOffset: {x: 0, y: 0.58}
   playerHealth: {fileID: 0}
   playerUpgrade: {fileID: 0}
   playerUIPrefab: {fileID: 2242242107883657181, guid: 19d7d4ee0f886104397a19f4f200c307, type: 3}
@@ -5192,9 +5193,6 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 1152
-  activatablesLayer:
-    serializedVersion: 2
-    m_Bits: 1024
   frenzyLines: {fileID: 6459269101314280610}
   canWallClimb: 0
   canDash: 0
@@ -5379,6 +5377,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c0febae3-9de3-4a4a-a0f3-4296b1f88e18
     m_ActionName: PlayerControlActions/Back/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9247bd86-26e8-4618-8413-84a5c6a8e498
+    m_ActionName: UI/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControlActions
