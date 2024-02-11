@@ -305,9 +305,6 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                     playerAnimator.SetTrigger("Flip");
                 }
                 else playerAnimator.SetTrigger("DoubleJump");
-
-
-
                 isJumping = true;
             }
             else if (!onGround && onWall && !disableAllMoves && canWallJump) WallJump();

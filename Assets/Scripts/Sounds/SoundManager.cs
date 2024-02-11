@@ -105,7 +105,7 @@ public class SoundManager : MonoBehaviour
     {
 
         //check dialogue mode
-        if (dialogueManager.dialogueIsPlaying)
+        if (dialogueManager != null && dialogueManager.dialogueIsPlaying)
         {
             Debug.Log("Dialogue is playing!!!");
             //enter dialogue snapshot
@@ -118,7 +118,7 @@ public class SoundManager : MonoBehaviour
         }
 
         //check frenzy mode
-        if (frenzyManager.frenzyActive)
+        if (frenzyManager != null && frenzyManager.frenzyActive)
         {
             PlayFrenzyBGM();
         }else
