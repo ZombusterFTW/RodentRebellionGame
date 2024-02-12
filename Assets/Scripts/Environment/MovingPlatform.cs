@@ -13,7 +13,7 @@ public class MovingPlatform : MonoBehaviour, R4Activatable
     [Tooltip("The speed the platform will move at.")][SerializeField] private float platformSpeed = 8f;
     [Tooltip("How long the platform will wait once it reaches destination")][SerializeField] private float platformWaitTime = 5f;
     private Vector3 currentTarget;
-
+    private FrenzyManager frenzyManager;
 
     private Coroutine movingPlatformLoop;
 
@@ -41,6 +41,7 @@ public class MovingPlatform : MonoBehaviour, R4Activatable
     // Start is called before the first frame update
     void Start()
     {
+        frenzyManager = FrenzyManager.instance;
         platformStart.GetComponent<SpriteRenderer>().enabled = false;
         platformEnd.GetComponent<SpriteRenderer>().enabled = false; 
         //Move platform to its start or end. 
@@ -67,7 +68,10 @@ public class MovingPlatform : MonoBehaviour, R4Activatable
             if(movingPlatform.transform.position == platformStart.transform.position || movingPlatform.transform.position == platformEnd.transform.position) yield return new WaitForSeconds(platformWaitTime);
             while (movingPlatform.transform.position != currentTarget)
             {
-                movingPlatform.transform.position = Vector3.MoveTowards(movingPlatform.transform.position, currentTarget, platformSpeed * Time.deltaTime);
+                if(frenzyManager != null && frenzyManager.inRubberMode)
+                {
+                    movingPlatform.transform.position = Vector3.MoveTowards(movingPlatform.transform.position, currentTarget, platformSpeed * Time.deltaTime);
+                }
                 yield return null;
             }
 

@@ -15,10 +15,16 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     SceneTransitionerManager sceneTransitionerManager;
     private PlayerInput playerInput;
     [SerializeField] private GameObject playerSpriteContainer;
+    [SerializeField] private GameObject playerSpriteContainerRubberMode;
+    public DashTrail dashTrailRubber;
+    public DashTrailObject dashTrailObjectRubber;
+
     public DashTrail dashTrail;
     public DashTrailObject dashTrailObject;
     private SpriteRenderer playerSprite;
     private Animator playerAnimator;
+    private SpriteRenderer playerSpriteRubber;
+    private Animator playerAnimatorRubber;
     [SerializeField] private float playerSpeed = 500f;
     [SerializeField] private float jumpForce = 15f;
     [SerializeField] private float wallSlideSpeed = 3f;
@@ -125,6 +131,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         playerSprite = playerSpriteContainer.GetComponent<SpriteRenderer>();
         playerAnimator = playerSpriteContainer.GetComponent<Animator>();
+        playerSpriteRubber = playerSpriteContainerRubberMode.GetComponent<SpriteRenderer>();
+        playerAnimatorRubber = playerSpriteContainerRubberMode.GetComponent<Animator>();
         playerUI  = Instantiate(playerUIPrefab).GetComponent<PlayerUI>();
         playerInput = GetComponent<PlayerInput>();
         playerRigidBody = GetComponent<Rigidbody2D>();
@@ -185,9 +193,11 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     public void ToggleGravityFlip()
     {
         playerSprite.flipY = !isFlipped;
+        playerSpriteRubber.flipY = !isFlipped;
         if (!isFlipped)
         {
             dashTrailObject.GetComponent<SpriteRenderer>().flipY = false;
+            dashTrailObjectRubber.GetComponent<SpriteRenderer>().flipY = false;
             isFlipped = true;
             playerRigidBody.gravityScale = -2;
             
@@ -197,6 +207,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             isFlipped = false;
             playerRigidBody.gravityScale = 2;
             dashTrailObject.GetComponent<SpriteRenderer>().flipY = true;
+            dashTrailObjectRubber.GetComponent<SpriteRenderer>().flipY = true;
         }
     }
 
@@ -213,6 +224,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         playerAnimator.SetBool("IsFalling", isFalling);
         playerAnimator.SetBool("MovingOnGround", isMoving);
         playerAnimator.SetBool("OnGround", onGround);
+        playerAnimatorRubber.SetBool("IsFalling", isFalling);
+        playerAnimatorRubber.SetBool("MovingOnGround", isMoving);
+        playerAnimatorRubber.SetBool("OnGround", onGround);
 
         if (isFalling) isJumping = false;
         if(!disableAllMoves)
@@ -229,21 +243,30 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 if (wallDir < 0)
                 {
                     playerSprite.flipX = true;
+                    playerSpriteRubber.flipX = true;
                     dashTrailObject.GetComponent<SpriteRenderer>().flipX = false;
+                    dashTrailObjectRubber.GetComponent<SpriteRenderer>().flipX = false;
                 }
                 else
                 {
                     playerSprite.flipX = false;
+                    playerSpriteRubber.flipX = false;
                     dashTrailObject.GetComponent<SpriteRenderer>().flipX = false;
+                    dashTrailObjectRubber.GetComponent<SpriteRenderer>().flipX = false;
                 }
                 Debug.Log("Wall sliding");
                 playerAnimator.SetBool("OnWall", true);
+                playerAnimatorRubber.SetBool("OnWall", true);
                 //Wall slide
                 wallDir = Mathf.Lerp(playerRigidBody.velocity.x, wallDir, lerpTime * Time.deltaTime);
-                if(isFlipped == false) playerRigidBody.velocity = new Vector2(wallDir, -wallSlideSpeed);
+                if (isFlipped == false) playerRigidBody.velocity = new Vector2(wallDir, -wallSlideSpeed);
                 else playerRigidBody.velocity = new Vector2(wallDir, wallSlideSpeed);
             }
-            else playerAnimator.SetBool("OnWall", false);
+            else
+            {
+                playerAnimator.SetBool("OnWall", false);
+                playerAnimatorRubber.SetBool("OnWall", false);
+            }
         }
         else
         {
@@ -255,7 +278,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         if (movementDirection != Vector2.zero && !wallJumped)
         {
             playerSprite.flipX = movementDirection.x < 0 ? true : false;
+            playerSpriteRubber.flipX = movementDirection.x < 0 ? true : false;
             dashTrailObject.GetComponent<SpriteRenderer>().flipX = playerSprite.flipX;
+            dashTrailObjectRubber.GetComponent<SpriteRenderer>().flipX = playerSpriteRubber.flipX;
         }
 
         //Activate sound when the player moves
@@ -324,6 +349,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 isJumping = true;
                 //playerAnimator.Play("BigJoeJump", 0);
                 playerAnimator.SetTrigger("Jump");
+                playerAnimatorRubber.SetTrigger("Jump");
 
             }
             else if (!onGround && !onWall && playerDoubleJumpsRemaining > 0 && canDoubleJump)
@@ -336,11 +362,16 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 //playerAnimator.Play("BigJoeDJ", 0);
 
                 //Rare play of flip anim
-                if(Random.Range(0, 5) == 1)
+                if (Random.Range(0, 5) == 1)
                 {
                     playerAnimator.SetTrigger("Flip");
+                    playerAnimatorRubber.SetTrigger("Flip");
                 }
-                else playerAnimator.SetTrigger("DoubleJump");
+                else
+                {
+                    playerAnimator.SetTrigger("DoubleJump");
+                    playerAnimatorRubber.SetTrigger("DoubleJump");
+                }
                 isJumping = true;
             }
             else if (!onGround && onWall && !disableAllMoves && canWallJump) WallJump();
@@ -355,10 +386,19 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         StartCoroutine(DisableMovement(wallJumpTime));
         //check direction
         Vector2 wallDir = onRightWall ? Vector2.left : Vector2.right;
-        if(wallDir == Vector2.left) playerSprite.flipX = true;
-        else playerSprite.flipX = false;
+        if (wallDir == Vector2.left)
+        {
+            playerSprite.flipX = true;
+            playerSpriteRubber.flipX = true;
+        }
+        else
+        {
+            playerSprite.flipX = false;
+            playerSpriteRubber.flipX = false;
+        }
         //playerAnimator.Play("BigJoeWallJump", 0);
         playerAnimator.SetTrigger("WallJump");
+        playerAnimatorRubber.SetTrigger("WallJump");
         playerRigidBody.velocity = new Vector2(0, 0);
         if(isFlipped == false) playerRigidBody.velocity += (wallDir/1.5f + Vector2.up) * jumpForce_Game;
         else playerRigidBody.velocity += (wallDir / 1.5f + Vector2.down) * jumpForce_Game;
@@ -374,6 +414,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             else playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, groundPoundVel);
             //playerAnimator.Play("BigJoeGroundPound", 0);
             playerAnimator.SetTrigger("GroundPound");
+            playerAnimatorRubber.SetTrigger("GroundPound");
         }
         else if(onGround && isGroundPounding)
         {
@@ -384,6 +425,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             isGroundPounding = false;
             canJump = true;
             //playerAnimator.Play("BigJoeLand", 0);
+            playerAnimatorRubber.SetTrigger("Land");
             playerAnimator.SetTrigger("Land");
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Land);
         }
@@ -395,13 +437,14 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         cam.transform.DOComplete();
         cam.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
         dashTrail.SetEnabled(true);
+        dashTrailRubber.SetEnabled(true);
         playerRigidBody.drag = 25; 
         canDash = false;
         DashWallHandler(true);
         StartCoroutine(DisableMovement(dashTimer));
         yield return new WaitForSeconds(dashTimer);
         dashTrail.SetEnabled(false);
-       
+        dashTrailRubber.SetEnabled(false);
         canDash = true;
         DashWallHandler(false);
         isDashing = false;
@@ -456,7 +499,11 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         canMove = false;
         yield return new WaitForSeconds(timeToDisable);
-        if (movementDirection != Vector2.zero && !wallJumped) playerSprite.flipX = movementDirection.x < 0 ? true : false;
+        if (movementDirection != Vector2.zero && !wallJumped)
+        {
+            playerSprite.flipX = movementDirection.x < 0 ? true : false;
+            playerSpriteRubber.flipX = movementDirection.x < 0 ? true : false;
+        }
         canMove = true;
     }
 
@@ -476,7 +523,11 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         {
             movementDirection = context.ReadValue<Vector2>();
             movementDirection.Normalize();
-            if (movementDirection != Vector2.zero) playerSprite.flipX = movementDirection.x < 0 ? true : false;
+            if (movementDirection != Vector2.zero)
+            {
+                playerSprite.flipX = movementDirection.x < 0 ? true : false;
+                playerSpriteRubber.flipX = movementDirection.x < 0 ? true : false;
+            }
             Debug.Log(movementDirection);
 
             if (movementDirection != Vector2.zero)
@@ -598,17 +649,20 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         laserBeam.enabled = true;
         playerAnimator.SetTrigger("Laser");
+        playerAnimatorRubber.SetTrigger("Laser");
         Vector3 pos =  cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20));
         int laserDir = (int)(-transform.position.x * pos.y + transform.position.y * pos.x);
         Vector2 laserFireDirection;
         if (laserDir < 0)
         {
             playerSprite.flipX = false;
+            playerSpriteRubber.flipX = false;
             laserFireDirection = (Vector2)laserStartPosLeft.transform.position;
         }
         else
         {
             playerSprite.flipX = true;
+            playerSpriteRubber.flipX = true;
             laserFireDirection = (Vector2)laserStartPosRight.transform.position;
         }
 
@@ -695,6 +749,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                     {
                         characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon1);
                         playerAnimator.SetTrigger("Stab");
+                        playerAnimatorRubber.SetTrigger("Stab");
                         if (hit)
                         {
                             Debug.Log("Hit");
@@ -713,6 +768,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                         characterSoundManager.PlayAudioCallout(CharacterAudioCallout.NoWeapon);
                         //replace me with standard attack
                         playerAnimator.SetTrigger("StandardAttack");
+                        playerAnimatorRubber.SetTrigger("StandardAttack");
                         if (hit)
                         {
                             Debug.Log("Hit");
@@ -846,11 +902,15 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     IEnumerator RespawnJoe()
     {
         playerAnimator.SetTrigger("Death");
+        playerAnimatorRubber.SetTrigger("Death");
         yield return new WaitForSeconds(1);
         playerSprite.DOFade(0, 1);
+        playerSpriteRubber.DOFade(0, 1);
         yield return new WaitForSeconds(1);
         playerAnimator.Play("BigJoeIdle");
+        playerAnimatorRubber.Play("BigJoeIdle");
         playerSprite.DOFade(1, .5f);
+        playerSpriteRubber.DOFade(1, .5f);
         playerHealth.HealthToMax();
         isAlive = true;
         gameObject.transform.position = currentSpawn.transform.position;
@@ -988,7 +1048,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     public void PlayDamagedAnim()
     {
         playerAnimator.Play("BigJoeHurt", 0);
-        if(hurtCoroutine == null) hurtCoroutine = StartCoroutine(PlayHurtSound());
+        playerAnimatorRubber.Play("BigJoeHurt", 0);
+        if (hurtCoroutine == null) hurtCoroutine = StartCoroutine(PlayHurtSound());
     }
 
     IEnumerator PlayHurtSound()

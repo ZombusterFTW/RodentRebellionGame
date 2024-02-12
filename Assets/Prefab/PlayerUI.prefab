@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2913538709691723590}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 6056967045323354213}
   - component: {fileID: 6594014797111645584}
   - component: {fileID: 6374524339424600751}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LevelTimerP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 8063084791751030570}
   - component: {fileID: 8551413761099586639}
   - component: {fileID: 7222057333238499499}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Slash (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,7 +317,7 @@ GameObject:
   - component: {fileID: 7417682248312072995}
   - component: {fileID: 5342387872802847209}
   - component: {fileID: 8349735571124097199}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LevelTimerP3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 7806472283199683981}
   - component: {fileID: 2347763196162869357}
   - component: {fileID: 4738998035900293370}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 6479013435668642690}
   - component: {fileID: 4750560880469766163}
   - component: {fileID: 937907384087148738}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FrenzyBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 8386721820359415552}
   - component: {fileID: 4489554545517984131}
   - component: {fileID: 3286270521997152336}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PlayerUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 3159320285384122221}
   - component: {fileID: 4378478431841431321}
   - component: {fileID: 7522416641248652930}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HealthBarOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -812,7 +812,7 @@ GameObject:
   - component: {fileID: 3545662721834629369}
   - component: {fileID: 4931246387090989809}
   - component: {fileID: 5086612208734516481}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CollectibleCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -946,7 +946,7 @@ GameObject:
   - component: {fileID: 2902872049573503823}
   - component: {fileID: 5545920706025104345}
   - component: {fileID: 4872896925337216399}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1080,7 +1080,7 @@ GameObject:
   - component: {fileID: 5652323589424194406}
   - component: {fileID: 1362519515357464215}
   - component: {fileID: 463399139661048631}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LevelTimerP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1216,7 +1216,7 @@ GameObject:
   - component: {fileID: 7261390396568625262}
   - component: {fileID: 2743199844693672026}
   - component: {fileID: 5436804667616134298}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PlayerUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1333,7 +1333,7 @@ GameObject:
   - component: {fileID: 8169864984843823290}
   - component: {fileID: 5634043348274162151}
   - component: {fileID: 6887740562662660540}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1408,7 +1408,7 @@ GameObject:
   - component: {fileID: 1022621058753329890}
   - component: {fileID: 8969329593147610753}
   - component: {fileID: 6260745223420237512}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Frenzy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1542,7 +1542,7 @@ GameObject:
   - component: {fileID: 3244602885000219354}
   - component: {fileID: 1485150974360626407}
   - component: {fileID: 6678054168552887351}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HealthBarOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1615,7 +1615,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3941469654330374304}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FrenzyBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1655,7 +1655,7 @@ GameObject:
   - component: {fileID: 4328335669367631526}
   - component: {fileID: 1678132432905518767}
   - component: {fileID: 5471905256619667792}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LevelTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

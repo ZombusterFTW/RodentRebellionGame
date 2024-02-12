@@ -19,6 +19,8 @@ public class FrenzyManager : MonoBehaviour
     //Static reference so it can be referenced in any script easily.
     public static FrenzyManager instance;
 
+    [SerializeField] private Canvas transitionCanvas;
+    private Animator transitionCanvasAnimator;
 
 
     // Start is called before the first frame update
@@ -35,7 +37,9 @@ public class FrenzyManager : MonoBehaviour
            // Destroy(gameObject);
         }
         frenzyAmountCurrent = frenzyStartingValue;
-        
+        transitionCanvasAnimator = transitionCanvas.GetComponent<Animator>();
+
+
     }
     private void Start()
     {
@@ -92,6 +96,7 @@ public class FrenzyManager : MonoBehaviour
             //We change to rubber mode here
             rubberModeBarAnimation = StartCoroutine(RubberModeMeterCountdown());
             Debug.Log("Entered Rubber Mode");
+            transitionCanvasAnimator.Play("WorldStateTransition");
         }
 
         else if(frenzyAmountCurrent > 0 && rubberModeBarAnimation != null && inRubberMode)
@@ -101,6 +106,7 @@ public class FrenzyManager : MonoBehaviour
             rubberModeBarAnimation = null;
             inRubberMode = false;
             Debug.Log("Exited Rubber Mode");
+            transitionCanvasAnimator.Play("WorldStateTransitionReverse");
         }
         
         else
@@ -142,6 +148,7 @@ public class FrenzyManager : MonoBehaviour
         rubberModeBarAnimation = null;
         inRubberMode = false;
         Debug.Log("Exited Rubber Mode, Ran out of juice.");
+        transitionCanvasAnimator.Play("WorldStateTransitionReverse");
     }
 
 
