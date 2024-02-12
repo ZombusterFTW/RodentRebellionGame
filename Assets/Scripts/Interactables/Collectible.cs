@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Collectible : MonoBehaviour
@@ -11,11 +12,16 @@ public class Collectible : MonoBehaviour
     [Tooltip("The type of the collectible. Health, Frenzy, or Coin")][SerializeField] private CollectibleType collectibleType;
     //[Tooltip("The sprites the collectible can be.")][SerializeField] private Sprite[] collectibleSprites;
     private SpriteRenderer spriteRenderer;
+    private CircleCollider2D circleCollider;
 
-    
+    [SerializeField] private AudioSource audioSource;
     public CollectibleType GetCollectibleType() { return collectibleType; }
 
-    
+    private void Awake()
+    {
+        circleCollider = GetComponent<CircleCollider2D>();  
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,12 +51,6 @@ public class Collectible : MonoBehaviour
                     break;
                 }
         }
-    }
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -88,7 +88,10 @@ public class Collectible : MonoBehaviour
                     }
             }
         }
-        Destroy(gameObject);
+        audioSource.Play();
+        circleCollider.enabled = false;
+        spriteRenderer.enabled = false;
+        Destroy(gameObject, 3.5f);
     }
 }
 
