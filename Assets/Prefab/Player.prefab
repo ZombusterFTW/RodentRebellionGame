@@ -5169,6 +5169,7 @@ MonoBehaviour:
   canJump: 1
   onWall: 0
   canMove: 1
+  isFlipped: 0
   lerpTime: 0.35
   wallJumpTime: 0.15
   dashTimer: 0.15
@@ -5381,6 +5382,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9247bd86-26e8-4618-8413-84a5c6a8e498
     m_ActionName: UI/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8459652423362751434}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnRubberModeToggle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 930192a8-0a65-4b17-9fda-cf8f05e384b8
+    m_ActionName: PlayerControlActions/WorldToggle[/Keyboard/ctrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControlActions

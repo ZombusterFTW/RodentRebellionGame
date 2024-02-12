@@ -34,7 +34,11 @@ public class AntiBouncePad : MonoBehaviour, R4Activatable
         bounceCollider.sharedMaterial = defaultMaterial;
     }
 
-  
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        bounceCollider = GetComponent<BoxCollider2D>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +46,7 @@ public class AntiBouncePad : MonoBehaviour, R4Activatable
         defaultMaterial.bounciness = wallBounciness;
         noBouncyMaterial = new PhysicsMaterial2D("NoBounceMaterial");
         noBouncyMaterial.bounciness = 0f;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        bounceCollider = GetComponent<BoxCollider2D>();
+        
         if (startOn) 
         {
             Activate();

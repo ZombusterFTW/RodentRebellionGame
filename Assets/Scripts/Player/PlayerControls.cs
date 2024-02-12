@@ -73,6 +73,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""WorldToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""930192a8-0a65-4b17-9fda-cf8f05e384b8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""6a2820af-379f-45e6-aa6a-829b36427b43"",
@@ -325,6 +334,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Back/Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""81b07200-2823-4749-bd56-d0fcc2f548bd"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WorldToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -366,6 +386,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerControlActions_BackPause = m_PlayerControlActions.FindAction("Back/Pause", throwIfNotFound: true);
         m_PlayerControlActions_GroundPound = m_PlayerControlActions.FindAction("GroundPound", throwIfNotFound: true);
         m_PlayerControlActions_Interact = m_PlayerControlActions.FindAction("Interact", throwIfNotFound: true);
+        m_PlayerControlActions_WorldToggle = m_PlayerControlActions.FindAction("WorldToggle", throwIfNotFound: true);
         m_PlayerControlActions_Dash = m_PlayerControlActions.FindAction("Dash", throwIfNotFound: true);
         m_PlayerControlActions_Attack = m_PlayerControlActions.FindAction("Attack", throwIfNotFound: true);
         m_PlayerControlActions_MouseSubmit = m_PlayerControlActions.FindAction("MouseSubmit", throwIfNotFound: true);
@@ -441,6 +462,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControlActions_BackPause;
     private readonly InputAction m_PlayerControlActions_GroundPound;
     private readonly InputAction m_PlayerControlActions_Interact;
+    private readonly InputAction m_PlayerControlActions_WorldToggle;
     private readonly InputAction m_PlayerControlActions_Dash;
     private readonly InputAction m_PlayerControlActions_Attack;
     private readonly InputAction m_PlayerControlActions_MouseSubmit;
@@ -456,6 +478,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @BackPause => m_Wrapper.m_PlayerControlActions_BackPause;
         public InputAction @GroundPound => m_Wrapper.m_PlayerControlActions_GroundPound;
         public InputAction @Interact => m_Wrapper.m_PlayerControlActions_Interact;
+        public InputAction @WorldToggle => m_Wrapper.m_PlayerControlActions_WorldToggle;
         public InputAction @Dash => m_Wrapper.m_PlayerControlActions_Dash;
         public InputAction @Attack => m_Wrapper.m_PlayerControlActions_Attack;
         public InputAction @MouseSubmit => m_Wrapper.m_PlayerControlActions_MouseSubmit;
@@ -486,6 +509,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @WorldToggle.started += instance.OnWorldToggle;
+            @WorldToggle.performed += instance.OnWorldToggle;
+            @WorldToggle.canceled += instance.OnWorldToggle;
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
@@ -523,6 +549,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @WorldToggle.started -= instance.OnWorldToggle;
+            @WorldToggle.performed -= instance.OnWorldToggle;
+            @WorldToggle.canceled -= instance.OnWorldToggle;
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
@@ -611,6 +640,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnBackPause(InputAction.CallbackContext context);
         void OnGroundPound(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnWorldToggle(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnMouseSubmit(InputAction.CallbackContext context);

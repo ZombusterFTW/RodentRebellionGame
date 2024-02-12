@@ -51,6 +51,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "WorldToggle",
+                    "type": "Button",
+                    "id": "930192a8-0a65-4b17-9fda-cf8f05e384b8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Dash",
                     "type": "Button",
                     "id": "6a2820af-379f-45e6-aa6a-829b36427b43",
@@ -301,6 +310,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Back/Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "81b07200-2823-4749-bd56-d0fcc2f548bd",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WorldToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

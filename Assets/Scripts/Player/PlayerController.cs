@@ -108,6 +108,18 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     private Coroutine hurtSound;
     private Coroutine respawnJoe;
 
+    /// <summary>
+    /// Mode switch notes. To enter rubber mode the player must have a portion of their rage meter. In rubber mode the bar slowly drains overtime with the player being kicked out of the mode alltogether if it runs out.
+    /// Rubber mode has the increased emphasis on movement with more opportunites being available to the player. 
+    /// The player can also enter rage mode with this bar instead staying in rat mode.
+    /// Question that needs to be answered is, should it be possible to enter rage mode while in rubber mode?
+    /// Moving platforms move in rubber mode when they are powered. Will add a new bool to the activatable item interface that dictates how they should function in each mode. For now a circle transition will suffice with a more detailed transition worked on later.
+    /// Specific moves that are disabled in rubber/rat mode can be disabled by checking if the inRubberMode bool from the frenzy manager is true or false.
+    /// </summary>
+
+
+
+
 
     private void Awake()
     {
@@ -435,6 +447,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         }
     }
 
+ 
+
 
 
 
@@ -520,6 +534,19 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 break;
             case InputActionPhase.Canceled:
                 interactPressed = false;
+                break;
+        }
+    }
+
+
+
+    public void OnRubberModeToggle(InputAction.CallbackContext context)
+    {
+        switch (context.phase)
+        {
+            case InputActionPhase.Performed:
+                //Attempt to activate frenzy mode.
+                if (!disableAllMoves) frenzyManager.ToggleRubberMode();
                 break;
         }
     }

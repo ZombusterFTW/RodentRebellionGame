@@ -11,9 +11,11 @@ public class FrenzyManager : MonoBehaviour
     private PlayerController playerController;
     [SerializeField] private PlayerUI playerUIManager;
     private Coroutine frenzyBarAnimation;
+
+    private Coroutine rubberModeBarAnimation;
     public bool frenzyActive { get; private set; } = false;
 
-
+    public bool inRubberMode { get; private set; } = false;
     //Static reference so it can be referenced in any script easily.
     public static FrenzyManager instance;
 
@@ -63,7 +65,7 @@ public class FrenzyManager : MonoBehaviour
 
     public void ActivateFrenzyMeter()
     {
-        if(frenzyAmountCurrent >= frenzyMaxAmount && frenzyBarAnimation == null)
+        if(frenzyAmountCurrent >= frenzyMaxAmount && frenzyBarAnimation == null && !inRubberMode)
         {
             //Set bool to make stance transition impossible
             playerController.ActivateFrenzy(true);
@@ -71,7 +73,39 @@ public class FrenzyManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("No frenzy juice or frenzy active");
+            Debug.Log("No frenzy juice, frenzy active, or in Rubber mode");
+        }
+    }
+
+
+    public void ToggleRubberMode()
+    {
+        if (frenzyAmountCurrent > 0 && rubberModeBarAnimation == null && !inRubberMode)
+        {
+            //Player cannot be in rubber mode while in rage mode, so we check if the player is in rage mode. If they are we kick them out of it.
+            if(frenzyActive &&  frenzyBarAnimation != null)
+            {
+                StopCoroutine(frenzyBarAnimation);
+                frenzyActive = false;
+                playerController.ActivateFrenzy(false);
+            }
+            //We change to rubber mode here
+            rubberModeBarAnimation = StartCoroutine(RubberModeMeterCountdown());
+            Debug.Log("Entered Rubber Mode");
+        }
+
+        else if(frenzyAmountCurrent > 0 && rubberModeBarAnimation != null && inRubberMode)
+        {
+            //If we get here the player is in rubber mode and attempting to return to rat mode while they still have charge in their meter.
+            StopCoroutine(rubberModeBarAnimation);
+            rubberModeBarAnimation = null;
+            inRubberMode = false;
+            Debug.Log("Exited Rubber Mode");
+        }
+        
+        else
+        {
+            Debug.Log("No frenzy juice to enter rubber mode");
         }
     }
 
@@ -79,23 +113,43 @@ public class FrenzyManager : MonoBehaviour
     IEnumerator FrenzyMeterCountdown()
     {
         frenzyActive = true;
-        DOTween.To(() => frenzyAmountCurrent, x => frenzyAmountCurrent = x, 0, frenzyMaxAmount);
-        playerUIManager.UpdateFrenzyBar(frenzyAmountCurrent, frenzyMaxAmount);
+        //Frenzy bar changed to use delta time, so picking up new collectibles will increase the meters amount during frenzy or rubber mode.
+       // DOTween.To(() => frenzyAmountCurrent, x => frenzyAmountCurrent = x, 0, frenzyMaxAmount);
+       // playerUIManager.UpdateFrenzyBar(frenzyAmountCurrent, frenzyMaxAmount);
         while (frenzyAmountCurrent > 0) 
         {
-            Debug.Log(frenzyAmountCurrent);
+            //Debug.Log(frenzyAmountCurrent);
+            frenzyAmountCurrent -= Time.deltaTime;
             playerUIManager.UpdateFrenzyBar(frenzyAmountCurrent, frenzyMaxAmount);
             yield return null;
         }
         playerController.ActivateFrenzy(false);
         frenzyBarAnimation = null;
         frenzyActive = false;
+        Debug.Log("Exited Frenzy mode, ran out of juice");
     }
+
+    IEnumerator RubberModeMeterCountdown()
+    {
+        inRubberMode = true;
+        while (frenzyAmountCurrent > 0)
+        {
+            //Debug.Log(frenzyAmountCurrent);
+            frenzyAmountCurrent -= Time.deltaTime * 0.1f;
+            playerUIManager.UpdateFrenzyBar(frenzyAmountCurrent, frenzyMaxAmount);
+            yield return null;
+        }
+        rubberModeBarAnimation = null;
+        inRubberMode = false;
+        Debug.Log("Exited Rubber Mode, Ran out of juice.");
+    }
+
+
 
     // Update is called once per frame
     void Update()
     {
         //For testing 
-        if (!frenzyActive) AddToFrenzyMeter(0.001f*Time.deltaTime);
+        if (!frenzyActive && !inRubberMode) AddToFrenzyMeter(0.01f*Time.deltaTime);
     }
 }
