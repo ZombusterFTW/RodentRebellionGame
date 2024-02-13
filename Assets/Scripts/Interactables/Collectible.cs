@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
+    [ExecuteInEditMode]
     //This script is responcible for the collectible "coins" that can be found in each level. These coins can be "deactivated" in some cases which disallows their pickup. 
     //This script will require a boxcollider or circlecollider 2d that adds to a persistent integer when grabbed. The amount of collectible items is shown at the top right of the screen with the amount of coins in a level being populated.
 
@@ -16,13 +17,13 @@ public class Collectible : MonoBehaviour
 
     [SerializeField] private AudioSource audioSource;
     public CollectibleType GetCollectibleType() { return collectibleType; }
-
+    
     private void Awake()
     {
         circleCollider = GetComponent<CircleCollider2D>();  
     }
 
-
+   
     // Start is called before the first frame update
     void Start()
     {
