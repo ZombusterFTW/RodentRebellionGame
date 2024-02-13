@@ -47,9 +47,12 @@ public class PlayerCameraManager : MonoBehaviour
 
     public void SetLevelImage(int sceneIndex)
     {
-        Debug.Log("Attempted to load image");
+        Debug.Log("Attempted to load background image");
         switch(sceneIndex) 
         {
+            default:
+                mapImage.GetComponent<SpriteRenderer>().sprite = level1Image;
+                break;
             case 1:
                 mapImage.GetComponent<SpriteRenderer>().sprite = level1Image;
                 break;
