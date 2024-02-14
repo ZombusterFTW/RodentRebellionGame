@@ -257,6 +257,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 Debug.Log("Wall sliding");
                 playerAnimator.SetBool("OnWall", true);
                 playerAnimatorRubber.SetBool("OnWall", true);
+                playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
+
                 //Wall slide
                 wallDir = Mathf.Lerp(playerRigidBody.velocity.x, wallDir, lerpTime * Time.deltaTime);
                 if (isFlipped == false) playerRigidBody.velocity = new Vector2(wallDir, -wallSlideSpeed);

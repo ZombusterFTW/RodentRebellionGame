@@ -162,7 +162,7 @@ public class FrenzyManager : MonoBehaviour
         inRubberMode = false;
         Debug.Log("Exited Rubber Mode, Ran out of juice.");
         //transitionCanvasAnimator.Play("WorldStateTransitionReverse");
-        RubberFillImage(true);
+        RubberFillImage(false);
     }
 
 
