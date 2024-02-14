@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class FrenzyManager : MonoBehaviour
 {
@@ -19,9 +20,8 @@ public class FrenzyManager : MonoBehaviour
     //Static reference so it can be referenced in any script easily.
     public static FrenzyManager instance;
 
-    [SerializeField] private Canvas transitionCanvas;
-    private Animator transitionCanvasAnimator;
-
+    Tween fillTween;
+    [SerializeField] private Image rubberModeRawImage;
 
     // Start is called before the first frame update
     void Awake()
@@ -37,7 +37,6 @@ public class FrenzyManager : MonoBehaviour
            // Destroy(gameObject);
         }
         frenzyAmountCurrent = frenzyStartingValue;
-        transitionCanvasAnimator = transitionCanvas.GetComponent<Animator>();
 
 
     }
@@ -96,7 +95,8 @@ public class FrenzyManager : MonoBehaviour
             //We change to rubber mode here
             rubberModeBarAnimation = StartCoroutine(RubberModeMeterCountdown());
             Debug.Log("Entered Rubber Mode");
-            transitionCanvasAnimator.Play("WorldStateTransition");
+            //transitionCanvasAnimator.Play("WorldStateTransition");
+            RubberFillImage(true);
         }
 
         else if(frenzyAmountCurrent > 0 && rubberModeBarAnimation != null && inRubberMode)
@@ -106,7 +106,8 @@ public class FrenzyManager : MonoBehaviour
             rubberModeBarAnimation = null;
             inRubberMode = false;
             Debug.Log("Exited Rubber Mode");
-            transitionCanvasAnimator.Play("WorldStateTransitionReverse");
+            //transitionCanvasAnimator.Play("WorldStateTransitionReverse");
+            RubberFillImage(false);
         }
         
         else
@@ -114,7 +115,19 @@ public class FrenzyManager : MonoBehaviour
             Debug.Log("No frenzy juice to enter rubber mode");
         }
     }
-
+    private void RubberFillImage(bool shouldFill)
+    {
+        //This change was added so the state change visual will accurately stop/start from its last position if the player enters or leaves rubber mode quickly.
+        if(fillTween != null && !fillTween.IsActive()) fillTween.Kill();
+        if (shouldFill) 
+        {
+            fillTween = DOTween.To(() => rubberModeRawImage.fillAmount, x => rubberModeRawImage.fillAmount = x, 1, 1);
+        }
+        else
+        {
+            fillTween = DOTween.To(() => rubberModeRawImage.fillAmount, x => rubberModeRawImage.fillAmount = x, 0, 1);
+        }
+    }
 
     IEnumerator FrenzyMeterCountdown()
     {
@@ -148,7 +161,8 @@ public class FrenzyManager : MonoBehaviour
         rubberModeBarAnimation = null;
         inRubberMode = false;
         Debug.Log("Exited Rubber Mode, Ran out of juice.");
-        transitionCanvasAnimator.Play("WorldStateTransitionReverse");
+        //transitionCanvasAnimator.Play("WorldStateTransitionReverse");
+        RubberFillImage(true);
     }
 
 

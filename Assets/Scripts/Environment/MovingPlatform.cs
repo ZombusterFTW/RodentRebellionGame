@@ -33,7 +33,7 @@ public class MovingPlatform : MonoBehaviour, R4Activatable
         if (isActive)
         {
             isActive = false;
-            StopCoroutine(movingPlatformLoop);
+            if(movingPlatformLoop != null) StopCoroutine(movingPlatformLoop);
         }
     }
 

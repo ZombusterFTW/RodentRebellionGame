@@ -12577,10 +12577,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1531035922826834400, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5169012110108082315, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_UIInputModule
       value: 
       objectReference: {fileID: 1614604420}
+    - target: {fileID: 8537326819754887358, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
+      propertyPath: m_FillAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8686200487451471497, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.92

@@ -11,6 +11,10 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
     //Bosses need to have more attack states and intelligence. To acheive this I think its needed to create a new class that uses the majority of this class, but also include more code that allows for long range projectiles. 
     //Mr whiskers will likely have his own class completely allowing for him to have a noticably different attack pattern.
 
+
+    //Enemies need to be "disabled" when the player is in rubber mode.
+    //In rubber mode they will appear as translucent silhollettes that are intangible and can be passed through.
+
     [SerializeField] GameObject playerUI;
     private GameObject UIClone;
     private Health health;

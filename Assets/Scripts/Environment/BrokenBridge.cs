@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class BrokenBridge : MonoBehaviour
 {
 
+    //These appear as broken bridges while in rat mode, but when the player enters rubber mode the bridge gracefully reassembles itself allowing for the player to cross safely.
 
-    //Shoot at targets within its range and cone of view. Can be destroyed by attacks.
-    //Shoots at players position, so it doesn't unfairly hit them as they move. 
-    //Needs to become "dead" in rubber mode.
+
 
 
     // Start is called before the first frame update

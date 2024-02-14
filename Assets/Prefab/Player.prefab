@@ -5513,7 +5513,7 @@ MonoBehaviour:
   frenzyMaxAmount: 7.5
   frenzyAmountCurrent: 0
   playerUIManager: {fileID: 0}
-  transitionCanvas: {fileID: 5058197420315737490}
+  rubberModeRawImage: {fileID: 8537326819754887358}
 --- !u!114 &9192966572302598943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6290,7 +6290,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3548653354240029801}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 555e71fc27c5abb45ae58ea899283ac3, type: 2}
   m_CullingMode: 0

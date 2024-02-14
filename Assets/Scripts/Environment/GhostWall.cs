@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class GhostWall : MonoBehaviour
 {
+    //When in "rubbermode" these walls become passthroughable and glow a distinct color or dissapear alltogether.
 
 
-    //Shoot at targets within its range and cone of view. Can be destroyed by attacks.
-    //Shoots at players position, so it doesn't unfairly hit them as they move. 
-    //Needs to become "dead" in rubber mode.
+
+
 
 
     // Start is called before the first frame update
