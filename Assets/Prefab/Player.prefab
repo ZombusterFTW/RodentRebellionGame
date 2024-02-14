@@ -5276,10 +5276,11 @@ MonoBehaviour:
   isGroundPounding: 0
   isDashing: 0
   collisionRadius: 0.08
-  bottomOffset: {x: 0, y: -0.6}
+  collisionRadiusTopBottom: 0.3
+  bottomOffset: {x: 0, y: -0.54}
   rightOffset: {x: 0.35, y: 0.6}
   leftOffset: {x: -0.35, y: 0.6}
-  topOffset: {x: 0, y: 0.6}
+  topOffset: {x: 0, y: 0.54}
   playerHealth: {fileID: 0}
   playerUpgrade: {fileID: 0}
   playerUIPrefab: {fileID: 2242242107883657181, guid: 19d7d4ee0f886104397a19f4f200c307, type: 3}

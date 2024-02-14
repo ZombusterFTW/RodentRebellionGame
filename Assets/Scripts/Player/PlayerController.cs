@@ -80,6 +80,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     private BoxCollider2D playerCollider;
     //private SpriteRenderer spriteRenderer;
     public float collisionRadius = 0.25f;
+    public float collisionRadiusTopBottom = 0.25f;
+
     public Vector2 bottomOffset, rightOffset, leftOffset, topOffset;
     private Color debugColor = Color.red;
     [SerializeField] private Health playerHealth;
@@ -315,8 +317,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     void CheckGrounding()
     {
-        if(isFlipped == false) onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, groundLayer);
-        else onGround = Physics2D.OverlapCircle((Vector2)transform.position + topOffset, collisionRadius, groundLayer);
+        if(isFlipped == false) onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadiusTopBottom, groundLayer);
+        else onGround = Physics2D.OverlapCircle((Vector2)transform.position + topOffset, collisionRadiusTopBottom, groundLayer);
         //Prevent wall climb if player lacks the ability.
         if (canWallClimb)
         {
@@ -350,10 +352,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
         var positions = new Vector2[] {bottomOffset, rightOffset, leftOffset, topOffset};
 
-        Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collisionRadius);
+        Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collisionRadiusTopBottom);
         Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
         Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
-        Gizmos.DrawSphere((Vector2)transform.position + topOffset, collisionRadius);
+        Gizmos.DrawSphere((Vector2)transform.position + topOffset, collisionRadiusTopBottom);
     }
 
 
