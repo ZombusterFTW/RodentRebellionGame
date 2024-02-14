@@ -5494,6 +5494,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 930192a8-0a65-4b17-9fda-cf8f05e384b8
     m_ActionName: PlayerControlActions/WorldToggle[/Keyboard/ctrl]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8459652423362751434}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnWeaponSwap
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3f7c4a20-245b-4cca-bfbe-9a6bc32b3dc8
+    m_ActionName: PlayerControlActions/WeaponSwap[/Mouse/scroll/y]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControlActions

@@ -115,6 +115,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private CharacterSoundManager characterSoundManager;
     private Coroutine hurtSound;
     private Coroutine respawnJoe;
+    private PlayerWeaponType playerWeapon;
 
     /// <summary>
     /// Mode switch notes. To enter rubber mode the player must have a portion of their rage meter. In rubber mode the bar slowly drains overtime with the player being kicked out of the mode alltogether if it runs out.
@@ -154,6 +155,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         jumpForce_Game = jumpForce;
         SceneManager.sceneLoaded += OnSceneChange;
         sceneTransitionerManager = SceneTransitionerManager.instance;
+        playerWeapon = playerUpgrade.playerWeaponType;
     }
 
     private void OnSceneChange(Scene arg0, LoadSceneMode arg1)
@@ -581,6 +583,32 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                     break;
             }
         }
+    public void OnWeaponSwap(InputAction.CallbackContext context)
+    {
+        float scrollAmount = 0;
+        switch (context.phase)
+        {
+            case InputActionPhase.Performed:
+                scrollAmount = context.ReadValue<float>();
+                if(scrollAmount > 0)
+                {
+                    playerUpgrade.SwapWeapon(false);
+                    Debug.Log("swaped down");
+                }
+                else if(scrollAmount < 0)
+                {
+                    playerUpgrade.SwapWeapon();
+                    Debug.Log("swaped up");
+                }
+                if(playerWeapon != playerUpgrade.playerWeaponType)
+                {
+                    characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon1);
+                    playerWeapon = playerUpgrade.playerWeaponType;  
+                }
+
+                break;
+        }
+    }
 
     public void OnGroundPound(InputAction.CallbackContext context)
     {
@@ -767,10 +795,11 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 case InputActionPhase.Started:
                     //Vector2 direction = ((lastDirection) - (Vector2)transform.position);
                     //Detect which weapon a player has to determine their damage
-                    characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection.normalized, 2f, enemyLayer);
+                    
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection.normalized, 1f, enemyLayer);
                     if(playerUpgrade.playerWeaponType == PlayerWeaponType.Dagger)
                     {
+                        characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
                         characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon1);
                         playerAnimator.SetTrigger("Stab");
                         playerAnimatorRubber.SetTrigger("Stab");
@@ -789,6 +818,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                     }
                     else if (playerUpgrade.playerWeaponType == PlayerWeaponType.None)
                     {
+                        characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
                         characterSoundManager.PlayAudioCallout(CharacterAudioCallout.NoWeapon);
                         //replace me with standard attack
                         playerAnimator.SetTrigger("StandardAttack");
@@ -949,6 +979,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     public void RadiationCanisterPickup(UpgradeType upgradeType)
     {
         //Handle radiation canister upgrades/pickups.
+        //in retrospect this is a bad way to handle this but since we lack time I will keep it this way
         switch (upgradeType)
         {
             case UpgradeType.Health_Upgrade:
@@ -972,10 +1003,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 canWallJump = true;
                 break;
             case UpgradeType.Dagger_Weapon:
-                playerUpgrade.playerWeaponType = PlayerWeaponType.Dagger;
+                playerUpgrade.UnlockWeapon(PlayerWeaponType.Dagger);
                 break;
             case UpgradeType.LaserGun_Weapon:
-                playerUpgrade.playerWeaponType = PlayerWeaponType.LaserGun;
+                playerUpgrade.UnlockWeapon(PlayerWeaponType.LaserGun);
                 break;
             case UpgradeType.Dash_Ability:
                 canDash = true;

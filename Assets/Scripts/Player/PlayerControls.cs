@@ -134,6 +134,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSwap"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""3f7c4a20-245b-4cca-bfbe-9a6bc32b3dc8"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -345,6 +354,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""WorldToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ad6df5b1-1c98-4f2b-9f60-730ff2bba507"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": ""Normalize"",
+                    ""groups"": """",
+                    ""action"": ""WeaponSwap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -393,6 +413,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerControlActions_LazerGunFire = m_PlayerControlActions.FindAction("LazerGunFire", throwIfNotFound: true);
         m_PlayerControlActions_LazerGunAlt = m_PlayerControlActions.FindAction("LazerGunAlt", throwIfNotFound: true);
         m_PlayerControlActions_MousePosition = m_PlayerControlActions.FindAction("MousePosition", throwIfNotFound: true);
+        m_PlayerControlActions_WeaponSwap = m_PlayerControlActions.FindAction("WeaponSwap", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -469,6 +490,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControlActions_LazerGunFire;
     private readonly InputAction m_PlayerControlActions_LazerGunAlt;
     private readonly InputAction m_PlayerControlActions_MousePosition;
+    private readonly InputAction m_PlayerControlActions_WeaponSwap;
     public struct PlayerControlActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -485,6 +507,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @LazerGunFire => m_Wrapper.m_PlayerControlActions_LazerGunFire;
         public InputAction @LazerGunAlt => m_Wrapper.m_PlayerControlActions_LazerGunAlt;
         public InputAction @MousePosition => m_Wrapper.m_PlayerControlActions_MousePosition;
+        public InputAction @WeaponSwap => m_Wrapper.m_PlayerControlActions_WeaponSwap;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControlActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -530,6 +553,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @MousePosition.started += instance.OnMousePosition;
             @MousePosition.performed += instance.OnMousePosition;
             @MousePosition.canceled += instance.OnMousePosition;
+            @WeaponSwap.started += instance.OnWeaponSwap;
+            @WeaponSwap.performed += instance.OnWeaponSwap;
+            @WeaponSwap.canceled += instance.OnWeaponSwap;
         }
 
         private void UnregisterCallbacks(IPlayerControlActionsActions instance)
@@ -570,6 +596,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @MousePosition.started -= instance.OnMousePosition;
             @MousePosition.performed -= instance.OnMousePosition;
             @MousePosition.canceled -= instance.OnMousePosition;
+            @WeaponSwap.started -= instance.OnWeaponSwap;
+            @WeaponSwap.performed -= instance.OnWeaponSwap;
+            @WeaponSwap.canceled -= instance.OnWeaponSwap;
         }
 
         public void RemoveCallbacks(IPlayerControlActionsActions instance)
@@ -647,6 +676,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnLazerGunFire(InputAction.CallbackContext context);
         void OnLazerGunAlt(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnWeaponSwap(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

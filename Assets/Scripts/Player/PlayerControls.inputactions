@@ -112,6 +112,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "WeaponSwap",
+                    "type": "PassThrough",
+                    "id": "3f7c4a20-245b-4cca-bfbe-9a6bc32b3dc8",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -321,6 +330,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "WorldToggle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad6df5b1-1c98-4f2b-9f60-730ff2bba507",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "Normalize",
+                    "groups": "",
+                    "action": "WeaponSwap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

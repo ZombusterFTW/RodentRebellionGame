@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class PlayerUI : MonoBehaviour
     private Health playerHealth;
     public Image healthBarFill;
     public Image frenzyBarFill;
+    public TextMeshProUGUI weaponIndentifier;
 
     // Start is called before the first frame update
     void Start()
