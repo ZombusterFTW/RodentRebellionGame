@@ -257,7 +257,22 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 Debug.Log("Wall sliding");
                 playerAnimator.SetBool("OnWall", true);
                 playerAnimatorRubber.SetBool("OnWall", true);
-                playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
+                //Prevent the bump but allow the player to exit a wall slide without wall jumping.
+                if(movementDirection.x == -1 || movementDirection.x == 1)
+                {
+                    if(movementDirection.x < 0 && onRightWall)
+                    {
+                        playerRigidBody.velocity = new Vector2(-1, playerRigidBody.velocity.y);
+                        onWall = false;
+                    }
+                    else if(movementDirection.x > 0 && !onRightWall)
+                    {
+                        playerRigidBody.velocity = new Vector2(1, playerRigidBody.velocity.y);
+                        onWall = false;
+                    }
+                    else playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
+                }
+                else playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
 
                 //Wall slide
                 wallDir = Mathf.Lerp(playerRigidBody.velocity.x, wallDir, lerpTime * Time.deltaTime);
@@ -305,9 +320,14 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         //Prevent wall climb if player lacks the ability.
         if (canWallClimb)
         {
-            onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer) || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
-            onRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer);
-            onLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
+            onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, playerWalls) || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, playerWalls);
+            onRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, playerWalls);
+            onLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, playerWalls);
+            if(onGround)
+            {
+                //Player cannot be on wall if they are grounded
+                onWall = false; onRightWall = false; onLeftWall = false;
+            }
         }
         else
         {

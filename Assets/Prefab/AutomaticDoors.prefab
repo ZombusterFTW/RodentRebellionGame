@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3650828422166239348}
   - component: {fileID: 3489426516745070404}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 1183127317466673509}
   - component: {fileID: 739404920577303223}
   - component: {fileID: 6777419724637490089}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5822325547605045709}
   - component: {fileID: 943314555529660630}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftDoorTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 3081419903522821356}
   - component: {fileID: 5137750058263419692}
   - component: {fileID: 5675239430830543281}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1724729678443485910}
   - component: {fileID: 4632740477891056382}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightDoorTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +524,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7166938070981902657}
   - component: {fileID: 4320767594312989589}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -608,7 +608,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7647552844513456299}
   - component: {fileID: 5196599873487377826}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AutomaticDoors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -651,3 +651,4 @@ MonoBehaviour:
   leftDoorTarget: {fileID: 3584435048768918607}
   rightDoorTarget: {fileID: 5892690565502611532}
   openCloseSpeed: 8.5
+  isActivated: 0

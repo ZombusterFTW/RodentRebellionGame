@@ -5248,12 +5248,12 @@ MonoBehaviour:
   laserStartPosLeft: {fileID: 5387987368628472128}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
   movingPlatform: {fileID: 0}
   currentSpawn: {fileID: 0}
   playerWalls:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   playerGround:
     serializedVersion: 2
     m_Bits: 0
@@ -5275,11 +5275,11 @@ MonoBehaviour:
   onRightWall: 0
   isGroundPounding: 0
   isDashing: 0
-  collisionRadius: 0.17
-  bottomOffset: {x: 0, y: -0.58}
-  rightOffset: {x: 0.45, y: 0}
-  leftOffset: {x: -0.45, y: 0}
-  topOffset: {x: 0, y: 0.58}
+  collisionRadius: 0.08
+  bottomOffset: {x: 0, y: -0.6}
+  rightOffset: {x: 0.35, y: 0.6}
+  leftOffset: {x: -0.35, y: 0.6}
+  topOffset: {x: 0, y: 0.6}
   playerHealth: {fileID: 0}
   playerUpgrade: {fileID: 0}
   playerUIPrefab: {fileID: 2242242107883657181, guid: 19d7d4ee0f886104397a19f4f200c307, type: 3}

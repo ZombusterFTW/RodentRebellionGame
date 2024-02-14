@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3399311499178997774}
   - component: {fileID: 6401425947607572053}
   - component: {fileID: 7405535020901829763}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: SnapBridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7784379213612774611}
   - component: {fileID: 1213171006091056603}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: EndPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8867798508182032823}
   - component: {fileID: 4674514302032632670}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: StartPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

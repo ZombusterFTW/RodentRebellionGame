@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 464152854147143465}
   - component: {fileID: 6533046111362176187}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: MovingPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2130739971411103813}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.091423, y: 0.13307445, z: 5.356867}
+  m_LocalPosition: {x: 22.091423, y: 0.13307445, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -64,7 +64,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7363394342967733396}
   - component: {fileID: 4127739510717545247}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: PlatformSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7852855808432011080}
   - component: {fileID: 470551359179242248}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: PlatformEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 7481692339364959020}
   - component: {fileID: 8806696160486683766}
   - component: {fileID: 8064332929396799607}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2181740035683612666}
   - component: {fileID: 3944124113756418079}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: PlatformStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2555132226191450333}
   - component: {fileID: 6913631435296812327}
-  m_Layer: 11
+  m_Layer: 6
   m_Name: PlatformSprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
