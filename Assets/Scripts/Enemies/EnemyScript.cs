@@ -18,8 +18,8 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
     [SerializeField] GameObject playerUI;
     private GameObject UIClone;
     private Health health;
-    private SpriteRenderer spriteRenderer;
-    private Animator enemyAnimator;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator enemyAnimator;
     public EnemyStates currentState = EnemyStates.Searching;
     private GameObject target = null;
     [SerializeField] private Vector2 searchDirection = Vector2.left;
@@ -35,7 +35,6 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
     [SerializeField] private bool activateOnDeath = false;
     [SerializeField] GameObject[] itemsToActivate;
     bool isAlive = true;
-
     public float searchDistance = 50f;
     public LayerMask playerLayer;
     private Rigidbody2D enemyRB;
@@ -43,6 +42,10 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
     private Coroutine attackCooldown;
     private Coroutine searchCooldown;
     private Coroutine death;
+    private FrenzyManager frenzyManager;
+    private bool rubberModeActive = false;
+    [SerializeField] private CapsuleCollider2D catCollider1;
+    [SerializeField] private CapsuleCollider2D catCollider2;
 
     public PlayerUI GetPlayerUI()
     {
@@ -53,8 +56,17 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
     {
         isAlive = false;
         //Add to player frenzy meter here/
-        if (isMiniBoss) GameObject.FindObjectOfType<FrenzyManager>()?.AddToFrenzyMeter(0.50f);
-        else GameObject.FindObjectOfType<FrenzyManager>()?.AddToFrenzyMeter(0.15f);
+
+        if (isMiniBoss)
+        {
+            //GameObject.FindObjectOfType<FrenzyManager>()?.AddToFrenzyMeter(0.50f);
+            frenzyManager.AddToFrenzyMeter(0.50f);
+        }
+        else
+        {
+            //GameObject.FindObjectOfType<FrenzyManager>()?.AddToFrenzyMeter(0.15f);
+            frenzyManager.AddToFrenzyMeter(0.15f);
+        }
         enemyAnimator.SetTrigger("Death");
         if(activateOnDeath)
         {
@@ -72,6 +84,9 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
 
     IEnumerator DeathDelay()
     {
+        enemyRB.simulated = false;
+        catCollider1.enabled = false;
+        catCollider2.enabled = false;
         yield return new WaitForSeconds(0.267f);
         spriteRenderer.DOFade(0, 1f);
         yield return new WaitForSeconds(1);
@@ -83,23 +98,19 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
     void Awake()
     {
         startingPos = transform.position;
-
-
         if (isMiniBoss) UIClone = Instantiate(playerUI, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
         else
         {
             UIClone = Instantiate(playerUI, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
             UIClone.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
         }
-
-
         UIClone.transform.parent = transform;
         //UIClone.GetComponent<Canvas>().worldCamera = Camera.main;
         health = GetComponent<Health>();
-        enemyAnimator = GetComponent<Animator>();
+        //enemyAnimator = GetComponent<Animator>();
         targetPosition = ((Vector2)transform.position + (searchDirection* searchDistance));
         enemyRB = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();    
+        //spriteRenderer = GetComponent<SpriteRenderer>();    
     }
 
     private void Start()
@@ -109,13 +120,14 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
         {
             target = GameObject.FindObjectOfType<PlayerController>().gameObject;
         }
+        frenzyManager = GameObject.FindObjectOfType<FrenzyManager>();
     }
     public Health GetHealth() { return health; }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(isAlive)
+        if(isAlive && !rubberModeActive)
         {
             UpdateState();
             spriteRenderer.flipX = enemyRB.velocity.x > 0;
@@ -125,7 +137,28 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
                 target = GameObject.FindObjectOfType<PlayerController>().gameObject;
             }
         }
-        
+    }
+
+    private void Update()
+    {
+        if(isAlive)
+        {
+            rubberModeActive = frenzyManager.inRubberMode;
+            if (rubberModeActive)
+            {
+                //Enemy freezes and becomes intangible in rubbermode
+                enemyRB.velocity = Vector3.zero;
+                enemyRB.simulated = false;
+                catCollider1.enabled = false;
+                catCollider2.enabled = false;
+            }
+            else
+            {
+                enemyRB.simulated = true;
+                catCollider1.enabled = true;
+                catCollider2.enabled = true;
+            }
+        }
     }
 
 

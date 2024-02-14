@@ -10,6 +10,7 @@ public class SnapBridge : MonoBehaviour, R4Activatable
 
     [Tooltip("If set to true the snap bridge will start at the red pos")][SerializeField] private bool startAtEnd;
     [Tooltip("How long the snap bridge takes to go between its 2 positions")][SerializeField] private float timeToSnap;
+    [Tooltip("If set to true the snap bridge will kill a player stuck between it and its move path. Note that the time to snap speed must be greater than 0.5 seconds or the player will phase through the platform during its move.")][SerializeField] private bool killCollidingPlayers = true;
     [SerializeField] private GameObject startPosition;
     [SerializeField] private GameObject endPosition;
     private bool inMotion = false;
@@ -87,7 +88,7 @@ public class SnapBridge : MonoBehaviour, R4Activatable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(inMotion) 
+        if(inMotion && killCollidingPlayers) 
         {
             if(collision.gameObject.GetComponent<ControlledCharacter>() != null)
             {
@@ -99,7 +100,7 @@ public class SnapBridge : MonoBehaviour, R4Activatable
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (inMotion)
+        if (inMotion && killCollidingPlayers)
         {
             if (collision.gameObject.GetComponent<ControlledCharacter>() != null)
             {
