@@ -127,6 +127,19 @@ public class FrenzyManager : MonoBehaviour
         {
             fillTween = DOTween.To(() => rubberModeRawImage.fillAmount, x => rubberModeRawImage.fillAmount = x, 0, 1);
         }
+
+        foreach (var brokenBridge in FindObjectsOfType<BrokenBridge>())
+        {
+            if(shouldFill)
+            {
+                brokenBridge.DeployBridge();
+            }
+            else
+            {
+                brokenBridge.RetractBridge();
+            }
+        }
+
     }
 
     IEnumerator FrenzyMeterCountdown()
