@@ -729,14 +729,18 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             {
                 laserBeam.SetPosition(1, (Vector2)hit.point);
                 Debug.Log("Hit");
-                if (hit.collider.gameObject.GetComponent<EnemyScript>() != null)
+                if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyScript>(), null))
                 {
                     hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast));
                 }
-                if (hit.collider.gameObject.GetComponent<Switch>() != null)
+                if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Switch>(), null))
                 {
                     hit.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.LaserBlast);
                 }
+            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Turret>(), null))
+            {
+                hit.collider.gameObject.GetComponent<Turret>().DestroyTurret();
+            }
             //check if enemy here.
         }
             yield return new WaitForSecondsRealtime(0.125f);
@@ -806,13 +810,17 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                         if (hit)
                         {
                             Debug.Log("Hit");
-                            if (hit.collider.gameObject.GetComponent<EnemyScript>() != null)
+                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyScript>(), null))
                             {
                                 hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike));
                             }
-                            if(hit.collider.gameObject.GetComponent<Switch>() != null)
+                            if(!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Switch>(), null))
                             {
                                 hit.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.DaggerStrike);
+                            }
+                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Turret>(), null))
+                            {
+                                hit.collider.gameObject.GetComponent<Turret>().DestroyTurret();
                             }
                         }
                     }
@@ -826,13 +834,17 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                         if (hit)
                         {
                             Debug.Log("Hit");
-                            if (hit.collider.gameObject.GetComponent<EnemyScript>() != null)
+                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyScript>(), null))
                             {
                                 hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
                             }
-                            if (hit.collider.gameObject.GetComponent<Switch>() != null)
+                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Switch>(), null))
                             {
                                 hit.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.StandardAttack);
+                            }
+                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Turret>(), null))
+                            {
+                                hit.collider.gameObject.GetComponent<Turret>().DestroyTurret();
                             }
                         }
                     }  
@@ -865,20 +877,20 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<SpawnPoint>() != null && collision.GetComponent<SpawnPoint>() != currentSpawn && collision.GetComponent<SpawnPoint>().GetIsActive())
+        if (!GameObject.ReferenceEquals(collision.GetComponent<SpawnPoint>(), null) && collision.GetComponent<SpawnPoint>() != currentSpawn && collision.GetComponent<SpawnPoint>().GetIsActive())
         {
             SpawnPoint spawnPoint = collision.GetComponent<SpawnPoint>();
             SetSpawn(spawnPoint);
         }
         
         //Trigger the trap if it exists.
-        if (collision.GetComponent<R4ActivatableTrap>() != null) collision.GetComponent<R4ActivatableTrap>().TriggerTrap();
+        if (!GameObject.ReferenceEquals(collision.GetComponent<R4ActivatableTrap>(), null)) collision.GetComponent<R4ActivatableTrap>().TriggerTrap();
     }
     
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.GetComponent<R4ActivatableTrap>() != null && isAlive)
+        if(!GameObject.ReferenceEquals(collision.GetComponent<R4ActivatableTrap>(), null) && isAlive)
         {
                 collision.GetComponent<R4ActivatableTrap>().DealPlayerDamage(true);                
         }
@@ -892,7 +904,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     private void OnTriggerExit2D(Collider2D collision)
     {
         //Reset movement speed
-        if (collision.GetComponent<R4ActivatableTrap>() != null)
+        if (!GameObject.ReferenceEquals(collision.GetComponent<R4ActivatableTrap>(), null))
         {
             Debug.Log("Left trigger");
             collision.GetComponent<R4ActivatableTrap>().DealPlayerDamage(false);
@@ -955,6 +967,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     IEnumerator RespawnJoe()
     {
+        disableAllMoves = true;
         playerAnimator.SetTrigger("Death");
         playerAnimatorRubber.SetTrigger("Death");
         yield return new WaitForSeconds(1);
@@ -967,6 +980,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         playerSpriteRubber.DOFade(1, .5f);
         playerHealth.HealthToMax();
         isAlive = true;
+        disableAllMoves = false;
         gameObject.transform.position = currentSpawn.transform.position;
     }
 
@@ -1052,7 +1066,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         }
 
 
-        if((isDashing || isGroundPounding) && (collision.gameObject.GetComponent<EnemyScript>() != null))
+        if((isDashing || isGroundPounding) && (!GameObject.ReferenceEquals(collision.gameObject.GetComponent<EnemyScript>(), null)))
         {
             Debug.Log("Coll2");
             if (isDashing)
@@ -1063,15 +1077,22 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             {
                 collision.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.GroundPound));
             }
+            if (!GameObject.ReferenceEquals(collision.gameObject.GetComponent<Turret>(), null))
+            {
+                collision.gameObject.GetComponent<Turret>().DestroyTurret();
+            }
         }
 
         //To activate switches
-        if ((isDashing) && (collision.gameObject.GetComponent<Switch>() != null))
+        if ((isDashing))
         {
-            Debug.Log("Coll2");
-            if (isDashing)
+            if ((!GameObject.ReferenceEquals(collision.gameObject.GetComponent<Switch>(), null)))
             {
                 collision.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.DaggerStrike);
+            }
+            if (!GameObject.ReferenceEquals(collision.gameObject.GetComponent<Turret>(), null))
+            {
+                collision.gameObject.GetComponent<Turret>().DestroyTurret();
             }
         }
 
