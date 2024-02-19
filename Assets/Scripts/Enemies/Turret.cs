@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
-public class Turret : MonoBehaviour, R4Activatable
+public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
 {
     //Shoot at targets within its range and cone of view. Can be destroyed by attacks.
     //Shoots at players position, so it doesn't unfairly hit them as they move. 
@@ -23,16 +23,19 @@ public class Turret : MonoBehaviour, R4Activatable
     private bool isOnCooldown = false;
     private bool isActive;
     private FrenzyManager frenzyManager;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     Vector2 playerPos;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         frenzyManager = FrenzyManager.instance;
         playerController = FindObjectOfType<PlayerController>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        
 
         if(startOn) 
         {
@@ -83,6 +86,7 @@ public class Turret : MonoBehaviour, R4Activatable
 
     public void DestroyTurret()
     {
+        frenzyManager.AddToFrenzyMeter(0.15f);
         //Kill turret here.
         if (activateItemsOnDeath)
         {
@@ -107,5 +111,10 @@ public class Turret : MonoBehaviour, R4Activatable
         isActive = false;
         //Edit sprite here
         spriteRenderer.color = Color.gray;
+    }
+
+    public void OnOneHitEnemyDeath()
+    {
+        DestroyTurret();
     }
 }
