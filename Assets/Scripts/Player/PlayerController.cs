@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private bool canJump = true;
     [SerializeField] private bool onWall = false;
     [SerializeField] private bool canMove = true;
-    [SerializeField] private bool isFlipped = false;
+    public bool isFlipped { get;  private set; } = false;
     [SerializeField] private float lerpTime = 0.5f;
     [SerializeField] private float wallJumpTime = 0.15f;
     [SerializeField] private float dashTimer = 0.25f;
@@ -65,9 +65,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private bool wallJumped = false;
     [SerializeField] private bool onLeftWall = false;
     [SerializeField] private bool onRightWall = false;
-    [SerializeField] private bool isGroundPounding = false;
+    public bool isGroundPounding { get; private set; } = false;
     
-    [SerializeField] private bool isDashing = false;
+    public bool isDashing { get; private set; } = false;
     
     private bool isMoving = false;
     private bool isFiringLaser = false;
@@ -737,9 +737,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 {
                     hit.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.LaserBlast);
                 }
-            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Turret>(), null))
+            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<OneHitHealthEnemy>(), null))
             {
-                hit.collider.gameObject.GetComponent<Turret>().DestroyTurret();
+                hit.collider.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
             }
             //check if enemy here.
         }
@@ -818,9 +818,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                             {
                                 hit.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.DaggerStrike);
                             }
-                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Turret>(), null))
+                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<OneHitHealthEnemy>(), null))
                             {
-                                hit.collider.gameObject.GetComponent<Turret>().DestroyTurret();
+                                hit.collider.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
                             }
                         }
                     }
@@ -842,9 +842,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                             {
                                 hit.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.StandardAttack);
                             }
-                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Turret>(), null))
+                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<OneHitHealthEnemy>(), null))
                             {
-                                hit.collider.gameObject.GetComponent<Turret>().DestroyTurret();
+                                hit.collider.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
                             }
                         }
                     }  
@@ -1077,9 +1077,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             {
                 collision.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.GroundPound));
             }
-            if (!GameObject.ReferenceEquals(collision.gameObject.GetComponent<Turret>(), null))
+            if (!GameObject.ReferenceEquals(collision.gameObject.GetComponent<OneHitHealthEnemy>(), null))
             {
-                collision.gameObject.GetComponent<Turret>().DestroyTurret();
+                collision.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
             }
         }
 
@@ -1090,9 +1090,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             {
                 collision.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.DaggerStrike);
             }
-            if (!GameObject.ReferenceEquals(collision.gameObject.GetComponent<Turret>(), null))
+            if (!GameObject.ReferenceEquals(collision.gameObject.GetComponent<OneHitHealthEnemy>(), null))
             {
-                collision.gameObject.GetComponent<Turret>().DestroyTurret();
+                collision.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
             }
         }
 

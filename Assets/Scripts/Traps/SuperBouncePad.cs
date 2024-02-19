@@ -38,12 +38,6 @@ public class SuperBouncePad : MonoBehaviour, R4Activatable
     // Start is called before the first frame update
     void Start()
     {
-        defaultMaterial = new PhysicsMaterial2D("NormalBounciness");
-        defaultMaterial.bounciness = wallBounciness;
-        extraBouncyMaterial = new PhysicsMaterial2D("NoBounceMaterial");
-        extraBouncyMaterial.bounciness = wallBounciness*bouncinessMultipiler;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        bounceCollider = GetComponent<BoxCollider2D>();
         if (startOn)
         {
             Activate();
@@ -52,5 +46,15 @@ public class SuperBouncePad : MonoBehaviour, R4Activatable
         {
             Deactivate();
         }
+    }
+
+    private void Awake()
+    {
+        defaultMaterial = new PhysicsMaterial2D("NormalBounciness");
+        defaultMaterial.bounciness = wallBounciness;
+        extraBouncyMaterial = new PhysicsMaterial2D("NoBounceMaterial");
+        extraBouncyMaterial.bounciness = wallBounciness * bouncinessMultipiler;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        bounceCollider = GetComponent<BoxCollider2D>();
     }
 }

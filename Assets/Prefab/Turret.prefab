@@ -273,3 +273,4 @@ MonoBehaviour:
   itemsToActivate: []
   projectile: {fileID: 8155977222592638469, guid: aa01e54c4ba785344b160deef355f089, type: 3}
   playerController: {fileID: 0}
+  spriteRenderer: {fileID: 4518341211681837101}

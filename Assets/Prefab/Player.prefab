@@ -5006,7 +5006,7 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 3
   m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -5264,7 +5264,6 @@ MonoBehaviour:
   canJump: 1
   onWall: 0
   canMove: 1
-  isFlipped: 0
   lerpTime: 0.35
   wallJumpTime: 0.15
   dashTimer: 0.15
@@ -5273,8 +5272,6 @@ MonoBehaviour:
   wallJumped: 0
   onLeftWall: 0
   onRightWall: 0
-  isGroundPounding: 0
-  isDashing: 0
   collisionRadius: 0.08
   collisionRadiusTopBottom: 0.3
   bottomOffset: {x: 0, y: -0.54}
