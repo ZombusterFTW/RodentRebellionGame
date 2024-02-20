@@ -280,5 +280,6 @@ public enum EnemyStates
     Pursuing,
     Attacking,
     Perched,
-    Idle
+    Idle,
+    Landing
 }

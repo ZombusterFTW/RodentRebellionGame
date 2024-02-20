@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4295956980409858278}
   - component: {fileID: 3585666918219568771}
   m_Layer: 7
-  m_Name: SpiderCatWIP
+  m_Name: SpiderCat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4295956980409858278
 MonoBehaviour:
@@ -118,18 +118,19 @@ MonoBehaviour:
   surfaceLayer:
     serializedVersion: 2
     m_Bits: 8
-  sightRange: 1.9
+  sightRange: 4.17
   attackDamage: 15
-  movementSpeed: 15
+  movementSpeed: 3
   activateItemsOnDeath: 0
   itemsToActivate: []
   attackDelay: 1
+  currentState: 3
   playerController: {fileID: 0}
   spriteRendererRubber: {fileID: 6636560297341921743}
   spriteRendererRat: {fileID: 1776088581044095522}
   enemyAnimatorRat: {fileID: 354178960845343855}
   enemyAnimatorRubber: {fileID: 1585689057431278559}
-  bottomOffset: {x: -0.03, y: -0.76}
+  bottomOffset: {x: -0.24, y: -0.76}
   collRadius: 0.24
 --- !u!114 &3585666918219568771
 MonoBehaviour:
@@ -222,7 +223,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 313911339, guid: c0768f5533b1ea34cad8da27808da155, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9691129, g: 0, b: 1, a: 0.43137255}
   m_FlipX: 0
   m_FlipY: 1
   m_DrawMode: 0

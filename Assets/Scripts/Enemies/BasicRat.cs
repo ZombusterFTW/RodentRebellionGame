@@ -199,8 +199,9 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
             }
             else
             {
-                if(!player.isDashing && player.isGroundPounding)
+                if(!player.isDashing && !player.isGroundPounding)
                 {
+                    Debug.Log("Player hit by rat");
                     //The player must take damage here.
                     collision.gameObject.GetComponent<Health>().SubtractFromHealth(damageToPlayer);
                     if (extendedDamage == null) extendedDamage = StartCoroutine(PlayerDamageLoop(collision.gameObject.GetComponent<Health>()));

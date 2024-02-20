@@ -163,6 +163,7 @@ public class FrenzyManager : MonoBehaviour
 
     IEnumerator RubberModeMeterCountdown()
     {
+        yield return new WaitForSeconds(0.5f);
         inRubberMode = true;
         while (frenzyAmountCurrent > 0)
         {

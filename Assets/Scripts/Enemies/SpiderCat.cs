@@ -34,6 +34,8 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
     private Health health;
     [SerializeField] private Vector2 bottomOffset;
     [SerializeField] private float collRadius;
+    //[SerializeField] private float collRadiusWall;
+   // [SerializeField] private Vector2 leftCollCheck, rightCollCheck;
     private Color debugColor = Color.red;
 
     private void Awake()
@@ -134,16 +136,21 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
                 Debug.Log("SpiderCat saw player");
                 enemyRB.gravityScale = 1;
                 spriteRendererRat.flipY = false;
-                spriteRendererRubber.flipY = false; 
-                if (Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collRadius, surfaceLayer))
-                {
-                    //Must be on the ground to start moving.
-                    currentState = EnemyStates.Pursuing;
-                }
+                spriteRendererRubber.flipY = false;
+                currentState = EnemyStates.Landing;
             }
             else
             {
                 Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.red);
+            }
+            return;
+        }
+        else if(currentState == EnemyStates.Landing)
+        {
+            if (Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collRadius, surfaceLayer))
+            {
+                //Must be on the ground to start moving.
+                currentState = EnemyStates.Pursuing;
             }
             return;
         }
@@ -155,16 +162,28 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
             enemyAnimatorRubber.SetBool("IsMoving", true);
             enemyAnimatorRat.SetBool("IsMoving", true);
             //enemyRB.AddForce(direction * speed * Time.deltaTime, ForceMode2D.Force);
-            enemyRB.velocity = new Vector2(direction.x * movementSpeed, enemyRB.velocity.y);
-            if(capsuleCollider.IsTouching(playerController.GetPlayerCollider()))
+            RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, ~ignore);
+            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange)
             {
-                currentState = EnemyStates.Attacking;
+                Debug.DrawLine((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, Color.green);
+                enemyRB.velocity = new Vector2(direction.x * movementSpeed, enemyRB.velocity.y);
+                if (capsuleCollider.IsTouching(playerController.GetPlayerCollider()))
+                {
+                    currentState = EnemyStates.Attacking;
+                }
+            }
+            else
+            {
+                Debug.DrawLine((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, Color.red);
+                currentState = EnemyStates.Idle;
             }
             return;
         }
         else if(currentState == EnemyStates.Idle)
         {
             Debug.Log("SpiderCat on attack delay");
+            enemyAnimatorRubber.SetBool("IsMoving", false);
+            enemyAnimatorRat.SetBool("IsMoving", false);
             enemyRB.velocity = Vector2.zero;
             if(!attackDelayActive)
             {
@@ -220,6 +239,8 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
         var positions = new Vector2[] { bottomOffset };
         Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collRadius);
         Gizmos.DrawSphere((Vector2)transform.position, sightRange);
+        //Gizmos.DrawSphere((Vector2)transform.position + leftCollCheck, collRadiusWall);
+        //Gizmos.DrawSphere((Vector2)transform.position + rightCollCheck, collRadiusWall);
     }
 
     public PlayerController GetPlayerController()

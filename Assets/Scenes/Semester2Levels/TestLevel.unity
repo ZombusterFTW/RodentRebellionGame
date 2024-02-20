@@ -20250,7 +20250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8086796006813195541, guid: 7b6417ffe6f9b9145976a2f8826e08c0, type: 3}
       propertyPath: startOn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8086796006813195541, guid: 7b6417ffe6f9b9145976a2f8826e08c0, type: 3}
       propertyPath: ignore.m_Bits
