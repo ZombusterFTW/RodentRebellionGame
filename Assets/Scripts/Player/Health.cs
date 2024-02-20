@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
             playerController.RespawnPlayer();
         }
         else playerController.PlayDamagedAnim();
-        playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
+        if(!GameObject.ReferenceEquals(playerUIManager, null)) playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
         return healthCountCurrent;
     }
 
@@ -40,7 +40,7 @@ public class Health : MonoBehaviour
     public float AddToHealth(float healthToGain)
     {
         healthCountCurrent = Mathf.Clamp(healthCountCurrent + healthToGain, 0, healthCount);
-        playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
+        if (!GameObject.ReferenceEquals(playerUIManager, null)) playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
         return healthCountCurrent;
     }
 
@@ -49,7 +49,7 @@ public class Health : MonoBehaviour
     {
         healthCount += healthCount * healthCapIncreasePercentage;
         healthCountCurrent = healthCount;
-        playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
+        if (!GameObject.ReferenceEquals(playerUIManager, null)) playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
     }
 
     public float GetCurrentHealth()
@@ -60,7 +60,7 @@ public class Health : MonoBehaviour
     public void HealthToMax()
     {
         healthCountCurrent = healthCount;
-        if(playerUIManager != null) playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
+        if (!GameObject.ReferenceEquals(playerUIManager, null)) playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
     }
 
 

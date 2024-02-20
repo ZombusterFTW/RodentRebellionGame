@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2746408664537341484
+--- !u!1 &3571582774582946006
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,68 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5215265578519190247}
-  - component: {fileID: 4001120497462870470}
-  - component: {fileID: 623373506919721847}
-  - component: {fileID: 6628784272809777060}
+  - component: {fileID: 2735403622569462937}
+  - component: {fileID: 3443578302797622287}
+  - component: {fileID: 2541542092231326436}
+  - component: {fileID: 4295956980409858278}
+  - component: {fileID: 3585666918219568771}
   m_Layer: 7
-  m_Name: BasicRatEnemy
+  m_Name: SpiderCatWIP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5215265578519190247
+--- !u!4 &2735403622569462937
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2746408664537341484}
+  m_GameObject: {fileID: 3571582774582946006}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.08, y: 0.09, z: 0}
-  m_LocalScale: {x: 0.54, y: 0.54, z: 0.54}
+  m_LocalPosition: {x: -6.0827236, y: 1.1631634, z: 0}
+  m_LocalScale: {x: 1.11, y: 1.11, z: 1.11}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1953471526316272688}
-  - {fileID: 3258568992246349265}
+  - {fileID: 7727101447379135}
+  - {fileID: 3769303187071127248}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &4001120497462870470
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2746408664537341484}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 13.1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!70 &623373506919721847
+--- !u!70 &3443578302797622287
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2746408664537341484}
+  m_GameObject: {fileID: 3571582774582946006}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -95,38 +69,85 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: -0.2, y: 0}
+  m_Size: {x: 0.6, y: 1.52}
   m_Direction: 0
---- !u!114 &6628784272809777060
+--- !u!50 &2541542092231326436
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3571582774582946006}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &4295956980409858278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2746408664537341484}
+  m_GameObject: {fileID: 3571582774582946006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecccabb90723b0c4b9f713777c636ace, type: 3}
+  m_Script: {fileID: 11500000, guid: 67db1d1e0cc388a45bdc2d3fdef87fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  surfaceLayer:
-    serializedVersion: 2
-    m_Bits: 73
-  playerLayer:
+  playerUI: {fileID: 2242242107883657181, guid: 8108fa41987221346bcccebd5055a2a5, type: 3}
+  ignore:
     serializedVersion: 2
     m_Bits: 128
-  isFlipped: 0
-  moveDistance: 2.5
-  moveSpeed: 1.5
+  surfaceLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  sightRange: 1.9
+  attackDamage: 15
+  movementSpeed: 15
   activateItemsOnDeath: 0
   itemsToActivate: []
-  damageToPlayer: 25
-  frenzyPercentageFill: 0.15
-  currentState: 2
-  spriteRendererRubber: {fileID: 7372254568513826329}
-  spriteRendererRat: {fileID: 4986708156249382539}
---- !u!1 &4697172853310512043
+  attackDelay: 1
+  playerController: {fileID: 0}
+  spriteRendererRubber: {fileID: 6636560297341921743}
+  spriteRendererRat: {fileID: 1776088581044095522}
+  enemyAnimatorRat: {fileID: 354178960845343855}
+  enemyAnimatorRubber: {fileID: 1585689057431278559}
+  bottomOffset: {x: -0.03, y: -0.76}
+  collRadius: 0.24
+--- !u!114 &3585666918219568771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3571582774582946006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea2f708eb822e44aaa472e824b25e4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthCount: 100
+  healthCountCurrent: 0
+  isPlayer: 0
+  playerUIManager: {fileID: 0}
+--- !u!1 &5364591674593839137
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,37 +155,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3258568992246349265}
-  - component: {fileID: 7372254568513826329}
-  m_Layer: 12
-  m_Name: RatRatRenderer
+  - component: {fileID: 7727101447379135}
+  - component: {fileID: 6636560297341921743}
+  - component: {fileID: 1585689057431278559}
+  m_Layer: 11
+  m_Name: SpiderCatSpriteRubber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3258568992246349265
+--- !u!4 &7727101447379135
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4697172853310512043}
+  m_GameObject: {fileID: 5364591674593839137}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 5215265578519190247}
+  m_Father: {fileID: 2735403622569462937}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7372254568513826329
+--- !u!212 &6636560297341921743
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4697172853310512043}
+  m_GameObject: {fileID: 5364591674593839137}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -199,10 +221,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1467375267, guid: 85a5916ff86462249a519feb67625372, type: 3}
+  m_Sprite: {fileID: 313911339, guid: c0768f5533b1ea34cad8da27808da155, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
@@ -210,7 +232,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &6650023246054417733
+--- !u!95 &1585689057431278559
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5364591674593839137}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 56326df496954de498f0012d4d8a6e51, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &8563694601622756186
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,37 +261,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1953471526316272688}
-  - component: {fileID: 4986708156249382539}
-  m_Layer: 11
-  m_Name: RatRubberRenderer
+  - component: {fileID: 3769303187071127248}
+  - component: {fileID: 1776088581044095522}
+  - component: {fileID: 354178960845343855}
+  m_Layer: 12
+  m_Name: SpiderCatSpriteRat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1953471526316272688
+--- !u!4 &3769303187071127248
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6650023246054417733}
+  m_GameObject: {fileID: 8563694601622756186}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 5215265578519190247}
+  m_Father: {fileID: 2735403622569462937}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4986708156249382539
+--- !u!212 &1776088581044095522
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6650023246054417733}
+  m_GameObject: {fileID: 8563694601622756186}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -283,10 +327,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1467375267, guid: 85a5916ff86462249a519feb67625372, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.8838248, a: 0.6666667}
+  m_Sprite: {fileID: 313911339, guid: c0768f5533b1ea34cad8da27808da155, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
@@ -294,3 +338,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &354178960845343855
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8563694601622756186}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 56326df496954de498f0012d4d8a6e51, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -28,16 +28,16 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
 
     private void Awake()
     {
-        frenzyManager = FrenzyManager.instance;
+        
         playerController = FindObjectOfType<PlayerController>();
         //spriteRenderer = GetComponent<SpriteRenderer>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        frenzyManager = FrenzyManager.instance;
 
-        if(startOn) 
+        if (startOn) 
         {
             Activate();
         }

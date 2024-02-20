@@ -729,9 +729,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             {
                 laserBeam.SetPosition(1, (Vector2)hit.point);
                 Debug.Log("Hit");
-                if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyScript>(), null))
+                if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
                 {
-                    hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast));
+                    hit.collider.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast));
                 }
                 if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Switch>(), null))
                 {
@@ -810,9 +810,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                         if (hit)
                         {
                             Debug.Log("Hit");
-                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyScript>(), null))
+                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
                             {
-                                hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike));
+                                hit.collider.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike));
                             }
                             if(!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Switch>(), null))
                             {
@@ -834,9 +834,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                         if (hit)
                         {
                             Debug.Log("Hit");
-                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyScript>(), null))
+                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
                             {
-                                hit.collider.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
+                                hit.collider.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
                             }
                             if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Switch>(), null))
                             {
@@ -1066,16 +1066,16 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         }
 
 
-        if((isDashing || isGroundPounding) && (!GameObject.ReferenceEquals(collision.gameObject.GetComponent<EnemyScript>(), null)))
+        if((isDashing || isGroundPounding) && (!GameObject.ReferenceEquals(collision.gameObject.GetComponent<EnemyAI>(), null)))
         {
             Debug.Log("Coll2");
             if (isDashing)
             {
-                collision.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike));
+                collision.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike));
             }
             else if(isGroundPounding)
             {
-                collision.gameObject.GetComponent<EnemyScript>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.GroundPound));
+                collision.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.GroundPound));
             }
             if (!GameObject.ReferenceEquals(collision.gameObject.GetComponent<OneHitHealthEnemy>(), null))
             {
@@ -1139,6 +1139,11 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         return this;
     }
+
+    public Health GetHealth()
+    {
+        return GetHealthComponent();
+    }
 }
 
 public interface R4MovementComponent
@@ -1160,5 +1165,7 @@ public interface ControlledCharacter
     public void RespawnPlayer();
     public void PlayDamagedAnim();
     public PlayerController GetPlayerController();
+
+    public Health GetHealth();
 }
 

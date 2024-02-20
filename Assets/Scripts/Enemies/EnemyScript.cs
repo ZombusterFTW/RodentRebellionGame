@@ -5,7 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyScript : MonoBehaviour, ControlledCharacter
+public class EnemyScript : MonoBehaviour, ControlledCharacter, EnemyAI
 {
     //Notes for production. This script works decently well for the less engaging enemies etc the small cats, but is relatively boring and simple for bosses. 
     //Bosses need to have more attack states and intelligence. To acheive this I think its needed to create a new class that uses the majority of this class, but also include more code that allows for long range projectiles. 
@@ -131,7 +131,7 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
         {
             UpdateState();
             spriteRenderer.flipX = enemyRB.velocity.x > 0;
-            Debug.Log(targetPosition);
+            //Debug.Log(targetPosition);
             if(target == null)
             {
                 target = GameObject.FindObjectOfType<PlayerController>().gameObject;
@@ -180,9 +180,11 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
                     if (searchDelayActive == false)
                     {
                         Vector2 direction = targetPosition - (Vector2)transform.position;
+                        direction.Normalize();
                         Debug.Log("moving");
                         enemyAnimator.SetBool("IsMoving", true);
-                        enemyRB.AddForce(direction * speed * Time.deltaTime, ForceMode2D.Force);
+                        //enemyRB.AddForce(direction * speed * Time.deltaTime, ForceMode2D.Force);
+                        enemyRB.velocity = new Vector2(direction.x * speed, enemyRB.velocity.y);
                     }
                     else Debug.Log("Movement delay active");
                     
@@ -207,8 +209,10 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter
         else if(currentState == EnemyStates.Pursuing) 
         {
             Vector2 direction = (Vector2)target.transform.position - (Vector2)transform.position;
+            direction.Normalize();
             enemyAnimator.SetBool("IsMoving", true);
-            enemyRB.AddForce(direction * speed * Time.deltaTime, ForceMode2D.Force);
+            //enemyRB.AddForce(direction * speed * Time.deltaTime, ForceMode2D.Force);
+            enemyRB.velocity = new Vector2(direction.x * speed, enemyRB.velocity.y);
             if (Vector2.Distance((Vector2)target.transform.position, (Vector2)transform.position) <= attackDistance)
             {
                 targetPosition = startingPos;
@@ -274,5 +278,7 @@ public enum EnemyStates
 {
     Searching,
     Pursuing,
-    Attacking
+    Attacking,
+    Perched,
+    Idle
 }
