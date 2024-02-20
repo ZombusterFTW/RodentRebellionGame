@@ -117,19 +117,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   isFlipped: 0
-  moveDistance: 12.16
-  moveSpeed: 2.4
+  moveDistance: 2.5
+  moveSpeed: 1.5
   activateItemsOnDeath: 0
   itemsToActivate: []
   damageToPlayer: 3.5
   frenzyPercentageFill: 0.15
   currentState: 2
-  rightOffset: {x: 0.45, y: 0}
-  leftOffset: {x: -0.45, y: 0}
   spriteRendererRubber: {fileID: 7372254568513826329}
   spriteRendererRat: {fileID: 4986708156249382539}
-  onLeftWall: 0
-  onRightWall: 0
 --- !u!1 &4697172853310512043
 GameObject:
   m_ObjectHideFlags: 0

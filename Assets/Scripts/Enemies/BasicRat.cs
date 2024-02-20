@@ -10,15 +10,15 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     [SerializeField] LayerMask surfaceLayer;
     [SerializeField] LayerMask playerLayer;
     [Tooltip("Set to true if you want the enemy to walk on the ceiling and have inverted physics.")][SerializeField] private bool isFlipped = false;
-    [Tooltip("The distance the BasicRat Ai will move right and left from its starting position.")][SerializeField] private float moveDistance = 5f;
-    [Tooltip("The speed the BasicRat AI will move")][SerializeField] private float moveSpeed = 7f;
+    [Tooltip("The distance the BasicRat Ai will move right and left from its starting position.")][SerializeField][Range(0.4f, 30f)] private float moveDistance = 5f;
+    [Tooltip("The speed the BasicRat AI will move")][SerializeField][Range(1f, 15f)] private float moveSpeed = 7f;
     [Tooltip("Set to true if you want the BasicRat to activate items on its death")][SerializeField] private bool activateItemsOnDeath = false;
     [Tooltip("Add the wanted activated items to this list. These items must integrate the R4 Activatable interface")][SerializeField] private GameObject[] itemsToActivate;
     [Tooltip("Set this float to the damage a player will take from this enemy")][SerializeField] private float damageToPlayer = 3.5f;
     [Tooltip("The percentage of the frenzy bar killing the enemy will fill")][SerializeField][Range(0.0f, 1.0f)] private float frenzyPercentageFill = 0.15f;
     [SerializeField] private BasicRatAIStates currentState = BasicRatAIStates.Idle;
     private float collisionRadius = 0.26f;
-    public Vector2 rightOffset, leftOffset;
+    private Vector2 rightOffset, leftOffset;
     private FrenzyManager frenzyManager;
     private Rigidbody2D rigidBody;
     private CapsuleCollider2D capsuleCollider;
@@ -26,8 +26,8 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     [SerializeField] private SpriteRenderer spriteRendererRat;
     private bool isAlive = true;
     private Color debugColor = Color.red;
-    public bool onLeftWall = false;
-    public bool onRightWall = false;
+    private bool onLeftWall = false;
+    private bool onRightWall = false;
     private Vector2 startingPos, leftExtreme, rightExtreme;
     private Coroutine extendedDamage;
    
@@ -36,7 +36,10 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     // Start is called before the first frame update
     void Start()
     {
+        rightOffset = new Vector2(0.45f, 0);
+        leftOffset = new Vector2(-0.45f, 0);    
         //Calculate the spots the AI will move to.
+        moveDistance = Mathf.Abs(moveDistance);
         moveSpeed = Mathf.Abs(moveSpeed);
         startingPos = transform.position;
         leftExtreme = startingPos - new Vector2(moveDistance, 0);
@@ -80,7 +83,8 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
             {
                 rigidBody.simulated = true;
                 capsuleCollider.enabled = true;
-                UpdateAIState();
+                if (Vector2.Distance(startingPos, transform.position) < 750f) UpdateAIState();
+                else Destroy(gameObject);
             }
         }
     }
@@ -103,8 +107,9 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
                     }
                     else
                     {
-                        if (Vector2.Distance(transform.position, new Vector2(leftExtreme.x, transform.position.y)) > 0.001f)
+                        if (Vector2.Distance(transform.position, leftExtreme) > 0.1f)
                         {
+                            //Debug.Log(Vector2.Distance(transform.position, leftExtreme));
                             spriteRendererRat.flipX = false;
                             spriteRendererRubber.flipX = false;
                             //transform.position = Vector2.MoveTowards(transform.position, leftExtreme, Time.deltaTime * moveSpeed);
@@ -126,8 +131,9 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
                     }
                     else
                     {
-                        if(Vector2.Distance(transform.position, new Vector2(rightExtreme.x, transform.position.y)) > 0.001f)
+                        if(Vector2.Distance(transform.position, rightExtreme) > 0.1f)
                         {
+                            //Debug.Log(Vector2.Distance(transform.position, rightExtreme));
                             spriteRendererRat.flipX = true;
                             spriteRendererRubber.flipX = true;
                             //transform.position = Vector2.MoveTowards(transform.position, rightExtreme, Time.deltaTime * moveSpeed);
@@ -206,7 +212,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     {
         while(isAlive)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(2);
             playerHealth.SubtractFromHealth(damageToPlayer);
         }
         
@@ -231,8 +237,10 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     {
         Gizmos.color = debugColor;
         var positions = new Vector2[] { rightOffset, leftOffset };
-        Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
-        Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
+        //Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
+        //Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
+        Gizmos.DrawSphere((Vector2)transform.position + new Vector2(moveDistance,0), collisionRadius/2);
+        Gizmos.DrawSphere((Vector2)transform.position - new Vector2(moveDistance,0), collisionRadius/2);
     }
 
     public void OnOneHitEnemyDeath()
