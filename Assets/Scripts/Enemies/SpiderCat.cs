@@ -132,8 +132,8 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
             RaycastHit2D hit = Physics2D.Linecast(gameObject.transform.position, playerController.gameObject.transform.position, ~ignore);
             if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange)
             {
-                Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.green);
-                Debug.Log("SpiderCat saw player");
+                //Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.green);
+                //Debug.Log("SpiderCat saw player");
                 enemyRB.gravityScale = 1;
                 spriteRendererRat.flipY = false;
                 spriteRendererRubber.flipY = false;
@@ -141,7 +141,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
             }
             else
             {
-                Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.red);
+                //Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.red);
             }
             return;
         }
@@ -165,7 +165,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
             RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, ~ignore);
             if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange)
             {
-                Debug.DrawLine((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, Color.green);
+                //Debug.DrawLine((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, Color.green);
                 enemyRB.velocity = new Vector2(direction.x * movementSpeed, enemyRB.velocity.y);
                 if (capsuleCollider.IsTouching(playerController.GetPlayerCollider()))
                 {
@@ -174,14 +174,14 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
             }
             else
             {
-                Debug.DrawLine((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, Color.red);
+                //Debug.DrawLine((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, Color.red);
                 currentState = EnemyStates.Idle;
             }
             return;
         }
         else if(currentState == EnemyStates.Idle)
         {
-            Debug.Log("SpiderCat on attack delay");
+            //Debug.Log("SpiderCat on attack delay");
             enemyAnimatorRubber.SetBool("IsMoving", false);
             enemyAnimatorRat.SetBool("IsMoving", false);
             enemyRB.velocity = Vector2.zero;

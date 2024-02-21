@@ -9,18 +9,23 @@ public class MatchTimer : MonoBehaviour
     public TextMeshProUGUI timerText2;
     public TextMeshProUGUI timerText3;
     private float elapsedTime;
+    DialogueManager dialogueManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        dialogueManager = DialogueManager.GetInstance();
     }
 
     // Update is called once per frame
     void Update()
     {
-        elapsedTime += Time.deltaTime;
-        UpdateTimer();
+        //Time will no longer accrue on the timer during dialouge
+        if (!GameObject.ReferenceEquals(dialogueManager, null) && !dialogueManager.dialogueIsPlaying)
+        {
+            elapsedTime += Time.deltaTime;
+            UpdateTimer();
+        }
     }
 
 
