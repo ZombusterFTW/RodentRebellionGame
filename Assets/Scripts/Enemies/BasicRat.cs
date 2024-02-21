@@ -7,6 +7,7 @@ using System.Linq;
 
 public class BasicRat : MonoBehaviour, OneHitHealthEnemy
 {
+    [SerializeField] bool drawGizmos = true;
     [SerializeField] LayerMask surfaceLayer;
     [SerializeField] LayerMask playerLayer;
     [Tooltip("Set to true if you want the enemy to walk on the ceiling and have inverted physics.")][SerializeField] private bool isFlipped = false;
@@ -180,8 +181,8 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             Collider2D[] hitColliders;
-            if (!player.isFlipped) hitColliders = Physics2D.OverlapCircleAll((Vector2)player.transform.position + player.bottomOffset, player.collisionRadius * 2f, playerLayer);
-            else hitColliders = Physics2D.OverlapCircleAll((Vector2)player.transform.position + player.topOffset, player.collisionRadius*2f, playerLayer);
+            if (!player.isFlipped) hitColliders = Physics2D.OverlapCircleAll((Vector2)player.transform.position + player.bottomOffset, player.collisionRadius * 2.5f, playerLayer);
+            else hitColliders = Physics2D.OverlapCircleAll((Vector2)player.transform.position + player.topOffset, player.collisionRadius*2.5f, playerLayer);
             bool ratUnderPlayer = false;
             foreach(var hit in hitColliders)
             {
@@ -236,12 +237,15 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = debugColor;
-        var positions = new Vector2[] { rightOffset, leftOffset };
-        //Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
-        //Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
-        Gizmos.DrawSphere((Vector2)transform.position + new Vector2(moveDistance,0), collisionRadius/2);
-        Gizmos.DrawSphere((Vector2)transform.position - new Vector2(moveDistance,0), collisionRadius/2);
+        if(drawGizmos)
+        {
+            Gizmos.color = debugColor;
+            var positions = new Vector2[] { rightOffset, leftOffset };
+            //Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
+            //Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
+            Gizmos.DrawSphere((Vector2)transform.position + new Vector2(moveDistance, 0), collisionRadius / 2);
+            Gizmos.DrawSphere((Vector2)transform.position - new Vector2(moveDistance, 0), collisionRadius / 2);
+        }
     }
 
     public void OnOneHitEnemyDeath()

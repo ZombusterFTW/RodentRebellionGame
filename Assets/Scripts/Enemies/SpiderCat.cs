@@ -7,7 +7,7 @@ using DG.Tweening;
 public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
 {
     //Simple ambush AI. Hides on ceiling and drops down when Big Joe is in range. Lands and then begins to pursue Joe. Easily dispatched but quick
-
+    [SerializeField] bool drawGizmos = true;
     [SerializeField] GameObject playerUI;
     private GameObject UIClone;
     [SerializeField] LayerMask ignore;
@@ -20,7 +20,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
     [Tooltip("This is the time between hits if the player is in attack range of the AI")][SerializeField] private float attackDelay = 1f;
     [SerializeField] private EnemyStates currentState = EnemyStates.Perched;
     [SerializeField] private PlayerController playerController;
-    private CapsuleCollider2D capsuleCollider;
+    [SerializeField] private CapsuleCollider2D capsuleCollider;
     private bool isAlive = true;
     private bool attackDelayActive;
     private FrenzyManager frenzyManager;
@@ -48,6 +48,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
         UIClone.transform.parent = transform;
         health = GetComponent<Health>();
         enemyRB.gravityScale = 0;
+        UIClone.SetActive(false);
     }
 
     private void Start()
@@ -113,8 +114,6 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
             }
             else
             {
-                spriteRendererRat.flipX = enemyRB.velocity.x > 0;
-                spriteRendererRubber.flipX = enemyRB.velocity.x > 0;
                 enemyRB.simulated = true;
                 capsuleCollider.enabled = true;
                 UpdateState();
@@ -151,6 +150,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
             {
                 //Must be on the ground to start moving.
                 currentState = EnemyStates.Pursuing;
+                UIClone.SetActive(true);
             }
             return;
         }
@@ -167,6 +167,8 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
             {
                 //Debug.DrawLine((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, Color.green);
                 enemyRB.velocity = new Vector2(direction.x * movementSpeed, enemyRB.velocity.y);
+                spriteRendererRat.flipX = enemyRB.velocity.x > 0;
+                spriteRendererRubber.flipX = enemyRB.velocity.x > 0;
                 if (capsuleCollider.IsTouching(playerController.GetPlayerCollider()))
                 {
                     currentState = EnemyStates.Attacking;
@@ -235,12 +237,15 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = debugColor;
-        var positions = new Vector2[] { bottomOffset };
-        Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collRadius);
-        Gizmos.DrawSphere((Vector2)transform.position, sightRange);
-        //Gizmos.DrawSphere((Vector2)transform.position + leftCollCheck, collRadiusWall);
-        //Gizmos.DrawSphere((Vector2)transform.position + rightCollCheck, collRadiusWall);
+        if(drawGizmos)
+        {
+            Gizmos.color = debugColor;
+            var positions = new Vector2[] { bottomOffset };
+            Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collRadius);
+            Gizmos.DrawSphere((Vector2)transform.position, sightRange);
+            //Gizmos.DrawSphere((Vector2)transform.position + leftCollCheck, collRadiusWall);
+            //Gizmos.DrawSphere((Vector2)transform.position + rightCollCheck, collRadiusWall);
+        }
     }
 
     public PlayerController GetPlayerController()
