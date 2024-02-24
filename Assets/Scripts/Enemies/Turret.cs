@@ -9,6 +9,7 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
     //Shoot at targets within its range and cone of view. Can be destroyed by attacks.
     //Shoots at players position, so it doesn't unfairly hit them as they move. 
     //Needs to become "dead" in rubber mode.
+    [Tooltip("Set to true to see gizmos that show turret range")][SerializeField] private bool drawGizmos = true;
     [SerializeField] LayerMask ignore;
     [Tooltip("The turrets sight range for the raycast. The player must be in range and seeable")][SerializeField] private float turretSightRange = 350f;
     [Tooltip("This is the delay between shots from the turret")][SerializeField] private float turretFireCooldown = 0.75f;
@@ -46,6 +47,17 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
             Deactivate();
         }
     }
+
+
+    private void OnDrawGizmos()
+    {
+        if(drawGizmos) 
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere((Vector2)transform.position, turretSightRange);
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
