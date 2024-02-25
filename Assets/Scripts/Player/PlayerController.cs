@@ -110,6 +110,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private bool canGroundPound = true;
     [SerializeField] private bool canDoubleJump = true;
     [SerializeField] private bool canWallJump = true;
+    [SerializeField] private bool canEnterRageMode = true;
+    [SerializeField] private bool canPhaseShift = true;
 
     //Audio Manager Class
     [SerializeField] private CharacterSoundManager characterSoundManager;
@@ -649,7 +651,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         {
             case InputActionPhase.Performed:
                 //Attempt to activate frenzy mode.
-                if (!disableAllMoves) frenzyManager.ToggleRubberMode();
+                if (!disableAllMoves && canPhaseShift) frenzyManager.ToggleRubberMode();
                 break;
         }
     }
@@ -676,7 +678,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         {
             case InputActionPhase.Performed:
                 //Attempt to activate frenzy mode.
-                if(!disableAllMoves) frenzyManager.ActivateFrenzyMeter();
+                if(!disableAllMoves && canEnterRageMode) frenzyManager.ActivateFrenzyMeter();
                 break;
             case InputActionPhase.Started:
                 break;
@@ -737,12 +739,12 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 {
                     hit.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.LaserBlast);
                 }
-            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<OneHitHealthEnemy>(), null))
-            {
-                hit.collider.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
-            }
+                if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<OneHitHealthEnemy>(), null))
+                {
+                    hit.collider.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
+                }
             //check if enemy here.
-        }
+            }
             yield return new WaitForSecondsRealtime(0.125f);
    
         isFiringLaser = false;
@@ -1024,7 +1026,13 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 break;
             case UpgradeType.Dash_Ability:
                 canDash = true;
-                break;  
+                break;
+            case UpgradeType.PhaseShift_Ability:
+                canPhaseShift = true;
+                break;
+            case UpgradeType.RageMode_Ability:
+                canEnterRageMode = true;
+                break;
         }
     }
 

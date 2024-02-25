@@ -5293,6 +5293,8 @@ MonoBehaviour:
   canGroundPound: 0
   canDoubleJump: 0
   canWallJump: 0
+  canEnterRageMode: 0
+  canPhaseShift: 0
   characterSoundManager: {fileID: 5990184564997095310}
 --- !u!114 &5169012110108082315
 MonoBehaviour:

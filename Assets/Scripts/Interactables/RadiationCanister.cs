@@ -97,6 +97,12 @@ public class RadiationCanister : MonoBehaviour
             case UpgradeType.DoubleJump_Ability:
                 spriteRenderer.sprite = abilityCanisterImage;
                 break;
+            case UpgradeType.PhaseShift_Ability:
+                spriteRenderer.sprite = abilityCanisterImage;
+                break;
+            case UpgradeType.RageMode_Ability:
+                spriteRenderer.sprite = abilityCanisterImage;
+                break;
             case UpgradeType.Dagger_Weapon:
                 spriteRenderer.sprite = daggerWeaponImage;
                 spriteRenderer.color = Color.white;
@@ -135,6 +141,10 @@ public class RadiationCanister : MonoBehaviour
                 return "<color=white>Dagger";
             case UpgradeType.LaserGun_Weapon:
                 return "<color=white>Laser Gun";
+            case UpgradeType.PhaseShift_Ability:
+                return "<color=yellow>Phase Shift Ability";
+            case UpgradeType.RageMode_Ability:
+                return "<color=yellow>Frenzy Mode Ability";
         }
     }
 
@@ -159,5 +169,7 @@ public enum UpgradeType
     DoubleJump_Ability,
     Dash_Ability,
     Dagger_Weapon,
-    LaserGun_Weapon
+    LaserGun_Weapon,
+    PhaseShift_Ability,
+    RageMode_Ability
 }
