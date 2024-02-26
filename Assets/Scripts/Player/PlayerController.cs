@@ -12,6 +12,7 @@ using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatformAnchor, ControlledCharacter
 {
+    [SerializeField] private PauseMenu pauseMenu;
     SceneTransitionerManager sceneTransitionerManager;
     private PlayerInput playerInput;
     [SerializeField] private GameObject playerSpriteContainer;
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     private float jumpForce_Game;
     private int playerDoubleJumpsRemaining;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private GameObject movingPlatform;
+    [SerializeField] public GameObject movingPlatform;
     [SerializeField] private SpawnPoint currentSpawn;
     [SerializeField] private LayerMask playerWalls;
     [SerializeField] private LayerMask playerGround;
@@ -156,7 +157,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         playerSpeed_Game = playerSpeed;
         jumpForce_Game = jumpForce;
         SceneManager.sceneLoaded += OnSceneChange;
-        sceneTransitionerManager = SceneTransitionerManager.instance;
+        //sceneTransitionerManager = SceneTransitionerManager.instance;
         playerWeapon = playerUpgrade.playerWeaponType;
     }
 
@@ -951,7 +952,13 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     public void RespawnPlayer()
     {
-        if(isAlive)
+        BigJoeRespawn();
+    }
+
+
+    public void BigJoeRespawn(bool returnToCheckpoint = false)
+    {
+        if (isAlive && !returnToCheckpoint)
         {
             //Unlink the platform on a player death.
             UnlinkPlatform(movingPlatform);
@@ -962,28 +969,48 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             StopCoroutine(DisableMovement(0));
             StartCoroutine(DisableMovement(1f));
             playerRigidBody.velocity = Vector3.zero;
-            if(respawnJoe == null) StartCoroutine(RespawnJoe());
+            if (respawnJoe == null) StartCoroutine(RespawnJoe());
+        }
+        else if (returnToCheckpoint && respawnJoe == null)
+        {
+            StartCoroutine(RespawnJoe(true));
         }
     }
 
-
-    IEnumerator RespawnJoe()
+    IEnumerator RespawnJoe(bool returnToCheckpoint = false)
     {
         disableAllMoves = true;
-        playerAnimator.SetTrigger("Death");
-        playerAnimatorRubber.SetTrigger("Death");
-        yield return new WaitForSeconds(1);
-        playerSprite.DOFade(0, 1);
-        playerSpriteRubber.DOFade(0, 1);
-        yield return new WaitForSeconds(1);
-        playerAnimator.Play("BigJoeIdle");
-        playerAnimatorRubber.Play("BigJoeIdle");
-        playerSprite.DOFade(1, .5f);
-        playerSpriteRubber.DOFade(1, .5f);
-        playerHealth.HealthToMax();
+        playerInput.DeactivateInput();
+        if (returnToCheckpoint)
+        {
+            playerHealth.isInvincible = true;
+            playerSprite.DOFade(0, 0.25f);
+            playerSpriteRubber.DOFade(0, 0.25f);
+            yield return new WaitForSeconds(0.25f);
+            playerAnimator.Play("BigJoeIdle");
+            playerAnimatorRubber.Play("BigJoeIdle");
+            playerSprite.DOFade(1, .25f);
+            playerSpriteRubber.DOFade(1, .25f);
+        }
+        else
+        {
+            playerAnimator.SetTrigger("Death");
+            playerAnimatorRubber.SetTrigger("Death");
+            yield return new WaitForSeconds(1);
+            playerSprite.DOFade(0, 1);
+            playerSpriteRubber.DOFade(0, 1);
+            yield return new WaitForSeconds(1);
+            playerAnimator.Play("BigJoeIdle");
+            playerAnimatorRubber.Play("BigJoeIdle");
+            playerSprite.DOFade(1, .5f);
+            playerSpriteRubber.DOFade(1, .5f);
+            playerHealth.HealthToMax();
+        }
         isAlive = true;
         disableAllMoves = false;
         gameObject.transform.position = currentSpawn.transform.position;
+        playerHealth.isInvincible = false;
+        playerInput.ActivateInput();
     }
 
     public Health GetHealthComponent()
@@ -1118,15 +1145,24 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     }
 
 
-    public void OnBack()
+    public void OnBack(InputAction.CallbackContext context)
     {
         Debug.Log("HI");
-        if (sceneTransitionerManager != null)
+        switch (context.phase)
         {
-            sceneTransitionerManager.StartTransition();
+            case InputActionPhase.Started:
+                Debug.Log("HI");
+                /*
+                if (sceneTransitionerManager != null)
+                {
+                    sceneTransitionerManager.StartTransition();
+                }
+                */
+                //Pull up pause menu here
+
+                pauseMenu.ToggleMenu();
+                break;
         }
-        
-        
     }
 
     public void PlayDamagedAnim()

@@ -200,6 +200,19 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
                 }
         }
     }
+
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (!GameObject.ReferenceEquals(collision.gameObject.GetComponent<PlayerController>(), null))
+        {
+            if (extendedDamage != null) StopCoroutine(extendedDamage);
+        }
+    }
+
+
+
+
     IEnumerator PlayerDamageLoop(Health playerHealth)
     {
         while (isAlive)
@@ -230,7 +243,7 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
     {
         //No anim for this yet
         //Prevent player from being hurt by the enemy if they are actively attacking it
-        StopCoroutine(extendedDamage);
+        if(!Coroutine.ReferenceEquals(extendedDamage, null)) StopCoroutine(extendedDamage);
     }
 
     public void RespawnPlayer()

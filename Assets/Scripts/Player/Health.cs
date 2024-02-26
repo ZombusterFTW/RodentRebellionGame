@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     [SerializeField] private ControlledCharacter playerController;
     [SerializeField] private bool isPlayer = false;
     [SerializeField] private PlayerUI playerUIManager;
+    public bool isInvincible = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,23 +17,27 @@ public class Health : MonoBehaviour
         healthCountCurrent = healthCount;
         playerController = GetComponent<ControlledCharacter>();
         playerUIManager = playerController.GetPlayerUI();
+        isInvincible = false;
     }
 
     
     public float SubtractFromHealth(float healthToLose)
     {
-        //Damaged taken during frenzy mode is halved
-        if(isPlayer && playerController.GetPlayerController().frenzyActivated) 
+        if(!isInvincible)
         {
-            healthToLose /= 2;
+            //Damaged taken during frenzy mode is halved
+            if (isPlayer && playerController.GetPlayerController().frenzyActivated)
+            {
+                healthToLose /= 2;
+            }
+            healthCountCurrent = Mathf.Clamp(healthCountCurrent - healthToLose, 0, healthCount);
+            if (healthCountCurrent == 0)
+            {
+                playerController.RespawnPlayer();
+            }
+            else playerController.PlayDamagedAnim();
+            if (!GameObject.ReferenceEquals(playerUIManager, null)) playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
         }
-        healthCountCurrent = Mathf.Clamp(healthCountCurrent-healthToLose, 0, healthCount);
-        if (healthCountCurrent == 0)
-        {
-            playerController.RespawnPlayer();
-        }
-        else playerController.PlayDamagedAnim();
-        if(!GameObject.ReferenceEquals(playerUIManager, null)) playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
         return healthCountCurrent;
     }
 

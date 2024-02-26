@@ -12,7 +12,7 @@ public class SceneTransitionerManager : MonoBehaviour
     //This class allows for each scene transition to have a unique image and text!
 
 
-
+    [SerializeField] Canvas canvas;
     [SerializeField] GameObject parentGameObject;
     public string[] gameHints;
     public string[] gameHintAnimations;
@@ -34,6 +34,7 @@ public class SceneTransitionerManager : MonoBehaviour
             DontDestroyOnLoad(parentGameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
             gameHintsText.text = "";
+            canvas.enabled = true;
         }
         else if (instance != null && instance != this)
         {
@@ -84,7 +85,8 @@ public class SceneTransitionerManager : MonoBehaviour
         asyncLoad.allowSceneActivation = false;
         yield return new WaitForSecondsRealtime(sceneTransitionTime);
         asyncLoad.allowSceneActivation = true;
-        Time.timeScale = 1; 
+        Time.timeScale = 1;
+        transitionInProgress = false;
     }
 
     // Update is called once per frame

@@ -42,8 +42,8 @@ public class AutoDialouge : MonoBehaviour, R4Activatable
             DialogueManager.GetInstance().EnterDialogueMode(inkJSON, gameObject, cleanupOnDialougeExit);
             if(stopTime)
             {
-                DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 0.25f);
-                
+                //DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 0.25f);
+                Time.timeScale = 0;
             }
         }
     }
@@ -53,8 +53,8 @@ public class AutoDialouge : MonoBehaviour, R4Activatable
             DialogueManager.GetInstance().EnterDialogueMode(inkJSON, gameObject, cleanupOnDialougeExit);
             if (stopTime)
             {
-                DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 0.25f);
-
+                //DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 0.25f);
+                Time.timeScale = 0f;
             }
     }
 
@@ -67,8 +67,8 @@ public class AutoDialouge : MonoBehaviour, R4Activatable
             DialogueManager.GetInstance().EnterDialogueMode(inkJSON, gameObject, cleanupOnDialougeExit);
             if (stopTime)
             {
-                DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 0.25f);
-
+                //DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 0.25f);
+                Time.timeScale = 0f;
             }
         }
     }

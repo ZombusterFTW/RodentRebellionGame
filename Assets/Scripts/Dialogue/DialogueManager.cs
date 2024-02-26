@@ -24,6 +24,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI displayNameText;
     [SerializeField] private Animator portraitAnimator;
     [SerializeField] private GameObject dialogueBGDampen;
+    [SerializeField] private Canvas canvas;
     private Animator layoutAnimator;
 
     [Header("Choices UI")]
@@ -188,10 +189,14 @@ public class DialogueManager : MonoBehaviour
         // go back to default audio
         SetCurrentAudioInfo(defaultAudioInfo.id);
         //Set time scale back to normal if we slowed it.
+        Time.timeScale = 1.0f;  
+
+        /*
         if(Time.timeScale != 1.0f)
         {
             DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1, 0.25f);
         }
+        */
     }
 
     private void ContinueStory() 

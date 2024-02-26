@@ -245,10 +245,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea2f708eb822e44aaa472e824b25e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthCount: 100
+  healthCount: 25
   healthCountCurrent: 0
   isPlayer: 0
   playerUIManager: {fileID: 0}
+  isInvincible: 0
 --- !u!58 &5244246583552158082
 CircleCollider2D:
   m_ObjectHideFlags: 0
