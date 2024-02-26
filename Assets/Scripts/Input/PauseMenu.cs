@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     private bool pauseMenuActive = false;
     [SerializeField] SceneTransitionerManager sceneTransitionerManager;
     [SerializeField] PlayerController playerController;
+    [SerializeField] Health health;
     public void GoToLastCheckpoint()
     {
         canvas.enabled = false;
@@ -36,6 +37,7 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0.0f;
             Debug.Log("Paused Game");
             pauseMenuActive = true;
+            health.isInvincible = true;
         }
         else
         {
@@ -43,6 +45,7 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 1.0f;
             Debug.Log("Un-Paused Game");
             pauseMenuActive = false;
+            health.isInvincible = false;
         }
     }
 

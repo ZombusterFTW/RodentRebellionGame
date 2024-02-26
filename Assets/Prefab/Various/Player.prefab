@@ -7620,6 +7620,7 @@ MonoBehaviour:
   canvas: {fileID: 7741996230913257641}
   sceneTransitionerManager: {fileID: 0}
   playerController: {fileID: 8459652423362751434}
+  health: {fileID: 4599413665136947856}
 --- !u!1 &5387987368628472128
 GameObject:
   m_ObjectHideFlags: 0
