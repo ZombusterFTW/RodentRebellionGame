@@ -804,6 +804,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                     //Detect which weapon a player has to determine their damage
                     
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection.normalized, 1f, enemyLayer);
+
                     if(playerUpgrade.playerWeaponType == PlayerWeaponType.Dagger)
                     {
                         characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);

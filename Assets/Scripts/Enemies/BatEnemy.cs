@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.Windows;
 
 public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
 {
@@ -97,9 +98,10 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
                 {
                     reachedEndOfPath = false;
                 }
-                Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-                Vector2 force = direction * speed * Time.deltaTime;
-                rb.AddForce(force);
+                rb.MovePosition(Vector2.MoveTowards(transform.position, (Vector2)path.vectorPath[currentWaypoint], speed * Time.deltaTime));
+                //Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+                //Vector2 force = direction * speed * Time.deltaTime;
+               // rb.AddForce(force);
                 float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
                 if (distance < nextWaypointDistance)
                 {

@@ -133,7 +133,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
             {
                 //Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.green);
                 //Debug.Log("SpiderCat saw player");
-                enemyRB.gravityScale = 1;
+                //enemyRB.gravityScale = 1;
                 spriteRendererRat.flipY = false;
                 spriteRendererRubber.flipY = false;
                 currentState = EnemyStates.Landing;
@@ -152,10 +152,22 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
                 currentState = EnemyStates.Pursuing;
                 UIClone.SetActive(true);
             }
+            else
+            {
+                enemyRB.velocity = new Vector2(0, -5f);
+            }
             return;
         }
         else if(currentState == EnemyStates.Pursuing)
         {
+            if (Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collRadius, surfaceLayer))
+            {
+                enemyRB.velocity = new Vector2(enemyRB.velocity.x, 0f);
+            }
+            else
+            {
+                enemyRB.velocity = new Vector2(enemyRB.velocity.x, -5f);
+            }
             Vector2 direction = (Vector2)playerController.transform.position - (Vector2)transform.position;
             direction.Normalize();
             Debug.Log("moving");
@@ -241,7 +253,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
         {
             Gizmos.color = debugColor;
             var positions = new Vector2[] { bottomOffset };
-            Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collRadius);
+            //Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collRadius);
             Gizmos.DrawSphere((Vector2)transform.position, sightRange);
             //Gizmos.DrawSphere((Vector2)transform.position + leftCollCheck, collRadiusWall);
             //Gizmos.DrawSphere((Vector2)transform.position + rightCollCheck, collRadiusWall);
