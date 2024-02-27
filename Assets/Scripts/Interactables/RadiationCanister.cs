@@ -111,6 +111,10 @@ public class RadiationCanister : MonoBehaviour
                 spriteRenderer.sprite = laserGunWeaponImage;
                 spriteRenderer.color = Color.white;
                 break;
+            case UpgradeType.ChainWhip_Weapon:
+                spriteRenderer.sprite = abilityCanisterImage;
+                spriteRenderer.color = Color.white;
+                break;
         }
 
 }
@@ -141,6 +145,8 @@ public class RadiationCanister : MonoBehaviour
                 return "<color=white>Dagger";
             case UpgradeType.LaserGun_Weapon:
                 return "<color=white>Laser Gun";
+            case UpgradeType.ChainWhip_Weapon:
+                return "<color=white>Chain Whip";
             case UpgradeType.PhaseShift_Ability:
                 return "<color=yellow>Phase Shift Ability";
             case UpgradeType.RageMode_Ability:
@@ -171,5 +177,6 @@ public enum UpgradeType
     Dagger_Weapon,
     LaserGun_Weapon,
     PhaseShift_Ability,
-    RageMode_Ability
+    RageMode_Ability,
+    ChainWhip_Weapon
 }

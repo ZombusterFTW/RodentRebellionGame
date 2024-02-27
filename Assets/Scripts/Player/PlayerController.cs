@@ -118,8 +118,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private CharacterSoundManager characterSoundManager;
     private Coroutine hurtSound;
     private Coroutine respawnJoe;
+    private Coroutine latentAttack;
+    public bool playerIsAttacking { get; private set; } = false;
     private PlayerWeaponType playerWeapon;
-
+    private bool attackCooldownActive = false;
     /// <summary>
     /// Mode switch notes. To enter rubber mode the player must have a portion of their rage meter. In rubber mode the bar slowly drains overtime with the player being kicked out of the mode alltogether if it runs out.
     /// Rubber mode has the increased emphasis on movement with more opportunites being available to the player. 
@@ -361,6 +363,13 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
         Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
         Gizmos.DrawSphere((Vector2)transform.position + topOffset, collisionRadiusTopBottom);
+
+
+
+        Gizmos.DrawSphere((Vector2)transform.position - new Vector2(2f, 0), 0.5f);
+        Gizmos.DrawSphere((Vector2)transform.position + new Vector2(2f, 0), 0.5f);
+
+
     }
 
 
@@ -592,23 +601,26 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         switch (context.phase)
         {
             case InputActionPhase.Performed:
-                scrollAmount = context.ReadValue<float>();
-                if(scrollAmount > 0)
-                {
-                    playerUpgrade.SwapWeapon(false);
-                    Debug.Log("swaped down");
-                }
-                else if(scrollAmount < 0)
-                {
-                    playerUpgrade.SwapWeapon();
-                    Debug.Log("swaped up");
-                }
-                if(playerWeapon != playerUpgrade.playerWeaponType)
-                {
-                    characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon1);
-                    playerWeapon = playerUpgrade.playerWeaponType;  
-                }
 
+                if(!disableAllMoves && !playerIsAttacking)
+                {
+                    scrollAmount = context.ReadValue<float>();
+                    if (scrollAmount > 0)
+                    {
+                        playerUpgrade.SwapWeapon(false);
+                        Debug.Log("swaped down");
+                    }
+                    else if (scrollAmount < 0)
+                    {
+                        playerUpgrade.SwapWeapon();
+                        Debug.Log("swaped up");
+                    }
+                    if (playerWeapon != playerUpgrade.playerWeaponType)
+                    {
+                        characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon1);
+                        playerWeapon = playerUpgrade.playerWeaponType;
+                    }
+                }
                 break;
         }
     }
@@ -793,74 +805,128 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if(!disableAllMoves)
+        if(!disableAllMoves && !attackCooldownActive)
         {
             switch (context.phase)
             {
                 case InputActionPhase.Performed:
                     break;
                 case InputActionPhase.Started:
-                    //Vector2 direction = ((lastDirection) - (Vector2)transform.position);
-                    //Detect which weapon a player has to determine their damage
-                    
-                    RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection.normalized, 1f, enemyLayer);
-
-                    if(playerUpgrade.playerWeaponType == PlayerWeaponType.Dagger)
-                    {
-                        characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
-                        characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon1);
-                        playerAnimator.SetTrigger("Stab");
-                        playerAnimatorRubber.SetTrigger("Stab");
-                        if (hit)
-                        {
-                            Debug.Log("Hit");
-                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
-                            {
-                                hit.collider.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike));
-                            }
-                            if(!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Switch>(), null))
-                            {
-                                hit.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.DaggerStrike);
-                            }
-                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<OneHitHealthEnemy>(), null))
-                            {
-                                hit.collider.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
-                            }
-                        }
-                    }
-                    else if (playerUpgrade.playerWeaponType == PlayerWeaponType.None)
-                    {
-                        characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
-                        characterSoundManager.PlayAudioCallout(CharacterAudioCallout.NoWeapon);
-                        //replace me with standard attack
-                        playerAnimator.SetTrigger("StandardAttack");
-                        playerAnimatorRubber.SetTrigger("StandardAttack");
-                        if (hit)
-                        {
-                            Debug.Log("Hit");
-                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
-                            {
-                                hit.collider.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
-                            }
-                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Switch>(), null))
-                            {
-                                hit.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.StandardAttack);
-                            }
-                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<OneHitHealthEnemy>(), null))
-                            {
-                                hit.collider.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
-                            }
-                        }
-                    }  
+                    if(Coroutine.ReferenceEquals(latentAttack, null)) latentAttack = StartCoroutine(LatentAttack());
                     break;
                 case InputActionPhase.Canceled:
                     break;
             }
         }
-        
     }
 
 
+    IEnumerator LatentAttack()
+    {
+        playerIsAttacking = true;
+        //Vector2 direction = ((lastDirection) - (Vector2)transform.position);
+        //Detect which weapon a player has to determine their damage
+        if (playerUpgrade.playerWeaponType == PlayerWeaponType.Dagger)
+        {
+            //Seperate line casts for each weapon
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection.normalized, 1.2f, enemyLayer);
+            characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
+            characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon1);
+            playerAnimator.SetTrigger("Stab");
+            playerAnimatorRubber.SetTrigger("Stab");
+            if (hit)
+            {
+                Debug.Log("Hit");
+                if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
+                {
+                    hit.collider.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike));
+                }
+                if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Switch>(), null))
+                {
+                    hit.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.DaggerStrike);
+                }
+                if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<OneHitHealthEnemy>(), null))
+                {
+                    hit.collider.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
+                }
+            }
+        }
+        else if (playerUpgrade.playerWeaponType == PlayerWeaponType.None)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection.normalized, 1f, enemyLayer);
+            characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
+            characterSoundManager.PlayAudioCallout(CharacterAudioCallout.NoWeapon);
+            //replace me with standard attack
+            playerAnimator.SetTrigger("StandardAttack");
+            playerAnimatorRubber.SetTrigger("StandardAttack");
+            if (hit)
+            {
+                Debug.Log("Hit");
+                if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
+                {
+                    hit.collider.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
+                }
+                if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Switch>(), null))
+                {
+                    hit.collider.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.StandardAttack);
+                }
+                if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<OneHitHealthEnemy>(), null))
+                {
+                    hit.collider.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
+                }
+            }
+        }
+        else if (playerUpgrade.playerWeaponType == PlayerWeaponType.ChainWhip)
+        {
+            float chainWhipDistance = 2.5f;
+            float chainWhipSphereSize = 0.5f;
+            float chainWhipDeployTime = 0.25f;
+            Collider2D[] hitObjects;
+            //Chain whip does no damage until it hits delayed sphere cast.
+            yield return new WaitForSeconds(chainWhipDeployTime);
+            bool isFacingLeft = lastDirection.x < 0 ? true : false;
+            if (isFacingLeft)
+            {
+                hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position - new Vector2(chainWhipDistance, 0), chainWhipSphereSize);
+            }
+            else
+            {
+                hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position + new Vector2(chainWhipDistance,0) , chainWhipSphereSize);
+            }
+            // RaycastHit2D hit = Physics2D.LinecastAll(transform.position, lastDirection.normalized, 5f, enemyLayer);
+            characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
+            characterSoundManager.PlayAudioCallout(CharacterAudioCallout.NoWeapon);
+            //replace me with chain whip anim
+            playerAnimator.SetTrigger("StandardAttack");
+            playerAnimatorRubber.SetTrigger("StandardAttack");
+
+            if(hitObjects.Length > 0)
+            {
+                foreach(Collider2D hit in hitObjects)
+                {
+                    Debug.Log("Hit");
+                    if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
+                    {
+                        hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.ChainWhipAttack));
+                    }
+                    if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<Switch>(), null))
+                    {
+                        hit.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.ChainWhipAttack);
+                    }
+                    if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<OneHitHealthEnemy>(), null))
+                    {
+                        hit.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
+                    }
+                }
+            }
+        }
+        //Prevent player from spamming attack
+        attackCooldownActive = true;
+        yield return new WaitForSeconds(0.15f);
+        attackCooldownActive = false;
+        playerIsAttacking = false;
+        latentAttack = null;
+    }
     //For later
     void RotateToMouse()
     {
@@ -968,6 +1034,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             //If the player dies we respawn them. 
             isAlive = false;
             StopCoroutine(DisableMovement(0));
+            if(!Coroutine.ReferenceEquals(latentAttack, null)) StopCoroutine(latentAttack);
+            attackCooldownActive = false;
+            playerIsAttacking = false;
             StartCoroutine(DisableMovement(1f));
             playerRigidBody.velocity = Vector3.zero;
             if (respawnJoe == null) StartCoroutine(RespawnJoe());
@@ -1051,6 +1120,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 break;
             case UpgradeType.LaserGun_Weapon:
                 playerUpgrade.UnlockWeapon(PlayerWeaponType.LaserGun);
+                break;
+            case UpgradeType.ChainWhip_Weapon:
+                playerUpgrade.UnlockWeapon(PlayerWeaponType.ChainWhip);
                 break;
             case UpgradeType.Dash_Ability:
                 canDash = true;

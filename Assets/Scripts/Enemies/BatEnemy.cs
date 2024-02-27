@@ -81,7 +81,7 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
         }
     }
 
-    private void FixedUpdate()
+    private void BatMovement()
     {
         if(!frenzyManager.inRubberMode)
         {
@@ -133,6 +133,7 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
                 Debug.DrawLine(gameObject.transform.position, target.position, Color.red);
             }
         }
+        BatMovement();
     }
 
 

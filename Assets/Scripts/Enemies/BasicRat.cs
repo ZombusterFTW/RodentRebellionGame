@@ -179,6 +179,9 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     {
         if(!GameObject.ReferenceEquals(collision.gameObject.GetComponent<PlayerController>(), null))
         {
+
+            //To ensure the rat can be dispatched by a groundpound.
+
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
             Collider2D[] hitColliders;
             if (!player.isFlipped) hitColliders = Physics2D.OverlapCircleAll((Vector2)player.transform.position + player.bottomOffset, player.collisionRadius * 2.5f, playerLayer);
@@ -192,7 +195,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
                     break;
                 }
             }
-            if(hitColliders.Length > 0 && ratUnderPlayer)
+            if(hitColliders.Length > 0 && ratUnderPlayer && player.isGroundPounding)
             {
                 Debug.Log("Player landed on an enemy");
                 OnRatDeath();
@@ -200,7 +203,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
             }
             else
             {
-                if(!player.isDashing && !player.isGroundPounding)
+                if(!player.isDashing)
                 {
                     Debug.Log("Player hit by rat");
                     //The player must take damage here.

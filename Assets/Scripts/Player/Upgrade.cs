@@ -74,6 +74,8 @@ public class Upgrade : MonoBehaviour
                 break;
             case PlayerAttackType.LaserBlast: temp =  damageCountCurrent / 5;
                 break;
+            case PlayerAttackType.ChainWhipAttack: temp = damageCountCurrent / 1.5f;
+                break;
         }
 
         if (playerController.frenzyActivated) temp *= frenzyMultiplier;
@@ -126,12 +128,14 @@ public enum PlayerAttackType
     AirFlip,
     GroundPound,
     StandardAttack,
-    LaserBlast
+    LaserBlast,
+    ChainWhipAttack,
 }
 
 public enum PlayerWeaponType
 {
     None,
     Dagger,
-    LaserGun
+    LaserGun,
+    ChainWhip
 }

@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea2f708eb822e44aaa472e824b25e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthCount: 12
+  healthCount: 7.5
   healthCountCurrent: 0
   isPlayer: 0
   playerUIManager: {fileID: 0}
@@ -315,8 +315,8 @@ MonoBehaviour:
   projectile: {fileID: 8155977222592638469, guid: 3b0a644cf6451d641a9e0b2b0dc102e1, type: 3}
   spriteRendererRubber: {fileID: 8481128339916403183}
   spriteRendererRat: {fileID: 2247655304730641118}
-  speed: 2
-  nextWaypointDistance: 1.5
+  speed: 2.5
+  nextWaypointDistance: 0.75
 --- !u!114 &7125144125752540632
 MonoBehaviour:
   m_ObjectHideFlags: 0
