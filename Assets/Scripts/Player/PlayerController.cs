@@ -885,13 +885,16 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             //Chain whip does no damage until it hits delayed sphere cast.
             yield return new WaitForSeconds(chainWhipDeployTime);
             bool isFacingLeft = lastDirection.x < 0 ? true : false;
+            bool hitWallOnTheWay = false;   
             if (isFacingLeft)
             {
                 hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position - new Vector2(chainWhipDistance, 0), chainWhipSphereSize);
+                hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position - new Vector2(chainWhipDistance, 0), groundLayer);
             }
             else
             {
                 hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position + new Vector2(chainWhipDistance,0) , chainWhipSphereSize);
+                hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(chainWhipDistance, 0), groundLayer);
             }
             // RaycastHit2D hit = Physics2D.LinecastAll(transform.position, lastDirection.normalized, 5f, enemyLayer);
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
@@ -900,7 +903,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             playerAnimator.SetTrigger("StandardAttack");
             playerAnimatorRubber.SetTrigger("StandardAttack");
 
-            if(hitObjects.Length > 0)
+            if(hitObjects.Length > 0 && !hitWallOnTheWay)
             {
                 foreach(Collider2D hit in hitObjects)
                 {
