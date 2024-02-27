@@ -155,7 +155,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     {
         if(isAlive)
         {
-            frenzyManager.AddToFrenzyMeter(0.15f);
+            frenzyManager.AddToFrenzyMeter(frenzyPercentageFill);
             isAlive = false;
             if (activateItemsOnDeath)
             {
@@ -164,7 +164,6 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
                     item.GetComponent<R4Activatable>()?.Activate();
                 }
             }
-            frenzyManager.AddToFrenzyMeter(0.15f);
             rigidBody.simulated = false;
             capsuleCollider.enabled = false;
             //Fade out spriteRenderers
@@ -261,7 +260,9 @@ public enum BasicRatAIStates
 {
     MovingLeft,
     MovingRight,
-    Idle
+    Idle,
+    Pursuing,
+    Attack
 }
 
 public interface OneHitHealthEnemy

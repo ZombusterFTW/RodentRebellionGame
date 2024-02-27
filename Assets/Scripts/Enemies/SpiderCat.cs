@@ -18,6 +18,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
     [Tooltip("Set this to true if you want the SpiderCat to activate something on its death")][SerializeField] private bool activateItemsOnDeath = false;
     [Tooltip("Add Gameobjects to this list that you want activated on the SpiderCat's death")][SerializeField] private GameObject[] itemsToActivate;
     [Tooltip("This is the time between hits if the player is in attack range of the AI")][SerializeField] private float attackDelay = 1f;
+    [Tooltip("The percentage of the frenzy bar killing the enemy will fill")][SerializeField][Range(0.0f, 1.0f)] private float frenzyPercentageFill = 0.15f;
     [SerializeField] private EnemyStates currentState = EnemyStates.Perched;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private CapsuleCollider2D capsuleCollider;
@@ -70,7 +71,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
     {
         isAlive = false;
         //Add to player frenzy meter here/
-        frenzyManager.AddToFrenzyMeter(0.15f);
+        frenzyManager.AddToFrenzyMeter(frenzyPercentageFill);
         enemyAnimatorRat.SetTrigger("Death");
         enemyAnimatorRubber.SetTrigger("Death");
         if (activateItemsOnDeath)

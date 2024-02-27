@@ -355,7 +355,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = debugColor;
+        
+        Gizmos.color = new Color(0, 1, 0, 0.5f);
 
         var positions = new Vector2[] {bottomOffset, rightOffset, leftOffset, topOffset};
 
@@ -365,7 +366,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         Gizmos.DrawSphere((Vector2)transform.position + topOffset, collisionRadiusTopBottom);
 
 
-
+        Gizmos.color = debugColor;
         Gizmos.DrawSphere((Vector2)transform.position - new Vector2(2f, 0), 0.5f);
         Gizmos.DrawSphere((Vector2)transform.position + new Vector2(2f, 0), 0.5f);
 
@@ -888,13 +889,13 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             bool hitWallOnTheWay = false;   
             if (isFacingLeft)
             {
-                hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position - new Vector2(chainWhipDistance, 0), chainWhipSphereSize);
-                hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position - new Vector2(chainWhipDistance, 0), groundLayer);
+                hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position - new Vector2(chainWhipDistance, 0), chainWhipSphereSize, enemyLayer);
+                hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position - new Vector2(chainWhipDistance/2, 0), groundLayer);
             }
             else
             {
-                hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position + new Vector2(chainWhipDistance,0) , chainWhipSphereSize);
-                hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(chainWhipDistance, 0), groundLayer);
+                hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position + new Vector2(chainWhipDistance,0) , chainWhipSphereSize, enemyLayer);
+                hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(chainWhipDistance/2, 0), groundLayer);
             }
             // RaycastHit2D hit = Physics2D.LinecastAll(transform.position, lastDirection.normalized, 5f, enemyLayer);
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
@@ -921,6 +922,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                         hit.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
                     }
                 }
+            }
+            else
+            {
+                Debug.Log("No enemies or chainwhip hit wall");
             }
         }
         //Prevent player from spamming attack
