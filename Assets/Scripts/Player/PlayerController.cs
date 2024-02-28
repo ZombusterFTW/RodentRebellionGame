@@ -737,9 +737,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             laserBeam.SetPosition(1, (Vector2)pos);
             Vector2 direction =  (Vector2)transform.position - (Vector2)pos;
             RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, -direction.normalized, Mathf.Infinity, enemyLayer);
-            RaycastHit2D hitWallCheck = Physics2D.Raycast((Vector2)transform.position, -direction.normalized, Mathf.Infinity, groundLayer);
-            if (hit && !hitWallCheck)
-               {
+            if (hit)
+            {
                 laserBeam.SetPosition(1, hit.point);
                 Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
@@ -754,11 +753,15 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 {
                     hit.collider.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
                 }
+                if(hit.collider.gameObject.tag == "Shield")
+                {
+                    hit.collider.gameObject.GetComponentInParent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast));
+                }
             //check if enemy here.
             }
             else
             {
-                laserBeam.SetPosition(1, hitWallCheck.point);
+                laserBeam.SetPosition(1, hit.point);
             }
             yield return new WaitForSecondsRealtime(0.125f);
    

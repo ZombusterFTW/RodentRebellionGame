@@ -21,6 +21,7 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
     [Tooltip("Add the wanted activated items to this list. These items must integrate the R4 Activatable interface")][SerializeField] private GameObject[] itemsToActivate;
     [Tooltip("Set this float to the damage a player will take from this enemy")][SerializeField] private float damageToPlayer = 55f;
     [Tooltip("The percentage of the frenzy bar killing the enemy will fill")][SerializeField][Range(0.0f, 1.0f)] private float frenzyPercentageFill = 0.15f;
+    [Tooltip("How long a shield cat can charge before it is considered out of the map or bugged. If this number is hit the AI is destroyed")][SerializeField] private float maxChargeTimeValue = 15f;
     [SerializeField] private ShieldCatStates currentState = ShieldCatStates.Idle;
     private float collisionRadius = 0.26f;
     [SerializeField] private Vector2 rightOffset, leftOffset, startingPos;
@@ -29,6 +30,7 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
     private CapsuleCollider2D capsuleCollider;
     [SerializeField] private GameObject shieldLeft, shieldRight;
     private GameObject activeShield;
+    private Collider2D activeShieldCollider;
     [SerializeField] private SpriteRenderer spriteRendererRubber;
     [SerializeField] private SpriteRenderer spriteRendererRat;
     private bool isAlive = true;
@@ -42,8 +44,10 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
     PlayerController playerController;
     private bool pursueCooldown = false;
     private float timeOnSide = 0;
+    private float timeCharging = 0;
     private Vector2 playerDirection;
     private Vector2 chargePos;
+    private BoxCollider2D playerCollider;
 
     //Like basic rat but chonky!
 
@@ -77,6 +81,8 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
             isFacingLeft = false;
             activeShield = shieldRight;
         }
+        activeShieldCollider = activeShield.GetComponent<CapsuleCollider2D>();
+        playerCollider = playerController.GetPlayerCollider();
     }
     //This cat will begin idle and completely static. When a player enters its sight range it begins to move towards them slowly but then breaks into a fast charge in the direction of the player. 
     //This directional charge cannot be canceled unless the shield cat hits a wall or a player. When the shield cat hits a wall or player its facing direction changes and it has a cooldown before it can move again. 
@@ -169,21 +175,35 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
                 return;
             case ShieldCatStates.Charging:
                 //Charge until a wall or player is hit. 
-                if(!onLeftWall && !onRightWall && !activeShield.GetComponent<CapsuleCollider2D>().IsTouching(playerController.GetPlayerCollider()))
+                if(!onLeftWall && !onRightWall)
                 {
-                    rigidBody.velocity = new Vector2(-playerDirection.x * chargeMoveSpeed, rigidBody.velocity.y);  
+                    rigidBody.velocity = new Vector2(-playerDirection.x * chargeMoveSpeed, rigidBody.velocity.y);
+                    timeCharging += Time.deltaTime;
                 }
                 else
                 {
+                    timeCharging = 0;
                     rigidBody.velocity = Vector3.zero;
-                    if(activeShield.GetComponent<CapsuleCollider2D>().IsTouching(playerController.GetPlayerCollider()))
+                    if(isFacingLeft)
                     {
-                        playerController.GetHealthComponent().SubtractFromHealth(damageToPlayer);
+                        if(Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, playerLayer))
+                        {
+                            playerController.GetHealthComponent().SubtractFromHealth(damageToPlayer);
+                        }
+                    }
+                    else
+                    {
+                        if(Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, playerLayer))
+                        {
+                            playerController.GetHealthComponent().SubtractFromHealth(damageToPlayer);
+                        }
                     }
                     //When we hit something go to idle.
                     currentState = ShieldCatStates.Idle;
                     StartCoroutine(ChargingCooldown());
                 }
+                //Kill cat if charging for too long. Failsafe.
+                if(timeCharging > maxChargeTimeValue) OnCatDeath();
                 return;
             case ShieldCatStates.SwapDirection:
                 //Update the shield direction so it faces the player accurately. 
@@ -196,6 +216,7 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
                     shieldRight.SetActive(false);
                     shieldLeft.SetActive(true);
                     isFacingLeft = true;
+                    activeShield = shieldRight;
                 }
                 else
                 {
@@ -203,7 +224,9 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
                     shieldRight.SetActive(true);
                     shieldLeft.SetActive(false);
                     isFacingLeft = false;
+                    activeShield = shieldLeft;
                 }
+                activeShieldCollider = activeShield.GetComponent<CapsuleCollider2D>();
                 currentState = ShieldCatStates.WindUp;
                 return;
         }
@@ -283,6 +306,7 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
             //Fade out spriteRenderers
             spriteRendererRat.DOFade(0, 1);
             spriteRendererRubber.DOFade(0, 1);
+            activeShield.GetComponent<SpriteRenderer>().DOFade(0, 1);
             Destroy(gameObject, 1.5f);
         }
     }

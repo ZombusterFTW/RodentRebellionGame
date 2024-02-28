@@ -57,11 +57,11 @@ MonoBehaviour:
   playerUI: {fileID: 2242242107883657181, guid: 8108fa41987221346bcccebd5055a2a5, type: 3}
   surfaceLayer:
     serializedVersion: 2
-    m_Bits: 73
+    m_Bits: 329
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  sightRange: 350
+  sightRange: 12.5
   chargeCooldownTime: 2.5
   chargeMoveSpeed: 7
   windUpMoveSpeed: 0.2
@@ -69,6 +69,7 @@ MonoBehaviour:
   itemsToActivate: []
   damageToPlayer: 55
   frenzyPercentageFill: 0.15
+  maxChargeTimeValue: 15
   currentState: 0
   rightOffset: {x: 0.69, y: 0}
   leftOffset: {x: -0.69, y: 0}
@@ -166,7 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 118829419073111974}
   - component: {fileID: 8006413053477889112}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RatSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +284,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7513875225455142007}
   - component: {fileID: 9065767234138194490}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: RubberSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

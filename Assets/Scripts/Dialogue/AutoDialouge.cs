@@ -1,20 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class AutoDialouge : MonoBehaviour, R4Activatable
 {
     //This class allows a dialouge segment to trigger without a player needing to go up to a character and interact with them.
 
-    [SerializeField] private TextAsset inkJSON;
-    [SerializeField] bool playDialougeAutomatically;
-    [SerializeField] float dialougeDelay;
-    [SerializeField] bool cleanupOnDialougeExit = false;
-    [SerializeField] bool stopTime = false;
-    [SerializeField] bool activatedByGameObject = false;
-    [SerializeField] bool activatesItems = false;
-    [SerializeField] GameObject[] itemsToActivate;
+    [Tooltip("The Ink JSON file that will player when the player overlaps the trigger.")][SerializeField] private TextAsset inkJSON;
+    [Tooltip("If true the dialouge will begin at Start after dialougeDelay seconds.")][SerializeField] bool playDialougeAutomatically;
+    [Tooltip("The time before dialouge plays. Only taken into account if playDialougeAutomatically is set to true.")][ SerializeField] float dialougeDelay;
+    [Tooltip("If true this object will be destroyed on dialouge exit.")][SerializeField] bool cleanupOnDialougeExit = false;
+    //Dialouge has been changed to always pause time since player movement is disabled during dialouge.
+    bool stopTime = true;
+    [Tooltip("Set this to true if you want this dialouge to be activated by a button or other R4Activator means.")][SerializeField] bool activatedByGameObject = false;
+    [Tooltip("Set this to true if you want this dialouge to activate any R4 Activatable items on dialouge completion.")][SerializeField] bool activatesItems = false;
+    [Tooltip("The list of R4 activatable items that will be activated if activatesItems is set to true.")][SerializeField] GameObject[] itemsToActivate;
 
 
 
