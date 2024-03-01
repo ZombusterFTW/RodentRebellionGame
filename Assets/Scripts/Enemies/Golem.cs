@@ -2,9 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
 {
@@ -126,11 +124,11 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
 
         if (!Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, surfaceLayer))
         {
-            rigidBody.velocity = new Vector2(rigidBody.velocity.y, -5f);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, -5f);
         }
         else
         {
-            rigidBody.velocity = new Vector2(rigidBody.velocity.y, 0);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
         }
 
         switch (currentState)

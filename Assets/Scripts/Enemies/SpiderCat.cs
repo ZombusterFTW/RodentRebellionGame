@@ -263,7 +263,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
 
     public PlayerController GetPlayerController()
     {
-        throw new System.NotImplementedException();
+        return null;
     }
     public Health GetHealth() { return health; }
 }

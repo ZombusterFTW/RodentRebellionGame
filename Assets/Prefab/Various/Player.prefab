@@ -5501,7 +5501,7 @@ MonoBehaviour:
   disableAllMoves: 0
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 1152
+    m_Bits: 1224
   frenzyLines: {fileID: 6459269101314280610}
   canWallClimb: 0
   canDash: 0
@@ -9267,6 +9267,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1901364891354718220, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2609669899702526780, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -9325,7 +9329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4322295067474589732, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4407149580350721065, guid: 2d310a4ae3b6f0146a8e05bf03134b06, type: 3}
       propertyPath: m_Layer

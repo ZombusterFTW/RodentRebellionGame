@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecccabb90723b0c4b9f713777c636ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawGizmos: 1
   surfaceLayer:
     serializedVersion: 2
     m_Bits: 73
@@ -117,7 +118,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   isFlipped: 0
-  moveDistance: 2.5
+  moveDistance: 1.06
   moveSpeed: 1.5
   activateItemsOnDeath: 0
   itemsToActivate: []

@@ -733,17 +733,13 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             playerSpriteRubber.flipX = true;
             laserFireDirection = (Vector2)laserStartPosRight.transform.position;
         }
-
-
-
-
             laserBeam.SetPosition(0, new Vector2(laserFireDirection.x, laserFireDirection.y));
             laserBeam.SetPosition(1, (Vector2)pos);
             Vector2 direction =  (Vector2)transform.position - (Vector2)pos;
             RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, -direction.normalized, Mathf.Infinity, enemyLayer);
-            if(hit)
+            if (hit)
             {
-                laserBeam.SetPosition(1, (Vector2)hit.point);
+                laserBeam.SetPosition(1, hit.point);
                 Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
                 {
@@ -757,7 +753,15 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 {
                     hit.collider.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
                 }
+                if(hit.collider.gameObject.tag == "Shield")
+                {
+                    hit.collider.gameObject.GetComponentInParent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast));
+                }
             //check if enemy here.
+            }
+            else
+            {
+                laserBeam.SetPosition(1, hit.point);
             }
             yield return new WaitForSecondsRealtime(0.125f);
    
@@ -835,7 +839,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon1);
             playerAnimator.SetTrigger("Stab");
             playerAnimatorRubber.SetTrigger("Stab");
-            if (hit)
+            if (hit && hit.collider.tag != "Shield")
             {
                 Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
@@ -860,7 +864,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             //replace me with standard attack
             playerAnimator.SetTrigger("StandardAttack");
             playerAnimatorRubber.SetTrigger("StandardAttack");
-            if (hit)
+            if (hit && hit.collider.tag != "Shield")
             {
                 Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
@@ -908,18 +912,21 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             {
                 foreach(Collider2D hit in hitObjects)
                 {
-                    Debug.Log("Hit");
-                    if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
+                    if(hit.gameObject.tag != "Shield")
                     {
-                        hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.ChainWhipAttack));
-                    }
-                    if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<Switch>(), null))
-                    {
-                        hit.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.ChainWhipAttack);
-                    }
-                    if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<OneHitHealthEnemy>(), null))
-                    {
-                        hit.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
+                        Debug.Log("Hit");
+                        if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
+                        {
+                            hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.ChainWhipAttack));
+                        }
+                        if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<Switch>(), null))
+                        {
+                            hit.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.ChainWhipAttack);
+                        }
+                        if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<OneHitHealthEnemy>(), null))
+                        {
+                            hit.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
+                        }
                     }
                 }
             }
