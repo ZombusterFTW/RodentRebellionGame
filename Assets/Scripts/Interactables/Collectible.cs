@@ -84,7 +84,7 @@ public class Collectible : MonoBehaviour
                 case CollectibleType.Frenzy:
                     {
                         //Frenzy collectible gives player 15% of their meter. Unhandled null exception but one shouldn't be possible here.
-                        GameObject.FindObjectOfType<FrenzyManager>()?.AddToFrenzyMeter(0.15f);
+                        FrenzyManager.instance.AddToFrenzyMeter(0.15f);
                         break;
                     }
             }

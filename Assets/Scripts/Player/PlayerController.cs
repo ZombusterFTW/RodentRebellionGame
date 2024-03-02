@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
@@ -122,6 +123,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     public bool playerIsAttacking { get; private set; } = false;
     private PlayerWeaponType playerWeapon;
     private bool attackCooldownActive = false;
+    [SerializeField] private EventSystem playerEventSystem;
+    public static PlayerController instance;
+
     /// <summary>
     /// Mode switch notes. To enter rubber mode the player must have a portion of their rage meter. In rubber mode the bar slowly drains overtime with the player being kicked out of the mode alltogether if it runs out.
     /// Rubber mode has the increased emphasis on movement with more opportunites being available to the player. 
@@ -137,11 +141,24 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            Debug.Log("Creating new player instance");
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Debug.Log("Found more than one player in the scene. Deleting the copy");
+            DestroyImmediate(gameObject);
+            return;
+        }
         playerSprite = playerSpriteContainer.GetComponent<SpriteRenderer>();
         playerAnimator = playerSpriteContainer.GetComponent<Animator>();
         playerSpriteRubber = playerSpriteContainerRubberMode.GetComponent<SpriteRenderer>();
         playerAnimatorRubber = playerSpriteContainerRubberMode.GetComponent<Animator>();
         playerUI  = Instantiate(playerUIPrefab).GetComponent<PlayerUI>();
+        playerUI.transform.SetParent(this.transform, false);
         playerInput = GetComponent<PlayerInput>();
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
@@ -167,11 +184,6 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         if(this != null)
         {
-            //On a given scene change we set the UI input to the correct value
-            if (GameObject.FindGameObjectWithTag("UIEventSystem") != null)
-            {
-                playerInput.uiInputModule = GameObject.FindGameObjectWithTag("UIEventSystem")?.GetComponent<InputSystemUIInputModule>();
-            }
             if (SceneManager.GetActiveScene().buildIndex == 0)
             {
                 StopAllCoroutines();
@@ -1021,16 +1033,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         return isGroundPounding;
     }
 
-    private void OnEnable()
-    {
-        playerInput.ActivateInput();
-    }
-
-    private void OnDisable()
-    {
-        playerInput.DeactivateInput();
-    }
-
+    
 
     public void RespawnPlayer()
     {
@@ -1171,13 +1174,16 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     public void SetMovingPlatform(GameObject platform)
     {
        movingPlatform = platform;
-       gameObject.transform.parent = movingPlatform.transform;
+       gameObject.transform.SetParent(movingPlatform.transform, true);
     }
 
     public void UnlinkPlatform(GameObject platform)
     {
         movingPlatform = null;
-        gameObject.transform.parent = null;
+        gameObject.transform.SetParent(null, true);
+        Debug.Log("Creating new player instance");
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
