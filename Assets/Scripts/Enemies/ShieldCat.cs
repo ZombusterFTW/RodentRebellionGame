@@ -6,25 +6,25 @@ using UnityEngine;
 
 public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
 {
-    private Vector2 bottomOffset = new Vector2(0, -0.60f);
+    private Vector2 bottomOffset = new Vector2(0, -0.45f);
     [SerializeField] LayerMask ignore;
     [SerializeField] bool drawGizmos = true;
     [SerializeField] GameObject playerUI;
     [SerializeField] LayerMask surfaceLayer;
     [SerializeField] LayerMask playerLayer;
-    [Tooltip("The Golem sight range for the raycast. The player must be in range and seeable")][SerializeField] private float sightRange = 350f;
+    [Tooltip("The Shield Cat sight range for the raycast. The player must be in range and seeable")][SerializeField] private float sightRange = 12.5f;
     //[Tooltip("Set to true if you want the enemy to walk on the ceiling and have inverted physics.")][SerializeField] private bool isFlipped = false;
-    [Tooltip("The time the Shield Cat will be idle after its charge completes")][SerializeField] private float chargeCooldownTime = 2.5f;
-    [Tooltip("The speed the Shield Cat AI will move during its charge")][SerializeField][Range(5f, 15f)] private float chargeMoveSpeed = 7f;
-    [Tooltip("The speed the Shield Cat AI will move during its windup")][SerializeField][Range(0.1f, 0.2f)] private float windUpMoveSpeed = 0.1f;
+    [Tooltip("The time the Shield Cat will be idle after its charge completes")]private float chargeCooldownTime = 3.5f;
+    [Tooltip("The speed the Shield Cat AI will move during its charge")] private float chargeMoveSpeed = 12f;
+    [Tooltip("The speed the Shield Cat AI will move during its windup")] private float windUpMoveSpeed = 0.35f;
     [Tooltip("Set to true if you want the Shield Cat AI to activate items on its death")][SerializeField] private bool activateItemsOnDeath = false;
     [Tooltip("Add the wanted activated items to this list. These items must integrate the R4 Activatable interface")][SerializeField] private GameObject[] itemsToActivate;
-    [Tooltip("Set this float to the damage a player will take from this enemy")][SerializeField] private float damageToPlayer = 55f;
+    [Tooltip("Set this float to the damage a player will take from this enemy")]private float damageToPlayer = 55f;
     [Tooltip("The percentage of the frenzy bar killing the enemy will fill")][SerializeField][Range(0.0f, 1.0f)] private float frenzyPercentageFill = 0.15f;
-    [Tooltip("How long a shield cat can charge before it is considered out of the map or bugged. If this number is hit the AI is destroyed")][SerializeField] private float maxChargeTimeValue = 15f;
+    [Tooltip("How long a shield cat can charge before it is considered out of the map or bugged. If this number is hit the AI is destroyed")]private float maxChargeTimeValue = 15f;
     [SerializeField] private ShieldCatStates currentState = ShieldCatStates.Idle;
     private float collisionRadius = 0.26f;
-    [SerializeField] private Vector2 rightOffset, leftOffset, startingPos;
+    private Vector2 rightOffset, leftOffset, startingPos;
     private FrenzyManager frenzyManager;
     private Rigidbody2D rigidBody;
     private CapsuleCollider2D capsuleCollider;
@@ -53,6 +53,8 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
 
     private void Awake()
     {
+        rightOffset = new Vector2(0.69f, 0);
+        leftOffset = new Vector2(-0.69f, 0);
         startingPos = transform.position;
         UIClone = Instantiate(playerUI, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         UIClone.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
@@ -132,6 +134,9 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
                     //Player was spotted. proceed to wind up state.
                     playerDirection = transform.position - playerController.gameObject.transform.position;
                     playerDirection.Normalize();
+
+                    
+
                     chargePos = transform.position;
                     currentState = ShieldCatStates.SwapDirection;
                     return;
@@ -144,11 +149,13 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
                 {
                     Debug.DrawLine((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, Color.green);
                     //If the player direction x coordinate is the same the player is on the same side of the shield cat so we accrue deltatime
-                    if(playerDirection.normalized.x == (chargePos - (Vector2)playerController.gameObject.transform.position).normalized.x)
+                    //Debug.Log(playerDirection.x + " " + (chargePos - (Vector2)playerController.gameObject.transform.position).normalized.x);
+                    
+                    if (Mathf.RoundToInt(playerDirection.normalized.x) == Mathf.RoundToInt((chargePos - (Vector2)playerController.gameObject.transform.position).normalized.x))
                     {
                         //Once we have accured enough delta time we charge in the set direction.
                         timeOnSide += Time.deltaTime;
-                        if (timeOnSide >= 1)
+                        if (timeOnSide >= 1.5f)
                         {
                             timeOnSide = 0;
                             currentState = ShieldCatStates.Charging;

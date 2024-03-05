@@ -16,7 +16,7 @@ public class Button : MonoBehaviour
     private bool buttonActivated = false;
     private bool buttonDelay = false;
     private bool toggleBehavior_Game = false;
-    private float buttonDelayTime = 0.5f;
+    private float buttonDelayTime = 0.1f;
 
     // Start is called before the first frame update
     void Start()

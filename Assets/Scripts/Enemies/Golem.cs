@@ -200,7 +200,7 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
                    // enemyAnimatorRat.SetBool("IsMoving", true);
                     //enemyRB.AddForce(direction * speed * Time.deltaTime, ForceMode2D.Force);
                     RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, ~ignore);
-                    if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange)
+                    if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange && !hit.collider.gameObject.GetComponent<PlayerController>().disableAllMoves)
                     {
                         Debug.DrawLine((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, Color.green);
 

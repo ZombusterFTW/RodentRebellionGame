@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2735403622569462937
 Transform:
   m_ObjectHideFlags: 0
@@ -121,12 +121,11 @@ MonoBehaviour:
   surfaceLayer:
     serializedVersion: 2
     m_Bits: 8
-  sightRange: 4.17
+  sightRange: 5.04
   attackDamage: 12
-  movementSpeed: 3
+  movementSpeed: 4.5
   activateItemsOnDeath: 0
   itemsToActivate: []
-  attackDelay: 1
   frenzyPercentageFill: 0.15
   currentState: 3
   playerController: {fileID: 0}
@@ -135,8 +134,6 @@ MonoBehaviour:
   spriteRendererRat: {fileID: 1776088581044095522}
   enemyAnimatorRat: {fileID: 354178960845343855}
   enemyAnimatorRubber: {fileID: 1585689057431278559}
-  bottomOffset: {x: -0.24, y: -0.76}
-  collRadius: 0.21
 --- !u!114 &3585666918219568771
 MonoBehaviour:
   m_ObjectHideFlags: 0

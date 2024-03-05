@@ -11,11 +11,11 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
     //Needs to become "dead" in rubber mode.
     [Tooltip("Set to true to see gizmos that show turret range")][SerializeField] private bool drawGizmos = true;
     [SerializeField] LayerMask ignore;
-    [Tooltip("The turrets sight range for the raycast. The player must be in range and seeable")][SerializeField] private float turretSightRange = 350f;
-    [Tooltip("This is the delay between shots from the turret")][SerializeField] private float turretFireCooldown = 0.75f;
-    [Tooltip("This is the delay before the turret shoots. Change this to shoot at an old turret pos")][SerializeField] private float turretFiringDelay = 0.15f;
-    [Tooltip("This is the damage the turret will do if its projectile hits a player")][SerializeField] private float projectileDamage = 15f;
-    [Tooltip("The speed of the projectile")][SerializeField] private float projectileSpeed = 15f;
+    [Tooltip("The turrets sight range for the raycast. The player must be in range and seeable")][SerializeField] private float turretSightRange = 15f;
+    [Tooltip("This is the delay between shots from the turret")] private float turretFireCooldown = 1.5f;
+    [Tooltip("This is the delay before the turret shoots. Change this to shoot at an old turret pos")] private float turretFiringDelay = 0.15f;
+    [Tooltip("This is the damage the turret will do if its projectile hits a player")][SerializeField] private float projectileDamage = 34f;
+    [Tooltip("The speed of the projectile")] private float projectileSpeed = 6f;
     [Tooltip("Set this to true if you want the turret to begin active")][SerializeField] private bool startOn = true;
     [Tooltip("Set this to true if you want the turret to activate something on its death")][SerializeField] private bool activateItemsOnDeath = false;
     [Tooltip("Add Gameobjects to this list that you want activated on the turret's death")][SerializeField] private GameObject[] itemsToActivate;
@@ -63,10 +63,10 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
     // Update is called once per frame
     void Update()
     {
-        if(!isOnCooldown && !frenzyManager.inRubberMode && isActive) 
+        if(!isOnCooldown && !frenzyManager.inRubberMode && isActive && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= turretSightRange) 
         {
             RaycastHit2D hit = Physics2D.Linecast(gameObject.transform.position, playerController.gameObject.transform.position, ~ignore);
-            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= turretSightRange)
+            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) )
             {
                 Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.green);
                 StartCoroutine(TurretFiringDelayControl());
