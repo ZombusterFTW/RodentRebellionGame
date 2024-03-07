@@ -13,10 +13,10 @@ public class PlayerCameraManager : MonoBehaviour
 
     public static PlayerCameraManager instance;
 
-    public GameObject mapImage;
-    public Sprite level1Image;
-    public Sprite level2Image;
-    public Sprite level3Image;
+    public GameObject mapImageRubber;
+    public GameObject mapImageRat;
+    public Sprite[] mapImagesRubber;
+    public Sprite[] mapImagesRat;
 
 
     // Start is called before the first frame update
@@ -36,31 +36,39 @@ public class PlayerCameraManager : MonoBehaviour
             virtualCamera = GetComponent<CinemachineVirtualCamera>();   
         }
         cameraConfiner = virtualCamera.GetComponent<CinemachineConfiner2D>();
-        SetLevelImage(SceneManager.GetActiveScene().buildIndex);
+        SetLevelImage(SceneManager.GetActiveScene().name);
         SceneManager.sceneLoaded += OnSceneChanged;
     }
 
     private void OnSceneChanged(Scene arg0, LoadSceneMode arg1)
     {
-        SetLevelImage(SceneManager.GetActiveScene().buildIndex);
+        SetLevelImage(SceneManager.GetActiveScene().name);
     }
 
-    public void SetLevelImage(int sceneIndex)
+    public void SetLevelImage(string sceneName)
     {
         Debug.Log("Attempted to load background image");
-        switch(sceneIndex) 
+        switch(sceneName) 
         {
             default:
-                mapImage.GetComponent<SpriteRenderer>().sprite = level1Image;
+                mapImageRubber.GetComponent<SpriteRenderer>().sprite = mapImagesRubber[0];
+                mapImageRat.GetComponent<SpriteRenderer>().sprite = mapImagesRat[0];
                 break;
-            case 1:
-                mapImage.GetComponent<SpriteRenderer>().sprite = level1Image;
+            case "Labyrinth":
+                mapImageRubber.GetComponent<SpriteRenderer>().sprite = mapImagesRubber[0];
+                mapImageRat.GetComponent<SpriteRenderer>().sprite = mapImagesRat[0];
                 break;
-            case 2:
-                mapImage.GetComponent<SpriteRenderer>().sprite = level2Image;
+            case "LabLevel":
+                mapImageRubber.GetComponent<SpriteRenderer>().sprite = mapImagesRubber[1];
+                mapImageRat.GetComponent<SpriteRenderer>().sprite = mapImagesRat[1];
                 break;
-            case 3:
-                mapImage.GetComponent<SpriteRenderer>().sprite = level3Image;
+            case "RadioactiveCave":
+                mapImageRubber.GetComponent<SpriteRenderer>().sprite = mapImagesRubber[2];
+                mapImageRat.GetComponent<SpriteRenderer>().sprite = mapImagesRat[2];
+                break;
+            case "Surface":
+                mapImageRubber.GetComponent<SpriteRenderer>().sprite = mapImagesRubber[3];
+                mapImageRat.GetComponent<SpriteRenderer>().sprite = mapImagesRat[3];
                 break;
         }
 

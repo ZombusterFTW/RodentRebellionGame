@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db1d1e0cc388a45bdc2d3fdef87fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawGizmos: 1
+  drawGizmos: 0
   playerUI: {fileID: 2242242107883657181, guid: 8108fa41987221346bcccebd5055a2a5, type: 3}
   ignore:
     serializedVersion: 2
@@ -121,12 +121,12 @@ MonoBehaviour:
   surfaceLayer:
     serializedVersion: 2
     m_Bits: 8
-  sightRange: 4.17
+  sightRange: 5.04
   attackDamage: 12
-  movementSpeed: 3
+  movementSpeed: 4.5
   activateItemsOnDeath: 0
   itemsToActivate: []
-  attackDelay: 1
+  frenzyPercentageFill: 0.15
   currentState: 3
   playerController: {fileID: 0}
   capsuleCollider: {fileID: 3443578302797622287}
@@ -134,8 +134,6 @@ MonoBehaviour:
   spriteRendererRat: {fileID: 1776088581044095522}
   enemyAnimatorRat: {fileID: 354178960845343855}
   enemyAnimatorRubber: {fileID: 1585689057431278559}
-  bottomOffset: {x: -0.24, y: -0.76}
-  collRadius: 0.21
 --- !u!114 &3585666918219568771
 MonoBehaviour:
   m_ObjectHideFlags: 0

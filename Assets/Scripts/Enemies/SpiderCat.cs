@@ -12,12 +12,12 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
     private GameObject UIClone;
     [SerializeField] LayerMask ignore;
     [SerializeField] LayerMask surfaceLayer;
-    [Tooltip("The SpiderCat sight range for the raycast. The player must be in range and seeable")][SerializeField] private float sightRange = 350f;
-    [Tooltip("This is the damage the SpiderCat will do if it comes in contact with a player")][SerializeField] private float attackDamage = 15f;
+    [Tooltip("The SpiderCat sight range for the raycast. The player must be in range and seeable")][SerializeField] private float sightRange = 5.04f;
+    [Tooltip("This is the damage the SpiderCat will do if it comes in contact with a player")][SerializeField] private float attackDamage = 12f;
     [Tooltip("The speed of the SpiderCat AI ")][SerializeField] private float movementSpeed = 15f;
     [Tooltip("Set this to true if you want the SpiderCat to activate something on its death")][SerializeField] private bool activateItemsOnDeath = false;
     [Tooltip("Add Gameobjects to this list that you want activated on the SpiderCat's death")][SerializeField] private GameObject[] itemsToActivate;
-    [Tooltip("This is the time between hits if the player is in attack range of the AI")][SerializeField] private float attackDelay = 1f;
+    [Tooltip("This is the time between hits if the player is in attack range of the AI")] private float attackDelay = 1f;
     [Tooltip("The percentage of the frenzy bar killing the enemy will fill")][SerializeField][Range(0.0f, 1.0f)] private float frenzyPercentageFill = 0.15f;
     [SerializeField] private EnemyStates currentState = EnemyStates.Perched;
     [SerializeField] private PlayerController playerController;
@@ -33,8 +33,8 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
     private Coroutine death;
     private Coroutine attackCooldown;
     private Health health;
-    [SerializeField] private Vector2 bottomOffset;
-    [SerializeField] private float collRadius;
+    private Vector2 bottomOffset = new Vector2(-0.24f, -0.76f);
+    private float collRadius = 0.21f;
     //[SerializeField] private float collRadiusWall;
    // [SerializeField] private Vector2 leftCollCheck, rightCollCheck;
     private Color debugColor = Color.red;
@@ -263,7 +263,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
 
     public PlayerController GetPlayerController()
     {
-        throw new System.NotImplementedException();
+        return null;
     }
     public Health GetHealth() { return health; }
 }

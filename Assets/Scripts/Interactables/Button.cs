@@ -7,7 +7,7 @@ public class Button : MonoBehaviour
     [Tooltip("If the button will use toggle behavior. The itemActivateTime must be set to -1 for this to wor;")][SerializeField] private bool toggleBehavior = true;
     [Tooltip("How long the button will activate what its connected to. Set value to negative 1 for indefinite.")][SerializeField] float itemActivateTime = 5f;
     [Tooltip("The list of items to Activate.")][SerializeField] private List<GameObject> itemsToActivate = new List<GameObject>();
-    [Tooltip("Wether or not the player must be groundpounding to activate the button.")][SerializeField] private bool groundPoundNeeded = true;
+    [Tooltip("Wether or not the player must be groundpounding to activate the button.")] private bool groundPoundNeeded = true;
     [Tooltip("Set to true if you want the button to start on")][SerializeField] private bool startOn = false;
     [Tooltip("The color of the button when it is Activated.")][SerializeField] private Color activatedColor = Color.red;
     [Tooltip("The color of the button when it is Deactivated.")][SerializeField] private Color deactivatedColor = Color.white;
@@ -16,7 +16,7 @@ public class Button : MonoBehaviour
     private bool buttonActivated = false;
     private bool buttonDelay = false;
     private bool toggleBehavior_Game = false;
-    private float buttonDelayTime = 0.5f;
+    private float buttonDelayTime = 0.1f;
 
     // Start is called before the first frame update
     void Start()

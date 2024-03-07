@@ -18,11 +18,11 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     [Tooltip("Set this float to the damage a player will take from this enemy")][SerializeField] private float damageToPlayer = 3.5f;
     [Tooltip("The percentage of the frenzy bar killing the enemy will fill")][SerializeField][Range(0.0f, 1.0f)] private float frenzyPercentageFill = 0.15f;
     [SerializeField] private BasicRatAIStates currentState = BasicRatAIStates.Idle;
-    private float collisionRadius = 0.26f;
+    private float collisionRadius = 0.6f;
     private Vector2 rightOffset, leftOffset;
     private FrenzyManager frenzyManager;
     private Rigidbody2D rigidBody;
-    private CapsuleCollider2D capsuleCollider;
+    private Collider2D capsuleCollider;
     [SerializeField] private SpriteRenderer spriteRendererRubber;
     [SerializeField] private SpriteRenderer spriteRendererRat;
     private bool isAlive = true;
@@ -37,8 +37,8 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     // Start is called before the first frame update
     void Start()
     {
-        rightOffset = new Vector2(0.45f, 0);
-        leftOffset = new Vector2(-0.45f, 0);    
+        rightOffset = new Vector2(0.3f, 0.15f);
+        leftOffset = new Vector2(-0.3f, 0.15f);
         //Calculate the spots the AI will move to.
         moveDistance = Mathf.Abs(moveDistance);
         moveSpeed = Mathf.Abs(moveSpeed);
@@ -46,7 +46,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
         leftExtreme = startingPos - new Vector2(moveDistance, 0);
         rightExtreme = startingPos + new Vector2(moveDistance, 0);
         frenzyManager = FrenzyManager.instance;
-        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        capsuleCollider = GetComponent<Collider2D>();
         rigidBody = GetComponent<Rigidbody2D>();
         if(isFlipped)
         {
@@ -244,7 +244,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
             Gizmos.color = debugColor;
             var positions = new Vector2[] { rightOffset, leftOffset };
             //Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
-            //Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
+           // Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
             Gizmos.DrawSphere((Vector2)transform.position + new Vector2(moveDistance, 0), collisionRadius / 2);
             Gizmos.DrawSphere((Vector2)transform.position - new Vector2(moveDistance, 0), collisionRadius / 2);
         }

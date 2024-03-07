@@ -265,10 +265,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   turretSightRange: 15
-  turretFireCooldown: 0.75
+  turretFireCooldown: 1.5
   turretFiringDelay: 0.15
   projectileDamage: 34
-  projectileSpeed: 15
+  projectileSpeed: 2.5
   startOn: 1
   activateItemsOnDeath: 0
   itemsToActivate: []

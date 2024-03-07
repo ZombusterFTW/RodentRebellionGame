@@ -2,9 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
 {
@@ -126,11 +124,11 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
 
         if (!Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, surfaceLayer))
         {
-            rigidBody.velocity = new Vector2(rigidBody.velocity.y, -5f);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, -5f);
         }
         else
         {
-            rigidBody.velocity = new Vector2(rigidBody.velocity.y, 0);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
         }
 
         switch (currentState)
@@ -202,7 +200,7 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
                    // enemyAnimatorRat.SetBool("IsMoving", true);
                     //enemyRB.AddForce(direction * speed * Time.deltaTime, ForceMode2D.Force);
                     RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, ~ignore);
-                    if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange)
+                    if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange && !hit.collider.gameObject.GetComponent<PlayerController>().disableAllMoves)
                     {
                         Debug.DrawLine((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, Color.green);
 

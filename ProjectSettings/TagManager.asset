@@ -13,6 +13,7 @@ TagManager:
   - questitem3
   - UIEventSystem
   - SceneTransitioner
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Switch
   - Rubber
   - Rat
-  - 
+  - Shield
   - 
   - 
   - 

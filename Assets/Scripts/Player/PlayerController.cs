@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
@@ -94,7 +95,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     private Quaternion rotation;
     private bool iFramesActive = false;
     private Coroutine hurtCoroutine;
-    [SerializeField] private bool disableAllMoves = false;
+    [SerializeField] public bool disableAllMoves { get; private set; } = false;
     private bool jumpButtonPressed;
     private bool interactPressed;
     public bool frenzyActivated { get; private set; } = false;
@@ -122,6 +123,10 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     public bool playerIsAttacking { get; private set; } = false;
     private PlayerWeaponType playerWeapon;
     private bool attackCooldownActive = false;
+    [SerializeField] private EventSystem playerEventSystem;
+    public static PlayerController instance;
+    private float groundPoundDelay = 0.25f;
+    private bool groundPoundDelayActive = false;    
     /// <summary>
     /// Mode switch notes. To enter rubber mode the player must have a portion of their rage meter. In rubber mode the bar slowly drains overtime with the player being kicked out of the mode alltogether if it runs out.
     /// Rubber mode has the increased emphasis on movement with more opportunites being available to the player. 
@@ -137,11 +142,24 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            Debug.Log("Creating new player instance");
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Debug.Log("Found more than one player in the scene. Deleting the copy");
+            DestroyImmediate(gameObject);
+            return;
+        }
         playerSprite = playerSpriteContainer.GetComponent<SpriteRenderer>();
         playerAnimator = playerSpriteContainer.GetComponent<Animator>();
         playerSpriteRubber = playerSpriteContainerRubberMode.GetComponent<SpriteRenderer>();
         playerAnimatorRubber = playerSpriteContainerRubberMode.GetComponent<Animator>();
         playerUI  = Instantiate(playerUIPrefab).GetComponent<PlayerUI>();
+        playerUI.transform.SetParent(this.transform, false);
         playerInput = GetComponent<PlayerInput>();
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
@@ -167,11 +185,6 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         if(this != null)
         {
-            //On a given scene change we set the UI input to the correct value
-            if (GameObject.FindGameObjectWithTag("UIEventSystem") != null)
-            {
-                playerInput.uiInputModule = GameObject.FindGameObjectWithTag("UIEventSystem")?.GetComponent<InputSystemUIInputModule>();
-            }
             if (SceneManager.GetActiveScene().buildIndex == 0)
             {
                 StopAllCoroutines();
@@ -455,21 +468,32 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             playerAnimator.SetTrigger("GroundPound");
             playerAnimatorRubber.SetTrigger("GroundPound");
         }
-        else if(onGround && isGroundPounding)
+        else if(onGround && isGroundPounding && !groundPoundDelayActive)
         {
             cam.transform.DOComplete();
             cam.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
             Debug.Log("Hit ground after ground pound");
+            //Ground pound delay
+            StartCoroutine(GroundPoundDelay());
             //Shake camera here
-            isGroundPounding = false;
-            canJump = true;
+            //isGroundPounding = false;
+            //canJump = true;
             //playerAnimator.Play("BigJoeLand", 0);
             playerAnimatorRubber.SetTrigger("Land");
             playerAnimator.SetTrigger("Land");
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Land);
         }
     }
-
+    IEnumerator GroundPoundDelay()
+    {
+        //Added this to make button activation more consistent and prevent spam
+        isGroundPounding = true;
+        groundPoundDelayActive = true;
+        yield return new WaitForSecondsRealtime(groundPoundDelay);
+        isGroundPounding = false;
+        groundPoundDelayActive = false;
+        canJump = true;
+    }
 
     IEnumerator ResetDashTimer()
     {
@@ -721,29 +745,26 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         Vector3 pos =  cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20));
         int laserDir = (int)(-transform.position.x * pos.y + transform.position.y * pos.x);
         Vector2 laserFireDirection;
-        if (laserDir < 0)
+        if (laserDir > 0)
         {
             playerSprite.flipX = false;
             playerSpriteRubber.flipX = false;
-            laserFireDirection = (Vector2)laserStartPosLeft.transform.position;
+            laserFireDirection = (Vector2)laserStartPosRight.transform.position;
         }
         else
         {
             playerSprite.flipX = true;
             playerSpriteRubber.flipX = true;
-            laserFireDirection = (Vector2)laserStartPosRight.transform.position;
+            laserFireDirection = (Vector2)laserStartPosLeft.transform.position;
+            
         }
-
-
-
-
             laserBeam.SetPosition(0, new Vector2(laserFireDirection.x, laserFireDirection.y));
             laserBeam.SetPosition(1, (Vector2)pos);
             Vector2 direction =  (Vector2)transform.position - (Vector2)pos;
             RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, -direction.normalized, Mathf.Infinity, enemyLayer);
-            if(hit)
+            if (hit)
             {
-                laserBeam.SetPosition(1, (Vector2)hit.point);
+                laserBeam.SetPosition(1, hit.point);
                 Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
                 {
@@ -757,7 +778,15 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 {
                     hit.collider.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
                 }
+                if(hit.collider.gameObject.tag == "Shield")
+                {
+                    hit.collider.gameObject.GetComponentInParent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast));
+                }
             //check if enemy here.
+            }
+            else
+            {
+                laserBeam.SetPosition(1, hit.point);
             }
             yield return new WaitForSecondsRealtime(0.125f);
    
@@ -835,7 +864,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon1);
             playerAnimator.SetTrigger("Stab");
             playerAnimatorRubber.SetTrigger("Stab");
-            if (hit)
+            if (hit && hit.collider.tag != "Shield")
             {
                 Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
@@ -860,7 +889,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             //replace me with standard attack
             playerAnimator.SetTrigger("StandardAttack");
             playerAnimatorRubber.SetTrigger("StandardAttack");
-            if (hit)
+            if (hit && hit.collider.tag != "Shield")
             {
                 Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
@@ -908,18 +937,21 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             {
                 foreach(Collider2D hit in hitObjects)
                 {
-                    Debug.Log("Hit");
-                    if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
+                    if(hit.gameObject.tag != "Shield")
                     {
-                        hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.ChainWhipAttack));
-                    }
-                    if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<Switch>(), null))
-                    {
-                        hit.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.ChainWhipAttack);
-                    }
-                    if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<OneHitHealthEnemy>(), null))
-                    {
-                        hit.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
+                        Debug.Log("Hit");
+                        if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
+                        {
+                            hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.ChainWhipAttack));
+                        }
+                        if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<Switch>(), null))
+                        {
+                            hit.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.ChainWhipAttack);
+                        }
+                        if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<OneHitHealthEnemy>(), null))
+                        {
+                            hit.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
+                        }
                     }
                 }
             }
@@ -1014,16 +1046,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         return isGroundPounding;
     }
 
-    private void OnEnable()
-    {
-        playerInput.ActivateInput();
-    }
-
-    private void OnDisable()
-    {
-        playerInput.DeactivateInput();
-    }
-
+    
 
     public void RespawnPlayer()
     {
@@ -1164,13 +1187,16 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     public void SetMovingPlatform(GameObject platform)
     {
        movingPlatform = platform;
-       gameObject.transform.parent = movingPlatform.transform;
+       gameObject.transform.SetParent(movingPlatform.transform, true);
     }
 
     public void UnlinkPlatform(GameObject platform)
     {
         movingPlatform = null;
-        gameObject.transform.parent = null;
+        gameObject.transform.SetParent(null, true);
+        Debug.Log("Creating new player instance");
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

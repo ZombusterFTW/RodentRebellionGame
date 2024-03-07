@@ -38,6 +38,7 @@ public class PauseMenu : MonoBehaviour
             Debug.Log("Paused Game");
             pauseMenuActive = true;
             health.isInvincible = true;
+            playerController.DisableControls(true);
         }
         else
         {
@@ -46,6 +47,7 @@ public class PauseMenu : MonoBehaviour
             Debug.Log("Un-Paused Game");
             pauseMenuActive = false;
             health.isInvincible = false;
+            playerController.DisableControls(false);
         }
     }
 
