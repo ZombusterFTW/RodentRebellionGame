@@ -396,7 +396,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, 0);
                 if(isFlipped == false) playerRigidBody.velocity += Vector2.up * jumpForce_Game;
                 else playerRigidBody.velocity += Vector2.down * jumpForce_Game;
-                Debug.Log("Normal jump");
+                //Debug.Log("Normal jump");
                 onGround = false; 
                 isJumping = true;
                 //playerAnimator.Play("BigJoeJump", 0);
@@ -410,7 +410,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 if (isFlipped == false) playerRigidBody.velocity += Vector2.up * jumpForce_Game;
                 else playerRigidBody.velocity += Vector2.down * jumpForce_Game;
                 playerDoubleJumpsRemaining--;
-                Debug.Log("Dbl jump");
+                //Debug.Log("Dbl jump");
                 //playerAnimator.Play("BigJoeDJ", 0);
 
                 //Rare play of flip anim
@@ -472,7 +472,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         {
             cam.transform.DOComplete();
             cam.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
-            Debug.Log("Hit ground after ground pound");
+            //Debug.Log("Hit ground after ground pound");
             //Ground pound delay
             StartCoroutine(GroundPoundDelay());
             //Shake camera here
@@ -591,7 +591,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 playerSprite.flipX = movementDirection.x < 0 ? true : false;
                 playerSpriteRubber.flipX = movementDirection.x < 0 ? true : false;
             }
-            Debug.Log(movementDirection);
+            //Debug.Log(movementDirection);
 
             if (movementDirection != Vector2.zero)
             {
@@ -609,7 +609,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 case InputActionPhase.Performed:
                     {
                         jumpButtonPressed = true;
-                        Debug.Log("Jump button pressed");
+                        //Debug.Log("Jump button pressed");
                         Jump();
                         break;
                     }
@@ -765,7 +765,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             if (hit)
             {
                 laserBeam.SetPosition(1, hit.point);
-                Debug.Log("Hit");
+                //Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
                 {
                     hit.collider.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast));
@@ -808,7 +808,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                     characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon2);
                     isFiringLaser = true;
                     StartCoroutine(UpdateLaserPos());
-                    Debug.Log("pRESS");
+                    //Debug.Log("pRESS");
                 }
                 break;
             case InputActionPhase.Canceled:
@@ -866,7 +866,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             playerAnimatorRubber.SetTrigger("Stab");
             if (hit && hit.collider.tag != "Shield")
             {
-                Debug.Log("Hit");
+                //Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
                 {
                     hit.collider.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike));
@@ -891,7 +891,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             playerAnimatorRubber.SetTrigger("StandardAttack");
             if (hit && hit.collider.tag != "Shield")
             {
-                Debug.Log("Hit");
+                //Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
                 {
                     hit.collider.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
@@ -939,7 +939,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 {
                     if(hit.gameObject.tag != "Shield")
                     {
-                        Debug.Log("Hit");
+                        //Debug.Log("Hit");
                         if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
                         {
                             hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.ChainWhipAttack));
@@ -1177,7 +1177,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     }
     public void SetMovementSpeed(float setSpeed)
     {
-        Debug.Log("Set player speed");
+        //Debug.Log("Set player speed");
         playerSpeed_Game = setSpeed;
 
         if (playerSpeed_Game < playerSpeed) canJump = false;
