@@ -11,11 +11,9 @@ public class Switch : MonoBehaviour
     [Tooltip("The color of the switch when it is Deactivated.")][SerializeField] private Color deactivatedColor = Color.white;
     [Tooltip("If attacktyperequired is set to true, this switch will only activate when hit by a specific attack")][SerializeField] private bool attackTypeRequired = false;
     [Tooltip("If attacktyperequired is set to true, this switch will only activate when hit by a specific attack. Note that switches cannot be activated by ground pounds")][SerializeField] private PlayerAttackType requiredAttackType;
-
-
-
+    [Tooltip("If set to true, once interacted with this switch can't be used again")][SerializeField] bool switchIsUsedOnce = false;
     //delay before the switch can be triggered again
-    private float switchDelayTime = 0.5f;
+    private float switchDelayTime = 0.25f;
     private bool switchActivated = false;
     private bool switchDelayActive = false;
     SpriteRenderer spriteRenderer;
@@ -61,10 +59,19 @@ public class Switch : MonoBehaviour
 
     IEnumerator SwitchReactivationDelay()
     {
-        //Prevent switch reactivation for X seconds. 
         switchDelayActive = true;
-        yield return new WaitForSeconds(switchDelayTime);
-        switchDelayActive = false;
+        if (!switchIsUsedOnce)
+        {
+            //Prevent switch reactivation for X seconds. 
+            yield return new WaitForSeconds(switchDelayTime);
+            switchDelayActive = false;
+        }
+        else
+        {
+            //If the switch can only be used once we fall out of the coroutine and end the function.
+            yield return null;
+            this.enabled = false;
+        }
     }
 
     //The code under this directly pulls from the button script. The underlying logic is nearly identical. Just need to add support for it to flip between 2 different sprites or play an animation. 
