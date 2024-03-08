@@ -11,15 +11,15 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     [SerializeField] LayerMask surfaceLayer;
     [SerializeField] LayerMask playerLayer;
     [Tooltip("Set to true if you want the enemy to walk on the ceiling and have inverted physics.")][SerializeField] private bool isFlipped = false;
-    [Tooltip("The distance the BasicRat Ai will move right and left from its starting position.")][SerializeField][Range(0.4f, 30f)] private float moveDistance = 5f;
+    [Tooltip("The distance the BasicRat Ai will move right and left from its starting position.")][SerializeField][Range(1.1f, 30f)] private float moveDistance = 5f;
     [Tooltip("The speed the BasicRat AI will move")][SerializeField][Range(1f, 15f)] private float moveSpeed = 7f;
     [Tooltip("Set to true if you want the BasicRat to activate items on its death")][SerializeField] private bool activateItemsOnDeath = false;
     [Tooltip("Add the wanted activated items to this list. These items must integrate the R4 Activatable interface")][SerializeField] private GameObject[] itemsToActivate;
     [Tooltip("Set this float to the damage a player will take from this enemy")][SerializeField] private float damageToPlayer = 3.5f;
     [Tooltip("The percentage of the frenzy bar killing the enemy will fill")][SerializeField][Range(0.0f, 1.0f)] private float frenzyPercentageFill = 0.15f;
     [SerializeField] private BasicRatAIStates currentState = BasicRatAIStates.Idle;
-    private float collisionRadius = 0.6f;
-    private Vector2 rightOffset, leftOffset;
+    private float collisionRadius = 0.25f;
+    private Vector2 rightOffset, leftOffset, bottomOffset, topOffset;
     private FrenzyManager frenzyManager;
     private Rigidbody2D rigidBody;
     private Collider2D capsuleCollider;
@@ -29,6 +29,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     private Color debugColor = Color.red;
     private bool onLeftWall = false;
     private bool onRightWall = false;
+    private bool onGround = false;
     private Vector2 startingPos, leftExtreme, rightExtreme;
     private Coroutine extendedDamage;
    
@@ -37,8 +38,11 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     // Start is called before the first frame update
     void Start()
     {
-        rightOffset = new Vector2(0.3f, 0.15f);
-        leftOffset = new Vector2(-0.3f, 0.15f);
+        collisionRadius = 0.15f;
+        rightOffset = new Vector2(0.35f, 0.1f);
+        leftOffset = new Vector2(-0.35f, 0.1f);
+        bottomOffset = new Vector2(0, -.1f);
+        topOffset = new Vector2(0, .3f);
         //Calculate the spots the AI will move to.
         moveDistance = Mathf.Abs(moveDistance);
         moveSpeed = Mathf.Abs(moveSpeed);
@@ -50,7 +54,6 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
         rigidBody = GetComponent<Rigidbody2D>();
         if(isFlipped)
         {
-            rigidBody.gravityScale = -1;
             spriteRendererRubber.flipY = true;
             spriteRendererRat.flipY = true;
         }
@@ -76,6 +79,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
         {
             if (frenzyManager.inRubberMode)
             {
+                rigidBody.velocity = Vector2.zero;
                 rigidBody.simulated = false;
                 capsuleCollider.enabled = false;
                 if (!Coroutine.ReferenceEquals(extendedDamage, null)) StopCoroutine(extendedDamage);
@@ -97,6 +101,20 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
 
     private void UpdateAIState()
     {
+
+
+        Debug.Log(Vector2.Distance(transform.position, rightExtreme));
+
+        Debug.Log(Vector2.Distance(transform.position, leftExtreme));
+
+        //Simulate gravity
+        if (!onGround)
+        {
+            if (!isFlipped) rigidBody.velocity = new Vector2(rigidBody.velocity.x, -5);
+            else rigidBody.velocity = new Vector2(rigidBody.velocity.x, 5);
+        }
+        else rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
+
         switch(currentState)
         {
             case BasicRatAIStates.MovingLeft: 
@@ -108,7 +126,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
                     }
                     else
                     {
-                        if (Vector2.Distance(transform.position, leftExtreme) > 0.1f)
+                        if (Vector2.Distance(transform.position, leftExtreme) > 1f)
                         {
                             //Debug.Log(Vector2.Distance(transform.position, leftExtreme));
                             spriteRendererRat.flipX = false;
@@ -132,7 +150,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
                     }
                     else
                     {
-                        if(Vector2.Distance(transform.position, rightExtreme) > 0.1f)
+                        if(Vector2.Distance(transform.position, rightExtreme) > 1f)
                         {
                             //Debug.Log(Vector2.Distance(transform.position, rightExtreme));
                             spriteRendererRat.flipX = true;
@@ -235,6 +253,8 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     {
         onRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, surfaceLayer);
         onLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, surfaceLayer);
+        if(!isFlipped) onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, surfaceLayer);
+        else onGround = Physics2D.OverlapCircle((Vector2)transform.position + topOffset, collisionRadius, surfaceLayer);
     }
 
     private void OnDrawGizmos()
@@ -242,11 +262,12 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
         if(drawGizmos)
         {
             Gizmos.color = debugColor;
-            var positions = new Vector2[] { rightOffset, leftOffset };
+            //var positions = new Vector2[] { rightOffset, leftOffset };
             //Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
-           // Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
-            Gizmos.DrawSphere((Vector2)transform.position + new Vector2(moveDistance, 0), collisionRadius / 2);
-            Gizmos.DrawSphere((Vector2)transform.position - new Vector2(moveDistance, 0), collisionRadius / 2);
+            //Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
+            //Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collisionRadius);
+            Gizmos.DrawSphere((Vector2)transform.position + new Vector2(moveDistance, 0), collisionRadius);
+            Gizmos.DrawSphere((Vector2)transform.position - new Vector2(moveDistance, 0), collisionRadius);
         }
     }
 

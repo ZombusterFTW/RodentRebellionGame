@@ -743,9 +743,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         playerAnimator.SetTrigger("Laser");
         playerAnimatorRubber.SetTrigger("Laser");
         Vector3 pos =  cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20));
-        int laserDir = (int)(-transform.position.x * pos.y + transform.position.y * pos.x);
+        float laserDir = (transform.position - pos).normalized.x;
         Vector2 laserFireDirection;
-        if (laserDir > 0)
+        if (laserDir < 0)
         {
             playerSprite.flipX = false;
             playerSpriteRubber.flipX = false;

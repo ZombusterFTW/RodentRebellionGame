@@ -103,6 +103,26 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
                 //Vector2 force = direction * speed * Time.deltaTime;
                // rb.AddForce(force);
                 float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+
+
+                float temp = 0;
+
+                temp = (rb.position - (Vector2)path.vectorPath[currentWaypoint]).normalized.x;
+
+
+
+
+                if (temp < 0)
+                {
+                    spriteRendererRubber.flipX = true;
+                    spriteRendererRat.flipX = true;
+                }
+                else
+                {
+                    spriteRendererRubber.flipX = false;
+                    spriteRendererRat.flipX = false;
+                }
+
                 if (distance < nextWaypointDistance)
                 {
                     currentWaypoint++;
