@@ -412,7 +412,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 playerDoubleJumpsRemaining--;
                 //Debug.Log("Dbl jump");
                 //playerAnimator.Play("BigJoeDJ", 0);
-
+                playerAnimator.SetTrigger("DoubleJump");
+                playerAnimatorRubber.SetTrigger("DoubleJump");
+                /*
                 //Rare play of flip anim
                 if (Random.Range(0, 5) == 1)
                 {
@@ -424,6 +426,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                     playerAnimator.SetTrigger("DoubleJump");
                     playerAnimatorRubber.SetTrigger("DoubleJump");
                 }
+                */
                 isJumping = true;
             }
             else if (!onGround && onWall && !disableAllMoves && canWallJump) WallJump();

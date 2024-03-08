@@ -126,12 +126,12 @@ TextureImporter:
       name: dirtyRubberPlatform2_0
       rect:
         serializedVersion: 2
-        x: 364
-        y: 877
+        x: 352
+        y: 876
         width: 1319
         height: 379
       alignment: 9
-      pivot: {x: 0.5, y: 0.34}
+      pivot: {x: 0.785, y: 0.34}
       border: {x: 0, y: 0, z: 0, w: 103}
       outline: []
       physicsShape:

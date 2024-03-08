@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: BJDoubleJump_New_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 142
+        width: 711
+        height: 831
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecfe1e28e9954a94ca971aa31c34a4c7
+      internalID: -500896299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDoubleJump_New_1
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 122
+        width: 680
+        height: 828
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b45930aa399a10946ba56dcb7b97d87c
+      internalID: -972241819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDoubleJump_New_2
+      rect:
+        serializedVersion: 2
+        x: 1489
+        y: 153
+        width: 744
+        height: 827
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c511b58baf6e7d4caf44c5549ce4787
+      internalID: 247570547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BJDoubleJump_New_4
+      rect:
+        serializedVersion: 2
+        x: 2308
+        y: 0
+        width: 534
+        height: 920
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 702809cf820ed0b4ebb34cf97d426bcd
+      internalID: 1430661378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +203,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BJDoubleJump_New_0: -500896299
+      BJDoubleJump_New_1: -972241819
+      BJDoubleJump_New_2: 247570547
+      BJDoubleJump_New_3: 1681051815
+      BJDoubleJump_New_4: 1430661378
+      BJDoubleJump_New_5: -1963445518
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
