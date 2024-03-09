@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 329ef99bf0da1b24b9915a6464951294
+guid: 05e2ce69af90ace4da75543ab5fc08e2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,10 +43,10 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 9
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 250
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -93,81 +93,20 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: dirtyRubberPlatform1_0
-      rect:
-        serializedVersion: 2
-        x: 608
-        y: 881
-        width: 886
-        height: 372
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 100}
-      outline: []
-      physicsShape:
-      - - {x: -447.5, y: 81}
-        - {x: -445.5, y: -172}
-        - {x: 339.5, y: -172}
-        - {x: 439.5, y: -82}
-        - {x: 447.5, y: 72}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b57e1a76cd6fae45a77c13cf35ec4c4
-      internalID: -2085405670
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      dirtyRubberPlatform1_0: -2085405670
-      dirtyRubberPlatform1_1: 145525971
-      dirtyRubberPlatform1_2: 1964189010
-      dirtyRubberPlatform1_3: -390546881
-      dirtyRubberPlatform1_4: 194092085
-      dirtyRubberPlatform1_5: -1070472562
-      dirtyRubberPlatform1_6: -1651579479
-      dirtyRubberPlatform1_7: -191357781
-      dirtyRubberPlatform1_8: 790940038
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
