@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 33f580b205702c74f885eb30c15f0e5c
+guid: 3a650bb7d32989f4f949769a9da74ff7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -93,61 +93,9 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: cleanRubberPlatform3_0
-      rect:
-        serializedVersion: 2
-        x: 352
-        y: 876
-        width: 1319
-        height: 379
-      alignment: 9
-      pivot: {x: 0.55, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 106}
-      outline: []
-      physicsShape:
-      - - {x: -659.5, y: 77.5}
-        - {x: -648.5, y: -175.5}
-        - {x: 538.5, y: -175.5}
-        - {x: 653.5, y: -92.5}
-        - {x: 659.5, y: 76.5}
-      tessellationDetail: 0
-      bones: []
-      spriteID: ce2f182232c876946b50210c7574e190
-      internalID: 408228598
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -158,17 +106,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      cleanRubberPlatform3_0: 408228598
-      cleanRubberPlatform3_1: -1334084377
-      cleanRubberPlatform3_2: -1852964565
-      cleanRubberPlatform3_3: -2049984224
-      cleanRubberPlatform3_4: -1743424165
-      cleanRubberPlatform3_5: 1821483471
-      cleanRubberPlatform3_6: -1402528201
-      cleanRubberPlatform3_7: 933216935
-      cleanRubberPlatform3_8: 392156769
-      cleanRubberPlatform3_9: -1778138348
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

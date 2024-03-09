@@ -126,12 +126,12 @@ TextureImporter:
       name: platform_noGreen_0
       rect:
         serializedVersion: 2
-        x: 620
-        y: 452
-        width: 682
-        height: 121
-      alignment: 9
-      pivot: {x: 0.08, y: 0.5}
+        x: 621
+        y: 450
+        width: 118.09091
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,6 +139,111 @@ TextureImporter:
       bones: []
       spriteID: c9c70d675b33dbd408b32873c2335e2c
       internalID: -1142243731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platform_noGreen_1
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 450
+        width: 118.09091
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e913c7f9f63bf2f44b6712b6060d3329
+      internalID: -1279816947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platform_noGreen_2
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 450
+        width: 118.09091
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9aa1edecd61d5642b0bf405f64add54
+      internalID: -748349093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platform_noGreen_3
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 450
+        width: 118.09091
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a35753ec37027c8409cb08cdfd65badc
+      internalID: -1594865754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platform_noGreen_4
+      rect:
+        serializedVersion: 2
+        x: 1093
+        y: 450
+        width: 118.09091
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5917992813ff4e446a5dbbbaa919f3fe
+      internalID: 1227447252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platform_noGreen_5
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 450
+        width: 118.09091
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e056d9f2ead84624c9e1ffa789348187
+      internalID: 1791243212
       vertices: []
       indices: 
       edges: []
@@ -155,6 +260,11 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       platform_noGreen_0: -1142243731
+      platform_noGreen_1: -1279816947
+      platform_noGreen_2: -748349093
+      platform_noGreen_3: -1594865754
+      platform_noGreen_4: 1227447252
+      platform_noGreen_5: 1791243212
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

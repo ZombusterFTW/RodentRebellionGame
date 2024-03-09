@@ -127,11 +127,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 717
-        y: 455
-        width: 438
-        height: 127
-      alignment: 9
-      pivot: {x: 0.125, y: 0.5}
+        y: 450
+        width: 120.3
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,6 +139,69 @@ TextureImporter:
       bones: []
       spriteID: 53347465e0360f345a9e6e37fbe8d88d
       internalID: -1932395871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform1_1
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 450
+        width: 120.3
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9beb6fb6e2fed34fb4dc17a6c0ef46f
+      internalID: -341620897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform1_2
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 450
+        width: 120.3
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e03cd9f6773021e479c6d3020cb4ae4d
+      internalID: 1302222802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform1_3
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 450
+        width: 120.3
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16136988abed29e47a730c087b7c49ea
+      internalID: 307072747
       vertices: []
       indices: 
       edges: []
@@ -155,6 +218,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       radioCave_platform1_0: -1932395871
+      radioCave_platform1_1: -341620897
+      radioCave_platform1_2: 1302222802
+      radioCave_platform1_3: 307072747
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
