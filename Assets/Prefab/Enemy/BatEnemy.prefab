@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9109865652824719584}
   - component: {fileID: 2247655304730641118}
+  - component: {fileID: 3915187226461878111}
   m_Layer: 12
   m_Name: BatEnemySpriteRat
   m_TagString: Untagged
@@ -27,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5013826586664524687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -855574307, guid: 9e2c507ca15b2204cbcd22d00e2286e9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,6 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3915187226461878111
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5447970027357106407}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bf83fb776815de14081ed78176c506b6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6028843447765043203
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,8 +133,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5013826586664524687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -157,7 +179,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -195399596, guid: 9e2c507ca15b2204cbcd22d00e2286e9, type: 3}
   m_Color: {r: 1, g: 0, b: 0.6550431, a: 0.39607844}
   m_FlipX: 0
   m_FlipY: 0
@@ -285,7 +307,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
 --- !u!114 &7538035845282850312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,20 +325,11 @@ MonoBehaviour:
   ignore:
     serializedVersion: 2
     m_Bits: 128
-  batPursueRange: 6.6
-  turretSightRange: 2.37
-  turretFireCooldown: 2.5
-  turretFiringDelay: 1
-  damageOnCollision: 1
-  projectileDamage: 5
-  projectileSpeed: 10
   activateItemsOnDeath: 0
   itemsToActivate: []
   projectile: {fileID: 8155977222592638469, guid: 3b0a644cf6451d641a9e0b2b0dc102e1, type: 3}
   spriteRendererRubber: {fileID: 8481128339916403183}
   spriteRendererRat: {fileID: 2247655304730641118}
-  speed: 2.5
-  nextWaypointDistance: 0.75
 --- !u!114 &7125144125752540632
 MonoBehaviour:
   m_ObjectHideFlags: 0
