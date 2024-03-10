@@ -1,0 +1,6 @@
+Whew... what a fall.#speaker:Big Joe #portrait:bigjoeneut #layout:left #audio:animal_crossing_high
+...
+YES! Another one!#speaker:Big Joe #portrait:bigjoedetermined #layout:left #audio:animal_crossing_high
+I wonder if this one will help like the last one...
+Only one way to find out. #speaker:Big Joe #portrait:bigjoeneut #layout:left #audio:animal_crossing_high
+-> END
