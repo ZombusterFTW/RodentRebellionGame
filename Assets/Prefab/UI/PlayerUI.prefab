@@ -833,6 +833,7 @@ MonoBehaviour:
   healthBarFill: {fileID: 6887740562662660540}
   frenzyBarFill: {fileID: 937907384087148738}
   weaponIndentifier: {fileID: 4770443197209886036}
+  frenzyBar: {fileID: 8953948036725830375}
 --- !u!114 &4489554545517984131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1350,7 +1351,6 @@ GameObject:
   - component: {fileID: 13375246324347650}
   - component: {fileID: 7261390396568625262}
   - component: {fileID: 2743199844693672026}
-  - component: {fileID: 5436804667616134298}
   m_Layer: 5
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -1402,7 +1402,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4644
   m_TargetDisplay: 0
 --- !u!114 &7261390396568625262
 MonoBehaviour:
@@ -1444,21 +1444,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5436804667616134298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4048091030389733247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0dfeaef73178b64581e302c1d0e9d87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBarFill: {fileID: 6887740562662660540}
-  frenzyBarFill: {fileID: 0}
-  weaponIndentifier: {fileID: 0}
 --- !u!1 &5597962434363714919
 GameObject:
   m_ObjectHideFlags: 0

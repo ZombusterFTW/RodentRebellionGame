@@ -5502,13 +5502,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1224
   frenzyLines: {fileID: 6459269101314280610}
-  canWallClimb: 0
-  canDash: 0
-  canGroundPound: 0
-  canDoubleJump: 0
-  canWallJump: 0
-  canEnterRageMode: 0
-  canPhaseShift: 0
   characterSoundManager: {fileID: 5990184564997095310}
   playerEventSystem: {fileID: 3037295029371823081}
 --- !u!114 &5169012110108082315

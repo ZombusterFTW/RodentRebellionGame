@@ -107,13 +107,13 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
 
     //Ability Unlocks
-    [SerializeField] private bool canWallClimb = true;
-    [SerializeField] private bool canDash = true;
-    [SerializeField] private bool canGroundPound = true;
-    [SerializeField] private bool canDoubleJump = true;
-    [SerializeField] private bool canWallJump = true;
-    [SerializeField] private bool canEnterRageMode = true;
-    [SerializeField] private bool canPhaseShift = true;
+    public bool canWallClimb { get; private set; } = false;
+    public bool canDash { get; private set; } = false;
+    public bool canGroundPound { get; private set; } = false;
+    public bool canDoubleJump { get; private set; } = false;
+    public bool canWallJump { get; private set; } = false;
+    public bool canEnterRageMode { get; private set; } = false;
+    public bool canPhaseShift { get; private set; } = false;
 
     //Audio Manager Class
     [SerializeField] private CharacterSoundManager characterSoundManager;

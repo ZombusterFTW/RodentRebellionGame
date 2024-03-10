@@ -6,22 +6,23 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-
-    private Health playerHealth;
     public Image healthBarFill;
     public Image frenzyBarFill;
     public TextMeshProUGUI weaponIndentifier;
+    private PlayerController playerController;
+    [SerializeField] GameObject frenzyBar;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerHealth = GetComponent<Health>();
+        playerController = PlayerController.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(playerController.canPhaseShift || playerController.canEnterRageMode) frenzyBar.SetActive(true);
+        else frenzyBar.SetActive(false);
     }
 
     public void UpdateFrenzyBar(float currentFrenzyLevel, float maxFrenzyLevel)
