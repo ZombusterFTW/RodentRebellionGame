@@ -123,22 +123,159 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: radioCave_platform2_0
+      name: radioCave_platform2_3
       rect:
         serializedVersion: 2
-        x: 636
+        x: 680
         y: 467
-        width: 631
-        height: 139
-      alignment: 9
-      pivot: {x: 0.087, y: 0.5}
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -136}
+        - {x: 135, y: 0}
+        - {x: 0, y: 136}
+        - {x: -135, y: 0}
+      physicsShape:
+      - - {x: 0, y: -136}
+        - {x: 135, y: 0}
+        - {x: 0, y: 136}
+        - {x: -135, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc7f62f18f9dade43ace53223e5902f6
+      internalID: -898837784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform2_4
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 467
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -136}
+        - {x: 135, y: 0}
+        - {x: 0, y: 136}
+        - {x: -135, y: 0}
+      physicsShape:
+      - - {x: 0, y: -136}
+        - {x: 135, y: 0}
+        - {x: 0, y: 136}
+        - {x: -135, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f2320820735d104e83e1afd1d78ad95
+      internalID: 569000834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform2_5
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 467
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -136}
+        - {x: 135, y: 0}
+        - {x: 0, y: 136}
+        - {x: -135, y: 0}
+      physicsShape:
+      - - {x: 0, y: -136}
+        - {x: 135, y: 0}
+        - {x: 0, y: 136}
+        - {x: -135, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67a57a97a54c2474593f0124f601e732
+      internalID: -2084073438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform2_6
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 467
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -136}
+        - {x: 135, y: 0}
+        - {x: 0, y: 136}
+        - {x: -135, y: 0}
+      physicsShape:
+      - - {x: 0, y: -136}
+        - {x: 135, y: 0}
+        - {x: 0, y: 136}
+        - {x: -135, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 296efc36aa0d6124f979d8320963ae9b
+      internalID: 357519299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform2_2
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 467
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d44e9f134ad7d74c9c29f885c5290f3
-      internalID: -1055402321
+      spriteID: a0483d26be4f5c540aef801000bd0eea
+      internalID: 790243742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform2_7
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 467
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ac2827494d186444a31e451c01348c1
+      internalID: -933227964
       vertices: []
       indices: 
       edges: []
@@ -155,6 +292,13 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       radioCave_platform2_0: -1055402321
+      radioCave_platform2_1: -1928930274
+      radioCave_platform2_2: 790243742
+      radioCave_platform2_3: -898837784
+      radioCave_platform2_4: 569000834
+      radioCave_platform2_5: -2084073438
+      radioCave_platform2_6: 357519299
+      radioCave_platform2_7: -933227964
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

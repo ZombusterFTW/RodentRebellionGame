@@ -123,22 +123,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: radioCave_platform3_0
+      name: radioCave_platform3_4
       rect:
         serializedVersion: 2
-        x: 492
-        y: 475
-        width: 949
-        height: 134
-      alignment: 9
-      pivot: {x: 0.058, y: 0.5}
+        x: 544
+        y: 467
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31ca9bf33619c83478c2c737590d8c5d
-      internalID: 1302850226
+      spriteID: d987c68e5b8329e48a5ddc3dc1895157
+      internalID: 227070072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform3_5
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 467
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0b9a67698b4cfe4fa16497d29383f5e
+      internalID: 1945449652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform3_6
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 467
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13d29f064050a6f498a264f83eb03526
+      internalID: 297922655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform3_7
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 467
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cfb0ec39e89d0048911116ed14c2118
+      internalID: 465164510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform3_8
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 467
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba6d615a07405b347b3bec648dd9fc1a
+      internalID: 1498835788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform3_9
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 467
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7f67726e8441204f98af824a4729f27
+      internalID: 1330588612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform3_3
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 467
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8fc9ae259b1cb24eaa2da428a6572b4
+      internalID: -1550198688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radioCave_platform3_10
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 467
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee3cbbddc4b1dea40a8c5ae1a07702f5
+      internalID: 2106375150
       vertices: []
       indices: 
       edges: []
@@ -155,6 +302,16 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       radioCave_platform3_0: 1302850226
+      radioCave_platform3_1: -1527319709
+      radioCave_platform3_10: 2106375150
+      radioCave_platform3_2: 1095505539
+      radioCave_platform3_3: -1550198688
+      radioCave_platform3_4: 227070072
+      radioCave_platform3_5: 1945449652
+      radioCave_platform3_6: 297922655
+      radioCave_platform3_7: 465164510
+      radioCave_platform3_8: 1498835788
+      radioCave_platform3_9: 1330588612
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

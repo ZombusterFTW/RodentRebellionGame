@@ -123,36 +123,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: platform_noGreen_0
-      rect:
-        serializedVersion: 2
-        x: 621
-        y: 450
-        width: 118.09091
-        height: 125
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9c70d675b33dbd408b32873c2335e2c
-      internalID: -1142243731
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: platform_noGreen_1
       rect:
         serializedVersion: 2
-        x: 739
-        y: 450
-        width: 118.09091
-        height: 125
+        x: 680
+        y: 452
+        width: 136
+        height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,12 +147,12 @@ TextureImporter:
       name: platform_noGreen_2
       rect:
         serializedVersion: 2
-        x: 857
-        y: 450
-        width: 118.09091
-        height: 125
+        x: 816
+        y: 452
+        width: 136
+        height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,12 +168,12 @@ TextureImporter:
       name: platform_noGreen_3
       rect:
         serializedVersion: 2
-        x: 975
-        y: 450
-        width: 118.09091
-        height: 125
+        x: 952
+        y: 452
+        width: 136
+        height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,12 +189,12 @@ TextureImporter:
       name: platform_noGreen_4
       rect:
         serializedVersion: 2
-        x: 1093
-        y: 450
-        width: 118.09091
-        height: 125
+        x: 1088
+        y: 452
+        width: 136
+        height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -223,27 +202,6 @@ TextureImporter:
       bones: []
       spriteID: 5917992813ff4e446a5dbbbaa919f3fe
       internalID: 1227447252
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: platform_noGreen_5
-      rect:
-        serializedVersion: 2
-        x: 1211
-        y: 450
-        width: 118.09091
-        height: 125
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e056d9f2ead84624c9e1ffa789348187
-      internalID: 1791243212
       vertices: []
       indices: 
       edges: []

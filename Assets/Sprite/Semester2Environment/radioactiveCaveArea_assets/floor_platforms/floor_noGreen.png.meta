@@ -126,12 +126,12 @@ TextureImporter:
       name: floor_noGreen_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 128
-      alignment: 9
-      pivot: {x: 0.028, y: 0.5}
+        x: 7
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,6 +139,279 @@ TextureImporter:
       bones: []
       spriteID: c3495f0787adaf64188a077740181eef
       internalID: 2069295013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_noGreen_1
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 625a2fbe44c9e1c49852e4e05dc82776
+      internalID: 1939132794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_noGreen_2
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b02b79de80d87045a1e5bd95fbe22c4
+      internalID: -1210444127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_noGreen_3
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52eb66a4ceab6f24780718380c7b8795
+      internalID: -1961369194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_noGreen_4
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 085e2b4af6b063147a374c70a1e65986
+      internalID: 662409518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_noGreen_5
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b56f7cab2bdc2d344884239f947db3c5
+      internalID: 709275808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_noGreen_6
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bad60674aaa0134cad6bb5d91ca59db
+      internalID: -1964052783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_noGreen_7
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6367a7aeefc22f43b0babbf5264e1e4
+      internalID: -1851613430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_noGreen_8
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 971961fa13f17884882e10d6468a97f9
+      internalID: 2081678584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_noGreen_9
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a5a890e31560884995c37feeb718de3
+      internalID: -720290524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_noGreen_10
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36c6ded2bac8c9c49b2fe866d13de4c0
+      internalID: 1515806300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_noGreen_11
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d87636740561c244b4fd20442cba598
+      internalID: -1268507111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_noGreen_12
+      rect:
+        serializedVersion: 2
+        x: 1639
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 130a4a8ed6812424f88950ee8f0bbc65
+      internalID: -616521941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_noGreen_13
+      rect:
+        serializedVersion: 2
+        x: 1775
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78893000e32c9884ea88416dd6a7c719
+      internalID: -264248274
       vertices: []
       indices: 
       edges: []
@@ -155,6 +428,19 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       floor_noGreen_0: 2069295013
+      floor_noGreen_1: 1939132794
+      floor_noGreen_10: 1515806300
+      floor_noGreen_11: -1268507111
+      floor_noGreen_12: -616521941
+      floor_noGreen_13: -264248274
+      floor_noGreen_2: -1210444127
+      floor_noGreen_3: -1961369194
+      floor_noGreen_4: 662409518
+      floor_noGreen_5: 709275808
+      floor_noGreen_6: -1964052783
+      floor_noGreen_7: -1851613430
+      floor_noGreen_8: 2081678584
+      floor_noGreen_9: -720290524
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -126,19 +126,271 @@ TextureImporter:
       name: vertWall_noGreen_0
       rect:
         serializedVersion: 2
-        x: 959
-        y: 0
-        width: 121
-        height: 1920
-      alignment: 9
-      pivot: {x: 0.5, y: 0.0285}
+        x: 944
+        y: 1784
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c1da89e428db014d9231cdce8b2f6b6
-      internalID: -733154610
+      spriteID: 30addecd2a9bc1847815b6fabe5cdefb
+      internalID: 910503525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vertWall_noGreen_1
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 1648
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e01376d37a05c0418e2d56222c7b0f7
+      internalID: 498822327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vertWall_noGreen_2
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 1512
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca879a4a77f9d2543a736e0ae059babc
+      internalID: 843787890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vertWall_noGreen_3
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 1376
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c57b030f35c20ac429ba491336decf01
+      internalID: 1414179470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vertWall_noGreen_4
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 1240
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a93f4db149c896541bedf2bac4fcd976
+      internalID: -1492476929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vertWall_noGreen_5
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 1104
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 196c79d43a931754daac5cee1b6ccec4
+      internalID: -64354178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vertWall_noGreen_6
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 968
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b2c1dec0798fa44fa97734cf90a862d
+      internalID: -1206661605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vertWall_noGreen_7
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 832
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e80dbaed5967a5b47bb2bae564fb7c53
+      internalID: -475467274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vertWall_noGreen_8
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 696
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36a70ccb29cdf6647bcb897c24afcc9c
+      internalID: -1090175060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vertWall_noGreen_9
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 560
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd742c907fd096d41894dae5d8862eb6
+      internalID: -427295652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vertWall_noGreen_10
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 424
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6880e932e92a76e4cbf5052e664bd855
+      internalID: -2010644262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vertWall_noGreen_11
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 288
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e994d4937a0d5e44888adeb0fe710f1
+      internalID: 1758192656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vertWall_noGreen_12
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 152
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98a7afdf70e67914b9749ca58aaf34f4
+      internalID: -956675531
       vertices: []
       indices: 
       edges: []
@@ -154,7 +406,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      vertWall_noGreen_0: -733154610
+      vertWall_noGreen_0: 910503525
+      vertWall_noGreen_1: 498822327
+      vertWall_noGreen_10: -2010644262
+      vertWall_noGreen_11: 1758192656
+      vertWall_noGreen_12: -956675531
+      vertWall_noGreen_13: 1750793413
+      vertWall_noGreen_2: 843787890
+      vertWall_noGreen_3: 1414179470
+      vertWall_noGreen_4: -1492476929
+      vertWall_noGreen_5: -64354178
+      vertWall_noGreen_6: -1206661605
+      vertWall_noGreen_7: -475467274
+      vertWall_noGreen_8: -1090175060
+      vertWall_noGreen_9: -427295652
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

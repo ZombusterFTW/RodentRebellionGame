@@ -126,12 +126,12 @@ TextureImporter:
       name: radioCave_platform1_0
       rect:
         serializedVersion: 2
-        x: 717
-        y: 450
-        width: 120.3
-        height: 125
+        x: 680
+        y: 456
+        width: 136
+        height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,12 +147,12 @@ TextureImporter:
       name: radioCave_platform1_1
       rect:
         serializedVersion: 2
-        x: 837
-        y: 450
-        width: 120.3
-        height: 125
+        x: 816
+        y: 456
+        width: 136
+        height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: radioCave_platform1_2
       rect:
         serializedVersion: 2
-        x: 957
-        y: 450
-        width: 120.3
-        height: 125
+        x: 952
+        y: 456
+        width: 136
+        height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,12 +189,12 @@ TextureImporter:
       name: radioCave_platform1_3
       rect:
         serializedVersion: 2
-        x: 1077
-        y: 450
-        width: 120.3
-        height: 125
+        x: 1088
+        y: 456
+        width: 136
+        height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -221,6 +221,10 @@ TextureImporter:
       radioCave_platform1_1: -341620897
       radioCave_platform1_2: 1302222802
       radioCave_platform1_3: 307072747
+      radioCave_platform1_4: 302572721
+      radioCave_platform1_5: 366765692
+      radioCave_platform1_6: 200014057
+      radioCave_platform1_7: -2054897383
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
