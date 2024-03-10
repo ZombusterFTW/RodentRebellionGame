@@ -216,7 +216,6 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
                 if (!player.isDashing && !player.isGroundPounding)
                 {
-                    Debug.Log("Player hit by rat");
                     //The player must take damage here.
                     collision.gameObject.GetComponent<Health>().SubtractFromHealth(damageOnCollision);
                     if (extendedDamage == null) extendedDamage = StartCoroutine(PlayerDamageLoop(collision.gameObject.GetComponent<Health>()));

@@ -21,8 +21,11 @@ public class PlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerController.canPhaseShift || playerController.canEnterRageMode) frenzyBar.SetActive(true);
-        else frenzyBar.SetActive(false);
+        if(frenzyBar != null) 
+        {
+            if (playerController.canPhaseShift || playerController.canEnterRageMode) frenzyBar.SetActive(true);
+            else frenzyBar.SetActive(false);
+        }
     }
 
     public void UpdateFrenzyBar(float currentFrenzyLevel, float maxFrenzyLevel)
