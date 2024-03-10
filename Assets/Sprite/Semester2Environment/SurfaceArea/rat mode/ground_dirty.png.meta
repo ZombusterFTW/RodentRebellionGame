@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 125
+  spritePixelsToUnits: 136
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -127,11 +127,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1920
-        height: 119
-      alignment: 9
-      pivot: {x: 0.969, y: 0.5}
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,6 +139,279 @@ TextureImporter:
       bones: []
       spriteID: f97d917b867420046964b4630cb43e86
       internalID: -937526059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_dirty_1
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35967d659eabf414b82d84192746ec3b
+      internalID: -1073528549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_dirty_2
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6305b5bfc9c3d4249acdba77be8301eb
+      internalID: -40958820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_dirty_3
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a477855b839c56f4281fea05adcae57b
+      internalID: 195789994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_dirty_4
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42eaa24a5783e4641aaa514e95712b75
+      internalID: -2127526459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_dirty_5
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0243479a412898743a4c805c23c4e5cc
+      internalID: -1055485079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_dirty_6
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e79a15cb5a65bab4f8e0e97c1acc940a
+      internalID: -317913751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_dirty_7
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34dd2781d1b6e2e4c9425e6586e91628
+      internalID: -1462281410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_dirty_8
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0bc136f68030f741a4832d10522db63
+      internalID: 667903053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_dirty_9
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fd86e8852099314b9c7ee23ed636705
+      internalID: 1058298265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_dirty_10
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d9505b263b97a04bb1d5adfa0253abf
+      internalID: -578796453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_dirty_11
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43fd11e7c48670149bb4835145e5aeae
+      internalID: 1864914537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_dirty_12
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f70ae5fcf49327f4dae8ac7041f23cc5
+      internalID: 954692153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ground_dirty_13
+      rect:
+        serializedVersion: 2
+        x: 1768
+        y: 1
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 312732f7be8fd48408f20a67e048e93f
+      internalID: -1334521230
       vertices: []
       indices: 
       edges: []
@@ -155,6 +428,19 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       ground_dirty_0: -937526059
+      ground_dirty_1: -1073528549
+      ground_dirty_10: -578796453
+      ground_dirty_11: 1864914537
+      ground_dirty_12: 954692153
+      ground_dirty_13: -1334521230
+      ground_dirty_2: -40958820
+      ground_dirty_3: 195789994
+      ground_dirty_4: -2127526459
+      ground_dirty_5: -1055485079
+      ground_dirty_6: -317913751
+      ground_dirty_7: -1462281410
+      ground_dirty_8: 667903053
+      ground_dirty_9: 1058298265
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

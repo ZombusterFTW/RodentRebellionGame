@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 136
   spriteBorder: {x: 0, y: 0, z: 0, w: 1522}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,22 +123,547 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: floor_dirty_0
+      name: floor_dirty_26
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 3619
-        height: 147
+        y: 10
+        width: 136
+        height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbb8237652f0bf24e960bb9f2b4d8883
-      internalID: 1899012312
+      spriteID: d6ba64f33da161e4b81254c69879c0ea
+      internalID: 1953989068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_27
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb4d19ea14001fa499d025f780a2c8ec
+      internalID: -954149326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_28
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab9fc0bbf2c28914f937b3069d679d19
+      internalID: 24996279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_29
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3f4af5fb35c6bb41acaf39cf2625f57
+      internalID: -1656948610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_30
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63ec927d91bb420428e22653fa934fa0
+      internalID: -1603138550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_31
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baca6fd1bc1b10842861ad60771be0a9
+      internalID: 1955948649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_32
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae79e5afa5075e9499182f2e558eb784
+      internalID: -893340136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_33
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 914711dac8865d147a2a66a2a49f54f6
+      internalID: 73362976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_34
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76df1b8838f0e5b418d799ff0e4c07ca
+      internalID: -713674011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_35
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f917c9d5d31d63a44b83c730d4aeb204
+      internalID: 1948917943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_36
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66179b2bf84526e43ba7c97548c75390
+      internalID: -909754366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_37
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed6462773280a504babd0423a2b24e38
+      internalID: 581750696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_38
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e01168f01d397254da41c973dc612d45
+      internalID: -1922708269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_39
+      rect:
+        serializedVersion: 2
+        x: 1768
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f89206c3acd88a14981cf15eb8bb445a
+      internalID: 1638217415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_40
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 306ba18aea87d8c40bf8881877880f01
+      internalID: -1680567434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_41
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b5bbf6e83722024799b4620aebe5a27
+      internalID: 2017459157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_42
+      rect:
+        serializedVersion: 2
+        x: 2176
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cc867b746968444e9fc3530b428d728
+      internalID: 351709193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_43
+      rect:
+        serializedVersion: 2
+        x: 2312
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c540b248ee690a41bbe1a80be0cf472
+      internalID: -199866629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_44
+      rect:
+        serializedVersion: 2
+        x: 2448
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2028b2093cc252842a5ea748485df5d4
+      internalID: 983798271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_45
+      rect:
+        serializedVersion: 2
+        x: 2584
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f91b27ee5691ebe4cac9572967aff0f6
+      internalID: 1818351324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_46
+      rect:
+        serializedVersion: 2
+        x: 2720
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32f39c74d63d1374080a2dd0a4fe99da
+      internalID: -651813520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_47
+      rect:
+        serializedVersion: 2
+        x: 2856
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81fa6dc0d845e7e46bc86a409b909c43
+      internalID: 1819032418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_48
+      rect:
+        serializedVersion: 2
+        x: 2992
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee53c5ddd946f484487a9a46fa0c3ae0
+      internalID: -573854816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_49
+      rect:
+        serializedVersion: 2
+        x: 3128
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e8e56a6740e2254f8c6c176beb09b36
+      internalID: 1765107379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_50
+      rect:
+        serializedVersion: 2
+        x: 3264
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20f15fe82277bdd4a95e06596f38a546
+      internalID: 1545197484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: floor_dirty_51
+      rect:
+        serializedVersion: 2
+        x: 3400
+        y: 10
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc81913e26e5584ab06414ba9ed55b6
+      internalID: -326371487
       vertices: []
       indices: 
       edges: []
@@ -155,6 +680,57 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       floor_dirty_0: 1899012312
+      floor_dirty_1: 1403618081
+      floor_dirty_10: 1513151211
+      floor_dirty_11: -391167548
+      floor_dirty_12: 794189424
+      floor_dirty_13: 51687440
+      floor_dirty_14: 14213874
+      floor_dirty_15: -2016827349
+      floor_dirty_16: -1598205204
+      floor_dirty_17: 345337526
+      floor_dirty_18: -361867490
+      floor_dirty_19: -992506021
+      floor_dirty_2: -528087
+      floor_dirty_20: 193033546
+      floor_dirty_21: -2126838004
+      floor_dirty_22: -783517471
+      floor_dirty_23: 263808176
+      floor_dirty_24: 2089856312
+      floor_dirty_25: 1062859382
+      floor_dirty_26: 1953989068
+      floor_dirty_27: -954149326
+      floor_dirty_28: 24996279
+      floor_dirty_29: -1656948610
+      floor_dirty_3: 2051914625
+      floor_dirty_30: -1603138550
+      floor_dirty_31: 1955948649
+      floor_dirty_32: -893340136
+      floor_dirty_33: 73362976
+      floor_dirty_34: -713674011
+      floor_dirty_35: 1948917943
+      floor_dirty_36: -909754366
+      floor_dirty_37: 581750696
+      floor_dirty_38: -1922708269
+      floor_dirty_39: 1638217415
+      floor_dirty_4: -247743385
+      floor_dirty_40: -1680567434
+      floor_dirty_41: 2017459157
+      floor_dirty_42: 351709193
+      floor_dirty_43: -199866629
+      floor_dirty_44: 983798271
+      floor_dirty_45: 1818351324
+      floor_dirty_46: -651813520
+      floor_dirty_47: 1819032418
+      floor_dirty_48: -573854816
+      floor_dirty_49: 1765107379
+      floor_dirty_5: 1595965734
+      floor_dirty_50: 1545197484
+      floor_dirty_51: -326371487
+      floor_dirty_6: 670555969
+      floor_dirty_7: -935633115
+      floor_dirty_8: 999931084
+      floor_dirty_9: 519999433
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

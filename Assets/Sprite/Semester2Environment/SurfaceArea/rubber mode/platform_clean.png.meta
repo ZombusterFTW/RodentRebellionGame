@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 125
+  spritePixelsToUnits: 136
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,12 +126,12 @@ TextureImporter:
       name: platform_clean_0
       rect:
         serializedVersion: 2
-        x: 636
+        x: 561
         y: 487
-        width: 539
-        height: 127
-      alignment: 9
-      pivot: {x: 0.885, y: 0.5}
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,6 +139,90 @@ TextureImporter:
       bones: []
       spriteID: 0c34ee3ff12e3e64a82a7d7713cad919
       internalID: -905659596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platform_clean_1
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 487
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61894e450fe273140b39d590ba681786
+      internalID: -861795899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platform_clean_2
+      rect:
+        serializedVersion: 2
+        x: 833
+        y: 487
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bc8f9b784ed95645abd5bfe9e9057cf
+      internalID: -374938771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platform_clean_3
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 487
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aec2d2a198ef4c4eb80be74ce825f5c
+      internalID: -2061051297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: platform_clean_4
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 487
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5151d0aff310a8149867006b93d89fbf
+      internalID: 1024044906
       vertices: []
       indices: 
       edges: []
@@ -155,6 +239,10 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       platform_clean_0: -905659596
+      platform_clean_1: -861795899
+      platform_clean_2: -374938771
+      platform_clean_3: -2061051297
+      platform_clean_4: 1024044906
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 136
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,22 +123,337 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: newFloor_clean_0
+      name: newFloor_clean_16
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 2249
-        height: 179
+        y: 41
+        width: 136
+        height: 136
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a18a6c2408e20e4aa178770676d88f5
-      internalID: 2119814643
+      spriteID: 8c15993f95d4489449c21512f06e28a2
+      internalID: -533091046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_17
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d994a3e584e5f444684663740339bbda
+      internalID: -504556401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_18
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78adb0639d5968b40be5667ba1c52096
+      internalID: -646718920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_19
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ffa7684e2e9f3f49988932f627227cf
+      internalID: 2105315006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_20
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e16140097ed855246a081f8e827a89e8
+      internalID: -1384552729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_21
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64b00da50ea1d8a4ca60219e64fd8511
+      internalID: -482383436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_22
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9575448751455bd45a9876087a606b73
+      internalID: 2089097174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_23
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e416f5d236e0e524982dfb2c7ebba838
+      internalID: -1130224545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_24
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f33e54dd346a54947ac71847d92c8b04
+      internalID: 1950501558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_25
+      rect:
+        serializedVersion: 2
+        x: 1224
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b2b30cc6fc725240866c111229c4827
+      internalID: 1501096702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_26
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25e9531a8b63c3347a9af3ce954cfbaf
+      internalID: -1366226512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_27
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5163a876961f41f4ca40073f9b5b355b
+      internalID: -1391935971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_28
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 555604fe1b1a9d24caea39c8a68cc96c
+      internalID: 704707766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_29
+      rect:
+        serializedVersion: 2
+        x: 1768
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b92e1a0df71e2c4aa9d7808af95dc49
+      internalID: 1256168535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_30
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 090774667d7a2934d81489c35c91cf1d
+      internalID: 261233179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newFloor_clean_31
+      rect:
+        serializedVersion: 2
+        x: 2040
+        y: 41
+        width: 136
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 312eb4f79bcded646b0f4eddee19e1db
+      internalID: 852631086
       vertices: []
       indices: 
       edges: []
@@ -155,6 +470,37 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       newFloor_clean_0: 2119814643
+      newFloor_clean_1: 350197272
+      newFloor_clean_10: 28452761
+      newFloor_clean_11: -1135927214
+      newFloor_clean_12: 1324069374
+      newFloor_clean_13: 694895748
+      newFloor_clean_14: 1893206108
+      newFloor_clean_15: -1736111555
+      newFloor_clean_16: -533091046
+      newFloor_clean_17: -504556401
+      newFloor_clean_18: -646718920
+      newFloor_clean_19: 2105315006
+      newFloor_clean_2: 1963961406
+      newFloor_clean_20: -1384552729
+      newFloor_clean_21: -482383436
+      newFloor_clean_22: 2089097174
+      newFloor_clean_23: -1130224545
+      newFloor_clean_24: 1950501558
+      newFloor_clean_25: 1501096702
+      newFloor_clean_26: -1366226512
+      newFloor_clean_27: -1391935971
+      newFloor_clean_28: 704707766
+      newFloor_clean_29: 1256168535
+      newFloor_clean_3: -1711567350
+      newFloor_clean_30: 261233179
+      newFloor_clean_31: 852631086
+      newFloor_clean_4: 160444859
+      newFloor_clean_5: -1200651708
+      newFloor_clean_6: 173556608
+      newFloor_clean_7: 1732971921
+      newFloor_clean_8: 453154284
+      newFloor_clean_9: 775029912
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
