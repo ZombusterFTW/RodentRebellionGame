@@ -6071,10 +6071,10 @@ PrefabInstance:
     - target: {fileID: 7423751693995915678, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 43ae7fa4f48570c41a9162a2bf571d37, type: 3}
+      objectReference: {fileID: 21300000, guid: 8392b6ad44a48bf4abb3767738a6891f, type: 3}
     - target: {fileID: 9003417552762851014, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: upgradeType
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14019,54 +14019,6 @@ PrefabInstance:
     - target: {fileID: 1340353098062905101, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7106594073994592796, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -13.333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236839450530248994, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236839450530248994, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7236839450530248994, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -13.333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 8459652423362751434, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: canDash
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8459652423362751434, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: canWallJump
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8459652423362751434, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: canWallClimb
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8459652423362751434, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: canDoubleJump
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8459652423362751434, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: canPhaseShift
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8459652423362751434, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: canGroundPound
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8459652423362751434, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: canEnterRageMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8459652423362751434, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
-      propertyPath: enemyLayer.m_Bits
-      value: 1224
       objectReference: {fileID: 0}
     - target: {fileID: 8686200487451471497, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.x

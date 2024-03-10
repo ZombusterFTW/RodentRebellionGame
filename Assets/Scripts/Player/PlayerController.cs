@@ -373,15 +373,15 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
         var positions = new Vector2[] {bottomOffset, rightOffset, leftOffset, topOffset};
 
-        Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collisionRadiusTopBottom);
-        Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
-        Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
-        Gizmos.DrawSphere((Vector2)transform.position + topOffset, collisionRadiusTopBottom);
+       // Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collisionRadiusTopBottom);
+       // Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
+       // Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
+       // Gizmos.DrawSphere((Vector2)transform.position + topOffset, collisionRadiusTopBottom);
 
 
-        Gizmos.color = debugColor;
-        Gizmos.DrawSphere((Vector2)transform.position - new Vector2(2f, 0), 0.5f);
-        Gizmos.DrawSphere((Vector2)transform.position + new Vector2(2f, 0), 0.5f);
+        //Gizmos.color = debugColor;
+        //Gizmos.DrawSphere((Vector2)transform.position - new Vector2(1f, 0), 0.6f);
+        //Gizmos.DrawSphere((Vector2)transform.position + new Vector2(1f, 0), 0.6f);
 
 
     }
@@ -911,9 +911,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         }
         else if (playerUpgrade.playerWeaponType == PlayerWeaponType.ChainWhip)
         {
-            float chainWhipDistance = 2.5f;
-            float chainWhipSphereSize = 0.5f;
-            float chainWhipDeployTime = 0.25f;
+            float chainWhipDistance = 1f;
+            float chainWhipSphereSize = 0.6f;
+            float chainWhipDeployTime = 0.334f;
             Collider2D[] hitObjects;
             //Chain whip does no damage until it hits delayed sphere cast.
             yield return new WaitForSeconds(chainWhipDeployTime);
@@ -933,8 +933,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.NoWeapon);
             //replace me with chain whip anim
-            playerAnimator.SetTrigger("StandardAttack");
-            playerAnimatorRubber.SetTrigger("StandardAttack");
+            playerAnimator.SetTrigger("ChainWhip");
+            playerAnimatorRubber.SetTrigger("ChainWhip");
 
             if(hitObjects.Length > 0 && !hitWallOnTheWay)
             {
