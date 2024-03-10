@@ -142,7 +142,8 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
                     }
                     else
                     {
-                        if (Vector2.Distance(transform.position, leftExtreme) > 0.1f)
+                        float temp = ((Vector2)transform.position - new Vector2(leftExtreme.x, transform.position.y)).normalized.x;
+                        if (temp > 0)
                         {
                             //Debug.Log(Vector2.Distance(transform.position, leftExtreme));
                             spriteRendererRat.flipX = false;
@@ -171,7 +172,8 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
                     }
                     else
                     {
-                        if (Vector2.Distance(transform.position, rightExtreme) > 0.1f)
+                        float temp = ((Vector2)transform.position - new Vector2(rightExtreme.x, transform.position.y)).normalized.x;
+                        if (temp < 0)
                         {
                             //Debug.Log(Vector2.Distance(transform.position, rightExtreme));
                             spriteRendererRat.flipX = true;

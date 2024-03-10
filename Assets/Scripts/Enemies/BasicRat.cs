@@ -101,11 +101,9 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
 
     private void UpdateAIState()
     {
+        //Debug.Log(Vector2.Distance(transform.position, new Vector2(rightExtreme.x, transform.position.y)));
 
-
-        Debug.Log(Vector2.Distance(transform.position, rightExtreme));
-
-        Debug.Log(Vector2.Distance(transform.position, leftExtreme));
+        //Debug.Log(Vector2.Distance(transform.position, new Vector2(leftExtreme.x, transform.position.y)));
 
         //Simulate gravity
         if (!onGround)
@@ -126,7 +124,8 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
                     }
                     else
                     {
-                        if (Vector2.Distance(transform.position, leftExtreme) > 1f)
+                        float temp = ((Vector2)transform.position - new Vector2(leftExtreme.x, transform.position.y)).normalized.x;
+                        if (temp > 0 || isFlipped && temp < 0)
                         {
                             //Debug.Log(Vector2.Distance(transform.position, leftExtreme));
                             spriteRendererRat.flipX = false;
@@ -150,7 +149,8 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
                     }
                     else
                     {
-                        if(Vector2.Distance(transform.position, rightExtreme) > 1f)
+                        float temp = ((Vector2)transform.position - new Vector2(rightExtreme.x, transform.position.y)).normalized.x;
+                        if (temp < 0 || isFlipped && temp > 0)
                         {
                             //Debug.Log(Vector2.Distance(transform.position, rightExtreme));
                             spriteRendererRat.flipX = true;
