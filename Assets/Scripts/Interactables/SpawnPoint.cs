@@ -6,6 +6,7 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour, R4Activatable
 {
     [Tooltip("Wether or not the spawn point will start active.")][SerializeField]private bool isActive = true;
+    /*/[Tooltip("If set to true this respawn point will kick players out of rubber mode")][SerializeField]/*/ private bool kickPlayerOutOfRubberMode = false;
     [Tooltip("Wether or not this spawn is the starting spawn")][SerializeField] private bool isStartingSpawn = false;
     [Tooltip("The color of the spawn point when it is activated")][SerializeField] private Color activatedColor = Color.green;
     [Tooltip("The color of the spawn point when it is not active")][SerializeField] private Color deactivatedColor = Color.white;
@@ -28,7 +29,7 @@ public class SpawnPoint : MonoBehaviour, R4Activatable
     // Start is called before the first frame update
     void Awake()
     {
-        playerController = GameObject.FindObjectOfType<PlayerController>();
+        playerController = PlayerController.instance;
         spawnPoint = GetComponent<SpawnPoint>(); 
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleCollider = GetComponent<CircleCollider2D>();
@@ -66,6 +67,10 @@ public class SpawnPoint : MonoBehaviour, R4Activatable
         {
             firstActivation = false;
             playerController.GetComponent<Health>().HealthToMax();
+            if(playerController.frenzyManager.inRubberMode && kickPlayerOutOfRubberMode)
+            {
+                playerController.frenzyManager.ToggleRubberMode();
+            }
         }
     }
 

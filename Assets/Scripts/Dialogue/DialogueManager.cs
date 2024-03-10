@@ -144,6 +144,9 @@ public class DialogueManager : MonoBehaviour
 
     public void EnterDialogueMode(TextAsset inkJSON, GameObject dialougeGameObj = null, bool destroyDialougeParentOnExit = false) 
     {
+        PlayerController.instance.DisableControls(true);
+        //Kick player out of rubbermode
+        if(PlayerController.instance.frenzyManager.inRubberMode) PlayerController.instance.frenzyManager.ToggleRubberMode();
         dialougeContainerGameObject = dialougeGameObj;
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
@@ -169,7 +172,7 @@ public class DialogueManager : MonoBehaviour
         {
             DestroyImmediate(dialougeContainerGameObject);
         }
-        GameObject.FindObjectOfType<PlayerController>().DisableControls(false);
+        PlayerController.instance.DisableControls(false);
         yield return new WaitForSecondsRealtime(0.2f);
 
         dialogueVariables.StopListening(currentStory);

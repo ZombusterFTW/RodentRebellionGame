@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     //Note activatable switches are considered enemies.
     public LayerMask enemyLayer;
     public ParticleSystem frenzyLines;
-    private FrenzyManager frenzyManager;
+    public FrenzyManager frenzyManager { get; private set; }
 
 
 
@@ -922,12 +922,12 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             if (isFacingLeft)
             {
                 hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position - new Vector2(chainWhipDistance, 0), chainWhipSphereSize, enemyLayer);
-                hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position - new Vector2(chainWhipDistance/2, 0), groundLayer);
+                //hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position - new Vector2(chainWhipDistance/2, 0), groundLayer);
             }
             else
             {
                 hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position + new Vector2(chainWhipDistance,0) , chainWhipSphereSize, enemyLayer);
-                hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(chainWhipDistance/2, 0), groundLayer);
+                //hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(chainWhipDistance/2, 0), groundLayer);
             }
             // RaycastHit2D hit = Physics2D.LinecastAll(transform.position, lastDirection.normalized, 5f, enemyLayer);
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
@@ -1098,6 +1098,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         }
         else
         {
+            //Kick player out of rubber mode when they die
+            if(frenzyManager.inRubberMode) frenzyManager.ToggleRubberMode();
             playerAnimator.SetTrigger("Death");
             playerAnimatorRubber.SetTrigger("Death");
             yield return new WaitForSeconds(1);

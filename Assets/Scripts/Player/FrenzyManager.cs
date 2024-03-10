@@ -23,6 +23,8 @@ public class FrenzyManager : MonoBehaviour
     Tween fillTween;
     [SerializeField] private Image rubberModeRawImage;
 
+    public bool stateChangeDisabled = false;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -83,7 +85,7 @@ public class FrenzyManager : MonoBehaviour
 
     public void ToggleRubberMode()
     {
-        if (frenzyAmountCurrent > 0 && rubberModeBarAnimation == null && !inRubberMode)
+        if (frenzyAmountCurrent > 0 && rubberModeBarAnimation == null && !inRubberMode && !stateChangeDisabled)
         {
             //Player cannot be in rubber mode while in rage mode, so we check if the player is in rage mode. If they are we kick them out of it.
             if(frenzyActive &&  frenzyBarAnimation != null)
@@ -99,7 +101,7 @@ public class FrenzyManager : MonoBehaviour
             RubberFillImage(true);
         }
 
-        else if(frenzyAmountCurrent > 0 && rubberModeBarAnimation != null && inRubberMode)
+        else if(frenzyAmountCurrent > 0 && rubberModeBarAnimation != null && inRubberMode && !stateChangeDisabled)
         {
             //If we get here the player is in rubber mode and attempting to return to rat mode while they still have charge in their meter.
             StopCoroutine(rubberModeBarAnimation);
@@ -121,11 +123,11 @@ public class FrenzyManager : MonoBehaviour
         if(fillTween != null && !fillTween.IsActive()) fillTween.Kill();
         if (shouldFill) 
         {
-            fillTween = DOTween.To(() => rubberModeRawImage.fillAmount, x => rubberModeRawImage.fillAmount = x, 1, 1);
+            fillTween = DOTween.To(() => rubberModeRawImage.fillAmount, x => rubberModeRawImage.fillAmount = x, 1, 1).SetUpdate(true);
         }
         else
         {
-            fillTween = DOTween.To(() => rubberModeRawImage.fillAmount, x => rubberModeRawImage.fillAmount = x, 0, 1);
+            fillTween = DOTween.To(() => rubberModeRawImage.fillAmount, x => rubberModeRawImage.fillAmount = x, 0, 1).SetUpdate(true);
         }
 
         foreach (var brokenBridge in FindObjectsOfType<BrokenBridge>())
