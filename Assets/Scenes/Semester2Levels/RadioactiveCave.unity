@@ -30136,11 +30136,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1973494872080101497, guid: 9c098d76bf4cc9e4e85d4d9b6f9d66ef, type: 3}
       propertyPath: sceneToLoad
-      value: MainMenu
+      value: Labyrinth 2
       objectReference: {fileID: 0}
     - target: {fileID: 1973494872080101497, guid: 9c098d76bf4cc9e4e85d4d9b6f9d66ef, type: 3}
       propertyPath: activatedByOtherObject
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2909996559670186842, guid: 9c098d76bf4cc9e4e85d4d9b6f9d66ef, type: 3}
       propertyPath: m_Name
@@ -30152,7 +30152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3011446740103312668, guid: 9c098d76bf4cc9e4e85d4d9b6f9d66ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.02
+      value: -6.29
       objectReference: {fileID: 0}
     - target: {fileID: 3011446740103312668, guid: 9c098d76bf4cc9e4e85d4d9b6f9d66ef, type: 3}
       propertyPath: m_LocalPosition.z
