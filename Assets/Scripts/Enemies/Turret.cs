@@ -77,16 +77,16 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
     {
         if (Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= turretSightRange && !frenzyManager.inRubberMode && isActive)
         {
-            //New turret rotate to face player
-            Vector3 diff = playerController.transform.position - ratModeTurret.transform.position;
-            diff.Normalize();
-            float rot_Z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-            ratModeTurret.transform.rotation = Quaternion.Euler(0f, 0f, rot_Z);
-            rubberModeTurret.transform.rotation = Quaternion.Euler(0f, 0f, rot_Z);
-            if (!isOnCooldown)
+            RaycastHit2D hit = Physics2D.Linecast(gameObject.transform.position, playerController.gameObject.transform.position, ~ignore);
+            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null))
             {
-                RaycastHit2D hit = Physics2D.Linecast(gameObject.transform.position, playerController.gameObject.transform.position, ~ignore);
-                if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null))
+                //New turret rotate to face player
+                Vector3 diff = playerController.transform.position - ratModeTurret.transform.position;
+                diff.Normalize();
+                float rot_Z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+                ratModeTurret.transform.rotation = Quaternion.Euler(0f, 0f, rot_Z);
+                rubberModeTurret.transform.rotation = Quaternion.Euler(0f, 0f, rot_Z);
+                if (!isOnCooldown)
                 {
                     Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.green);
                     StartCoroutine(TurretFiringDelayControl());
@@ -124,12 +124,14 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
                     }
                     */
                 }
-                else
-                {
-                    Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.red);
-                }
+
+            }
+            else
+            {
+                Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.red);
             }
         }
+               
     }
     
 

@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Semester2Levels/0Tutorial.unity
     guid: c49644726c10a304d824afe2c8e454f4
   - enabled: 1
-    path: Assets/Scenes/Semester2Levels/Labyrinth.unity
-    guid: d28ccfde06c93d34ea835957ed57e765
-  - enabled: 1
     path: Assets/Scenes/Semester2Levels/RadioactiveCave.unity
     guid: 7df3a5f63a0c96f42b3a7bbb97f6b6b0
   - enabled: 1
@@ -26,4 +23,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Semester2Levels/LabLevel.unity
     guid: b8aaebdbbe783414d95329b9ddce13cb
+  - enabled: 1
+    path: Assets/Scenes/Semester2Levels/Labyrinth1.unity
+    guid: 5f4a127f05b5c6345a3303505aedc25c
+  - enabled: 1
+    path: Assets/Scenes/Semester2Levels/Labyrinth2.unity
+    guid: 3435333bde018a34095c36c41ac803b1
+  - enabled: 1
+    path: Assets/Scenes/Semester2Levels/Labyrinth3.unity
+    guid: a2f41a35b7ce3c947959808ff42304f8
   m_configObjects: {}

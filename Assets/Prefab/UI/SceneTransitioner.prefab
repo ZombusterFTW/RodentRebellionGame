@@ -351,9 +351,9 @@ MonoBehaviour:
   canvas: {fileID: 8733432553438204875}
   parentGameObject: {fileID: 5909275299186796646}
   gameHints:
-  - Davis is really helpful! Too helpful...
-  - Big Joe was the leader of R.A.T.S., an exceptional covert task force.
-  - Watch Out! Sir Goopington can fire long range attacks.
+  - 
+  - 
+  - 
   gameHintAnimations:
   - BombDefault
   - LightningBombLoading
@@ -361,7 +361,7 @@ MonoBehaviour:
   transitionAnimator: {fileID: 6402234811789543069}
   transitionShowcaseAnimator: {fileID: 6001385996581832645}
   gameHintsText: {fileID: 4149462663712173149}
-  sceneTransitionTime: 2
+  sceneTransitionTime: 1
 --- !u!1 &7400676521124840622
 GameObject:
   m_ObjectHideFlags: 0

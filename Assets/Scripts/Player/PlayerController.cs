@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         playerSpriteRubber = playerSpriteContainerRubberMode.GetComponent<SpriteRenderer>();
         playerAnimatorRubber = playerSpriteContainerRubberMode.GetComponent<Animator>();
         playerUI  = Instantiate(playerUIPrefab).GetComponent<PlayerUI>();
-        //playerUI.transform.SetParent(this.transform, false);
+        playerUI.transform.SetParent(this.transform, false);
         playerInput = GetComponent<PlayerInput>();
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();

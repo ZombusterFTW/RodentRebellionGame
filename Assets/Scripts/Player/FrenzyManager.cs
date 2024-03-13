@@ -170,7 +170,7 @@ public class FrenzyManager : MonoBehaviour
         while (frenzyAmountCurrent > 0)
         {
             //Debug.Log(frenzyAmountCurrent);
-            frenzyAmountCurrent -= Time.deltaTime * 0.1f;
+            frenzyAmountCurrent -= Time.deltaTime* 0.05f;
             playerUIManager.UpdateFrenzyBar(frenzyAmountCurrent, frenzyMaxAmount);
             yield return null;
         }
