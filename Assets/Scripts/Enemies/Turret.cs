@@ -224,4 +224,13 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
     {
         DestroyTurret();
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject == playerController.gameObject && playerController.isGroundPounding)
+        {
+            //Debug to temp fix being unable to ground pound a turret.
+            OnOneHitEnemyDeath();
+        }
+    }
 }

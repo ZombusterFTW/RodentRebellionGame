@@ -1092,6 +1092,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             isAlive = false;
             StopCoroutine(DisableMovement(0));
             if(!Coroutine.ReferenceEquals(latentAttack, null)) StopCoroutine(latentAttack);
+            latentAttack = null;
             attackCooldownActive = false;
             playerIsAttacking = false;
             StartCoroutine(DisableMovement(1f));
