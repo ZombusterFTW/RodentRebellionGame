@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5976404454654107866}
   - component: {fileID: 7221602302914235598}
   - component: {fileID: 4024209424973088183}
+  - component: {fileID: 4197694474374115525}
+  - component: {fileID: 3978721682307628231}
   m_Layer: 7
   m_Name: ShieldCat
   m_TagString: Untagged
@@ -62,21 +64,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   sightRange: 12.5
-  chargeCooldownTime: 3.5
-  chargeMoveSpeed: 7
   activateItemsOnDeath: 0
   itemsToActivate: []
-  damageToPlayer: 55
   frenzyPercentageFill: 0.15
-  maxChargeTimeValue: 15
   currentState: 0
-  rightOffset: {x: 0.69, y: 0}
-  leftOffset: {x: -0.69, y: 0}
-  startingPos: {x: 0, y: 0}
   shieldLeft: {fileID: 7882734091859617608}
   shieldRight: {fileID: 7479416810559024224}
   spriteRendererRubber: {fileID: 9065767234138194490}
   spriteRendererRat: {fileID: 8006413053477889112}
+  rubberModeAnimator: {fileID: 853171019500664549}
+  ratModeAnimator: {fileID: 7150743133652944120}
 --- !u!114 &5976404454654107866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +153,61 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!70 &4197694474374115525
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309708302324056190}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.01, y: 2.22}
+  m_Direction: 0
+--- !u!249 &3978721682307628231
+AreaEffector2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309708302324056190}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGlobalAngle: 1
+  m_ForceAngle: -45
+  m_ForceMagnitude: 200
+  m_ForceVariation: 200
+  m_ForceTarget: 0
+  m_Drag: 0
+  m_AngularDrag: 0
 --- !u!1 &763551896334064735
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 118829419073111974}
   - component: {fileID: 8006413053477889112}
+  - component: {fileID: 7150743133652944120}
   m_Layer: 12
   m_Name: RatSprite
   m_TagString: Untagged
@@ -229,7 +282,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -365391670, guid: 1c1d0beb1e41b48438b9ff64e3964ac3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -240,6 +293,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7150743133652944120
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763551896334064735}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c2abd962d9edcf343b2a01c21e680277, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2979903196580747665
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7513875225455142007}
   - component: {fileID: 9065767234138194490}
+  - component: {fileID: 853171019500664549}
   m_Layer: 11
   m_Name: RubberSprite
   m_TagString: Untagged
@@ -346,7 +421,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -365391670, guid: 1c1d0beb1e41b48438b9ff64e3964ac3, type: 3}
   m_Color: {r: 1, g: 0, b: 0.8963146, a: 0.3529412}
   m_FlipX: 0
   m_FlipY: 0
@@ -357,6 +432,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &853171019500664549
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4294937744897370718}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c2abd962d9edcf343b2a01c21e680277, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7479416810559024224
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,9 +526,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.06989646, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.06989646, g: 1, b: 0, a: 0.3882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -550,9 +646,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.06989646, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.06989646, g: 1, b: 0, a: 0.3882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

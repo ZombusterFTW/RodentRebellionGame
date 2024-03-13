@@ -27,7 +27,7 @@ public class SpawnPoint : MonoBehaviour, R4Activatable
 
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         playerController = PlayerController.instance;
         spawnPoint = GetComponent<SpawnPoint>(); 

@@ -48,6 +48,8 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
     private Vector2 playerDirection;
     private Vector2 chargePos;
     private BoxCollider2D playerCollider;
+    [SerializeField] private Animator rubberModeAnimator;
+    [SerializeField] private Animator ratModeAnimator;
 
     //Like basic rat but chonky!
 
@@ -94,8 +96,8 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
     {
         if(isAlive) 
         {
-            spriteRendererRat.flipX = rigidBody.velocity.x > 0;
-            spriteRendererRubber.flipX = rigidBody.velocity.x > 0;
+            //spriteRendererRat.flipX = rigidBody.velocity.x > 0;
+            //spriteRendererRubber.flipX = rigidBody.velocity.x > 0;
             if (frenzyManager.inRubberMode)
             {
                 rigidBody.simulated = false;
@@ -103,10 +105,13 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
             }
             else
             {
+                rigidBody.velocity = Vector3.zero;
                 rigidBody.simulated = true;
                 capsuleCollider.enabled = true;
                 if (Vector2.Distance(startingPos, transform.position) < 750f) UpdateAIState();
                 else Destroy(gameObject);
+                rubberModeAnimator.SetBool("IsMoving", false);
+                ratModeAnimator.SetBool("IsMoving", false);
             }
         }
     }
@@ -134,15 +139,14 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
                     //Player was spotted. proceed to wind up state.
                     playerDirection = transform.position - playerController.gameObject.transform.position;
                     playerDirection.Normalize();
-
-                    
-
                     chargePos = transform.position;
                     currentState = ShieldCatStates.SwapDirection;
                     return;
                 }
                 break;
             case ShieldCatStates.WindUp:
+                rubberModeAnimator.SetBool("IsMoving", true);
+                ratModeAnimator.SetBool("IsMoving", true);
                 //Need to see how long the player is in front of it and if we run over it then the charge occurs
                 RaycastHit2D playerHitCheck = Physics2D.Linecast((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, ~ignore);
                 if (!GameObject.ReferenceEquals(playerHitCheck.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange)
@@ -189,6 +193,7 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
                 }
                 else
                 {
+                    ratModeAnimator.SetTrigger("Attack");
                     timeCharging = 0;
                     rigidBody.velocity = Vector3.zero;
                     if(isFacingLeft)
@@ -219,19 +224,23 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
                 directionOfPlayer.Normalize();
                 if(directionOfPlayer.x > 0)
                 {
-                    //Facing right
+                    //Facing left
                     shieldRight.SetActive(false);
                     shieldLeft.SetActive(true);
                     isFacingLeft = true;
                     activeShield = shieldRight;
+                    spriteRendererRubber.flipX = false;
+                    spriteRendererRat.flipX = false;
                 }
                 else
                 {
-                    //Facing left
+                    //Facing right
                     shieldRight.SetActive(true);
                     shieldLeft.SetActive(false);
                     isFacingLeft = false;
                     activeShield = shieldLeft;
+                    spriteRendererRubber.flipX = true;
+                    spriteRendererRat.flipX = true;
                 }
                 activeShieldCollider = activeShield.GetComponent<CapsuleCollider2D>();
                 currentState = ShieldCatStates.WindUp;
@@ -299,6 +308,8 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
     {
         if (isAlive)
         {
+            rubberModeAnimator.SetTrigger("Death");
+            ratModeAnimator.SetTrigger("Death");
             frenzyManager.AddToFrenzyMeter(frenzyPercentageFill);
             isAlive = false;
             if (activateItemsOnDeath)

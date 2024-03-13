@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 279318945127355925}
   - component: {fileID: 8352501248949810362}
   - component: {fileID: 7525847070608865260}
+  - component: {fileID: 2212522446954118728}
+  - component: {fileID: 2159784623783188239}
   m_Layer: 7
   m_Name: GolemEnemy
   m_TagString: Untagged
@@ -46,10 +48,10 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 636476282479777053}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 5ceb26b362ba7c14fa938aa95d4c0ef9, type: 2}
+  m_Material: {fileID: 6200000, guid: 3f4c17e0c360df2489d6ad2454e9207a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16255
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -133,6 +135,8 @@ MonoBehaviour:
   currentState: 2
   spriteRendererRubber: {fileID: 1662735828455180563}
   spriteRendererRat: {fileID: 6864120668863725990}
+  ratModeAnimator: {fileID: 4917413935571180319}
+  rubberModeAnimator: {fileID: 4718105159423954873}
 --- !u!114 &7525847070608865260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +154,61 @@ MonoBehaviour:
   isPlayer: 0
   playerUIManager: {fileID: 0}
   isInvincible: 0
+--- !u!249 &2212522446954118728
+AreaEffector2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636476282479777053}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGlobalAngle: 1
+  m_ForceAngle: -45
+  m_ForceMagnitude: 125
+  m_ForceVariation: 125
+  m_ForceTarget: 0
+  m_Drag: 0
+  m_AngularDrag: 0
+--- !u!70 &2159784623783188239
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636476282479777053}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.9999999, y: 2}
+  m_Direction: 0
 --- !u!1 &6816916014706048690
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1286296502542836570}
   - component: {fileID: 1662735828455180563}
+  - component: {fileID: 4718105159423954873}
   m_Layer: 11
   m_Name: RubberGolemSprite
   m_TagString: Untagged
@@ -223,7 +283,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -1058037652, guid: b487bd525c40cc041ac89eb4f241b519, type: 3}
   m_Color: {r: 0.9258137, g: 0, b: 1, a: 0.42745098}
   m_FlipX: 0
   m_FlipY: 0
@@ -234,6 +294,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4718105159423954873
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816916014706048690}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f390f6994eb241e4c9340f04a6708e8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8456260928128429824
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4884927439750093988}
   - component: {fileID: 6864120668863725990}
+  - component: {fileID: 4917413935571180319}
   m_Layer: 12
   m_Name: RatGolemSprite
   m_TagString: Untagged
@@ -307,7 +389,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -1058037652, guid: b487bd525c40cc041ac89eb4f241b519, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -318,3 +400,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4917413935571180319
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8456260928128429824}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f390f6994eb241e4c9340f04a6708e8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

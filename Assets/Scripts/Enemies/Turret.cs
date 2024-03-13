@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
@@ -10,8 +11,8 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
     //Shoots at players position, so it doesn't unfairly hit them as they move. 
     //Needs to become "dead" in rubber mode.
     [Header("Animation Settings")]
-    [Tooltip("Set this to true if the turret animations appear mirrored in-game")][SerializeField] private bool mirrorAnims = false;
-    [Tooltip("Set this to true if the turret is mounted on a wall")][SerializeField] private bool isOnWall = false;
+    //[Tooltip("Set this to true if the turret animations appear mirrored in-game")][SerializeField] private bool mirrorAnims = false;
+    //[Tooltip("Set this to true if the turret is mounted on a wall")][SerializeField] private bool isOnWall = false;
     [Header("Turret Settings")]
     [Tooltip("Set to true to see gizmos that show turret range")][SerializeField] private bool drawGizmos = true;
     [SerializeField] LayerMask ignore;
@@ -30,13 +31,16 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
     private FrenzyManager frenzyManager;
     [Tooltip("Sprite renderer for the rat mode turret.")][SerializeField] private SpriteRenderer spriteRenderer;
     Vector2 playerPos;
-    [SerializeField] private Animator ratModeAnimator;
-    [SerializeField] private Animator rubberModeAnimator;
-    [SerializeField] private GameObject[] firingPositions;
+    //Turret no longer has animators.
+    //[SerializeField] private Animator ratModeAnimator;
+    //[SerializeField] private Animator rubberModeAnimator;
+    [SerializeField] private GameObject firingPosition;
+    [SerializeField] private GameObject ratModeTurret;
+    [SerializeField] private GameObject rubberModeTurret;
+    Transform playerTransform;
 
     private void Awake()
     {
-        
         
         //spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -45,6 +49,7 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
     {
         playerController = PlayerController.instance;
         frenzyManager = FrenzyManager.instance;
+        playerTransform = playerController.transform;
 
         if (startOn) 
         {
@@ -70,47 +75,59 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
     // Update is called once per frame
     void Update()
     {
-        if (!isOnCooldown && !frenzyManager.inRubberMode && isActive && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= turretSightRange) 
+        if (Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= turretSightRange && !frenzyManager.inRubberMode && isActive)
         {
-            RaycastHit2D hit = Physics2D.Linecast(gameObject.transform.position, playerController.gameObject.transform.position, ~ignore);
-            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) )
+            //New turret rotate to face player
+            Vector3 diff = playerController.transform.position - ratModeTurret.transform.position;
+            diff.Normalize();
+            float rot_Z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+            ratModeTurret.transform.rotation = Quaternion.Euler(0f, 0f, rot_Z);
+            rubberModeTurret.transform.rotation = Quaternion.Euler(0f, 0f, rot_Z);
+            if (!isOnCooldown)
             {
-                Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.green);
-                StartCoroutine(TurretFiringDelayControl());
-                if (!isOnWall)
+                RaycastHit2D hit = Physics2D.Linecast(gameObject.transform.position, playerController.gameObject.transform.position, ~ignore);
+                if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null))
                 {
-                    if (!mirrorAnims)
+                    Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.green);
+                    StartCoroutine(TurretFiringDelayControl());
+
+                    /* Old anims logic.
+                    if (!isOnWall)
                     {
-                        float playerXDir = ((Vector2)playerController.transform.position - (Vector2)transform.position).normalized.x;
-                        ratModeAnimator.SetFloat("PlayerDir", playerXDir);
-                        rubberModeAnimator.SetFloat("PlayerDir", playerXDir);
+                        if (!mirrorAnims)
+                        {
+                            float playerXDir = ((Vector2)playerController.transform.position - (Vector2)transform.position).normalized.x;
+                            ratModeAnimator.SetFloat("PlayerDir", playerXDir);
+                            rubberModeAnimator.SetFloat("PlayerDir", playerXDir);
+                        }
+                        else
+                        {
+                            float playerXDir = -((Vector2)playerController.transform.position - (Vector2)transform.position).normalized.x;
+                            ratModeAnimator.SetFloat("PlayerDir", playerXDir);
+                            rubberModeAnimator.SetFloat("PlayerDir", playerXDir);
+                        }
                     }
                     else
                     {
-                        float playerXDir = -((Vector2)playerController.transform.position - (Vector2)transform.position).normalized.x;
-                        ratModeAnimator.SetFloat("PlayerDir", playerXDir);
-                        rubberModeAnimator.SetFloat("PlayerDir", playerXDir);
+                        if (!mirrorAnims)
+                        {
+                            float playerYDir = ((Vector2)playerController.transform.position - (Vector2)transform.position).normalized.y;
+                            ratModeAnimator.SetFloat("PlayerDir", playerYDir);
+                            rubberModeAnimator.SetFloat("PlayerDir", playerYDir);
+                        }
+                        else
+                        {
+                            float playerYDir = -((Vector2)playerController.transform.position - (Vector2)transform.position).normalized.y;
+                            ratModeAnimator.SetFloat("PlayerDir", playerYDir);
+                            rubberModeAnimator.SetFloat("PlayerDir", playerYDir);
+                        }
                     }
+                    */
                 }
                 else
                 {
-                    if (!mirrorAnims)
-                    {
-                        float playerYDir = ((Vector2)playerController.transform.position - (Vector2)transform.position).normalized.y;
-                        ratModeAnimator.SetFloat("PlayerDir", playerYDir);
-                        rubberModeAnimator.SetFloat("PlayerDir", playerYDir);
-                    }
-                    else
-                    {
-                        float playerYDir = -((Vector2)playerController.transform.position - (Vector2)transform.position).normalized.y;
-                        ratModeAnimator.SetFloat("PlayerDir", playerYDir);
-                        rubberModeAnimator.SetFloat("PlayerDir", playerYDir);
-                    }
+                    Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.red);
                 }
-            }
-            else
-            {
-                Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.red);
             }
         }
     }
@@ -125,6 +142,7 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
         {
             yield return null;
         }
+        /*
         //This finds the current running anim and picks the correct firing spot. 
         {
             GameObject firingPos;
@@ -161,12 +179,14 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
                 //bad thing happened if we get here
                 firingPos = gameObject;
             }
-            GameObject projectileClone = Instantiate(projectile, firingPos.transform.position, Quaternion.identity);
+        }
+        */
+            GameObject projectileClone = Instantiate(projectile, firingPosition.transform.position, Quaternion.identity);
             Projectile projectileRef = projectileClone.GetComponent<Projectile>();
             projectileRef.targetPosition = playerPos;
             projectileRef.damageByProjectile = projectileDamage;
             projectileRef.projectileSpeed = projectileSpeed;
-        }
+        
         yield return new WaitForSeconds(turretFireCooldown);
         isOnCooldown = false;
     }

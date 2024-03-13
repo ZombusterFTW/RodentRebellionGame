@@ -41,7 +41,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
         collisionRadius = 0.15f;
         rightOffset = new Vector2(0.35f, 0.1f);
         leftOffset = new Vector2(-0.35f, 0.1f);
-        bottomOffset = new Vector2(0, -.1f);
+        bottomOffset = new Vector2(0, -.2f);
         topOffset = new Vector2(0, .3f);
         //Calculate the spots the AI will move to.
         moveDistance = Mathf.Abs(moveDistance);
@@ -75,7 +75,13 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     // Update is called once per frame
     void Update()
     {
-        if(isAlive) 
+        
+    }
+    private void FixedUpdate()
+    {
+        //This function will check if the AI has bumped against a wall and if it has, we instantly change the AI's movement direction.
+        if (isAlive) CheckAICollision();
+        if (isAlive)
         {
             if (frenzyManager.inRubberMode)
             {
@@ -92,11 +98,6 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
                 else Destroy(gameObject);
             }
         }
-    }
-    private void FixedUpdate()
-    {
-        //This function will check if the AI has bumped against a wall and if it has, we instantly change the AI's movement direction.
-        if (isAlive) CheckAICollision();
     }
 
     private void UpdateAIState()
@@ -253,8 +254,8 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     {
         onRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, surfaceLayer);
         onLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, surfaceLayer);
-        if(!isFlipped) onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, surfaceLayer);
-        else onGround = Physics2D.OverlapCircle((Vector2)transform.position + topOffset, collisionRadius, surfaceLayer);
+        if(!isFlipped) onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius/3, surfaceLayer);
+        else onGround = Physics2D.OverlapCircle((Vector2)transform.position + topOffset, collisionRadius/3, surfaceLayer);
     }
 
     private void OnDrawGizmos()
@@ -265,7 +266,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
             //var positions = new Vector2[] { rightOffset, leftOffset };
             //Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
             //Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
-            //Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collisionRadius);
+           // Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collisionRadius);
             Gizmos.DrawSphere((Vector2)transform.position + new Vector2(moveDistance, 0), collisionRadius);
             Gizmos.DrawSphere((Vector2)transform.position - new Vector2(moveDistance, 0), collisionRadius);
         }

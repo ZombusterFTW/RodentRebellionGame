@@ -7,6 +7,7 @@ using UnityEngine;
 public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
 {
     private Vector2 bottomOffset = new Vector2(0, -0.60f);
+    private Vector2 lineCastOffset = new Vector2(0, -0.35f);
     [SerializeField] LayerMask ignore;
     [SerializeField] bool drawGizmos = true;
     [SerializeField] GameObject playerUI;
@@ -41,6 +42,8 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
     PlayerController playerController;
     private bool pursueCooldown = false;
     private Coroutine pursueCooldownTimer;
+    [SerializeField] private Animator ratModeAnimator;
+    [SerializeField] private Animator rubberModeAnimator;
 
     //Like basic rat but chonky!
 
@@ -103,6 +106,8 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
                 rigidBody.simulated = false;
                 capsuleCollider.enabled = false;
                 if (!Coroutine.ReferenceEquals(extendedDamage, null)) StopCoroutine(extendedDamage);
+                ratModeAnimator.SetBool("IsMoving", false);
+                rubberModeAnimator.SetBool("IsMoving", false);
             }
             else
             {
@@ -122,7 +127,7 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
     private void UpdateAIState()
     {
 
-        if (!Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, surfaceLayer))
+        if (!Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius/2, surfaceLayer))
         {
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, -5f);
         }
@@ -150,7 +155,7 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
                             spriteRendererRubber.flipX = false;
                             //transform.position = Vector2.MoveTowards(transform.position, leftExtreme, Time.deltaTime * moveSpeed);
                             rigidBody.velocity = new Vector2(-moveSpeed, rigidBody.velocity.y);
-                            RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, ~ignore);
+                            RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position + lineCastOffset, playerController.gameObject.transform.position, ~ignore);
                             if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange && !pursueCooldown)
                             {
                                 currentState = BasicRatAIStates.Pursuing;
@@ -180,7 +185,7 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
                             spriteRendererRubber.flipX = true;
                             //transform.position = Vector2.MoveTowards(transform.position, rightExtreme, Time.deltaTime * moveSpeed);
                             rigidBody.velocity = new Vector2(moveSpeed, rigidBody.velocity.y);
-                            RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, ~ignore);
+                            RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position + lineCastOffset, playerController.gameObject.transform.position, ~ignore);
                             if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange && !pursueCooldown)
                             {
                                 currentState = BasicRatAIStates.Pursuing;
@@ -201,10 +206,10 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
                     //enemyAnimatorRubber.SetBool("IsMoving", true);
                    // enemyAnimatorRat.SetBool("IsMoving", true);
                     //enemyRB.AddForce(direction * speed * Time.deltaTime, ForceMode2D.Force);
-                    RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, ~ignore);
+                    RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position + lineCastOffset, playerController.gameObject.transform.position, ~ignore);
                     if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange && !hit.collider.gameObject.GetComponent<PlayerController>().disableAllMoves)
                     {
-                        Debug.DrawLine((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, Color.green);
+                        Debug.DrawLine((Vector2)transform.position + lineCastOffset, playerController.gameObject.transform.position, Color.green);
 
                         if(capsuleCollider.IsTouching(playerController.GetPlayerCollider()))
                         {
@@ -220,7 +225,7 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
                     }
                     else
                     {
-                        Debug.DrawLine((Vector2)transform.position + bottomOffset, playerController.gameObject.transform.position, Color.red);
+                        Debug.DrawLine((Vector2)transform.position + lineCastOffset, playerController.gameObject.transform.position, Color.red);
                         if (direction.x < 0) currentState = BasicRatAIStates.MovingRight;
                         else currentState = BasicRatAIStates.MovingLeft;
                         if (pursueCooldownTimer == null) pursueCooldownTimer = StartCoroutine(PursueDelay());
@@ -233,6 +238,13 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
                     currentState = BasicRatAIStates.Pursuing;
                     break;
                 }
+        }
+
+
+        if(rigidBody.velocity.x != 0)
+        {
+            ratModeAnimator.SetBool("IsMoving", true);
+            ratModeAnimator.SetBool("IsMoving", true);
         }
     }
 
@@ -272,6 +284,8 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
         yield return new WaitForSeconds(0.1f);
         if (capsuleCollider.IsTouching(playerController.GetPlayerCollider()))
         {
+            ratModeAnimator.SetTrigger("Attack");
+            rubberModeAnimator.SetTrigger("Attack");
             playerHealthObj.SubtractFromHealth(damageToPlayer);
             yield return new WaitForSeconds(0.45f);
         }
@@ -299,7 +313,7 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
             Gizmos.DrawSphere((Vector2)transform.position + new Vector2(moveDistance, 0), collisionRadius / 2);
             Gizmos.DrawSphere((Vector2)transform.position - new Vector2(moveDistance, 0), collisionRadius / 2);
             Gizmos.DrawSphere((Vector2)transform.position, sightRange);
-            Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collisionRadius);
+            Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collisionRadius/2);
             Gizmos.color = Color.white;
             Gizmos.DrawSphere((Vector2)transform.position + new Vector2(moveDistance, 0), collisionRadius / 2);
             Gizmos.DrawSphere((Vector2)transform.position - new Vector2(moveDistance, 0), collisionRadius / 2);

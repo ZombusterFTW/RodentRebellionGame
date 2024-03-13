@@ -72,8 +72,8 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
         isAlive = false;
         //Add to player frenzy meter here/
         frenzyManager.AddToFrenzyMeter(frenzyPercentageFill);
-        enemyAnimatorRat.SetTrigger("Death");
-        enemyAnimatorRubber.SetTrigger("Death");
+        //enemyAnimatorRat.SetTrigger("Death");
+        //enemyAnimatorRubber.SetTrigger("Death");
         if (activateItemsOnDeath)
         {
             foreach (var item in itemsToActivate)
@@ -112,6 +112,8 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
                 enemyRB.velocity = Vector3.zero;
                 enemyRB.simulated = false;
                 capsuleCollider.enabled = false;
+                enemyAnimatorRubber.SetBool("IsMoving", false);
+                enemyAnimatorRat.SetBool("IsMoving", false);
             }
             else
             {
@@ -237,8 +239,8 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
 
     public void PlayDamagedAnim()
     {
-        enemyAnimatorRat.SetTrigger("Damaged");
-        enemyAnimatorRubber.SetTrigger("Damaged");
+        //enemyAnimatorRat.SetTrigger("Damaged");
+        //enemyAnimatorRubber.SetTrigger("Damaged");
         if (Coroutine.ReferenceEquals(attackCooldown, null)) attackCooldown = StartCoroutine(AttackDelayTimer());
         else
         {

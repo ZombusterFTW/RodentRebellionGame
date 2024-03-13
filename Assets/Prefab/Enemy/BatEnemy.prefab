@@ -204,7 +204,8 @@ GameObject:
   - component: {fileID: 5244246583552158082}
   - component: {fileID: 7538035845282850312}
   - component: {fileID: 7125144125752540632}
-  - component: {fileID: 8509015264334785160}
+  - component: {fileID: 7830056824654026575}
+  - component: {fileID: 48440357336309236}
   m_Layer: 7
   m_Name: BatEnemy
   m_TagString: Untagged
@@ -358,7 +359,7 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!58 &8509015264334785160
+--- !u!58 &7830056824654026575
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -373,7 +374,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -387,9 +388,29 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 0.77
+--- !u!249 &48440357336309236
+AreaEffector2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8344921356596474144}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGlobalAngle: 1
+  m_ForceAngle: -45
+  m_ForceMagnitude: 125
+  m_ForceVariation: 125
+  m_ForceTarget: 0
+  m_Drag: 0
+  m_AngularDrag: 0

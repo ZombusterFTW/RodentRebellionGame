@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4001120497462870470}
   - component: {fileID: 6628784272809777060}
   - component: {fileID: 8525610037969565656}
-  - component: {fileID: 8623058329350848147}
+  - component: {fileID: 4802511339348204593}
+  - component: {fileID: 2017020097740949181}
   m_Layer: 7
   m_Name: BasicRatEnemy
   m_TagString: Untagged
@@ -138,7 +139,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.02, y: 0.46}
   m_EdgeRadius: 0
---- !u!61 &8623058329350848147
+--- !u!61 &4802511339348204593
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,7 +154,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -167,10 +168,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_IsTrigger: 1
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.6}
+  m_Offset: {x: 0, y: 0.08}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -181,8 +182,28 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.16, y: 1.5}
+  m_Size: {x: 1, y: 0.51}
   m_EdgeRadius: 0
+--- !u!249 &2017020097740949181
+AreaEffector2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2746408664537341484}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGlobalAngle: 1
+  m_ForceAngle: -45
+  m_ForceMagnitude: 200
+  m_ForceVariation: 200
+  m_ForceTarget: 0
+  m_Drag: 0
+  m_AngularDrag: 0
 --- !u!1 &4697172853310512043
 GameObject:
   m_ObjectHideFlags: 0
