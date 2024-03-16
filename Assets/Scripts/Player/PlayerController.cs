@@ -342,9 +342,9 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         //Prevent wall climb if player lacks the ability.
         if (canWallClimb)
         {
-            onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, playerWalls) || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, playerWalls);
-            onRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, playerWalls);
-            onLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, playerWalls);
+            onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius+.05f, playerWalls) || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius + .15f, playerWalls);
+            onRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius + .05f, playerWalls);
+            onLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius + .05f, playerWalls);
             if(onGround)
             {
                 //Player cannot be on wall if they are grounded

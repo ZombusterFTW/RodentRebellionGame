@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Semester2Levels/Labyrinth3.unity
     guid: a2f41a35b7ce3c947959808ff42304f8
+  - enabled: 1
+    path: Assets/Scenes/FinalBossTest.unity
+    guid: 615a79e317ce7124094cf1c5994eec9b
   m_configObjects: {}

@@ -97,10 +97,12 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isAlive)
         {
+            //This function will check if the AI has bumped against a wall and if it has, we instantly change the AI's movement direction.
+            CheckAICollision();
             if (frenzyManager.inRubberMode)
             {
                 rigidBody.simulated = false;
@@ -119,11 +121,6 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
         }
     }
 
-    private void FixedUpdate()
-    {
-        //This function will check if the AI has bumped against a wall and if it has, we instantly change the AI's movement direction.
-        if (isAlive) CheckAICollision();
-    }
     private void UpdateAIState()
     {
 

@@ -159,7 +159,7 @@ AreaEffector2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3571582774582946006}
-  m_Enabled: 1
+  m_Enabled: 0
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
@@ -178,7 +178,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3571582774582946006}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -203,8 +203,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2, y: 0}
-  m_Size: {x: 0.62, y: 1.54}
+  m_Offset: {x: -0.2, y: -0.2}
+  m_Size: {x: 0.53, y: 1.22}
   m_Direction: 0
 --- !u!1 &5364591674593839137
 GameObject:

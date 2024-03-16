@@ -15,7 +15,7 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
     [Tooltip("The Shield Cat sight range for the raycast. The player must be in range and seeable")][SerializeField] private float sightRange = 12.5f;
     //[Tooltip("Set to true if you want the enemy to walk on the ceiling and have inverted physics.")][SerializeField] private bool isFlipped = false;
     [Tooltip("The time the Shield Cat will be idle after its charge completes")]private float chargeCooldownTime = 3.5f;
-    [Tooltip("The speed the Shield Cat AI will move during its charge")] private float chargeMoveSpeed = 12f;
+    [Tooltip("The speed the Shield Cat AI will move during its charge")] private float chargeMoveSpeed = 8f;
     [Tooltip("The speed the Shield Cat AI will move during its windup")] private float windUpMoveSpeed = 0.35f;
     [Tooltip("Set to true if you want the Shield Cat AI to activate items on its death")][SerializeField] private bool activateItemsOnDeath = false;
     [Tooltip("Add the wanted activated items to this list. These items must integrate the R4 Activatable interface")][SerializeField] private GameObject[] itemsToActivate;

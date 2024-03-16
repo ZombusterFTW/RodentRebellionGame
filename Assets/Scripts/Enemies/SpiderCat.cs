@@ -102,7 +102,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
 
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (isAlive)
         {
