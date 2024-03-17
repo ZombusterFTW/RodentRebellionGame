@@ -27,12 +27,29 @@ public class ExitDoor : MonoBehaviour,R4Activatable
     {
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying && isActive)
         {
-            if (GameObject.FindObjectOfType<PlayerController>().GetInteractPressed())
+            if (PlayerController.instance.GetInteractPressed())
             {
+                isActive = false;
                 SceneTransitionerManager.instance.StartTransition(sceneToLoad);
+                SavePlayerVariables();
             }
         }
     }
+
+    private void SavePlayerVariables()
+    {
+        //Check for player variables here and save them. 
+
+
+
+
+
+
+    }
+
+
+
+
 
     private void OnTriggerEnter2D(Collider2D collider)
     {

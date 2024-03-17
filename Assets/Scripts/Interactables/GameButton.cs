@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Button : MonoBehaviour
+public class GameButton : MonoBehaviour
 {
     [Tooltip("If the button will use toggle behavior. The itemActivateTime must be set to -1 for this to wor;")][SerializeField] private bool toggleBehavior = true;
     [Tooltip("How long the button will activate what its connected to. Set value to negative 1 for indefinite.")][SerializeField] float itemActivateTime = 5f;

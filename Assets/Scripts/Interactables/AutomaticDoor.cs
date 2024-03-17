@@ -9,7 +9,8 @@ public class AutomaticDoor : MonoBehaviour, R4Activatable
     [Tooltip("The left door will move to the center of this object when activated")][SerializeField] private GameObject leftDoorTarget;
     [Tooltip("The right door will move to the center of this object when activated")][SerializeField] private GameObject rightDoorTarget;
     [Tooltip("The speed the door will open and close")][SerializeField] private float openCloseSpeed = 8.5f;
-    [SerializeField] bool isActivated = false;
+    [Tooltip("Set to true if you want the automatic door to begin open.")][SerializeField] private bool startDoorOpen = false;
+    bool isActivated = false;
     Vector2 leftDoorStartPos;
     Vector2 rightDoorStartPos;
     Vector2 leftDoorTargetPos;
@@ -28,15 +29,30 @@ public class AutomaticDoor : MonoBehaviour, R4Activatable
         rightDoorTarget.GetComponent<SpriteRenderer>().enabled = false; 
 
 
-
-        if(isActivated)
+        if(!startDoorOpen) 
         {
-            Activate();
+            if (isActivated)
+            {
+                Activate();
+            }
+            else
+            {
+                Deactivate();
+            }
         }
         else
         {
-            Deactivate();
+            if (!isActivated)
+            {
+                Deactivate();
+                
+            }
+            else
+            {
+                Activate();
+            }
         }
+        
     }
 
     // Update is called once per frame
@@ -47,22 +63,49 @@ public class AutomaticDoor : MonoBehaviour, R4Activatable
 
     public void Activate()
     {
-        isActivated = true;
-        //Activated the door.
-        Debug.Log("Opening Door");
-        StopCoroutine(OpenCloseDoor());
-        leftDoorTargetPos = leftDoorTarget.transform.position;
-        rightDoorTargetPos = rightDoorTarget.transform.position;
-        StartCoroutine(OpenCloseDoor());
+        if (!startDoorOpen)
+        {
+            isActivated = true;
+            //Activated the door.
+            Debug.Log("Opening Door");
+            StopCoroutine(OpenCloseDoor());
+            leftDoorTargetPos = leftDoorTarget.transform.position;
+            rightDoorTargetPos = rightDoorTarget.transform.position;
+            StartCoroutine(OpenCloseDoor());
+        }
+        else
+        {
+            isActivated = false;
+            Debug.Log("Closing Door");
+            StopCoroutine(OpenCloseDoor());
+            leftDoorTargetPos = leftDoorStartPos;
+            rightDoorTargetPos = rightDoorStartPos;
+            StartCoroutine(OpenCloseDoor());
+        }
+        
     }
     public void Deactivate() 
     {
-        isActivated = false;    
-        Debug.Log("Closing Door");
-        StopCoroutine(OpenCloseDoor());
-        leftDoorTargetPos = leftDoorStartPos;
-        rightDoorTargetPos = rightDoorStartPos;
-        StartCoroutine(OpenCloseDoor());
+        if(!startDoorOpen)
+        {
+            isActivated = false;
+            Debug.Log("Closing Door");
+            StopCoroutine(OpenCloseDoor());
+            leftDoorTargetPos = leftDoorStartPos;
+            rightDoorTargetPos = rightDoorStartPos;
+            StartCoroutine(OpenCloseDoor());
+        }
+        else
+        {
+            isActivated = true;
+            //Activated the door.
+            Debug.Log("Opening Door");
+            StopCoroutine(OpenCloseDoor());
+            leftDoorTargetPos = leftDoorTarget.transform.position;
+            rightDoorTargetPos = rightDoorTarget.transform.position;
+            StartCoroutine(OpenCloseDoor());
+        }
+        
     }
 
     IEnumerator OpenCloseDoor()

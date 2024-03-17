@@ -652,6 +652,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c449a7e0a03a1254c8c1624afe0ccc44, type: 3}
+--- !u!1 &232677186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6771154823761809339, guid: cbd0bcb5423409b4882ab462997ef407, type: 3}
+  m_PrefabInstance: {fileID: 6362164932468821032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &234610705
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7285,9 +7290,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4396715666260241654, guid: b4064f9eaa41766479d70077c47502db, type: 3}
+      propertyPath: itemsToActivate.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396715666260241654, guid: b4064f9eaa41766479d70077c47502db, type: 3}
+      propertyPath: itemsToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 232677186}
     - target: {fileID: 7565401521428702887, guid: b4064f9eaa41766479d70077c47502db, type: 3}
       propertyPath: m_Name
       value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7565401521428702887, guid: b4064f9eaa41766479d70077c47502db, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7357,7 +7374,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 8392b6ad44a48bf4abb3767738a6891f, type: 3}
     - target: {fileID: 9003417552762851014, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: upgradeType
-      value: 9
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9003417552762851014, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: activatesItems
@@ -21172,6 +21189,14 @@ PrefabInstance:
     - target: {fileID: 4453903626244807482, guid: cbd0bcb5423409b4882ab462997ef407, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5196599873487377826, guid: cbd0bcb5423409b4882ab462997ef407, type: 3}
+      propertyPath: isActivated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5196599873487377826, guid: cbd0bcb5423409b4882ab462997ef407, type: 3}
+      propertyPath: startDoorOpen
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5892690565502611532, guid: cbd0bcb5423409b4882ab462997ef407, type: 3}
       propertyPath: m_Layer

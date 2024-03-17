@@ -178,8 +178,31 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         jumpForce_Game = jumpForce;
         SceneManager.sceneLoaded += OnSceneChange;
         //sceneTransitionerManager = SceneTransitionerManager.instance;
-        playerWeapon = playerUpgrade.playerWeaponType;
+        if(SaveData.instance != null) LoadSaveData();
+        else playerWeapon = playerUpgrade.playerWeaponType;
     }
+
+
+    void LoadSaveData()
+    {
+        PlayerSaveData saveData = new PlayerSaveData();
+        SaveData.instance.LoadFromJson();
+        saveData = SaveData.instance.playerSaveData;
+        playerWeapon = saveData.currentWeapon;
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
 
     private void OnSceneChange(Scene arg0, LoadSceneMode arg1)
     {
@@ -1156,7 +1179,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         switch (upgradeType)
         {
             case UpgradeType.Health_Upgrade:
-                playerHealth.IncreaseHealthCap(0.15f);
+                //playerHealth.IncreaseHealthCap(0.15f);
                 break;
             case UpgradeType.Attack_Upgrade:
                 //playerUpgrade.UpgradeAttackDamage(0.15f);
@@ -1164,11 +1187,11 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             case UpgradeType.GroundPound_Ability:
                 canGroundPound = true;
                 break;
-            case UpgradeType.WallClimb_Ability: 
+            case UpgradeType.WallClimb_Ability:
                 canWallClimb = true;
                 canWallJump = true;
                 break;
-            case UpgradeType.DoubleJump_Ability: 
+            case UpgradeType.DoubleJump_Ability:
                 canDoubleJump = true;
                 break;
             case UpgradeType.WallJump_Ability:
@@ -1194,9 +1217,22 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 canEnterRageMode = true;
                 break;
         }
+
+        if (SaveData.instance != null)
+        {
+            //This will handle getting data ready to save. A save will only occur at a level complete ATP
+            //Do the inverse of this on start
+            SaveData.instance.playerSaveData.currentAbilities[0] = canWallClimb;
+            SaveData.instance.playerSaveData.currentAbilities[1] = canDash;
+            SaveData.instance.playerSaveData.currentAbilities[2] = canGroundPound;
+            SaveData.instance.playerSaveData.currentAbilities[3] = canDoubleJump;
+            SaveData.instance.playerSaveData.currentAbilities[4] = canWallJump;
+            SaveData.instance.playerSaveData.currentAbilities[5] = canEnterRageMode;
+            SaveData.instance.playerSaveData.currentAbilities[6] = canPhaseShift;
+        }
     }
 
-    public float GetActiveMovementSpeed()
+        public float GetActiveMovementSpeed()
     {
         return playerSpeed_Game;
     }

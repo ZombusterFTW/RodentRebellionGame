@@ -13,4 +13,9 @@ public class UISceneChanger : MonoBehaviour
     {
         SceneTransitionerManager.instance.StartTransition(sceneName);
     }
+
+    public void LoadLastPlayedScene()
+    {
+        SceneTransitionerManager.instance.StartTransition(SaveData.instance.playerSaveData.currentLevel);
+    }
 }
