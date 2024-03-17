@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2411038731495790341}
   - component: {fileID: 3919388323930563286}
   - component: {fileID: 4368320188152592248}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: WeakPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startOn: 1
   platformFallDelay: 1.5
-  canPlatformRespawn: 0
+  canPlatformRespawn: 1
   platformRespawnDelay: 5
   platformDurability: 0
   fallDistance: -5

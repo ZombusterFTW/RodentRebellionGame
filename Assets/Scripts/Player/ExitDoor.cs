@@ -39,12 +39,12 @@ public class ExitDoor : MonoBehaviour,R4Activatable
     private void SavePlayerVariables()
     {
         //Check for player variables here and save them. 
-
-
-
-
-
-
+        if(SaveData.instance != null) 
+        {
+            //Track level name and save data put into memory by other classes
+            SaveData.instance.playerSaveData.currentLevel = sceneToLoad;
+            SaveData.instance.SaveIntoJson();
+        }
     }
 
 

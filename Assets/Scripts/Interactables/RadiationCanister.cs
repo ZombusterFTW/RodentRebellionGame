@@ -88,9 +88,6 @@ public class RadiationCanister : MonoBehaviour
             case UpgradeType.Dash_Ability:
                 spriteRenderer.sprite = abilityCanisterImage;
                 break;
-            case UpgradeType.WallClimb_Ability:
-                spriteRenderer.sprite = abilityCanisterImage;
-                break;
             case UpgradeType.WallJump_Ability:
                 spriteRenderer.sprite = abilityCanisterImage;
                 break;
@@ -133,8 +130,6 @@ public class RadiationCanister : MonoBehaviour
                 return "<color=red>15% Attack Upgrade";
             case UpgradeType.GroundPound_Ability:
                 return "<color=yellow>Ground Pound Ability";
-            case UpgradeType.WallClimb_Ability:
-                return "<color=yellow>Wall Climb Ability";
             case UpgradeType.WallJump_Ability:
                 return "<color=yellow>Wall Jump Ability";
             case UpgradeType.DoubleJump_Ability:
@@ -170,7 +165,6 @@ public enum UpgradeType
     Health_Upgrade,
     Attack_Upgrade,
     GroundPound_Ability,
-    WallClimb_Ability,
     WallJump_Ability,
     DoubleJump_Ability,
     Dash_Ability,
