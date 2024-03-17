@@ -33,10 +33,10 @@ public class SaveData : MonoBehaviour
 
     public void LoadFromJson()
     {
-        if(File.Exists("/PlayerData.json"))
+        if(File.Exists(Application.persistentDataPath + "/PlayerData.json"))
         {
             //If the file exists we turn it into a string and convert from a Json to a PlayerSaveData type
-            string playerData = File.ReadAllText("/PlayerData.json");
+            string playerData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
             playerSaveData = JsonUtility.FromJson<PlayerSaveData>(playerData);
         }
     }

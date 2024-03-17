@@ -185,18 +185,19 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     void LoadSaveData()
     {
+        //Load Player Stuffs
         PlayerSaveData saveData = new PlayerSaveData();
         SaveData.instance.LoadFromJson();
         saveData = SaveData.instance.playerSaveData;
         playerWeapon = saveData.currentWeapon;
-
-
-
-
-
-
-
-
+        canWallClimb = saveData.currentAbilities[0];
+        canDash = saveData.currentAbilities[1];
+        canGroundPound = saveData.currentAbilities[2];
+        canDoubleJump = saveData.currentAbilities[3];
+        canWallJump = saveData.currentAbilities[4];
+        canEnterRageMode = saveData.currentAbilities[5];
+        canPhaseShift = saveData.currentAbilities[6];
+        playerUpgrade.SetWeaponList(saveData.currentPlayerWeapons);
     }
 
 
@@ -281,8 +282,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             else if (canMove && wallJumped && !onWall) playerRigidBody.velocity = Vector2.Lerp(playerRigidBody.velocity, (new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), lerpTime * Time.deltaTime);
             else if (canMove && !wallJumped && !onGround && movementDirection.x != 0) playerRigidBody.velocity = Vector2.Lerp((new Vector2(movementDirection.x * playerSpeed_Game, playerRigidBody.velocity.y)), playerRigidBody.velocity, airControlLerpTime * Time.deltaTime);
             else if (canMove && !wallJumped && !onGround && movementDirection.x == 0) playerRigidBody.velocity = Vector2.Lerp((new Vector2(playerRigidBody.velocity.x, playerRigidBody.velocity.y)), playerRigidBody.velocity, airControlLerpTime * Time.deltaTime);
-
-            if (onWall && !onGround && canMove && !isGroundPounding)
+            //Wall slide should only no trigger if the player has a negative y velocity or a positive y vel and isflipped
+            if (onWall && !onGround && canMove && !isGroundPounding && (!isFlipped && playerRigidBody.velocity.y < 0 || isFlipped && playerRigidBody.velocity.y > 0))
             {
                 float wallDir = onRightWall ? 2 : -2;
                 if (wallDir < 0)
@@ -397,8 +398,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         var positions = new Vector2[] {bottomOffset, rightOffset, leftOffset, topOffset};
 
        // Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collisionRadiusTopBottom);
-       // Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
-       // Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
+       Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
+       Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);
        // Gizmos.DrawSphere((Vector2)transform.position + topOffset, collisionRadiusTopBottom);
 
 
@@ -1186,10 +1187,6 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 break;
             case UpgradeType.GroundPound_Ability:
                 canGroundPound = true;
-                break;
-            case UpgradeType.WallClimb_Ability:
-                canWallClimb = true;
-                canWallJump = true;
                 break;
             case UpgradeType.DoubleJump_Ability:
                 canDoubleJump = true;

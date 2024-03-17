@@ -27,6 +27,12 @@ public class Upgrade : MonoBehaviour
         playerUIManager.weaponIndentifier.text = weaponList[weaponIndex].ToString();
     }
 
+    public void SetWeaponList(List<PlayerWeaponType> weaponListIn)
+    {
+        weaponList = weaponListIn;
+    }
+
+
     public void SwapWeapon(bool swapUp = true)
     {
         int weaponListCount = weaponList.Count - 1;
@@ -95,6 +101,11 @@ public class Upgrade : MonoBehaviour
             playerWeaponType = weapon;
             weaponIndex = weaponList.IndexOf(weapon);
             playerUIManager.weaponIndentifier.text = weaponList[weaponIndex].ToString();
+            if(SaveData.instance !=  null)
+            {
+                SaveData.instance.playerSaveData.currentPlayerWeapons = weaponList;
+                SaveData.instance.playerSaveData.currentWeapon = playerWeaponType;
+            }
         }
     }
 

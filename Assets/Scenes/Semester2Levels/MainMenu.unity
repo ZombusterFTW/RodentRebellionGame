@@ -690,7 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSaveData:
-    currentLevel: 
+    currentLevel: TestLevel
     currentAbilities: 00000000000000
     currentPlayerWeapons: 
     currentWeapon: 0
