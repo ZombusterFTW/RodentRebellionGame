@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalBossTest.unity
     guid: 615a79e317ce7124094cf1c5994eec9b
+  - enabled: 1
+    path: Assets/Scenes/Semester2Levels/Runs.unity
+    guid: 74be388f5da22a444a50d78499deade5
   m_configObjects: {}

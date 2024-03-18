@@ -13,6 +13,10 @@ public class UISceneChanger : MonoBehaviour
     {
         SceneTransitionerManager.instance.StartTransition(sceneName);
     }
+    public void ChangeSceneFast(string sceneName)
+    {
+        SceneTransitionerManager.instance.FastTransition(sceneName);
+    }
 
     public void LoadLastPlayedScene()
     {

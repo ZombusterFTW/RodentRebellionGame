@@ -1,21 +1,25 @@
+using Newtonsoft;
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+
 public class SaveData : MonoBehaviour
 {
     public PlayerSaveData playerSaveData = new PlayerSaveData();
     public static SaveData instance;
-
     private void Awake()
     {
         if(instance == null)
         {
+
             instance = this;
             DontDestroyOnLoad(this.gameObject);
             //Load from data just in case
             LoadFromJson();
+            
         }
         else
         {
@@ -24,10 +28,12 @@ public class SaveData : MonoBehaviour
         }
     }
 
+
     public void SaveIntoJson()
     {
         //ONLY SAVE AT THE END OF A LEVEL ON EXIT DOOR!
-        string playerData = JsonUtility.ToJson(playerSaveData);
+        string playerData = JsonConvert.SerializeObject(playerSaveData);
+
         System.IO.File.WriteAllText(Application.persistentDataPath + "/PlayerData.json", playerData);
     }
 
@@ -37,7 +43,11 @@ public class SaveData : MonoBehaviour
         {
             //If the file exists we turn it into a string and convert from a Json to a PlayerSaveData type
             string playerData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
-            playerSaveData = JsonUtility.FromJson<PlayerSaveData>(playerData);
+
+            playerSaveData = JsonConvert.DeserializeObject<PlayerSaveData>(playerData);    
+
+
+            //playerSaveData = JsonUtility.FromJson<PlayerSaveData>(playerData);
         }
     }
 
