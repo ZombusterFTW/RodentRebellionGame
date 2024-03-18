@@ -13,6 +13,7 @@ public class SceneTransitionerManager : MonoBehaviour
 
 
     [SerializeField] Canvas canvas;
+    [SerializeField] Canvas runsCanvas;
     [SerializeField] GameObject parentGameObject;
     public string[] gameHints;
     public string[] gameHintAnimations;
@@ -22,7 +23,7 @@ public class SceneTransitionerManager : MonoBehaviour
     private int lastScreen = 0;
     [SerializeField] private float sceneTransitionTime = 2f;
     private bool transitionInProgress = false;
-
+    public RunsDataManager runsShowcase;
 
     public static SceneTransitionerManager instance { get; private set; }
     // Start is called before the first frame update
@@ -39,6 +40,7 @@ public class SceneTransitionerManager : MonoBehaviour
         else if (instance != null && instance != this)
         {
             Debug.Log("Scene transitioner already exists. Deleting copy");
+            DestroyImmediate(this.gameObject);
         }
     }
 
@@ -79,6 +81,11 @@ public class SceneTransitionerManager : MonoBehaviour
 
     IEnumerator SceneTransition(string sceneToGo)
     {
+        runsCanvas.gameObject.SetActive(true);
+        if (SceneTransitionerManager.instance != null)
+        {
+            SceneTransitionerManager.instance.runsShowcase.UpdateTimes();
+        }
         //Future, include a pause menu with options. For now just return to the main menu if the player hits escape.
         Time.timeScale = 0;
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToGo);
@@ -91,6 +98,10 @@ public class SceneTransitionerManager : MonoBehaviour
 
     IEnumerator SceneTransition(int sceneToGo)
     {
+        if (SceneTransitionerManager.instance != null)
+        {
+            SceneTransitionerManager.instance.runsShowcase.UpdateTimes();
+        }
         //Future, include a pause menu with options. For now just return to the main menu if the player hits escape.
         Time.timeScale = 0;
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToGo);
@@ -111,6 +122,7 @@ public class SceneTransitionerManager : MonoBehaviour
     {
         if (!SceneTransitionerManager.instance.transitionAnimator.GetCurrentAnimatorStateInfo(0).IsName("BoxWipe_Start") /*&& SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(buildIndex) */&& !transitionInProgress)
         {
+            runsCanvas.gameObject.SetActive(true);
             transitionInProgress = true;
             //For demonstration purposes a text hint is directly linked to an animation that would play with it.
             //Screens are random but they cannot be the same twice in a row
@@ -127,4 +139,41 @@ public class SceneTransitionerManager : MonoBehaviour
             StartCoroutine(SceneTransition(buildIndex));
         }
     }
+
+
+    public void FastTransition(string sceneName)
+    {
+        if (!SceneTransitionerManager.instance.transitionAnimator.GetCurrentAnimatorStateInfo(0).IsName("BoxWipe_Start") /*&& SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(buildIndex) */&& !transitionInProgress)
+        {
+            transitionInProgress = true;
+            //For demonstration purposes a text hint is directly linked to an animation that would play with it.
+            //Screens are random but they cannot be the same twice in a row
+            int index = Random.Range(0, gameHints.Length);
+            while (index == lastScreen)
+            {
+                index = Random.Range(0, gameHints.Length);
+            }
+            lastScreen = index;
+            transitionAnimator.SetTrigger("Transition");
+            gameHintsText.text = gameHints[index];
+            //Commented until anims are added
+            //if(gameHintAnimations[index] != null) transitionShowcaseAnimator.Play(gameHintAnimations[index], 1);
+            StartCoroutine(FastSceneTransition(sceneName));
+        }
+    }
+
+
+    IEnumerator FastSceneTransition(string sceneToGo)
+    {
+        runsCanvas.gameObject.SetActive(false);
+        //Future, include a pause menu with options. For now just return to the main menu if the player hits escape.
+        Time.timeScale = 0;
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToGo);
+        asyncLoad.allowSceneActivation = false;
+        yield return new WaitForSecondsRealtime(1);
+        asyncLoad.allowSceneActivation = true;
+        Time.timeScale = 1;
+        transitionInProgress = false;
+    }
+
 }

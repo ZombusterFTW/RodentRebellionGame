@@ -44,7 +44,7 @@ public class ExitDoor : MonoBehaviour,R4Activatable
         if(SaveData.instance != null) 
         {
             //Track level name and save data put into memory by other classes
-            if(sceneToLoad != "MainMenu") SaveData.instance.playerSaveData.currentLevel = sceneToLoad;
+            SaveData.instance.playerSaveData.currentLevel = sceneToLoad;
             SaveData.instance.SaveIntoJson();
         }
     }

@@ -42,7 +42,10 @@ public class PlayerCameraManager : MonoBehaviour
 
     private void OnSceneChanged(Scene arg0, LoadSceneMode arg1)
     {
-        SetLevelImage(SceneManager.GetActiveScene().name);
+        if (this != null)
+        {
+            SetLevelImage(SceneManager.GetActiveScene().name);
+        }
     }
 
     public void SetLevelImage(string sceneName)

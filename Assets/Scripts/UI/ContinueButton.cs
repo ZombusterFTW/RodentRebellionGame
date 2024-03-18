@@ -13,7 +13,7 @@ public class ContinueButton : MonoBehaviour
     {
         SaveData.instance.LoadFromJson();
         //Allow for continue button functionality if the player has save progress.
-        if (SaveData.instance.playerSaveData.currentLevel != "")
+        if (SaveData.instance.playerSaveData.currentLevel != "" && SaveData.instance.playerSaveData.currentLevel != "MainMenu")
         {
             currentLevelText.text = "Current Level: " + SaveData.instance.playerSaveData.currentLevel;
             continueButton.interactable = true;

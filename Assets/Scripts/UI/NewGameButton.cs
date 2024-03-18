@@ -13,11 +13,25 @@ public class NewGameButton : MonoBehaviour
     {
         if(!hasRun)
         {
+
             //prevent a double click of this button.
             hasRun = true;
-            //Increment run
-            if(SaveData.instance.playerSaveData.currentRunCount < 10 && SaveData.instance.playerSaveData.currentRunCount != 0) SaveData.instance.playerSaveData.currentRunCount++;
-            else SaveData.instance.playerSaveData.currentRunCount = 0;
+            //Increment run only if the player has completed the game. If they begin a new game before finishing we reset their current run.
+            if (SaveData.instance.playerSaveData.currentRunCount < 10 && SaveData.instance.playerSaveData.currentRunCount != 0 && SaveData.instance.playerSaveData.currentLevel == "FinalBossTest")
+            {
+                //Increment the run
+                SaveData.instance.playerSaveData.currentRunCount++;
+            }
+            else
+            {
+                SaveData.instance.playerSaveData.currentRunCount = 0;
+            }
+            //We reset that run to ensure its cleared
+            SaveData.instance.playerSaveData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount] = new float[8];
+
+            ///Debug to manually reset the players best run
+            SaveData.instance.playerSaveData.playerBestRun = new float[8];
+
             //Set level as lv0
             SaveData.instance.playerSaveData.currentLevel = "0Tutorial";
             //Clear list of current player weapons
@@ -26,6 +40,10 @@ public class NewGameButton : MonoBehaviour
             SaveData.instance.playerSaveData.currentWeapon = PlayerWeaponType.None;
             //Wipe all abilities
             SaveData.instance.playerSaveData.currentAbilities = new bool[7];
+            if (SceneTransitionerManager.instance != null)
+            {
+                SceneTransitionerManager.instance.runsShowcase.UpdateTimes();
+            }
             //Save.
             SaveData.instance.SaveIntoJson();
         }
