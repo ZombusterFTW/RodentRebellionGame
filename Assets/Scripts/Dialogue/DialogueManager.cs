@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -67,12 +68,31 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
         }
-        instance = this;
+        else
+        {
+            instance = this;
 
-        dialogueVariables = new DialogueVariables(loadGlobalsJSON);
+            dialogueVariables = new DialogueVariables(loadGlobalsJSON);
 
-        audioSource = this.gameObject.AddComponent<AudioSource>();
-        currentAudioInfo = defaultAudioInfo;
+            audioSource = this.gameObject.AddComponent<AudioSource>();
+            currentAudioInfo = defaultAudioInfo;
+
+
+            SceneManager.activeSceneChanged += SceneChanged;
+
+        }
+        
+    }
+
+    private void SceneChanged(Scene arg0, Scene arg1)
+    {
+        if(dialogueIsPlaying)
+        {
+            dialogueBGDampen.GetComponent<Image>().DOFade(0, 0.25f);
+            dialogueIsPlaying = false;
+            dialoguePanel.SetActive(false);
+            dialogueText.text = "";
+        }
     }
 
     public static DialogueManager GetInstance() 

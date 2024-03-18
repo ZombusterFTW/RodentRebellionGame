@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -11,19 +12,29 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] SceneTransitionerManager sceneTransitionerManager;
     [SerializeField] PlayerController playerController;
     [SerializeField] Health health;
+    [SerializeField] Button returnToLastCheckpointButton;
     public void GoToLastCheckpoint()
     {
-        canvas.enabled = false;
-        Time.timeScale = 1.0f;
-        //Debug.Log("Un-Paused Game");
-        if(!GameObject.ReferenceEquals(playerController.movingPlatform, null)) playerController.UnlinkPlatform(playerController.movingPlatform);
-        playerController.BigJoeRespawn(true);
+        if (!DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            canvas.enabled = false;
+            Time.timeScale = 1.0f;
+            //Debug.Log("Un-Paused Game");
+            if (!GameObject.ReferenceEquals(playerController.movingPlatform, null)) playerController.UnlinkPlatform(playerController.movingPlatform);
+            playerController.BigJoeRespawn(true);
+        }
     }
 
     public void RestartCurrentLevel()
     {
         //Reload the current scene. This will properly reset the timer and take the player to the correct point
         if (!GameObject.ReferenceEquals(playerController.movingPlatform, null)) playerController.UnlinkPlatform(playerController.movingPlatform);
+        canvas.enabled = false;
+        Time.timeScale = 1.0f;
+        Debug.Log("Un-Paused Game");
+        pauseMenuActive = false;
+        health.isInvincible = false;
+        playerController.DisableControls(false);
         sceneTransitionerManager.StartTransition(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -50,18 +61,38 @@ public class PauseMenu : MonoBehaviour
         }
         else
         {
-            canvas.enabled = false;
-            Time.timeScale = 1.0f;
-            Debug.Log("Un-Paused Game");
-            pauseMenuActive = false;
-            health.isInvincible = false;
-            playerController.DisableControls(false);
+
+            if(DialogueManager.GetInstance().dialogueIsPlaying)
+            {
+                canvas.enabled = false;
+                pauseMenuActive = false;
+                health.isInvincible = false;
+            }
+            else
+            {
+                canvas.enabled = false;
+                Time.timeScale = 1.0f;
+                Debug.Log("Un-Paused Game");
+                pauseMenuActive = false;
+                health.isInvincible = false;
+                playerController.DisableControls(false);
+            }
         }
     }
 
 
 
-
+    private void Update()
+    {
+        if(DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            returnToLastCheckpointButton.interactable = false;
+        }
+        else
+        {
+            returnToLastCheckpointButton.interactable = true;
+        }
+    }
 
     void Start()
     {

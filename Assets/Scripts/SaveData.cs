@@ -51,20 +51,20 @@ public class PlayerSaveData
     public List<PlayerWeaponType> currentPlayerWeapons = new List<PlayerWeaponType>();
     public PlayerWeaponType currentWeapon;
     //A 10 element float array
-    public float[] playerBestRun= new float[7];
+    public float[] playerBestRun= new float[8];
     //Store last 10 runs. Jagged array each float will be accessed and turned into a timespace. If an array is full of zeros we consider it empty. If the sum of all of these floats is the least out of the entire list we consider the player's best run
     public float[][] playerCurrentRuns = new float[][]{
-        new float[7],
-        new float[7],
-        new float[7],
-        new float[7],
-        new float[7],
-        new float[7],
-        new float[7],
-        new float[7],
-        new float[7],
-        new float[7]
+        new float[8],
+        new float[8],
+        new float[8],
+        new float[8],
+        new float[8],
+        new float[8],
+        new float[8],
+        new float[8],
+        new float[8],
+        new float[8]
     };
-
+    public int currentRunCount = 0;
  
 }

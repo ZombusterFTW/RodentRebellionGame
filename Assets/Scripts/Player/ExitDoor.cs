@@ -31,6 +31,8 @@ public class ExitDoor : MonoBehaviour,R4Activatable
             {
                 isActive = false;
                 SceneTransitionerManager.instance.StartTransition(sceneToLoad);
+                //Lap level time
+                PlayerController.instance.GetPlayerUI().GetComponent<MatchTimer>().LapTime();
                 SavePlayerVariables();
             }
         }
@@ -42,7 +44,7 @@ public class ExitDoor : MonoBehaviour,R4Activatable
         if(SaveData.instance != null) 
         {
             //Track level name and save data put into memory by other classes
-            SaveData.instance.playerSaveData.currentLevel = sceneToLoad;
+            if(sceneToLoad != "MainMenu") SaveData.instance.playerSaveData.currentLevel = sceneToLoad;
             SaveData.instance.SaveIntoJson();
         }
     }

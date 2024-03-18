@@ -110,16 +110,6 @@ public class Upgrade : MonoBehaviour
     }
 
 
-    public void UnlockAbility(UpgradeType upgrade)
-    {
-        //Give player the upgrade and add it to the upgrade list. Run function on the player that will set bools and allow for ability usage.
-        switch (upgrade) 
-        {
-            default: return;
-            
-
-        }
-    }
 
     public void UpgradeAttackDamage(float damageIncreasePercentage)
     {

@@ -55,7 +55,7 @@ public class SceneTransitionerManager : MonoBehaviour
 
     public void StartTransition(string sceneToGo = "MainMenu")
     {
-        if (!SceneTransitionerManager.instance.transitionAnimator.GetCurrentAnimatorStateInfo(0).IsName("BoxWipe_Start") && SceneManager.GetActiveScene() != SceneManager.GetSceneByName(sceneToGo) && !transitionInProgress)
+        if (!SceneTransitionerManager.instance.transitionAnimator.GetCurrentAnimatorStateInfo(0).IsName("BoxWipe_Start") /*&& SceneManager.GetActiveScene() != SceneManager.GetSceneByName(sceneToGo)*/ && !transitionInProgress)
         {
             transitionInProgress= true;
             //For demonstration purposes a text hint is directly linked to an animation that would play with it.
@@ -109,7 +109,7 @@ public class SceneTransitionerManager : MonoBehaviour
 
     public void StartTransition(int buildIndex)
     {
-        if (!SceneTransitionerManager.instance.transitionAnimator.GetCurrentAnimatorStateInfo(0).IsName("BoxWipe_Start") && SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(buildIndex) && !transitionInProgress)
+        if (!SceneTransitionerManager.instance.transitionAnimator.GetCurrentAnimatorStateInfo(0).IsName("BoxWipe_Start") /*&& SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(buildIndex) */&& !transitionInProgress)
         {
             transitionInProgress = true;
             //For demonstration purposes a text hint is directly linked to an animation that would play with it.
