@@ -1,5 +1,7 @@
+using Ink.Parsed;
 using Newtonsoft;
 using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -9,12 +11,13 @@ using UnityEngine;
 public class SaveData : MonoBehaviour
 {
     public PlayerSaveData playerSaveData = new PlayerSaveData();
+    public PlayerSettingsConfig playerSettingsConfig = new PlayerSettingsConfig();
+    public PracticeModeLevelSettings practiceModeLevelSettings = new PracticeModeLevelSettings();
     public static SaveData instance;
     private void Awake()
     {
         if(instance == null)
         {
-
             instance = this;
             DontDestroyOnLoad(this.gameObject);
             //Load from data just in case
@@ -33,24 +36,35 @@ public class SaveData : MonoBehaviour
     {
         //ONLY SAVE AT THE END OF A LEVEL ON EXIT DOOR!
         string playerData = JsonConvert.SerializeObject(playerSaveData);
-
+        string playerSettings = JsonConvert.SerializeObject(playerSettingsConfig);
+        string practiceModeSettings = JsonConvert.SerializeObject(practiceModeLevelSettings);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/PlayerData.json", playerData);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/PlayerConfigSettings.json", playerSettings);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/PracticeModeSettings.json", practiceModeSettings);
     }
 
     public void LoadFromJson()
     {
+        //Attempt to load existing save data. 
         if(File.Exists(Application.persistentDataPath + "/PlayerData.json"))
         {
             //If the file exists we turn it into a string and convert from a Json to a PlayerSaveData type
             string playerData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
-
             playerSaveData = JsonConvert.DeserializeObject<PlayerSaveData>(playerData);    
-
-
-            //playerSaveData = JsonUtility.FromJson<PlayerSaveData>(playerData);
+        }
+        if (File.Exists(Application.persistentDataPath + "/PlayerConfigSettings.json"))
+        {
+            //If the file exists we turn it into a string and convert from a Json to a PlayerSaveData type
+            string playerConfigSettings = File.ReadAllText(Application.persistentDataPath + "/PlayerConfigSettings.json");
+            playerSettingsConfig = JsonConvert.DeserializeObject<PlayerSettingsConfig>(playerConfigSettings);
+        }
+        if (File.Exists(Application.persistentDataPath + "/PracticeModeSettings.json"))
+        {
+            //If the file exists we turn it into a string and convert from a Json to a PlayerSaveData type
+            string practiceModeSettings = File.ReadAllText(Application.persistentDataPath + "/PracticeModeSettings.json");
+            practiceModeLevelSettings = JsonConvert.DeserializeObject<PracticeModeLevelSettings>(practiceModeSettings);
         }
     }
-
 }
 
 [System.Serializable]
@@ -76,5 +90,36 @@ public class PlayerSaveData
         new float[8]
     };
     public int currentRunCount = 0;
- 
+    public bool isPracticeModeUnlocked = false;
+    //List of integer arrays that represent a full run. Make it so a run can only be stored if its completed. Check if the last element of the array is greater than zero to acheive this
+    public List<int[]> playerSavedRuns = new List<int[]>();   
+}
+
+[System.Serializable]
+public class PlayerSettingsConfig
+{
+    public bool isSpeedrunEnabled = false;
+    public float musicVolume = 0.75f;
+    public float sfxVolume = 0.75f;
+}
+
+[System.Serializable]
+public class PracticeModeLevelSettings
+{
+    //This class will store data on what unlocks the player should have if they play a level in practice mode. Track best time on a per level basis in practice mode.
+    //Track a player's time if speedrun is enabled to disallow a player from closing the game and restarting their level time with no drawbacks. storing here cause why not.
+    public float lastLevelAccruedTime = 0;
+}
+
+public enum R4Level
+{
+    //set each enumeration to the build index of the actual level for easy casting.
+    Tutorial,
+    Labyrinth1,
+    Labyrinth2,
+    Labyrinth3,
+    RadioactiveCave,
+    TheSurface,
+    FinalBoss,
+    TheLab
 }
