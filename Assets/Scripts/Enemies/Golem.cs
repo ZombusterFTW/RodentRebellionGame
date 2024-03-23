@@ -303,7 +303,7 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
     {
         if (drawGizmos)
         {
-            Gizmos.color = new Color(1,0,0,0.5f);
+            Gizmos.color = new Color(1,0,0,0.25f);
             var positions = new Vector2[] { rightOffset, leftOffset };
             //Gizmos.DrawSphere((Vector2)transform.position + rightOffset, collisionRadius);
             //Gizmos.DrawSphere((Vector2)transform.position + leftOffset, collisionRadius);

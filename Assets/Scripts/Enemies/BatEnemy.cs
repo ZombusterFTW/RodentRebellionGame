@@ -198,9 +198,9 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
     {
         if(drawGizmos)
         {
-            Gizmos.color = Color.blue;
+            Gizmos.color = new Color(0,0,1,0.25f);
             Gizmos.DrawSphere((Vector2)transform.position, batPursueRange);
-            Gizmos.color = Color.red;
+            Gizmos.color = new Color(1,0,0, 0.25f);
             Gizmos.DrawSphere((Vector2)transform.position, turretSightRange);
             //Gizmos.DrawSphere((Vector2)transform.position + leftCollCheck, collRadiusWall);
             //Gizmos.DrawSphere((Vector2)transform.position + rightCollCheck, collRadiusWall);

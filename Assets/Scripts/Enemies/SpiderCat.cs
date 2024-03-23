@@ -254,7 +254,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
     {
         if(drawGizmos)
         {
-            Gizmos.color = debugColor;
+            Gizmos.color = new Color(1,0,0, 0.25f);
             var positions = new Vector2[] { bottomOffset };
             //Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, collRadius);
             Gizmos.DrawSphere((Vector2)transform.position, sightRange);
