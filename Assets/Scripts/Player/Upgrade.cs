@@ -10,7 +10,7 @@ public class Upgrade : MonoBehaviour
     [SerializeField] PlayerController playerController;
     public PlayerWeaponType playerWeaponType = PlayerWeaponType.None;
     private PlayerUI playerUIManager;
-    private List<PlayerWeaponType> weaponList;
+    private List<PlayerWeaponType> weaponList = new List<PlayerWeaponType>() { PlayerWeaponType.None };
     private int weaponIndex = 0;
 
 
@@ -22,8 +22,6 @@ public class Upgrade : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         playerUIManager = playerController.GetPlayerUI();
         damageCountCurrent = damageCount;
-        weaponList = new List<PlayerWeaponType>();
-        weaponList.Add(PlayerWeaponType.None);
         playerUIManager.weaponIndentifier.text = weaponList[weaponIndex].ToString();
     }
 

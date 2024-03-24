@@ -998,7 +998,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -289.80008}
+  m_AnchoredPosition: {x: 0, y: -0.000030517578}
   m_SizeDelta: {x: 1628.07, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &624786246
@@ -1239,12 +1239,42 @@ MonoBehaviour:
     - 0
     currentRunCount: 0
     isPracticeModeUnlocked: 0
+    playerCollectiblesTracker:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
   playerSettingsConfig:
-    isSpeedrunEnabled: 0
+    isSpeedrunModeEnabled: 0
+    playerInTimeWarpMode: 0
     musicVolume: 0.75
     sfxVolume: 0.75
   practiceModeLevelSettings:
     lastLevelAccruedTime: 0
+    warpModeLevelTimesPlayer:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    warpModeLevelTimes:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    warpModeCollectibleCountPlayer: 0000000000000000000000000000000000000000000000000000000000000000
+    warpModeCollectibleCount: 0000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &756690573
 Transform:
   m_ObjectHideFlags: 0
@@ -1718,8 +1748,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2102911625}
   m_HandleRect: {fileID: 2102911624}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.49491987
+  m_Value: 0.5
+  m_Size: 0.49494594
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3237,7 +3267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5909275299186796646, guid: 965da02bc21e0354fb7802128d43a0ed, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6339836421684023463, guid: 965da02bc21e0354fb7802128d43a0ed, type: 3}
       propertyPath: m_Pivot.x

@@ -46,9 +46,13 @@ public class RunsDataManager : MonoBehaviour
             playerBestRun.levelSpeeds[i].text = ts.ToString("mm") + ":" + ts.ToString("ss") + ":" + ts.ToString("ff");
 
             //If the player is under the avg time we set the background behind the text to green
-            if (playerData.playerBestRun[i] < gameAvgTimes[i])
+            if (playerData.playerBestRun[i] < gameAvgTimes[i] && playerData.playerBestRun[i] != 0)
             {
                 playerBestRun.levelImages[i].color = Color.green;
+            }
+            else if (playerData.playerBestRun[i] == 0)
+            {
+                playerBestRun.levelImages[i].color = Color.yellow;
             }
             //Else we set it to red
             else
@@ -65,9 +69,13 @@ public class RunsDataManager : MonoBehaviour
             TimeSpan ts = TimeSpan.FromSeconds(playerData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount][i]);
             runsDataHolders[SaveData.instance.playerSaveData.currentRunCount].levelSpeeds[i].text = ts.ToString("mm") + ":" + ts.ToString("ss") + ":" + ts.ToString("ff");
             //If the player is under the avg time we set the background behind the text to green
-            if (playerData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount][i] <= gameAvgTimes[i])
+            if (playerData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount][i] <= gameAvgTimes[i] && playerData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount][i] != 0)
             {
                 runsDataHolders[SaveData.instance.playerSaveData.currentRunCount].levelImages[i].color = Color.green;
+            }
+            else if (playerData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount][i] == 0)
+            {
+                runsDataHolders[SaveData.instance.playerSaveData.currentRunCount].levelImages[i].color = Color.yellow;
             }
             //Else we set it to red
             else
@@ -91,9 +99,13 @@ public class RunsDataManager : MonoBehaviour
             playerBestRun.levelSpeeds[i].text = ts.ToString("mm") + ":" + ts.ToString("ss") + ":" + ts.ToString("ff");
 
             //If the player is under the avg time we set the background behind the text to green
-            if (playerData.playerBestRun[i] < gameAvgTimes[i])
+            if (playerData.playerBestRun[i] < gameAvgTimes[i] && playerData.playerBestRun[i] != 0)
             {
                 playerBestRun.levelImages[i].color = Color.green;
+            }
+            else if (playerData.playerBestRun[i] == 0)
+            {
+                playerBestRun.levelImages[i].color = Color.yellow;
             }
             //Else we set it to red
             else
@@ -120,9 +132,13 @@ public class RunsDataManager : MonoBehaviour
                 Debug.Log(playerData.playerCurrentRuns[j][i]);
                 runsDataHolders[j].levelSpeeds[i].text = ts.ToString("mm") + ":" + ts.ToString("ss") + ":" + ts.ToString("ff");
                 //If the player is under the avg time we set the background behind the text to green
-                if (playerData.playerCurrentRuns[j][i] <= gameAvgTimes[i])
+                if (playerData.playerCurrentRuns[j][i] <= gameAvgTimes[i] && playerData.playerCurrentRuns[j][i] != 0)
                 {
                     runsDataHolders[j].levelImages[i].color = Color.green;
+                }
+                else if (playerData.playerCurrentRuns[j][i] == 0)
+                {
+                    runsDataHolders[j].levelImages[i].color = Color.yellow;
                 }
                 //Else we set it to red
                 else

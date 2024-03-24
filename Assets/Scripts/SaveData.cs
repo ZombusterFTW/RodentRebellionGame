@@ -38,7 +38,7 @@ public class SaveData : MonoBehaviour
         string playerData = JsonConvert.SerializeObject(playerSaveData);
         string playerSettings = JsonConvert.SerializeObject(playerSettingsConfig);
         string practiceModeSettings = JsonConvert.SerializeObject(practiceModeLevelSettings);
-        if(playerSettingsConfig.playerInTimeWarpMode) System.IO.File.WriteAllText(Application.persistentDataPath + "/PlayerData.json", playerData);
+        if(!playerSettingsConfig.playerInTimeWarpMode) System.IO.File.WriteAllText(Application.persistentDataPath + "/PlayerData.json", playerData);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/PlayerConfigSettings.json", playerSettings);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/PracticeModeSettings.json", practiceModeSettings);
     }

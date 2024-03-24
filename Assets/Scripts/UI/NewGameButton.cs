@@ -35,7 +35,7 @@ public class NewGameButton : MonoBehaviour
             //Set level as lv0
             SaveData.instance.playerSaveData.currentLevel = "0Tutorial";
             //Clear list of current player weapons
-            SaveData.instance.playerSaveData.currentPlayerWeapons.Clear();
+            SaveData.instance.playerSaveData.currentPlayerWeapons = new List<PlayerWeaponType>() { PlayerWeaponType.None };
             //reset weapon
             SaveData.instance.playerSaveData.currentWeapon = PlayerWeaponType.None;
             //Wipe all abilities
@@ -47,5 +47,16 @@ public class NewGameButton : MonoBehaviour
             //Save.
             SaveData.instance.SaveIntoJson();
         }
+    }
+
+
+    private void Start()
+    {
+        SaveData.instance.LoadFromJson();
+        //This is to ensure that the player is always out of TimeWarp mode if they return to the mainmenu.
+        SaveData.instance.playerSettingsConfig.playerInTimeWarpMode = false;
+        SaveData.instance.playerSaveData.isPracticeModeUnlocked = true;
+        SaveData.instance.SaveIntoJson();
+        SaveData.instance.LoadFromJson();
     }
 }

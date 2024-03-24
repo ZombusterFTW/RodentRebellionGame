@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ExitDoor : MonoBehaviour,R4Activatable
 {
-
-
     [SerializeField] private string sceneToLoad;
     bool playerInRange = false;
     bool isActive = false;
@@ -30,7 +28,9 @@ public class ExitDoor : MonoBehaviour,R4Activatable
             if (PlayerController.instance.GetInteractPressed())
             {
                 isActive = false;
-                SceneTransitionerManager.instance.StartTransition(sceneToLoad);
+
+                if (SaveData.instance.playerSettingsConfig.playerInTimeWarpMode) SceneTransitionerManager.instance.StartTransition("TimeWarp");
+                else SceneTransitionerManager.instance.StartTransition(sceneToLoad);
                 //Lap level time
                 PlayerController.instance.GetPlayerUI().GetComponent<MatchTimer>().LapTime();
                 SavePlayerVariables();
@@ -44,7 +44,7 @@ public class ExitDoor : MonoBehaviour,R4Activatable
         if(SaveData.instance != null) 
         {
             //Track level name and save data put into memory by other classes
-            SaveData.instance.playerSaveData.currentLevel = sceneToLoad;
+            if(SaveData.instance.playerSettingsConfig.playerInTimeWarpMode) SaveData.instance.playerSaveData.currentLevel = sceneToLoad;
             SaveData.instance.SaveIntoJson();
         }
     }

@@ -74,65 +74,159 @@ public class MatchTimer : MonoBehaviour
             //Get level scene name. Save time
             //currentRunCount will increment when the player presses new game.
             int currentRunCount = SaveData.instance.playerSaveData.currentRunCount;
+            bool playerInTimeWarpMode = SaveData.instance.playerSettingsConfig.playerInTimeWarpMode;
+            int currentCoinCount = PlayerController.instance.GetComponentInChildren<CoinCollectibleManager>().GetCurrentCoinCount();
+            int totalCoinCount = PlayerController.instance.GetComponentInChildren<CoinCollectibleManager>().GetTotalCoinCount();
 
             //Need to set current level to nothing on completion of the final boss
             switch (SceneManager.GetActiveScene().name)
             {
                 case "TestLevel":
                     {
-                        SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][0] = elapsedTime;
-                        //SaveData.instance.playerSaveData.playerBestRun[0] = elapsedTime;
-                        CalculateBestRun();
+                        //Update the counter for collectibles per level.
+                        SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCount[0] = totalCoinCount;
+                        if (playerInTimeWarpMode)
+                        {
+                            if (SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[0] == 0 || SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[0] > elapsedTime) SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[0] = elapsedTime;
+                            SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCountPlayer[0] = currentCoinCount;
+                        }
+                        else
+                        {
+                            SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][0] = elapsedTime;
+                            SaveData.instance.playerSaveData.playerCollectiblesTracker[0] = currentCoinCount;
+                            //SaveData.instance.playerSaveData.playerBestRun[0] = elapsedTime;
+                            CalculateBestRun();
+                        }
                         break;
                     }
                 case "0Tutorial":
                     {
-                        SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][0] = elapsedTime;
-                        //SaveData.instance.playerSaveData.playerBestRun[0] = elapsedTime;
+                        SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCount[0] = totalCoinCount;
+                        if (playerInTimeWarpMode)
+                        {
+                            if (SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[0] == 0 || SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[0] > elapsedTime) SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[0] = elapsedTime;
+                            SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCountPlayer[0] = currentCoinCount;
+                        }
+                        else
+                        {
+                            SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][0] = elapsedTime;
+                            SaveData.instance.playerSaveData.playerCollectiblesTracker[0] = currentCoinCount;
+                            //SaveData.instance.playerSaveData.playerBestRun[0] = elapsedTime;
+                        }
                         break;
                     }
                 case "Labyrinth1":
                     {
-                        SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][1] = elapsedTime;
-                        //SaveData.instance.playerSaveData.playerBestRun[1] = elapsedTime;
+                        SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCount[1] = totalCoinCount;
+                        if (playerInTimeWarpMode)
+                        {
+                            if (SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[1] == 0 || SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[1] > elapsedTime) SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[1] = elapsedTime;
+                            SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCountPlayer[1] = currentCoinCount;
+                        }
+                        else
+                        {
+                            SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][1] = elapsedTime;
+                            SaveData.instance.playerSaveData.playerCollectiblesTracker[1] = currentCoinCount;
+                            //SaveData.instance.playerSaveData.playerBestRun[1] = elapsedTime;
+                        }
                         break;
                     }
                 case "RadioactiveCave":
                     {
-                        SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][2] = elapsedTime;
-                        //SaveData.instance.playerSaveData.playerBestRun[2] = elapsedTime;
+                        SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCount[2] = totalCoinCount;
+                        if (playerInTimeWarpMode)
+                        {
+                            if (SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[2] == 0 || SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[2] > elapsedTime) SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[2] = elapsedTime;
+                            SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCountPlayer[2] = currentCoinCount;
+                        }
+                        else
+                        {
+                            SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][2] = elapsedTime;
+                            SaveData.instance.playerSaveData.playerCollectiblesTracker[2] = currentCoinCount;
+                            //SaveData.instance.playerSaveData.playerBestRun[2] = elapsedTime;
+                        }
                         break;
                     }
                 case "Labyrinth2":
                     {
-                        SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][3] = elapsedTime;
-                        //SaveData.instance.playerSaveData.playerBestRun[3] = elapsedTime;
+                        SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCount[3] = totalCoinCount;
+                        if (playerInTimeWarpMode)
+                        {
+                            if (SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[3] == 0 || SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[3] > elapsedTime) SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[3] = elapsedTime;
+                            SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCountPlayer[3] = currentCoinCount;
+                        }
+                        else
+                        {
+                            SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][3] = elapsedTime;
+                            SaveData.instance.playerSaveData.playerCollectiblesTracker[3] = currentCoinCount;
+                            //SaveData.instance.playerSaveData.playerBestRun[3] = elapsedTime;
+                        }
                         break;
                     }
                 case "LabLevel":
                     {
-                        SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][4] = elapsedTime;
-                        //SaveData.instance.playerSaveData.playerBestRun[4] = elapsedTime;
+                        SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCount[4] = totalCoinCount;
+                        if (playerInTimeWarpMode)
+                        {
+                            if (SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[4] == 0 || SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[4] > elapsedTime) SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[4] = elapsedTime;
+                            SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCountPlayer[4] = currentCoinCount;
+                        }
+                        else
+                        {
+                            SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][4] = elapsedTime;
+                            SaveData.instance.playerSaveData.playerCollectiblesTracker[4] = currentCoinCount;
+                            //SaveData.instance.playerSaveData.playerBestRun[4] = elapsedTime;
+                        }
                         break;
                     }
                 case "Labyrinth3":
                     {
-                        SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][5] = elapsedTime;
-                        //SaveData.instance.playerSaveData.playerBestRun[5] = elapsedTime;
+                        SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCount[5] = totalCoinCount;
+                        if (playerInTimeWarpMode)
+                        {
+                            if (SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[5] == 0 || SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[5] > elapsedTime) SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[5] = elapsedTime;
+                            SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCountPlayer[5] = currentCoinCount;
+                        }
+                        else
+                        {
+                            SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][5] = elapsedTime;
+                            SaveData.instance.playerSaveData.playerCollectiblesTracker[5] = currentCoinCount;
+                            //SaveData.instance.playerSaveData.playerBestRun[5] = elapsedTime;
+                        }
                         break;
                     }
                 case "Surface":
                     {
-                        SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][6] = elapsedTime;
-                        //SaveData.instance.playerSaveData.playerBestRun[6] = elapsedTime;
+                        SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCount[6] = totalCoinCount;
+                        if (playerInTimeWarpMode)
+                        {
+                            if (SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[6] == 0 || SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[6] > elapsedTime) SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[6] = elapsedTime;
+                            SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCountPlayer[6] = currentCoinCount;
+                        }
+                        else
+                        {
+                            SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][6] = elapsedTime;
+                            SaveData.instance.playerSaveData.playerCollectiblesTracker[6] = currentCoinCount;
+                            //SaveData.instance.playerSaveData.playerBestRun[6] = elapsedTime;
+                        }
                         break;
                     }
                 case "FinalBossTest":
                     {
-                        SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][7] = elapsedTime;
-                        //SaveData.instance.playerSaveData.playerBestRun[7] = elapsedTime;
-                        //The game has officially ended so we check if the player got their new best completion time.
-                        CalculateBestRun();
+                        SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCount[7] = totalCoinCount;
+                        if (playerInTimeWarpMode)
+                        {
+                            if(SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[7] == 0 || SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[7] > elapsedTime) SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[7] = elapsedTime;
+                            SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCountPlayer[7] = currentCoinCount;
+                        }
+                        else
+                        {
+                            SaveData.instance.playerSaveData.playerCurrentRuns[currentRunCount][7] = elapsedTime;
+                            SaveData.instance.playerSaveData.playerCollectiblesTracker[7] = currentCoinCount;
+                            //SaveData.instance.playerSaveData.playerBestRun[7] = elapsedTime;
+                            //The game has officially ended so we check if the player got their new best completion time.
+                            CalculateBestRun();
+                        }
                         break;
                     }
 

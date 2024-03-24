@@ -81,7 +81,7 @@ public class SceneTransitionerManager : MonoBehaviour
 
     IEnumerator SceneTransition(string sceneToGo)
     {
-        if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled) runsCanvas.gameObject.SetActive(true);
+        if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled && !SaveData.instance.playerSettingsConfig.playerInTimeWarpMode) runsCanvas.gameObject.SetActive(true);
         else
         {
             runsCanvas.gameObject.SetActive(false);
@@ -128,7 +128,7 @@ public class SceneTransitionerManager : MonoBehaviour
     {
         if (!SceneTransitionerManager.instance.transitionAnimator.GetCurrentAnimatorStateInfo(0).IsName("BoxWipe_Start") /*&& SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(buildIndex) */&& !transitionInProgress)
         {
-            if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled) runsCanvas.gameObject.SetActive(true);
+            if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled && !SaveData.instance.playerSettingsConfig.playerInTimeWarpMode) runsCanvas.gameObject.SetActive(true);
             else
             {
                 runsCanvas.gameObject.SetActive(false);

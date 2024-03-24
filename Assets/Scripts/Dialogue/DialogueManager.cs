@@ -8,6 +8,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using UnityEditor.Rendering;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -60,6 +61,7 @@ public class DialogueManager : MonoBehaviour
 
     private string anim;
 
+    private bool skipButtonPressedThisFrame = false;    
     //If defined this gameobject is an in-game npc or tutorial dialouge trigger
     private GameObject dialougeContainerGameObject;
     private void Awake() 
@@ -160,6 +162,10 @@ public class DialogueManager : MonoBehaviour
         {
             ContinueStory();
         }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            dialogueText.maxVisibleCharacters = dialogueText.text.Length;
+        }
     }
 
     public void EnterDialogueMode(TextAsset inkJSON, GameObject dialougeGameObj = null, bool destroyDialougeParentOnExit = false) 
@@ -174,8 +180,8 @@ public class DialogueManager : MonoBehaviour
 
         dialogueVariables.StartListening(currentStory);
         dialogueBGDampen.GetComponent<Image>().DOFade(0.5f, 0.25f);
-        currentStory.BindExternalFunction("dialougeActivate", (string objectTag) => GameObject.FindGameObjectWithTag(objectTag)?.GetComponent<DialougeActivated>()?.Activate());
-        currentStory.BindExternalFunction("dialougeDeactivate", (string objectTag) => GameObject.FindGameObjectWithTag(objectTag)?.GetComponent<DialougeActivated>()?.Deactivate());
+        //currentStory.BindExternalFunction("dialougeActivate", (string objectTag) => GameObject.FindGameObjectWithTag(objectTag)?.GetComponent<DialougeActivated>()?.Activate());
+        //currentStory.BindExternalFunction("dialougeDeactivate", (string objectTag) => GameObject.FindGameObjectWithTag(objectTag)?.GetComponent<DialougeActivated>()?.Deactivate());
 
         // reset portrait, layout, and speaker
         displayNameText.text = "???";
@@ -197,8 +203,8 @@ public class DialogueManager : MonoBehaviour
 
         dialogueVariables.StopListening(currentStory);
 
-        currentStory.UnbindExternalFunction("dialougeActivate");
-        currentStory.UnbindExternalFunction("dialougeDeactivate");
+        //currentStory.UnbindExternalFunction("dialougeActivate");
+        //currentStory.UnbindExternalFunction("dialougeDeactivate");
 
         if(dialougeContainerGameObject != null) 
         {
@@ -244,6 +250,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator DisplayLine(string line) 
     {
+        yield return null;
         portraitAnimator.speed = 1;
         // set the text to the full line, but set the visible characters to 0
         dialogueText.text = line;
@@ -271,19 +278,14 @@ public class DialogueManager : MonoBehaviour
             // if not rich text, add the next letter and wait a small time
             else 
             {
-                PlayDialogueSound(dialogueText.maxVisibleCharacters, dialogueText.text[dialogueText.maxVisibleCharacters]);
-                dialogueText.maxVisibleCharacters++;
-                yield return new WaitForSecondsRealtime(typingSpeed);
+                if (dialogueText.maxVisibleCharacters < line.Length)
+                {
+                    PlayDialogueSound(dialogueText.maxVisibleCharacters, dialogueText.text[dialogueText.maxVisibleCharacters]);
+                    dialogueText.maxVisibleCharacters++;
+                    yield return new WaitForSecondsRealtime(typingSpeed);
+                }
             }
             //if the submit button is pressed, finish up displaying the line right away
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                dialogueText.maxVisibleCharacters = line.Length;
-                Debug.Log("sus");
-                break;
-
-            }
-
         }
 
         // actions to take after the entire line has finished displaying

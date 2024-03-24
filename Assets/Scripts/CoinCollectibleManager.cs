@@ -47,4 +47,13 @@ public class CoinCollectibleManager : MonoBehaviour
         coinCounter.text = currentCoinCount.ToString() + "/" + totalCoinCount.ToString() + " Collectibles";
 
     }
+
+    public int GetCurrentCoinCount()
+    {
+        return currentCoinCount;
+    }
+    public int GetTotalCoinCount() 
+    {
+        return totalCoinCount;
+    }
 }

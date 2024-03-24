@@ -185,9 +185,13 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     void LoadSaveData()
     {
-        //Load Player Stuffs
+        //Only preform a load if we are not in time warp mode
+        if(SaveData.instance != null && !SaveData.instance.playerSettingsConfig.playerInTimeWarpMode)
+        {
+            //Load Player Stuffs
+            SaveData.instance.LoadFromJson();
+        }
         PlayerSaveData saveData = new PlayerSaveData();
-        SaveData.instance.LoadFromJson();
         saveData = SaveData.instance.playerSaveData;
         playerWeapon = saveData.currentWeapon;
         canWallClimb = saveData.currentAbilities[0];
@@ -198,6 +202,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         canEnterRageMode = saveData.currentAbilities[5];
         canPhaseShift = saveData.currentAbilities[6];
         playerUpgrade.SetWeaponList(saveData.currentPlayerWeapons);
+        playerUpgrade.playerWeaponType = playerWeapon;
     }
 
 
@@ -209,7 +214,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         if(this != null)
         {
-            if (SceneManager.GetActiveScene().buildIndex == 0)
+            if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().name == "TimeWarp")
             {
                 StopAllCoroutines();
                 DestroyImmediate(gameObject);
@@ -1215,7 +1220,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 break;
         }
 
-        if (SaveData.instance != null)
+        if (SaveData.instance != null && !SaveData.instance.playerSettingsConfig.playerInTimeWarpMode)
         {
             //This will handle getting data ready to save. A save will only occur at a level complete ATP
             //Do the inverse of this on start
