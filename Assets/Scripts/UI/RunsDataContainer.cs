@@ -9,4 +9,5 @@ public class RunsDataContainer : MonoBehaviour
     public TextMeshProUGUI[] levelSpeeds;
     public Image[] levelImages;
     public Image inProgressRunMarker;
+    public TextMeshProUGUI runName;
 }

@@ -11,6 +11,7 @@ public class MatchTimer : MonoBehaviour
     public TextMeshProUGUI timerText2;
     public TextMeshProUGUI timerText3;
     public TextMeshProUGUI levelName;
+    public GameObject matchTimerParent;
     private float elapsedTime;
     DialogueManager dialogueManager;
 
@@ -20,14 +21,20 @@ public class MatchTimer : MonoBehaviour
         dialogueManager = DialogueManager.GetInstance();
         SceneManager.sceneLoaded += OnSceneLoaded;
         levelName.text = SceneManager.GetActiveScene().name;
+        if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled || SaveData.instance.playerSettingsConfig.playerInTimeWarpMode)
+        {
+            matchTimerParent.SetActive(true);
+        }
+        else
+        {
+            matchTimerParent.SetActive(false);
+        }
     }
 
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         if(this != null)
         {
-            //Save time
-            //We enter a new scene so we reset the time.
             elapsedTime = 0;
             //Set level name to the new scene
             levelName.text = arg0.name;
@@ -42,7 +49,10 @@ public class MatchTimer : MonoBehaviour
         if (!GameObject.ReferenceEquals(dialogueManager, null) && !dialogueManager.dialogueIsPlaying)
         {
             elapsedTime += Time.deltaTime;
-            UpdateTimer();
+            if(SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled || SaveData.instance.playerSettingsConfig.playerInTimeWarpMode)
+            {
+                UpdateTimer();
+            }
         }
     }
 

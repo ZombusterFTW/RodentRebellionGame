@@ -81,7 +81,11 @@ public class SceneTransitionerManager : MonoBehaviour
 
     IEnumerator SceneTransition(string sceneToGo)
     {
-        runsCanvas.gameObject.SetActive(true);
+        if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled) runsCanvas.gameObject.SetActive(true);
+        else
+        {
+            runsCanvas.gameObject.SetActive(false);
+        }
         if (SceneTransitionerManager.instance != null)
         {
             SceneTransitionerManager.instance.runsShowcase.UpdateTimes();
@@ -90,7 +94,8 @@ public class SceneTransitionerManager : MonoBehaviour
         Time.timeScale = 0;
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToGo);
         asyncLoad.allowSceneActivation = false;
-        yield return new WaitForSecondsRealtime(sceneTransitionTime);
+        if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled) yield return new WaitForSecondsRealtime(sceneTransitionTime);
+        else yield return new WaitForSecondsRealtime(1);
         asyncLoad.allowSceneActivation = true;
         Time.timeScale = 1;
         transitionInProgress = false;
@@ -106,7 +111,8 @@ public class SceneTransitionerManager : MonoBehaviour
         Time.timeScale = 0;
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToGo);
         asyncLoad.allowSceneActivation = false;
-        yield return new WaitForSecondsRealtime(sceneTransitionTime);
+        if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled) yield return new WaitForSecondsRealtime(sceneTransitionTime);
+        else yield return new WaitForSecondsRealtime(1);
         asyncLoad.allowSceneActivation = true;
         Time.timeScale = 1;
         transitionInProgress = false;
@@ -122,7 +128,11 @@ public class SceneTransitionerManager : MonoBehaviour
     {
         if (!SceneTransitionerManager.instance.transitionAnimator.GetCurrentAnimatorStateInfo(0).IsName("BoxWipe_Start") /*&& SceneManager.GetActiveScene() != SceneManager.GetSceneByBuildIndex(buildIndex) */&& !transitionInProgress)
         {
-            runsCanvas.gameObject.SetActive(true);
+            if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled) runsCanvas.gameObject.SetActive(true);
+            else
+            {
+                runsCanvas.gameObject.SetActive(false);
+            }
             transitionInProgress = true;
             //For demonstration purposes a text hint is directly linked to an animation that would play with it.
             //Screens are random but they cannot be the same twice in a row

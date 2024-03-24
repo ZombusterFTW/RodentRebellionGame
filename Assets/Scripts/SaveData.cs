@@ -38,7 +38,7 @@ public class SaveData : MonoBehaviour
         string playerData = JsonConvert.SerializeObject(playerSaveData);
         string playerSettings = JsonConvert.SerializeObject(playerSettingsConfig);
         string practiceModeSettings = JsonConvert.SerializeObject(practiceModeLevelSettings);
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/PlayerData.json", playerData);
+        if(playerSettingsConfig.playerInTimeWarpMode) System.IO.File.WriteAllText(Application.persistentDataPath + "/PlayerData.json", playerData);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/PlayerConfigSettings.json", playerSettings);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/PracticeModeSettings.json", practiceModeSettings);
     }
@@ -92,13 +92,15 @@ public class PlayerSaveData
     public int currentRunCount = 0;
     public bool isPracticeModeUnlocked = false;
     //List of integer arrays that represent a full run. Make it so a run can only be stored if its completed. Check if the last element of the array is greater than zero to acheive this
-    public List<int[]> playerSavedRuns = new List<int[]>();   
+    public List<int[]> playerSavedRuns = new List<int[]>();
+    public float[] playerCollectiblesTracker = new float[8];
 }
 
 [System.Serializable]
 public class PlayerSettingsConfig
 {
-    public bool isSpeedrunEnabled = false;
+    public bool isSpeedrunModeEnabled = false;
+    public bool playerInTimeWarpMode = false;
     public float musicVolume = 0.75f;
     public float sfxVolume = 0.75f;
 }
@@ -109,6 +111,10 @@ public class PracticeModeLevelSettings
     //This class will store data on what unlocks the player should have if they play a level in practice mode. Track best time on a per level basis in practice mode.
     //Track a player's time if speedrun is enabled to disallow a player from closing the game and restarting their level time with no drawbacks. storing here cause why not.
     public float lastLevelAccruedTime = 0;
+    public float[] warpModeLevelTimesPlayer = new float[8];
+    public float[] warpModeLevelTimes = new float[8];
+    public int[] warpModeCollectibleCountPlayer = new int[8];
+    public int[] warpModeCollectibleCount = new int[8];
 }
 
 public enum R4Level
