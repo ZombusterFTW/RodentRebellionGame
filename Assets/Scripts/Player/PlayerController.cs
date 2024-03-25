@@ -1341,14 +1341,17 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     public void PlayDamagedAnim(Vector2 enemyPos)
     {
+        Vector2 launchDir = ((enemyPos - (Vector2)transform.position).normalized);
+        launchDir.y = launchDir.y /2;
+        Debug.Log(launchDir);
         playerAnimator.Play("BigJoeHurt", 0);
         playerAnimatorRubber.Play("BigJoeHurt", 0);
         if (hurtCoroutine == null)
         {
             hurtCoroutine = StartCoroutine(PlayHurtSound());
-            if(enemyPos != Vector2.zero) playerRigidBody.AddForce((enemyPos-(Vector2)transform.position).normalized*950f, ForceMode2D.Impulse);
+            
         }
-
+        if (enemyPos != Vector2.zero) playerRigidBody.AddForce(launchDir*75f, ForceMode2D.Impulse);
     }
 
     IEnumerator PlayHurtSound()
