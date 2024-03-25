@@ -283,7 +283,7 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
         {
             ratModeAnimator.SetTrigger("Attack");
             rubberModeAnimator.SetTrigger("Attack");
-            playerHealthObj.SubtractFromHealth(damageToPlayer);
+            playerHealthObj.SubtractFromHealth(damageToPlayer, transform.position);
             yield return new WaitForSeconds(0.45f);
         }
         extendedDamage = null;
@@ -332,7 +332,7 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
         OnRatDeath();
     }
 
-    public void PlayDamagedAnim()
+    public void PlayDamagedAnim(Vector2 enemyPos)
     {
         //enemyAnimatorRat.SetTrigger("Damaged");
         //enemyAnimatorRubber.SetTrigger("Damaged");

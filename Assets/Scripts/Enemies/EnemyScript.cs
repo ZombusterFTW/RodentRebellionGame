@@ -231,7 +231,7 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter, EnemyAI
             {
                 enemyRB.velocity = Vector2.zero;
                 enemyAnimator.SetTrigger("Attack");
-                target.GetComponent<Health>().SubtractFromHealth(5f);
+                target.GetComponent<Health>().SubtractFromHealth(5f, transform.position);
                 currentState = EnemyStates.Searching;
                 targetPosition = (Vector2)target.transform.position;
                 //only run coroutine if it isn't already active.
@@ -268,6 +268,11 @@ public class EnemyScript : MonoBehaviour, ControlledCharacter, EnemyAI
     }
 
     public PlayerController GetPlayerController()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void PlayDamagedAnim(Vector2 enemyPos)
     {
         throw new System.NotImplementedException();
     }

@@ -44,7 +44,15 @@ public class ExitDoor : MonoBehaviour,R4Activatable
         if(SaveData.instance != null) 
         {
             //Track level name and save data put into memory by other classes
-            if(SaveData.instance.playerSettingsConfig.playerInTimeWarpMode) SaveData.instance.playerSaveData.currentLevel = sceneToLoad;
+            if (!SaveData.instance.playerSettingsConfig.playerInTimeWarpMode)
+            {
+                SaveData.instance.playerSaveData.currentLevel = sceneToLoad;
+                //If we get here the player completed the game
+                if(sceneToLoad == "MainMenu")
+                {
+                    SaveData.instance.playerSaveData.isPracticeModeUnlocked = true; 
+                }
+            }
             SaveData.instance.SaveIntoJson();
         }
     }

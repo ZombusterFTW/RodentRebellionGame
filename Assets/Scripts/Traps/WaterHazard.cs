@@ -33,7 +33,7 @@ public class WaterHazard : MonoBehaviour, R4Activatable
             //Subtract all the player has to eliminate them.
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
             Health playerHealth = playerController.GetHealthComponent();
-            playerHealth.SubtractFromHealth(playerHealth.GetCurrentHealth());
+            playerHealth.SubtractFromHealth(playerHealth.GetCurrentHealth(), transform.position);
         }
     }
 

@@ -800,7 +800,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 //Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<EnemyAI>(), null))
                 {
-                    hit.collider.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast));
+                    hit.collider.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast), transform.position);
                 }
                 if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<Switch>(), null))
                 {
@@ -812,7 +812,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 }
                 if(hit.collider.gameObject.tag == "Shield")
                 {
-                    hit.collider.gameObject.GetComponentInParent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast));
+                    hit.collider.gameObject.GetComponentInParent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.LaserBlast), transform.position);
                 }
             //check if enemy here.
             }
@@ -913,7 +913,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 //Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
                 {
-                    hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike));
+                    hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike), transform.position);
                 }
                 if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<Switch>(), null))
                 {
@@ -950,7 +950,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 //Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
                 {
-                    hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack));
+                    hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack), transform.position);
                 }
                 if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<Switch>(), null))
                 {
@@ -997,7 +997,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                         //Debug.Log("Hit");
                         if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
                         {
-                            hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.ChainWhipAttack));
+                            hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.ChainWhipAttack), transform.position);
                         }
                         if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<Switch>(), null))
                         {
@@ -1280,11 +1280,11 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             Debug.Log("Coll2");
             if (isDashing)
             {
-                collision.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike));
+                collision.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike), transform.position);
             }
             else if(isGroundPounding)
             {
-                collision.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.GroundPound));
+                collision.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.GroundPound), transform.position);
             }
             if (!GameObject.ReferenceEquals(collision.gameObject.GetComponent<OneHitHealthEnemy>(), null))
             {
@@ -1339,11 +1339,16 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         }
     }
 
-    public void PlayDamagedAnim()
+    public void PlayDamagedAnim(Vector2 enemyPos)
     {
         playerAnimator.Play("BigJoeHurt", 0);
         playerAnimatorRubber.Play("BigJoeHurt", 0);
-        if (hurtCoroutine == null) hurtCoroutine = StartCoroutine(PlayHurtSound());
+        if (hurtCoroutine == null)
+        {
+            hurtCoroutine = StartCoroutine(PlayHurtSound());
+            if(enemyPos != Vector2.zero) playerRigidBody.AddForce((enemyPos-(Vector2)transform.position).normalized*950f, ForceMode2D.Impulse);
+        }
+
     }
 
     IEnumerator PlayHurtSound()
@@ -1381,7 +1386,7 @@ public interface ControlledCharacter
 {
     public PlayerUI GetPlayerUI();
     public void RespawnPlayer();
-    public void PlayDamagedAnim();
+    public void PlayDamagedAnim(Vector2 enemyPos);
     public PlayerController GetPlayerController();
 
     public Health GetHealth();

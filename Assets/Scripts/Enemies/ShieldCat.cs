@@ -200,14 +200,14 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
                     {
                         if(Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, playerLayer))
                         {
-                            playerController.GetHealthComponent().SubtractFromHealth(damageToPlayer);
+                            playerController.GetHealthComponent().SubtractFromHealth(damageToPlayer, transform.position);
                         }
                     }
                     else
                     {
                         if(Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, playerLayer))
                         {
-                            playerController.GetHealthComponent().SubtractFromHealth(damageToPlayer);
+                            playerController.GetHealthComponent().SubtractFromHealth(damageToPlayer, transform.position);
                         }
                     }
                     //When we hit something go to idle.
@@ -340,7 +340,7 @@ public class ShieldCat : MonoBehaviour, ControlledCharacter, EnemyAI
     {
         return UIClone.GetComponent<PlayerUI>();
     }
-    public void PlayDamagedAnim()
+    public void PlayDamagedAnim(Vector2 enemyPos)
     {
         //enemyAnimatorRat.SetTrigger("Damaged");
         //enemyAnimatorRubber.SetTrigger("Damaged");

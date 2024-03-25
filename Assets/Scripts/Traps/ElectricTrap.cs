@@ -108,7 +108,7 @@ public class ElectricTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
         yield return new WaitForFixedUpdate();
         //Slow player or character down.
         Health playerHealth = controller.GetHealthComponent();
-        playerHealth.SubtractFromHealth(dmgPerTick);
+        playerHealth.SubtractFromHealth(dmgPerTick, transform.position);
         isDamaging = false;
     }
 

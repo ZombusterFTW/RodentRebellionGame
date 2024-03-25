@@ -50,7 +50,7 @@ public class SpikesTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
             if (playerCollider.IsTouching(trapSpikes)) 
             {
                 Health playerHealth = controller.GetHealthComponent();
-                playerHealth.SubtractFromHealth(playerHealth.GetCurrentHealth());
+                playerHealth.SubtractFromHealth(playerHealth.GetCurrentHealth(), transform.position);
             }
         }
     }

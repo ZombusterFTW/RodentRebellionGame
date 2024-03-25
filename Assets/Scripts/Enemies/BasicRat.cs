@@ -225,7 +225,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
                 {
                     Debug.Log("Player hit by rat");
                     //The player must take damage here.
-                    collision.gameObject.GetComponent<Health>().SubtractFromHealth(damageToPlayer);
+                    collision.gameObject.GetComponent<Health>().SubtractFromHealth(damageToPlayer, transform.position);
                     if (extendedDamage == null) extendedDamage = StartCoroutine(PlayerDamageLoop(collision.gameObject.GetComponent<Health>()));
                 }
             }
@@ -236,7 +236,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
         while(isAlive)
         {
             yield return new WaitForSeconds(2);
-            playerHealth.SubtractFromHealth(damageToPlayer);
+            playerHealth.SubtractFromHealth(damageToPlayer, transform.position);
         }
         
     }

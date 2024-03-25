@@ -217,7 +217,7 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
                 if (!player.isDashing && !player.isGroundPounding)
                 {
                     //The player must take damage here.
-                    collision.gameObject.GetComponent<Health>().SubtractFromHealth(damageOnCollision);
+                    collision.gameObject.GetComponent<Health>().SubtractFromHealth(damageOnCollision, transform.position);
                     if (extendedDamage == null) extendedDamage = StartCoroutine(PlayerDamageLoop(collision.gameObject.GetComponent<Health>()));
                 }
         }
@@ -240,7 +240,7 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
         while (isAlive)
         {
             yield return new WaitForSeconds(5);
-            playerHealth.SubtractFromHealth(damageOnCollision);
+            playerHealth.SubtractFromHealth(damageOnCollision, transform.position);
         }
 
     }
@@ -261,7 +261,7 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
         return UIClone.GetComponent<PlayerUI>();
     }
 
-    public void PlayDamagedAnim()
+    public void PlayDamagedAnim(Vector2 enemyPos)
     {
         //No anim for this yet
         //Prevent player from being hurt by the enemy if they are actively attacking it

@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour
     {
         if(!GameObject.ReferenceEquals(collision.gameObject.GetComponent<PlayerController>(), null))
         {
-            collision.gameObject.GetComponent<Health>().SubtractFromHealth(damageByProjectile);
+            collision.gameObject.GetComponent<Health>().SubtractFromHealth(damageByProjectile, transform.position);
         }
         Destroy(gameObject);
     }

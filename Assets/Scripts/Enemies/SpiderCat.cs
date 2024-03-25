@@ -215,7 +215,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
                 enemyRB.velocity = Vector2.zero;
                 enemyAnimatorRat.SetTrigger("Attack");
                 enemyAnimatorRubber.SetTrigger("Attack");
-                playerController.GetComponent<Health>().SubtractFromHealth(attackDamage);
+                playerController.GetComponent<Health>().SubtractFromHealth(attackDamage, transform.position);
                 //only run coroutine if it isn't already active.
                 if (attackCooldown == null) attackCooldown = StartCoroutine(AttackDelayTimer());
             }
@@ -237,7 +237,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
         attackCooldown = null;
     }
 
-    public void PlayDamagedAnim()
+    public void PlayDamagedAnim(Vector2 enemyPos)
     {
         //enemyAnimatorRat.SetTrigger("Damaged");
         //enemyAnimatorRubber.SetTrigger("Damaged");

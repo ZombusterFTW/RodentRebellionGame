@@ -21,8 +21,13 @@ public class Health : MonoBehaviour
     }
 
     
-    public float SubtractFromHealth(float healthToLose)
+    public float SubtractFromHealth(float healthToLose, Vector2 enemyPos)
     {
+        if(enemyPos == null)
+        {
+            enemyPos = Vector2.zero;
+        }
+
         if(!isInvincible)
         {
             //Damaged taken during frenzy mode is halved
@@ -35,7 +40,7 @@ public class Health : MonoBehaviour
             {
                 playerController.RespawnPlayer();
             }
-            else playerController.PlayDamagedAnim();
+            else playerController.PlayDamagedAnim(enemyPos);
             if (!GameObject.ReferenceEquals(playerUIManager, null)) playerUIManager.UpdateHealthBar(healthCountCurrent, healthCount);
         }
         return healthCountCurrent;
