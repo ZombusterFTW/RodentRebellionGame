@@ -127,6 +127,8 @@ public class RunsDataManager : MonoBehaviour
             //Loop over the recorded level completion speeds
             for (int i = 0; i < runsDataHolders[j].levelSpeeds.Length; i++)
             {
+                //Convert data to object for easy saving of it later.
+                runsDataHolders[j].ConvertDataToRunDataset(playerData.playerCurrentRuns[j], "Run: " + (j + 1), j);
                 //Convert each float to a timespan and display it
                 TimeSpan ts = TimeSpan.FromSeconds(playerData.playerCurrentRuns[j][i]);
                 Debug.Log(playerData.playerCurrentRuns[j][i]);
@@ -145,6 +147,17 @@ public class RunsDataManager : MonoBehaviour
                 {
                     runsDataHolders[j].levelImages[i].color = Color.red;
                 }
+
+                //Enable button if we have data that suggests the player has completed atleast level 1. Can add logic here to only allow a save where the player completed the game to be saved.
+                if(runsDataHolders[j].runsButton != null)
+                {
+                    if (playerData.playerCurrentRuns[j][0] > 0)
+                    {
+                        runsDataHolders[j].runsButton.gameObject.SetActive(true);
+                    }
+                    else runsDataHolders[j].runsButton.gameObject.SetActive(false);
+                }
+                Debug.Log(Application.persistentDataPath);
             }
         }
        

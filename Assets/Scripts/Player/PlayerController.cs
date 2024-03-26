@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         canWallJump = saveData.currentAbilities[4];
         canEnterRageMode = saveData.currentAbilities[5];
         canPhaseShift = saveData.currentAbilities[6];
-        playerUpgrade.SetWeaponList(saveData.currentPlayerWeapons);
+        if(saveData.currentPlayerWeapons.Count > 0) playerUpgrade.SetWeaponList(saveData.currentPlayerWeapons);
         playerUpgrade.playerWeaponType = playerWeapon;
     }
 

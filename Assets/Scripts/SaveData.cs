@@ -72,8 +72,9 @@ public class PlayerSaveData
 {
     public string currentLevel = "0Tutorial";
     public bool[] currentAbilities = new bool[7];
-    public List<PlayerWeaponType> currentPlayerWeapons = new List<PlayerWeaponType>();
-    public PlayerWeaponType currentWeapon;
+    public List<PlayerWeaponType> currentPlayerWeapons = new List<PlayerWeaponType>()
+    { PlayerWeaponType.None };
+    public PlayerWeaponType currentWeapon = PlayerWeaponType.None;
     //A 10 element float array
     public float[] playerBestRun= new float[8];
     //Store last 10 runs. Jagged array each float will be accessed and turned into a timespace. If an array is full of zeros we consider it empty. If the sum of all of these floats is the least out of the entire list we consider the player's best run
@@ -94,6 +95,7 @@ public class PlayerSaveData
     //List of integer arrays that represent a full run. Make it so a run can only be stored if its completed. Check if the last element of the array is greater than zero to acheive this
     public List<int[]> playerSavedRuns = new List<int[]>();
     public float[] playerCollectiblesTracker = new float[8];
+    public List<RunDataSet> runDataSet = new List<RunDataSet>();    
 }
 
 [System.Serializable]
@@ -115,6 +117,14 @@ public class PracticeModeLevelSettings
     public float[] warpModeLevelTimes = new float[8];
     public int[] warpModeCollectibleCountPlayer = new int[8];
     public int[] warpModeCollectibleCount = new int[8];
+}
+
+[System.Serializable]
+public class RunDataSet
+{
+    public float[] playerRunTimes = new float[8];
+    public string runName = "Unnamed Run";
+    public int runIndex = 0;
 }
 
 public enum R4Level
