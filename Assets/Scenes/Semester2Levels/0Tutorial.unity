@@ -21717,7 +21717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2187846496764236799, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: field of view
-      value: 26.5
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3271972373544077028, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_BoundingShape2D
@@ -21725,7 +21725,7 @@ PrefabInstance:
       objectReference: {fileID: 1484218272}
     - target: {fileID: 3651309526774679418, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: field of view
-      value: 25
+      value: 25.000002
       objectReference: {fileID: 0}
     - target: {fileID: 5169012110108082315, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_UIInputModule
@@ -21733,11 +21733,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7236839450530248994, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -53.71769
+      value: -54.053017
       objectReference: {fileID: 0}
     - target: {fileID: 7236839450530248994, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.20105347
+      value: 0.1784002
       objectReference: {fileID: 0}
     - target: {fileID: 8686200487451471497, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.x

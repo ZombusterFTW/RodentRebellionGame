@@ -27135,6 +27135,10 @@ PrefabInstance:
       propertyPath: m_MinFOV
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2187846496764236799, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
+      propertyPath: field of view
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 3271972373544077028, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
