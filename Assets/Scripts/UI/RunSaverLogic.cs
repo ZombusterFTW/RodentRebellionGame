@@ -32,6 +32,8 @@ public class RunSaverLogic : MonoBehaviour
             isActive = false;
             runDataSet = new RunDataSet();
             confirmSaveCanvas.enabled = false;
+            //Wipe field so its blank the next time we use it.
+            runNameField.text = string.Empty;
         }
     }
 
@@ -42,7 +44,8 @@ public class RunSaverLogic : MonoBehaviour
         {
             runDataSet.runName = runNameField.text;
             SaveData.instance.playerSaveData.playerSavedRuns.Add(runDataSet);
-           // SaveData.instance.playerSaveData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount] = new float[8];
+            //This commented to show how multiple runs can be saved. We want to wipe any current runs that are saved.
+            //SaveData.instance.playerSaveData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount] = new float[8];
             CancelSave();
             SaveData.instance.SaveIntoJson();
             runsDataManager.UpdateTimes();

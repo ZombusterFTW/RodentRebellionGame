@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSaveData:
-    currentLevel: TestLevel
+    currentLevel: 
     currentAbilities: 00000000000000
     currentPlayerWeapons: 
     currentWeapon: 0
@@ -69,6 +69,7 @@ MonoBehaviour:
     - 0
     - 0
     - 0
+    playerSavedRuns: []
   playerSettingsConfig:
     isSpeedrunModeEnabled: 0
     playerInTimeWarpMode: 0

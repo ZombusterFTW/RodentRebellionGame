@@ -41,16 +41,18 @@ public class SaveData : MonoBehaviour
         if(!playerSettingsConfig.playerInTimeWarpMode) System.IO.File.WriteAllText(Application.persistentDataPath + "/PlayerData.json", playerData);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/PlayerConfigSettings.json", playerSettings);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/PracticeModeSettings.json", practiceModeSettings);
+        Debug.Log("Saved Player Data");
     }
 
     public void LoadFromJson()
     {
+        Debug.Log("Loaded Save Data");
         //Attempt to load existing save data. 
         if(File.Exists(Application.persistentDataPath + "/PlayerData.json"))
         {
             //If the file exists we turn it into a string and convert from a Json to a PlayerSaveData type
             string playerData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
-            playerSaveData = JsonConvert.DeserializeObject<PlayerSaveData>(playerData);    
+            playerSaveData = JsonConvert.DeserializeObject<PlayerSaveData>(playerData);
         }
         if (File.Exists(Application.persistentDataPath + "/PlayerConfigSettings.json"))
         {
@@ -70,10 +72,9 @@ public class SaveData : MonoBehaviour
 [System.Serializable]
 public class PlayerSaveData
 {
-    public string currentLevel = "0Tutorial";
+    public string currentLevel = "MainMenu";
     public bool[] currentAbilities = new bool[7];
-    public List<PlayerWeaponType> currentPlayerWeapons = new List<PlayerWeaponType>()
-    { PlayerWeaponType.None };
+    public List<PlayerWeaponType> currentPlayerWeapons = new List<PlayerWeaponType>();
     public PlayerWeaponType currentWeapon = PlayerWeaponType.None;
     //A 10 element float array
     public float[] playerBestRun= new float[8];

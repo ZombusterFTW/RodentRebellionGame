@@ -213,7 +213,6 @@ GameObject:
   - component: {fileID: 297956814}
   - component: {fileID: 297956813}
   - component: {fileID: 297956812}
-  - component: {fileID: 297956815}
   m_Layer: 5
   m_Name: TimeWarp
   m_TagString: Untagged
@@ -335,19 +334,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297956810}
   m_CullTransparentMesh: 1
---- !u!114 &297956815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 297956810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e8589c555c9fdc42bfb2b5daabcbedc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newGameButton: {fileID: 297956812}
 --- !u!1 &340717395
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,101 +660,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &756690571
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 756690573}
-  - component: {fileID: 756690572}
-  m_Layer: 0
-  m_Name: SaveDataManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &756690572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756690571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd92b3a81ff02342979f0229b5351cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSaveData:
-    currentLevel: TestLevel
-    currentAbilities: 00000000000000
-    currentPlayerWeapons: 
-    currentWeapon: 0
-    playerBestRun:
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    currentRunCount: 0
-    isPracticeModeUnlocked: 0
-    playerCollectiblesTracker:
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-  playerSettingsConfig:
-    isSpeedrunModeEnabled: 0
-    playerInTimeWarpMode: 0
-    musicVolume: 0.75
-    sfxVolume: 0.75
-  practiceModeLevelSettings:
-    lastLevelAccruedTime: 0
-    warpModeLevelTimesPlayer:
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    warpModeLevelTimes:
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    warpModeCollectibleCountPlayer: 0000000000000000000000000000000000000000000000000000000000000000
-    warpModeCollectibleCount: 0000000000000000000000000000000000000000000000000000000000000000
---- !u!4 &756690573
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756690571}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &803380684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,6 +952,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918275005}
   m_CullTransparentMesh: 1
+--- !u!1001 &950854341
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5156636459819988748, guid: 87c4205daa5178440b4fcf82232dabdf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156636459819988748, guid: 87c4205daa5178440b4fcf82232dabdf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156636459819988748, guid: 87c4205daa5178440b4fcf82232dabdf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156636459819988748, guid: 87c4205daa5178440b4fcf82232dabdf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156636459819988748, guid: 87c4205daa5178440b4fcf82232dabdf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156636459819988748, guid: 87c4205daa5178440b4fcf82232dabdf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156636459819988748, guid: 87c4205daa5178440b4fcf82232dabdf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156636459819988748, guid: 87c4205daa5178440b4fcf82232dabdf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156636459819988748, guid: 87c4205daa5178440b4fcf82232dabdf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156636459819988748, guid: 87c4205daa5178440b4fcf82232dabdf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054991530344219210, guid: 87c4205daa5178440b4fcf82232dabdf, type: 3}
+      propertyPath: m_Name
+      value: SaveDataManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 87c4205daa5178440b4fcf82232dabdf, type: 3}
 --- !u!1 &957174406
 GameObject:
   m_ObjectHideFlags: 0
@@ -2901,5 +2849,5 @@ SceneRoots:
   - {fileID: 607592704}
   - {fileID: 1011887986}
   - {fileID: 1181920728}
-  - {fileID: 756690573}
   - {fileID: 1610853866}
+  - {fileID: 950854341}

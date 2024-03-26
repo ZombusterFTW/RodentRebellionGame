@@ -214,7 +214,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         if(this != null)
         {
-            if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().name == "TimeWarp")
+            if (SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "TimeWarp")
             {
                 StopAllCoroutines();
                 DestroyImmediate(gameObject);

@@ -16,11 +16,11 @@ public class SavedRunDataRetreive : MonoBehaviour
 
     public void UpdateSavedRunDisplay()
     {
-
         foreach(GameObject run in savedRuns) 
         {
             Destroy(run);
         }
+        savedRuns.Clear();  
         SaveData.instance.LoadFromJson();
         List<RunDataSet> runs = new List<RunDataSet>();
         runs = SaveData.instance.playerSaveData.playerSavedRuns;

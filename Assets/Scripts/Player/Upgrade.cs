@@ -27,6 +27,7 @@ public class Upgrade : MonoBehaviour
 
     public void SetWeaponList(List<PlayerWeaponType> weaponListIn)
     {
+        weaponList.Clear();
         weaponList = weaponListIn;
     }
 

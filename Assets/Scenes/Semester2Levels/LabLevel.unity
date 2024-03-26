@@ -42148,7 +42148,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1973494872080101497, guid: 9c098d76bf4cc9e4e85d4d9b6f9d66ef, type: 3}
       propertyPath: sceneToLoad
-      value: MainMenu
+      value: Labyrinth3
       objectReference: {fileID: 0}
     - target: {fileID: 1973494872080101497, guid: 9c098d76bf4cc9e4e85d4d9b6f9d66ef, type: 3}
       propertyPath: activatedByOtherObject
@@ -61200,7 +61200,7 @@ PrefabInstance:
       objectReference: {fileID: 906859123}
     - target: {fileID: 3651309526774679418, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: field of view
-      value: 26.5
+      value: 26.499998
       objectReference: {fileID: 0}
     - target: {fileID: 5169012110108082315, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_UIInputModule
@@ -61208,11 +61208,11 @@ PrefabInstance:
       objectReference: {fileID: 1614604420}
     - target: {fileID: 7236839450530248994, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.1768036
+      value: -2.7515056
       objectReference: {fileID: 0}
     - target: {fileID: 7236839450530248994, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.025853476
+      value: 0.026253542
       objectReference: {fileID: 0}
     - target: {fileID: 8686200487451471497, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_LocalPosition.x

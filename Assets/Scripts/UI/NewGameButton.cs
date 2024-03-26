@@ -56,7 +56,6 @@ public class NewGameButton : MonoBehaviour
         //This is to ensure that the player is always out of TimeWarp mode if they return to the mainmenu.
         SaveData.instance.playerSettingsConfig.playerInTimeWarpMode = false;
         SaveData.instance.playerSaveData.isPracticeModeUnlocked = true;
-        SaveData.instance.SaveIntoJson();
-        SaveData.instance.LoadFromJson();
+        //SaveData.instance.SaveIntoJson();
     }
 }
