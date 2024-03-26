@@ -93,9 +93,8 @@ public class PlayerSaveData
     public int currentRunCount = 0;
     public bool isPracticeModeUnlocked = false;
     //List of integer arrays that represent a full run. Make it so a run can only be stored if its completed. Check if the last element of the array is greater than zero to acheive this
-    public List<int[]> playerSavedRuns = new List<int[]>();
     public float[] playerCollectiblesTracker = new float[8];
-    public List<RunDataSet> runDataSet = new List<RunDataSet>();    
+    public List<RunDataSet> playerSavedRuns = new List<RunDataSet>();    
 }
 
 [System.Serializable]

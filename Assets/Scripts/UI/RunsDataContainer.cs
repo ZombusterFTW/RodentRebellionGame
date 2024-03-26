@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -26,8 +27,19 @@ public class RunsDataContainer : MonoBehaviour
 
     public RunDataSet GetRunDataSet() { return runDataSet; }
 
+    public void SetRunDataSet(RunDataSet runDataSetIn) 
+    { runDataSet = runDataSetIn; }
 
+    public void UpdateRunDisplay()
+    {
+        runName.text = runDataSet.runName;  
 
+        for (int i = 0; i < levelSpeeds.Length; i++)
+        {
+            TimeSpan ts = TimeSpan.FromSeconds(runDataSet.playerRunTimes[i]);
+            levelSpeeds[i].text = ts.ToString("mm") + ":" + ts.ToString("ss") + ":" + ts.ToString("ff");
+        }
+    }
 
 
 }

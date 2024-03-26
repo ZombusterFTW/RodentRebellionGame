@@ -143,6 +143,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""c8a6f756-4796-48d0-88fc-8a5e23658da5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ScrollWheel"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""765ab2a2-96e2-4ac1-bded-d238ce12cc85"",
+                    ""expectedControlType"": """",
+                    ""processors"": ""Scale(factor=5)"",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -365,6 +383,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""WeaponSwap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6f18c8e-47d0-4f76-a9e2-c17260c7806e"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d9729d5-7bd4-48b3-8094-3be266554ccc"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScrollWheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -414,6 +454,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerControlActions_LazerGunAlt = m_PlayerControlActions.FindAction("LazerGunAlt", throwIfNotFound: true);
         m_PlayerControlActions_MousePosition = m_PlayerControlActions.FindAction("MousePosition", throwIfNotFound: true);
         m_PlayerControlActions_WeaponSwap = m_PlayerControlActions.FindAction("WeaponSwap", throwIfNotFound: true);
+        m_PlayerControlActions_RightClick = m_PlayerControlActions.FindAction("RightClick", throwIfNotFound: true);
+        m_PlayerControlActions_ScrollWheel = m_PlayerControlActions.FindAction("ScrollWheel", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
@@ -491,6 +533,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControlActions_LazerGunAlt;
     private readonly InputAction m_PlayerControlActions_MousePosition;
     private readonly InputAction m_PlayerControlActions_WeaponSwap;
+    private readonly InputAction m_PlayerControlActions_RightClick;
+    private readonly InputAction m_PlayerControlActions_ScrollWheel;
     public struct PlayerControlActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -508,6 +552,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @LazerGunAlt => m_Wrapper.m_PlayerControlActions_LazerGunAlt;
         public InputAction @MousePosition => m_Wrapper.m_PlayerControlActions_MousePosition;
         public InputAction @WeaponSwap => m_Wrapper.m_PlayerControlActions_WeaponSwap;
+        public InputAction @RightClick => m_Wrapper.m_PlayerControlActions_RightClick;
+        public InputAction @ScrollWheel => m_Wrapper.m_PlayerControlActions_ScrollWheel;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControlActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -556,6 +602,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @WeaponSwap.started += instance.OnWeaponSwap;
             @WeaponSwap.performed += instance.OnWeaponSwap;
             @WeaponSwap.canceled += instance.OnWeaponSwap;
+            @RightClick.started += instance.OnRightClick;
+            @RightClick.performed += instance.OnRightClick;
+            @RightClick.canceled += instance.OnRightClick;
+            @ScrollWheel.started += instance.OnScrollWheel;
+            @ScrollWheel.performed += instance.OnScrollWheel;
+            @ScrollWheel.canceled += instance.OnScrollWheel;
         }
 
         private void UnregisterCallbacks(IPlayerControlActionsActions instance)
@@ -599,6 +651,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @WeaponSwap.started -= instance.OnWeaponSwap;
             @WeaponSwap.performed -= instance.OnWeaponSwap;
             @WeaponSwap.canceled -= instance.OnWeaponSwap;
+            @RightClick.started -= instance.OnRightClick;
+            @RightClick.performed -= instance.OnRightClick;
+            @RightClick.canceled -= instance.OnRightClick;
+            @ScrollWheel.started -= instance.OnScrollWheel;
+            @ScrollWheel.performed -= instance.OnScrollWheel;
+            @ScrollWheel.canceled -= instance.OnScrollWheel;
         }
 
         public void RemoveCallbacks(IPlayerControlActionsActions instance)
@@ -677,6 +735,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnLazerGunAlt(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnWeaponSwap(InputAction.CallbackContext context);
+        void OnRightClick(InputAction.CallbackContext context);
+        void OnScrollWheel(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

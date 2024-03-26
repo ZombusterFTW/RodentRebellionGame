@@ -8,7 +8,7 @@ public class RunsDataManager : MonoBehaviour
 {
     [SerializeField] RunsDataContainer playerBestRun;
     [SerializeField] RunsDataContainer[] runsDataHolders;
-    [SerializeField] float[] gameAvgTimes;
+    public float[] gameAvgTimes;
 
     private PlayerSaveData playerData;
     
