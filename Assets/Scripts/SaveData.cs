@@ -44,6 +44,13 @@ public class SaveData : MonoBehaviour
         Debug.Log("Saved Player Data");
     }
 
+    public void SaveLevelTime()
+    {
+        string practiceModeSettings = JsonConvert.SerializeObject(practiceModeLevelSettings);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/PracticeModeSettings.json", practiceModeSettings);
+        Debug.Log("Saved Player Data");
+    }
+
     public void LoadFromJson()
     {
         Debug.Log("Loaded Save Data");

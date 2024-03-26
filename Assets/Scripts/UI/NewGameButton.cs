@@ -44,6 +44,7 @@ public class NewGameButton : MonoBehaviour
             {
                 SceneTransitionerManager.instance.runsShowcase.UpdateTimes();
             }
+            SaveData.instance.practiceModeLevelSettings.lastLevelAccruedTime = 0;
             //Save.
             SaveData.instance.SaveIntoJson();
         }

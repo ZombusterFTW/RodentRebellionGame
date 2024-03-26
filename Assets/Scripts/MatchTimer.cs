@@ -14,6 +14,7 @@ public class MatchTimer : MonoBehaviour
     public GameObject matchTimerParent;
     private float elapsedTime;
     DialogueManager dialogueManager;
+    Coroutine timeSaver = null;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,8 @@ public class MatchTimer : MonoBehaviour
         levelName.text = SceneManager.GetActiveScene().name;
         if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled || SaveData.instance.playerSettingsConfig.playerInTimeWarpMode)
         {
+            //time exploit fix commented for now
+            //elapsedTime = SaveData.instance.practiceModeLevelSettings.lastLevelAccruedTime;
             matchTimerParent.SetActive(true);
         }
         else
@@ -38,8 +41,10 @@ public class MatchTimer : MonoBehaviour
             elapsedTime = 0;
             //Set level name to the new scene
             levelName.text = arg0.name;
+            //time exploit fix commented for now
+            //if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled) elapsedTime += SaveData.instance.practiceModeLevelSettings.lastLevelAccruedTime;
         }
-        
+
     }
 
     // Update is called once per frame
@@ -51,8 +56,25 @@ public class MatchTimer : MonoBehaviour
             elapsedTime += Time.deltaTime;
             if(SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled || SaveData.instance.playerSettingsConfig.playerInTimeWarpMode)
             {
+                /* Commented this code would theoretically prevent the player from resuming a level and restart their times.
+                if(!SaveData.instance.playerSettingsConfig.playerInTimeWarpMode)
+                {
+                    if(timeSaver == null) timeSaver = StartCoroutine(SaveTimeInterval());
+                }
+                */
                 UpdateTimer();
             }
+        }
+    }
+
+    IEnumerator SaveTimeInterval()
+    {
+        while(true)
+        {
+            yield return new WaitForSecondsRealtime(1);
+            SaveData.instance.practiceModeLevelSettings.lastLevelAccruedTime = elapsedTime;
+            SaveData.instance.SaveLevelTime();
+            LapTime();   
         }
     }
 
@@ -67,8 +89,7 @@ public class MatchTimer : MonoBehaviour
 
     public void LapTime()
     {
-
-
+        if(timeSaver != null) StopCoroutine(timeSaver);
         if (SaveData.instance != null)
         {
             //Get level scene name. Save time

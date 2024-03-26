@@ -43,6 +43,7 @@ public class ExitDoor : MonoBehaviour,R4Activatable
         //Check for player variables here and save them. 
         if(SaveData.instance != null) 
         {
+            SaveData.instance.practiceModeLevelSettings.lastLevelAccruedTime = 0;
             //Track level name and save data put into memory by other classes
             if (!SaveData.instance.playerSettingsConfig.playerInTimeWarpMode)
             {
