@@ -6,9 +6,15 @@ using UnityEngine.UI;
 
 public class FrenzyManager : MonoBehaviour
 {
-    [Tooltip("How long the frenzy meter will last")][SerializeField] private float frenzyMaxAmount = 7.5f;
+    [Header("Rage and Phase Shift Drain Rate Variables")]
+    [Tooltip("How long the frenzy meter will last in seconds")][SerializeField] private float frenzyMaxAmount = 7.5f;
+    [Tooltip("Increase this multipilier to make the frenzy bar drain faster in rage mode. Or decrease it to make it drain slower.")][SerializeField] private float frenzyDrainMultiplier = 1f;
+    [Tooltip("Increase this multiplier to make the frenzy bar drain faster in rubbermode/phaseshift. Or decrease it to make it drain slower.")][SerializeField] private float phaseShiftDrainMultiplier = 0.05f;
+    [Tooltip("How much frenzy meter will be gained overtime")][SerializeField] private float frenzyPassiveGainRate = 0.01f;
+
+    [Header("Frenzy Bar UI")]
+    [Tooltip("Readout of current frenzy meter amount")][SerializeField] private float frenzyAmountCurrent;
     private float frenzyStartingValue = 0f;
-    [SerializeField] private float frenzyAmountCurrent;
     private PlayerController playerController;
     [SerializeField] private PlayerUI playerUIManager;
     private Coroutine frenzyBarAnimation;
@@ -153,7 +159,7 @@ public class FrenzyManager : MonoBehaviour
         while (frenzyAmountCurrent > 0) 
         {
             //Debug.Log(frenzyAmountCurrent);
-            frenzyAmountCurrent -= Time.deltaTime;
+            frenzyAmountCurrent -= Time.deltaTime*frenzyDrainMultiplier;
             playerUIManager.UpdateFrenzyBar(frenzyAmountCurrent, frenzyMaxAmount);
             yield return null;
         }
@@ -170,7 +176,7 @@ public class FrenzyManager : MonoBehaviour
         while (frenzyAmountCurrent > 0)
         {
             //Debug.Log(frenzyAmountCurrent);
-            frenzyAmountCurrent -= Time.deltaTime* 0.05f;
+            frenzyAmountCurrent -= Time.deltaTime* frenzyDrainMultiplier;
             playerUIManager.UpdateFrenzyBar(frenzyAmountCurrent, frenzyMaxAmount);
             yield return null;
         }
@@ -187,6 +193,6 @@ public class FrenzyManager : MonoBehaviour
     void Update()
     {
         //For testing 
-        if (!frenzyActive && !inRubberMode) AddToFrenzyMeter(0.01f*Time.deltaTime);
+        if (!frenzyActive && !inRubberMode) AddToFrenzyMeter(frenzyPassiveGainRate*Time.deltaTime);
     }
 }
