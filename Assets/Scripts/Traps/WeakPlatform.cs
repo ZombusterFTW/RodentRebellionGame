@@ -13,17 +13,19 @@ public class WeakPlatform : MonoBehaviour, R4Activatable
     [Tooltip("If this bool is true a platform will only fall if a player has touched it for platformFallDelay seconds")][SerializeField] private bool platformDurability = false;
     [Tooltip("This distance is how far the platform will fall. This value is sign sensitive. negative values will cause the platform to fall downwards, positive values will cause it to fall up.")][SerializeField] private float fallDistance = -1000f;
     [Tooltip("How long it takes for the falling platform to reach its destination")][SerializeField] private float platformFallTime = 2f;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private bool isActive;
     private Coroutine platformLoop;
     private float platformTouchedSeconds;
     private Vector3 targetPosition;
     private Vector3 startingPosition;
     private BoxCollider2D platformCollider;
+    [SerializeField] private Animator animator;
 
     public void Activate()
     {
-        if(!isActive) 
+        
+        if (!isActive) 
         {
             isActive = true;
             spriteRenderer.color = Color.white;
@@ -44,7 +46,12 @@ public class WeakPlatform : MonoBehaviour, R4Activatable
     IEnumerator FallingPlatformLoop()
     {
         spriteRenderer.DOComplete();
-        if (!platformDurability) yield return new WaitForSeconds(platformFallDelay);
+        if (!platformDurability) 
+        {
+            yield return new WaitForSeconds(platformFallDelay - 0.417f);
+        }
+        animator.Play("PlatformCrumble");
+        yield return new WaitForSeconds(0.417f);
         spriteRenderer.color = Color.red;
         spriteRenderer.DOFade(0, 2);
         platformCollider.enabled = false;
@@ -59,6 +66,7 @@ public class WeakPlatform : MonoBehaviour, R4Activatable
         //If we get here the platform needs to respawn.
         spriteRenderer.color = Color.white;
         spriteRenderer.DOFade(1, 2);
+        animator.Play("PlatformReform");
         gameObject.transform.position = startingPosition;
         platformCollider.enabled = true;
         platformLoop = null;
@@ -77,7 +85,7 @@ public class WeakPlatform : MonoBehaviour, R4Activatable
     {
         startingPosition = gameObject.transform.position;
         targetPosition = gameObject.transform.position + new Vector3(0, fallDistance,0);
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //spriteRenderer = GetComponent<SpriteRenderer>();
         platformCollider = GetComponent<BoxCollider2D>();   
         spriteRenderer.color = Color.gray;
         if(startOn) 

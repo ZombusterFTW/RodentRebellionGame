@@ -7,16 +7,14 @@ public class Switch : MonoBehaviour
     //switch can be activated by things that damage it. Add support to check damage type. This way a special switch could only be activated by the laser gun etc. 
     [Tooltip("The list of items to Activate.")][SerializeField] private List<GameObject> itemsToActivate = new List<GameObject>();
     [Tooltip("Set to true if you want the switch to start on")][SerializeField] private bool startOn = false;
-    [Tooltip("The color of the switch when it is Activated.")][SerializeField] private Color activatedColor = Color.red;
-    [Tooltip("The color of the switch when it is Deactivated.")][SerializeField] private Color deactivatedColor = Color.white;
     [Tooltip("If attacktyperequired is set to true, this switch will only activate when hit by a specific attack")][SerializeField] private bool attackTypeRequired = false;
     [Tooltip("If attacktyperequired is set to true, this switch will only activate when hit by a specific attack. Note that switches cannot be activated by ground pounds")][SerializeField] private PlayerAttackType requiredAttackType;
     [Tooltip("If set to true, once interacted with this switch can't be used again")][SerializeField] bool switchIsUsedOnce = false;
+    [Tooltip("The animator used for the switch.")][SerializeField] Animator animator;
     //delay before the switch can be triggered again
     private float switchDelayTime = 0.25f;
     private bool switchActivated = false;
     private bool switchDelayActive = false;
-    SpriteRenderer spriteRenderer;
     //private AudioClip switchPullSound;
     //private AudioSource switchAudioSource;
 
@@ -24,7 +22,6 @@ public class Switch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         if (startOn)
         {
             switchActivated = true; 
@@ -78,14 +75,14 @@ public class Switch : MonoBehaviour
     void ActivateButton()
     {
         switchActivated = true;
-        spriteRenderer.color = activatedColor;
+        animator.Play("FloorSwitchOn");
         ActivateItems();
     }
 
     void DeactivateButton()
     {
         DeactivateItems();
-        spriteRenderer.color = deactivatedColor;
+        animator.Play("FloorSwitchOff");
         switchActivated = false;
     }
 

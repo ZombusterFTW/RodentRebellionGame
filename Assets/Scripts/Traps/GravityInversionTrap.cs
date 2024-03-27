@@ -7,7 +7,9 @@ public class GravityInversionTrap : MonoBehaviour, R4Activatable
     [Tooltip("Set this bool to false if you want this trap to start inactive")][SerializeField] private bool startOn = true;
     [Tooltip("After the player has touched the trap for this many seconds the trap will activate")][SerializeField] private float activationTime = 0.35f;
     [Tooltip("Time after the trap has been activated before it can activate again")][SerializeField] private float coolDownTime = 1f;
-    private SpriteRenderer spriteRenderer;
+    [Tooltip("The image that shows when the platform is ready to use")][SerializeField] private Sprite activatedImage;
+    [Tooltip("The image that shows when the platform has just been used or deactivated")][SerializeField] private Sprite deActivatedImage;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private bool isActive;
     private float timeCounter;
     private bool onCooldown;
@@ -19,6 +21,7 @@ public class GravityInversionTrap : MonoBehaviour, R4Activatable
         {
             isActive = true;
             spriteRenderer.color = Color.red;
+            spriteRenderer.sprite = activatedImage;
         }
     }
 
@@ -28,13 +31,13 @@ public class GravityInversionTrap : MonoBehaviour, R4Activatable
         {
             isActive = false;
             spriteRenderer.color = Color.gray;
+            spriteRenderer.sprite = deActivatedImage;   
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         if(startOn) 
         {
             Activate();
@@ -72,9 +75,9 @@ public class GravityInversionTrap : MonoBehaviour, R4Activatable
     IEnumerator TrapCooldown()
     {
         onCooldown = true;
-        spriteRenderer.color = Color.gray;
+        spriteRenderer.sprite = deActivatedImage;
         yield return new WaitForSeconds(coolDownTime);
-        if(isActive) spriteRenderer.color = Color.red;
+        if(isActive) spriteRenderer.sprite = activatedImage;
         onCooldown = false;
         cooldown = null;
     }

@@ -10,6 +10,8 @@ public class AntiBouncePad : MonoBehaviour, R4Activatable
 
     [Tooltip("If set to true the antibounce pad will be active without a button or switch")][SerializeField] private bool startOn = false;
     [Tooltip("Set this value to the default bounciness of the wall physics material 2d")][SerializeField] private float wallBounciness = 0.3f;
+    [Tooltip("The image that shows when the platform is activated")][SerializeField] private Sprite activatedSprite;
+    [Tooltip("The image that shows when the platform is activated")][SerializeField] private Sprite deactivatedSprite;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D bounceCollider;
     private bool isActive = false;
@@ -22,7 +24,7 @@ public class AntiBouncePad : MonoBehaviour, R4Activatable
     public void Activate()
     {
         isActive = true;
-        spriteRenderer.color = Color.red;
+        spriteRenderer.sprite = activatedSprite;
         bounceCollider.sharedMaterial = noBouncyMaterial;
         
     }
@@ -30,7 +32,7 @@ public class AntiBouncePad : MonoBehaviour, R4Activatable
     public void Deactivate()
     {
         isActive = false;
-        spriteRenderer.color = Color.green;
+        spriteRenderer.sprite = deactivatedSprite;
         bounceCollider.sharedMaterial = defaultMaterial;
     }
 

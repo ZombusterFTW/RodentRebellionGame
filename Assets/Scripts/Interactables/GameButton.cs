@@ -9,10 +9,10 @@ public class GameButton : MonoBehaviour
     [Tooltip("The list of items to Activate.")][SerializeField] private List<GameObject> itemsToActivate = new List<GameObject>();
     [Tooltip("Wether or not the player must be groundpounding to activate the button.")] private bool groundPoundNeeded = true;
     [Tooltip("Set to true if you want the button to start on")][SerializeField] private bool startOn = false;
-    [Tooltip("The color of the button when it is Activated.")][SerializeField] private Color activatedColor = Color.red;
-    [Tooltip("The color of the button when it is Deactivated.")][SerializeField] private Color deactivatedColor = Color.white;
+    [Tooltip("The color of the button when it is Activated.")][SerializeField] private Sprite activatedColor;
+    [Tooltip("The color of the button when it is Deactivated.")][SerializeField] private Sprite deactivatedColor;
 
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private bool buttonActivated = false;
     private bool buttonDelay = false;
     private bool toggleBehavior_Game = false;
@@ -21,7 +21,6 @@ public class GameButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         //Prevent the possibility of toggle behavior and button delay being active at the same time.
         if(itemActivateTime < 0 && toggleBehavior) toggleBehavior_Game = true;
         if(startOn)
@@ -46,7 +45,7 @@ public class GameButton : MonoBehaviour
         StopCoroutine(ButtonToggleDelay());
         StartCoroutine(ButtonToggleDelay());
         buttonActivated = true;
-        spriteRenderer.color = activatedColor;
+        spriteRenderer.sprite = activatedColor;
         if (itemActivateTime > 0) StartCoroutine(ButtonActivated());
         else ActivateItems();
     }
@@ -56,7 +55,7 @@ public class GameButton : MonoBehaviour
         StopCoroutine(ButtonToggleDelay());
         StartCoroutine(ButtonToggleDelay());
         DeactivateItems();
-        spriteRenderer.color = deactivatedColor;
+        spriteRenderer.sprite = deactivatedColor;
         buttonActivated = false;
     }
 

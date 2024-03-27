@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class KeyandDoor : MonoBehaviour, R4Activatable
 {
-    [Tooltip("The color the door and key will be. Changed at runtime")][SerializeField] private Color doorColor = Color.white;
-    [Tooltip("The name of the door. If left undefined it will be determined by the color set")][SerializeField] private string doorColorString = null;
+    [Tooltip("The color the door and key will be. Changed at runtime")][SerializeField] private LockedDoorColors doorColorChoice = LockedDoorColors.Blue;
+    private Color doorColor = Color.blue;
+    [Tooltip("The name of the door. If left undefined it will be determined by the color set")][SerializeField] private string doorColorString = string.Empty;
     [Tooltip("If the door is active. If it is inactive, the key will be invisible until activated.")][SerializeField] private bool isDoorActive = true;
     [Tooltip("The key connected to the door")][SerializeField] private GameObject doorKey;
+    [Tooltip("The array of keycard objects")][SerializeField] private Sprite[] keyCardSprites;
     private bool keyPickedUp = false;
     private Collider2D keyCollider;
     private BoxCollider2D doorCollider;
@@ -32,17 +34,45 @@ public class KeyandDoor : MonoBehaviour, R4Activatable
     // Start is called before the first frame update
     void Start()
     {
-        doorCollider = GetComponent<BoxCollider2D>();   
-        if (doorColorString == null) doorColorString = doorColor.ToString();
+        string doorName = string.Empty;
+        switch (doorColorChoice)
+        {
+            case LockedDoorColors.Blue:
+                doorColor = Color.blue;
+                doorName = "Blue";
+                break;
+            case LockedDoorColors.Green:
+                doorColor = Color.green;
+                doorName = "Green";
+                break;
+            case LockedDoorColors.Orange:
+                doorColor = new Color(255, 148, 112);
+                doorName = "Orange";
+                break;
+            case LockedDoorColors.Pink:
+                doorColor = new Color(227, 61, 148);
+                doorName = "Pink";
+                break;
+            case LockedDoorColors.Purple:
+                doorColor = new Color(90, 34, 138);
+                doorName = "Purple";
+                break;
+            case LockedDoorColors.Red:
+                doorColor = Color.red;
+                doorName = "Red";
+                break;
+            case LockedDoorColors.Yellow:
+                doorColor = Color.yellow;
+                doorName = "Yellow";
+                break;
+        }
+        doorKey.GetComponent<SpriteRenderer>().sprite = keyCardSprites[(int)doorColorChoice];
+        doorCollider = GetComponent<BoxCollider2D>();
+        if (doorColorString == string.Empty) doorColorString = doorName;
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         playerCollider = playerController.GetPlayerCollider();
         GetComponent<SpriteRenderer>().color = doorColor;
-        doorKey.GetComponent<SpriteRenderer>().color = doorColor;
         keyCollider = doorKey.GetComponent<Collider2D>();
-
-
-
-
         if (!isDoorActive)
         {
             doorKey.gameObject.SetActive(false);
@@ -87,4 +117,9 @@ public class KeyandDoor : MonoBehaviour, R4Activatable
             Destroy(gameObject, 3.5f);
         }
     }
+}
+
+public enum LockedDoorColors
+{
+    Blue = 0, Green = 1, Orange = 2, Pink = 3, Purple = 4, Red = 5, Yellow = 6
 }

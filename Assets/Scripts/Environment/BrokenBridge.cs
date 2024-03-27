@@ -34,40 +34,42 @@ public class BrokenBridge : MonoBehaviour
 
     public void DeployBridge()
     {
-        gameObject.transform.DOComplete();
+        //gameObject.transform.DOComplete();
         if(!invertBridge) 
         {
-            movementTween = gameObject.transform.DOMove(bridgeStartingLoc, bridgeDeployTime);
-            movementTween.onComplete = ResetBridgeColl;
-            rubberBridgeRenderer.DOFade(1, bridgeDeployTime);
-            ratBridgeRenderer.DOFade(0, bridgeDeployTime);
+            ResetBridgeColl();
+            //movementTween = gameObject.transform.DOMove(bridgeStartingLoc, bridgeDeployTime);
+            //movementTween.onComplete = ResetBridgeColl;
+            //rubberBridgeRenderer.DOFade(1, bridgeDeployTime);
+            //ratBridgeRenderer.DOFade(0, bridgeDeployTime);
         }
         else
         {
             bridgeCollider.enabled = false;
-            movementTween = gameObject.transform.DOMove(bridgeEndPos, bridgeDeployTime);
-            ratBridgeRenderer.DOFade(0, bridgeDeployTime);
-            rubberBridgeRenderer.DOFade(1, bridgeDeployTime);
+            //movementTween = gameObject.transform.DOMove(bridgeEndPos, bridgeDeployTime);
+            //ratBridgeRenderer.DOFade(0, bridgeDeployTime);
+            //rubberBridgeRenderer.DOFade(1, bridgeDeployTime);
 
         }
     }
 
     public void RetractBridge()
     {
-        gameObject.transform.DOComplete();
+        //gameObject.transform.DOComplete();
         if (!invertBridge)
         {
             bridgeCollider.enabled = false;
-            movementTween = gameObject.transform.DOMove(bridgeEndPos, bridgeDeployTime);
-            rubberBridgeRenderer.DOFade(0, bridgeDeployTime);
-            ratBridgeRenderer.DOFade(1, bridgeDeployTime);
+            //movementTween = gameObject.transform.DOMove(bridgeEndPos, bridgeDeployTime);
+            //rubberBridgeRenderer.DOFade(0, bridgeDeployTime);
+            //ratBridgeRenderer.DOFade(1, bridgeDeployTime);
         }
         else
         {
-            movementTween = gameObject.transform.DOMove(bridgeStartingLoc, bridgeDeployTime);
-            movementTween.onComplete = ResetBridgeColl;
-            ratBridgeRenderer.DOFade(1, bridgeDeployTime);
-            rubberBridgeRenderer.DOFade(0, bridgeDeployTime);
+            ResetBridgeColl();
+            //movementTween = gameObject.transform.DOMove(bridgeStartingLoc, bridgeDeployTime);
+            // movementTween.onComplete = ResetBridgeColl;
+            // ratBridgeRenderer.DOFade(1, bridgeDeployTime);
+            //rubberBridgeRenderer.DOFade(0, bridgeDeployTime);
         }
     }
 

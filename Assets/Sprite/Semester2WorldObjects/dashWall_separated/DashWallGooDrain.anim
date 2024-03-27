@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FloorSwitch
+  m_Name: DashWallGooDrain
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,11 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 853570876, guid: a289215a590bdd544b256e62dbab79be, type: 3}
+      value: {fileID: 21300000, guid: dd1fe7db3f8c63647abef72a44adc9bc, type: 3}
     - time: 0.083333336
-      value: {fileID: -745755936, guid: a289215a590bdd544b256e62dbab79be, type: 3}
+      value: {fileID: 21300000, guid: e720a9a094221a847b0e20ef5d1c718d, type: 3}
     - time: 0.16666667
-      value: {fileID: -505141162, guid: a289215a590bdd544b256e62dbab79be, type: 3}
+      value: {fileID: 21300000, guid: 0cf8f522b55bd7141af2d84cdf44d59a, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: 4c13826e0bcfb3544b85d96bc573bf02, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -48,15 +50,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 853570876, guid: a289215a590bdd544b256e62dbab79be, type: 3}
-    - {fileID: -745755936, guid: a289215a590bdd544b256e62dbab79be, type: 3}
-    - {fileID: -505141162, guid: a289215a590bdd544b256e62dbab79be, type: 3}
+    - {fileID: 21300000, guid: dd1fe7db3f8c63647abef72a44adc9bc, type: 3}
+    - {fileID: 21300000, guid: e720a9a094221a847b0e20ef5d1c718d, type: 3}
+    - {fileID: 21300000, guid: 0cf8f522b55bd7141af2d84cdf44d59a, type: 3}
+    - {fileID: 21300000, guid: 4c13826e0bcfb3544b85d96bc573bf02, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.25
+    m_StopTime: 0.33333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

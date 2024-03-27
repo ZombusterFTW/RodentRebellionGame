@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8669085836830186674}
   - component: {fileID: 6736838172014882041}
   - component: {fileID: 5062214767227193972}
-  m_Layer: 0
+  - component: {fileID: 1774783949239208963}
+  m_Layer: 3
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: 7482667652216324306, guid: c4702e3adddf2ec4dbe33558278052db, type: 3}
-  m_Color: {r: 0.107794166, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 553a0fa1d5a60a94588119660e13191a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,8 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 1
   isStartingSpawn: 1
-  activatedColor: {r: 0, g: 1, b: 0, a: 1}
-  deactivatedColor: {r: 1, g: 1, b: 1, a: 1}
+  activatedColor: {r: 1, g: 1, b: 1, a: 1}
+  deactivatedColor: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
   disabledColor: {r: 1, g: 0, b: 0, a: 1}
   circleCollider: {fileID: 0}
   playerController: {fileID: 0}
@@ -141,3 +142,38 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!70 &1774783949239208963
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5264668052878524191}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 5ceb26b362ba7c14fa938aa95d4c0ef9, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -1.74}
+  m_Size: {x: 3.02, y: 1.24}
+  m_Direction: 1
