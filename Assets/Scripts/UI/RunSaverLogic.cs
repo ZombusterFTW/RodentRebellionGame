@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class RunSaverLogic : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class RunSaverLogic : MonoBehaviour
     [SerializeField] SavedRunDataRetreive runSaveRetrieve;
     [SerializeField] RunsDataManager runsDataManager;
     [SerializeField] TMP_InputField runNameField;
+    GameObject dataHolderObj;
+
+    [SerializeField] Canvas confirmSingleRunDeleteCanvas;
+    [SerializeField] TextMeshProUGUI deleteSingleRunText;
+    [SerializeField] Canvas confirmDeleteAllRunsCanvas;
 
 
 
@@ -32,8 +38,10 @@ public class RunSaverLogic : MonoBehaviour
             isActive = false;
             runDataSet = new RunDataSet();
             confirmSaveCanvas.enabled = false;
+            confirmSingleRunDeleteCanvas.enabled = false;
+            confirmDeleteAllRunsCanvas.enabled = false;
             //Wipe field so its blank the next time we use it.
-            runNameField.text = string.Empty;
+            if (runNameField != null) runNameField.text = string.Empty;
         }
     }
 
@@ -43,9 +51,10 @@ public class RunSaverLogic : MonoBehaviour
         if(runNameField.text != string.Empty)
         {
             runDataSet.runName = runNameField.text;
+            runDataSet.runSaveDate = System.DateTime.Now;
             SaveData.instance.playerSaveData.playerSavedRuns.Add(runDataSet);
             //This commented to show how multiple runs can be saved. We want to wipe any current runs that are saved.
-            //SaveData.instance.playerSaveData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount] = new float[8];
+            SaveData.instance.playerSaveData.playerCurrentRuns[runDataSet.runIndex] = new float[8];
             CancelSave();
             SaveData.instance.SaveIntoJson();
             runsDataManager.UpdateTimes();
@@ -59,5 +68,41 @@ public class RunSaverLogic : MonoBehaviour
         SaveData.instance.SaveIntoJson();
         runsDataManager.UpdateTimes();
         runSaveRetrieve.UpdateSavedRunDisplay();
+        CancelSave();
+    }
+
+
+
+    public void DeleteAllRunsPrompt()
+    {
+        if (!isActive)
+        {
+            confirmDeleteAllRunsCanvas.enabled = true;
+            isActive = true;
+        }
+    }
+
+
+
+    public void DeleteRunFromMemory()
+    {
+        Destroy(dataHolderObj);
+        SaveData.instance.playerSaveData.playerSavedRuns.Remove(runDataSet);
+        SaveData.instance.SaveIntoJson();
+        runSaveRetrieve.UpdateSavedRunDisplay();
+        CancelSave();
+        Debug.Log("deleted run");
+    }
+
+    public void DeleteSingleRunPrompt(RunsDataContainer container, GameObject dataSetHolder)
+    {
+        if (!isActive)
+        {
+            dataHolderObj = dataSetHolder;
+            runDataSet = container.GetRunDataSet();
+            deleteSingleRunText.text = "Are you sure you want to delete " + runDataSet.runName + "?";
+            confirmSingleRunDeleteCanvas.enabled = true;
+            isActive = true;
+        }
     }
 }

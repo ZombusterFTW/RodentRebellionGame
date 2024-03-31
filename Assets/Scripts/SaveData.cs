@@ -132,6 +132,8 @@ public class RunDataSet
     public float[] playerRunTimes = new float[8];
     public string runName = "Unnamed Run";
     public int runIndex = 0;
+    public float runTotalTime = 0;
+    public DateTime runSaveDate = DateTime.MinValue;    
 }
 
 public enum R4Level

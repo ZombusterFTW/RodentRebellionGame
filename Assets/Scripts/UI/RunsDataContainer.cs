@@ -17,11 +17,18 @@ public class RunsDataContainer : MonoBehaviour
 
     public void ConvertDataToRunDataset(float[] playerRunTimes, string runName, int runIndex)
     {
-        if(playerRunTimes.Length == 8)
+        if (playerRunTimes.Length == 8)
         {
             runDataSet.playerRunTimes = playerRunTimes;
             runDataSet.runName = runName;
             runDataSet.runIndex = runIndex;
+            //Add each time into the total time, so this data can be easily sorted.
+            float temp = 0;
+            for (int i = 0; i < playerRunTimes.Length; i++) 
+            {
+                temp += playerRunTimes[i];
+            }
+            runDataSet.runTotalTime = temp;
         }
     }
 
@@ -36,8 +43,16 @@ public class RunsDataContainer : MonoBehaviour
 
         for (int i = 0; i < levelSpeeds.Length; i++)
         {
-            TimeSpan ts = TimeSpan.FromSeconds(runDataSet.playerRunTimes[i]);
-            levelSpeeds[i].text = ts.ToString("mm") + ":" + ts.ToString("ss") + ":" + ts.ToString("ff");
+            if(runDataSet.playerRunTimes[i] == 0)
+            {
+                levelSpeeds[i].text = "     -";
+            }
+            else
+            {
+                TimeSpan ts = TimeSpan.FromSeconds(runDataSet.playerRunTimes[i]);
+                levelSpeeds[i].text = ts.ToString("mm") + ":" + ts.ToString("ss") + ":" + ts.ToString("ff");
+            }
+            
         }
     }
 

@@ -36,4 +36,14 @@ public class RunSaveButton : MonoBehaviour, IPointerClickHandler
             runSaver.SaveRunLogic(runsData);
         }
     }
+
+    public void DeleteSingleRun()
+    {
+        RunSaverLogic runSaver = FindObjectOfType<RunSaverLogic>();
+        if (runSaver != null)
+        {
+            Debug.Log("Begin Save");
+            runSaver.DeleteSingleRunPrompt(runsData, gameObject);
+        }
+    }
 }

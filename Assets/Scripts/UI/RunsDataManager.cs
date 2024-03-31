@@ -53,6 +53,7 @@ public class RunsDataManager : MonoBehaviour
             else if (playerData.playerBestRun[i] == 0)
             {
                 playerBestRun.levelImages[i].color = Color.yellow;
+                playerBestRun.levelSpeeds[i].text = "     -";
             }
             //Else we set it to red
             else
@@ -76,6 +77,7 @@ public class RunsDataManager : MonoBehaviour
             else if (playerData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount][i] == 0)
             {
                 runsDataHolders[SaveData.instance.playerSaveData.currentRunCount].levelImages[i].color = Color.yellow;
+                runsDataHolders[SaveData.instance.playerSaveData.currentRunCount].levelSpeeds[i].text = "     -";
             }
             //Else we set it to red
             else
@@ -106,6 +108,7 @@ public class RunsDataManager : MonoBehaviour
             else if (playerData.playerBestRun[i] == 0)
             {
                 playerBestRun.levelImages[i].color = Color.yellow;
+                playerBestRun.levelSpeeds[i].text = "     -";
             }
             //Else we set it to red
             else
@@ -131,7 +134,7 @@ public class RunsDataManager : MonoBehaviour
                 runsDataHolders[j].ConvertDataToRunDataset(playerData.playerCurrentRuns[j], "Run: " + (j + 1), j);
                 //Convert each float to a timespan and display it
                 TimeSpan ts = TimeSpan.FromSeconds(playerData.playerCurrentRuns[j][i]);
-                Debug.Log(playerData.playerCurrentRuns[j][i]);
+                //Debug.Log(playerData.playerCurrentRuns[j][i]);
                 runsDataHolders[j].levelSpeeds[i].text = ts.ToString("mm") + ":" + ts.ToString("ss") + ":" + ts.ToString("ff");
                 //If the player is under the avg time we set the background behind the text to green
                 if (playerData.playerCurrentRuns[j][i] <= gameAvgTimes[i] && playerData.playerCurrentRuns[j][i] != 0)
@@ -141,6 +144,7 @@ public class RunsDataManager : MonoBehaviour
                 else if (playerData.playerCurrentRuns[j][i] == 0)
                 {
                     runsDataHolders[j].levelImages[i].color = Color.yellow;
+                    runsDataHolders[j].levelSpeeds[i].text = "     -";
                 }
                 //Else we set it to red
                 else
