@@ -1,2 +1,5 @@
-I finally reached the summit and now to see where this exit leads. #speaker:Big Joe #portrait:bigjoeneut #layout:left #audio:animal_crossing_high
+Is that... sunlight? #speaker:Big Joe #portrait:bigjoeneut #layout:left #audio:animal_crossing_high
+Am I finally free?
+Hah! I can't believe it!
+Freedom...
 -> END

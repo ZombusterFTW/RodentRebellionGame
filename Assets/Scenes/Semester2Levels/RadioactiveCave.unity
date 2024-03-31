@@ -624,6 +624,18 @@ PrefabInstance:
       propertyPath: upgradeType
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 9003417552762851014, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: activatesItems
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003417552762851014, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: objectsToActivate.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003417552762851014, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: objectsToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1160510271}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2340,6 +2352,18 @@ PrefabInstance:
       propertyPath: upgradeType
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 9003417552762851014, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: activatesItems
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003417552762851014, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: objectsToActivate.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9003417552762851014, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: objectsToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1583081598}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34404,11 +34428,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3938194606586327015, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 57.1
+      value: 60.04
       objectReference: {fileID: 0}
     - target: {fileID: 3938194606586327015, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.92
+      value: -4.27
       objectReference: {fileID: 0}
     - target: {fileID: 3938194606586327015, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34455,6 +34479,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
+--- !u!1 &1160510271 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8687598657058798807, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
+  m_PrefabInstance: {fileID: 1160510270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1164523029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69817,11 +69846,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3938194606586327015, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.57
+      value: 5.61
       objectReference: {fileID: 0}
     - target: {fileID: 3938194606586327015, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.66
+      value: -3.74
       objectReference: {fileID: 0}
     - target: {fileID: 3938194606586327015, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
       propertyPath: m_LocalPosition.z
@@ -69868,6 +69897,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
+--- !u!1 &1583081598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8687598657058798807, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
+  m_PrefabInstance: {fileID: 1583081597}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1586902053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108099,7 +108133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3651309526774679418, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: field of view
-      value: 35
+      value: 26.5
       objectReference: {fileID: 0}
     - target: {fileID: 5169012110108082315, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
       propertyPath: m_UIInputModule
