@@ -28494,6 +28494,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8808171176064296708, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
+      propertyPath: frenzyMaxAmount
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808171176064296708, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
+      propertyPath: frenzyDrainMultiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808171176064296708, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
+      propertyPath: frenzyPassiveGainRate
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808171176064296708, guid: 3d21157ab20bd9148a9589842a5c4ea2, type: 3}
+      propertyPath: phaseShiftDrainMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
