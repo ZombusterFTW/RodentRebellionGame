@@ -20,7 +20,7 @@ public class GravityInversionTrap : MonoBehaviour, R4Activatable
         if(!isActive) 
         {
             isActive = true;
-            spriteRenderer.color = Color.red;
+            //spriteRenderer.color = Color.red;
             spriteRenderer.sprite = activatedImage;
         }
     }
@@ -30,7 +30,7 @@ public class GravityInversionTrap : MonoBehaviour, R4Activatable
         if(isActive) 
         {
             isActive = false;
-            spriteRenderer.color = Color.gray;
+            //spriteRenderer.color = Color.gray;
             spriteRenderer.sprite = deActivatedImage;   
         }
     }

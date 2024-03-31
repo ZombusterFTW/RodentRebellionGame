@@ -214,6 +214,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         if(this != null)
         {
+            if (isFlipped) ToggleGravityFlip();
             if (SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "TimeWarp")
             {
                 StopAllCoroutines();
@@ -1111,6 +1112,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     public void BigJoeRespawn(bool returnToCheckpoint = false)
     {
+        if (isFlipped) ToggleGravityFlip();
         if (isAlive && !returnToCheckpoint)
         {
             //Unlink the platform on a player death.
