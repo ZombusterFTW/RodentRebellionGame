@@ -6895,7 +6895,7 @@ PrefabInstance:
     - target: {fileID: 7594211078640633730, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
       propertyPath: inkJSON
       value: 
-      objectReference: {fileID: 4900000, guid: 27ae80f8e6bd84c4691d9742b099cda6, type: 3}
+      objectReference: {fileID: 4900000, guid: 8bf04db99749a2549b72aeab787de888, type: 3}
     - target: {fileID: 7594211078640633730, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
       propertyPath: activatedByGameObject
       value: 1
@@ -8675,7 +8675,7 @@ PrefabInstance:
     - target: {fileID: 7594211078640633730, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
       propertyPath: inkJSON
       value: 
-      objectReference: {fileID: 4900000, guid: 27ae80f8e6bd84c4691d9742b099cda6, type: 3}
+      objectReference: {fileID: 4900000, guid: 395cc72a92489514b8b5cdd0354d564b, type: 3}
     - target: {fileID: 7594211078640633730, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
       propertyPath: activatedByGameObject
       value: 1
@@ -27152,7 +27152,7 @@ PrefabInstance:
     - target: {fileID: 7594211078640633730, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
       propertyPath: inkJSON
       value: 
-      objectReference: {fileID: 4900000, guid: 27ae80f8e6bd84c4691d9742b099cda6, type: 3}
+      objectReference: {fileID: 4900000, guid: 8f253b9b00d04594a9447ad1f98d659f, type: 3}
     - target: {fileID: 7594211078640633730, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
       propertyPath: activatedByGameObject
       value: 1
