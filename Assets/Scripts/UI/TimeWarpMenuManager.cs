@@ -30,7 +30,7 @@ public class TimeWarpMenuManager : MonoBehaviour
             if (SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[i] != 0) timeWarpButtons[i].bestPlayerTime.text = "Best Time: " + tsWarp.ToString("mm") + ":" + tsWarp.ToString("ss") + ":" + tsWarp.ToString("ff");
             else timeWarpButtons[i].bestPlayerTime.text = "Best Time: " + normalLevel.ToString("mm") + ":" + normalLevel.ToString("ss") + ":" + normalLevel.ToString("ff");
             //Load the dev times
-            timeWarpButtons[i].devTime.text = "Dev Time: " + System.TimeSpan.FromSeconds(SaveData.instance.practiceModeLevelSettings.warpModeLevelTimes[i]).ToString();
+            //timeWarpButtons[i].devTime.text = "Dev Time: " + System.TimeSpan.FromSeconds(SaveData.instance.practiceModeLevelSettings.warpModeLevelTimes[i]).ToString();
             //Load collectibles data. If its zero we attempt to pull from previously saved data.
             if (SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCountPlayer[i] != 0) timeWarpButtons[i].collectibleCount.text = "Collectibles: " + SaveData.instance.practiceModeLevelSettings.warpModeCollectibleCountPlayer[i] + "/";
             else timeWarpButtons[i].collectibleCount.text = "Collectibles: " + SaveData.instance.playerSaveData.playerCollectiblesTracker[i] + "/";
@@ -47,6 +47,7 @@ public class TimeWarpMenuManager : MonoBehaviour
             else if (SaveData.instance.practiceModeLevelSettings.warpModeLevelTimesPlayer[i] == 0)
             {
                 timeWarpButtons[i].bestPlayerTime.color = Color.yellow;
+                timeWarpButtons[i].bestPlayerTime.text = "Best Time:    -";
             }
             else
             {

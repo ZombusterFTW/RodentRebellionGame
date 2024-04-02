@@ -73,8 +73,12 @@ public class SceneTransitionerManager : MonoBehaviour
             //Commented until anims are added
             //if(gameHintAnimations[index] != null) transitionShowcaseAnimator.Play(gameHintAnimations[index], 1);
             StartCoroutine(SceneTransition(sceneToGo));
+            if(MainMenuMusicManager.Instance != null)
+            {
+                MainMenuMusicManager.Instance.MainMenuMusicOnSceneLoad(sceneToGo);
+            }
         }
-       
+
     }
 
 
@@ -147,6 +151,10 @@ public class SceneTransitionerManager : MonoBehaviour
             //Commented until anims are added
             //if(gameHintAnimations[index] != null) transitionShowcaseAnimator.Play(gameHintAnimations[index], 1);
             StartCoroutine(SceneTransition(buildIndex));
+            if (MainMenuMusicManager.Instance != null)
+            {
+                MainMenuMusicManager.Instance.MainMenuMusicOnSceneLoad(SceneManager.GetSceneByBuildIndex(buildIndex).name);
+            }
         }
     }
 
@@ -169,6 +177,10 @@ public class SceneTransitionerManager : MonoBehaviour
             //Commented until anims are added
             //if(gameHintAnimations[index] != null) transitionShowcaseAnimator.Play(gameHintAnimations[index], 1);
             StartCoroutine(FastSceneTransition(sceneName));
+            if (MainMenuMusicManager.Instance != null)
+            {
+                MainMenuMusicManager.Instance.MainMenuMusicOnSceneLoad(sceneName);
+            }
         }
     }
 

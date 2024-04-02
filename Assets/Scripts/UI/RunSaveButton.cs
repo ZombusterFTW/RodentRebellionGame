@@ -43,7 +43,7 @@ public class RunSaveButton : MonoBehaviour, IPointerClickHandler
         if (runSaver != null)
         {
             Debug.Log("Begin Save");
-            runSaver.DeleteSingleRunPrompt(runsData, gameObject);
+            runSaver.DeleteSingleRunPrompt(runsData, this.gameObject);
         }
     }
 }

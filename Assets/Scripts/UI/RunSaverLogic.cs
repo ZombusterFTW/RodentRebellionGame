@@ -9,11 +9,11 @@ public class RunSaverLogic : MonoBehaviour
 {
     bool isActive = false;
     [SerializeField] Canvas confirmSaveCanvas;
-    RunDataSet runDataSet;
+    [SerializeField] RunDataSet runDataSet;
     [SerializeField] SavedRunDataRetreive runSaveRetrieve;
     [SerializeField] RunsDataManager runsDataManager;
     [SerializeField] TMP_InputField runNameField;
-    GameObject dataHolderObj;
+    [SerializeField] GameObject dataHolderObj;
 
     [SerializeField] Canvas confirmSingleRunDeleteCanvas;
     [SerializeField] TextMeshProUGUI deleteSingleRunText;
@@ -52,10 +52,12 @@ public class RunSaverLogic : MonoBehaviour
         {
             runDataSet.runName = runNameField.text;
             runDataSet.runSaveDate = System.DateTime.Now;
-            SaveData.instance.playerSaveData.playerSavedRuns.Add(runDataSet);
             //This commented to show how multiple runs can be saved. We want to wipe any current runs that are saved.
             SaveData.instance.playerSaveData.playerCurrentRuns[runDataSet.runIndex] = new float[8];
+            runDataSet.runIndex = SaveData.instance.playerSaveData.playerSavedRuns.Count - 1;
+            SaveData.instance.playerSaveData.playerSavedRuns.Add(runDataSet);
             CancelSave();
+            SaveData.instance.playerSaveData.playerSavedRuns = ReindexSavedRuns(SaveData.instance.playerSaveData.playerSavedRuns);
             SaveData.instance.SaveIntoJson();
             runsDataManager.UpdateTimes();
             runSaveRetrieve.UpdateSavedRunDisplay();
@@ -64,6 +66,7 @@ public class RunSaverLogic : MonoBehaviour
 
     public void DeleteAllSavedRuns()
     {
+        SaveData.instance.LoadFromJson();
         SaveData.instance.playerSaveData.playerSavedRuns.Clear();
         SaveData.instance.SaveIntoJson();
         runsDataManager.UpdateTimes();
@@ -86,8 +89,10 @@ public class RunSaverLogic : MonoBehaviour
 
     public void DeleteRunFromMemory()
     {
+        SaveData.instance.LoadFromJson();
         Destroy(dataHolderObj);
-        SaveData.instance.playerSaveData.playerSavedRuns.Remove(runDataSet);
+        SaveData.instance.playerSaveData.playerSavedRuns.RemoveAt(runDataSet.runIndex);
+        SaveData.instance.playerSaveData.playerSavedRuns = ReindexSavedRuns(SaveData.instance.playerSaveData.playerSavedRuns);
         SaveData.instance.SaveIntoJson();
         runSaveRetrieve.UpdateSavedRunDisplay();
         CancelSave();
@@ -104,5 +109,15 @@ public class RunSaverLogic : MonoBehaviour
             confirmSingleRunDeleteCanvas.enabled = true;
             isActive = true;
         }
+    }
+
+
+    private List<RunDataSet> ReindexSavedRuns(List<RunDataSet> inData)
+    {
+        for(int i = 0; i < inData.Count; i++) 
+        {
+            inData[i].runIndex = i;
+        }
+        return inData;
     }
 }

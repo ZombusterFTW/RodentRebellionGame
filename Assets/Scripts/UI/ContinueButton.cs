@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,7 +15,7 @@ public class ContinueButton : MonoBehaviour
         //Allow for continue button functionality if the player has save progress.
         if (SaveData.instance.playerSaveData.currentLevel != "" && SaveData.instance.playerSaveData.currentLevel != "MainMenu")
         {
-            currentLevelText.text = "Current Level: " + SaveData.instance.playerSaveData.currentLevel;
+            currentLevelText.text = "Current Level: " + GetLevelNamePretty(SaveData.instance.playerSaveData.currentLevel);
             continueButton.interactable = true;
         }
         else
@@ -25,5 +25,28 @@ public class ContinueButton : MonoBehaviour
         }
     }
 
-   
+    private string GetLevelNamePretty(string inLevelName)
+    {
+        switch(inLevelName) 
+        {
+            default:
+                return "Error :(";
+            case "0Tutorial":
+                return "Tutorial";
+            case "Labyrinth1":
+                return "Labyrinth α";
+            case "Labyrinth2":
+                return "Labyrinth δ";
+            case "Labyrinth3":
+                return "Labyrinth Ω";
+            case "RadioactiveCave":
+                return "Radioactive Cave";
+            case "LabLevel":
+                return "The Labs";
+            case "FinalBossTest":
+                return "Final Boss";
+            case "Surface":
+                return "The Surface";
+        }
+    }
 }

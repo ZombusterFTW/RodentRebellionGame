@@ -23,7 +23,7 @@ public class SuperBouncePad : MonoBehaviour, R4Activatable
     public void Activate()
     {
         //Add similar logic to this script that the spikes have to ensure the hitbox moves with the animation.
-        animator.Play("UltrabounceActivate");
+        animator.Play("UtrabounceActivate");
         isActive = true;
         //spriteRenderer.color = Color.blue;
         bounceCollider.sharedMaterial = extraBouncyMaterial;
@@ -32,7 +32,7 @@ public class SuperBouncePad : MonoBehaviour, R4Activatable
 
     public void Deactivate()
     {
-        animator.Play("UltrabounceDeactivate");
+        animator.Play("UtrabounceDeactivate");
         isActive = false;
         //spriteRenderer.color = Color.gray;
         bounceCollider.sharedMaterial = defaultMaterial;

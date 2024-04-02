@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -21,7 +21,7 @@ public class MatchTimer : MonoBehaviour
     {
         dialogueManager = DialogueManager.GetInstance();
         SceneManager.sceneLoaded += OnSceneLoaded;
-        levelName.text = SceneManager.GetActiveScene().name;
+        levelName.text = GetLevelNamePretty(SceneManager.GetActiveScene().name);
         if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled || SaveData.instance.playerSettingsConfig.playerInTimeWarpMode)
         {
             //time exploit fix commented for now
@@ -40,11 +40,37 @@ public class MatchTimer : MonoBehaviour
         {
             elapsedTime = 0;
             //Set level name to the new scene
-            levelName.text = arg0.name;
+            levelName.text = GetLevelNamePretty(arg0.name);
             //time exploit fix commented for now
             //if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled) elapsedTime += SaveData.instance.practiceModeLevelSettings.lastLevelAccruedTime;
         }
 
+    }
+
+
+    private string GetLevelNamePretty(string inLevelName)
+    {
+        switch (inLevelName)
+        {
+            default:
+                return "Error :(";
+            case "0Tutorial":
+                return "Tutorial";
+            case "Labyrinth1":
+                return "Labyrinth α";
+            case "Labyrinth2":
+                return "Labyrinth δ";
+            case "Labyrinth3":
+                return "Labyrinth Ω";
+            case "RadioactiveCave":
+                return "Radioactive Cave";
+            case "LabLevel":
+                return "The Labs";
+            case "FinalBossTest":
+                return "Final Boss";
+            case "Surface":
+                return "The Surface";
+        }
     }
 
     // Update is called once per frame
