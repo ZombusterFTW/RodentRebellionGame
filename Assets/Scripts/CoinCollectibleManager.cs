@@ -13,6 +13,8 @@ public class CoinCollectibleManager : MonoBehaviour
 
     void Start()
     {
+        totalCoinCount = 0;
+        currentCoinCount = 0;
         SceneManager.sceneLoaded += OnSceneChange;
         //Init the total coin counter with the amount of collectible coins in the level.
         Collectible[] collectibles =  GameObject.FindObjectsOfType<Collectible>();
@@ -29,6 +31,7 @@ public class CoinCollectibleManager : MonoBehaviour
     private void OnSceneChange(Scene arg0, LoadSceneMode arg1)
     {
         totalCoinCount = 0;
+        currentCoinCount = 0;
         //Init the total coin counter with the amount of collectible coins in the level.
         Collectible[] collectibles = GameObject.FindObjectsOfType<Collectible>();
         foreach (Collectible collectible in collectibles)
