@@ -550,6 +550,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RadiationCanister (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1476163833068772336, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.09
+      objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 57
@@ -568,15 +584,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -32616,19 +32632,35 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1455173053}
     m_Modifications:
     - target: {fileID: 1476163833068772336, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_Name
       value: RadiationCanister (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1476163833068772336, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.1869042
+      value: 9.187823
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.33001235
+      value: -0.2223594
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -32640,15 +32672,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -32675,6 +32707,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+--- !u!4 &1058116301 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+  m_PrefabInstance: {fileID: 1058116300}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1067525910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66917,19 +66954,35 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1455173053}
     m_Modifications:
     - target: {fileID: 1476163833068772336, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_Name
       value: RadiationCanister
       objectReference: {fileID: 0}
+    - target: {fileID: 1476163833068772336, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.36
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -66941,15 +66994,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -66976,6 +67029,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+--- !u!4 &1237188244 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5912930939663817443, guid: 458d486cc79f7634794812665b0189ea, type: 3}
+  m_PrefabInstance: {fileID: 1237188243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1249961338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67916,6 +67974,39 @@ Transform:
   m_Children:
   - {fileID: 897767049}
   - {fileID: 1614604419}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1455173052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1455173053}
+  m_Layer: 0
+  m_Name: RadiationCanister
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1455173053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455173052}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.36, y: -0.31, z: 0}
+  m_LocalScale: {x: 0.09, y: 0.09, z: 0.09}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1237188244}
+  - {fileID: 1058116301}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1464336245
@@ -105624,9 +105715,8 @@ SceneRoots:
   - {fileID: 515721844}
   - {fileID: 1894626168}
   - {fileID: 2083062585}
-  - {fileID: 1237188243}
   - {fileID: 130360758}
-  - {fileID: 1058116300}
+  - {fileID: 1455173053}
   - {fileID: 781331807}
   - {fileID: 1146155716}
   - {fileID: 1344298254}
