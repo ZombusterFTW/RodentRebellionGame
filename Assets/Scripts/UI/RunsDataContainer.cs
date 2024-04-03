@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class RunsDataContainer : MonoBehaviour
 {
     public TextMeshProUGUI[] levelSpeeds;
+    public TextMeshProUGUI totalTime;
     public Image[] levelImages;
     public Image inProgressRunMarker;
     public TextMeshProUGUI runName;
@@ -15,7 +16,7 @@ public class RunsDataContainer : MonoBehaviour
     public Button runsButton;
 
 
-    public void ConvertDataToRunDataset(float[] playerRunTimes, string runName, int runIndex)
+    public RunDataSet ConvertDataToRunDataset(float[] playerRunTimes, string runName, int runIndex)
     {
         if (playerRunTimes.Length == 8)
         {
@@ -30,6 +31,7 @@ public class RunsDataContainer : MonoBehaviour
             }
             runDataSet.runTotalTime = temp;
         }
+        return runDataSet;
     }
 
     public RunDataSet GetRunDataSet() { return runDataSet; }
@@ -52,10 +54,10 @@ public class RunsDataContainer : MonoBehaviour
                 TimeSpan ts = TimeSpan.FromSeconds(runDataSet.playerRunTimes[i]);
                 levelSpeeds[i].text = ts.ToString("mm") + ":" + ts.ToString("ss") + ":" + ts.ToString("ff");
             }
-            
         }
+        TimeSpan totalTimeT = TimeSpan.FromSeconds(runDataSet.runTotalTime);
+        totalTime.text = totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss") + ":" + totalTimeT.ToString("ff");
+
     }
-
-
 }
 

@@ -4,13 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using TMPro;
 
-public class RunSaveButton : MonoBehaviour, IPointerClickHandler
+public class RunSaveButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public UnityEvent leftClick;
     public UnityEvent middleClick;
     public UnityEvent rightClick;
     public RunsDataContainer runsData;
+    public TextMeshProUGUI promptText;
+
+    private void Awake()
+    {
+        promptText.gameObject.SetActive(false);
+    }
+
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -45,5 +53,15 @@ public class RunSaveButton : MonoBehaviour, IPointerClickHandler
             Debug.Log("Begin Save");
             runSaver.DeleteSingleRunPrompt(runsData, this.gameObject);
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        promptText.gameObject.SetActive(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        promptText.gameObject.SetActive(false);
     }
 }

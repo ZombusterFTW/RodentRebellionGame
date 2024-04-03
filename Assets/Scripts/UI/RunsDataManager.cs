@@ -121,6 +121,7 @@ public class RunsDataManager : MonoBehaviour
         //Loop over jagged array
         for(int j = 0; j < playerData.playerCurrentRuns.Length; j++) 
         {
+            runsDataHolders[j].runName.text = "Run: " + (j + 1);
             //If the run is in progress we show an identifier
             if (playerData.currentRunCount == j)
             {
@@ -131,7 +132,7 @@ public class RunsDataManager : MonoBehaviour
             for (int i = 0; i < runsDataHolders[j].levelSpeeds.Length; i++)
             {
                 //Convert data to object for easy saving of it later.
-                runsDataHolders[j].ConvertDataToRunDataset(playerData.playerCurrentRuns[j], "Run: " + (j + 1), j);
+                RunDataSet runData = runsDataHolders[j].ConvertDataToRunDataset(playerData.playerCurrentRuns[j], "Run: " + (j + 1), j);
                 //Convert each float to a timespan and display it
                 TimeSpan ts = TimeSpan.FromSeconds(playerData.playerCurrentRuns[j][i]);
                 //Debug.Log(playerData.playerCurrentRuns[j][i]);
@@ -155,12 +156,18 @@ public class RunsDataManager : MonoBehaviour
                 //Enable button if we have data that suggests the player has completed atleast level 1. Can add logic here to only allow a save where the player completed the game to be saved.
                 if(runsDataHolders[j].runsButton != null)
                 {
-                    if (playerData.playerCurrentRuns[j][0] > 0)
+                    if (playerData.playerCurrentRuns[j][0] > 0 && playerData.playerCurrentRuns[j][7] > 0)
                     {
                         runsDataHolders[j].runsButton.gameObject.SetActive(true);
                     }
                     else runsDataHolders[j].runsButton.gameObject.SetActive(false);
                 }
+                if(runData.runTotalTime > 0)
+                {
+                    TimeSpan totalTimeT = TimeSpan.FromSeconds(runData.runTotalTime);
+                    runsDataHolders[j].totalTime.text = totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss") + ":" + totalTimeT.ToString("ff");
+                }
+                else runsDataHolders[j].totalTime.text = "     -";
                 Debug.Log(Application.persistentDataPath);
             }
         }
