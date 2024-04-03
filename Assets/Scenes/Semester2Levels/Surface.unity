@@ -1938,6 +1938,10 @@ PrefabInstance:
       propertyPath: inkJSON
       value: 
       objectReference: {fileID: 4900000, guid: de6f6418b3d55404283f26d2be6a93ef, type: 3}
+    - target: {fileID: 7594211078640633730, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
+      propertyPath: activatedByGameObject
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8687598657058798807, guid: ed2361a2cf5d71043ac187c5a03ad476, type: 3}
       propertyPath: m_Name
       value: AutoDialougeTrigger (1)
