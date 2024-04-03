@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Audio;
 
 
 public class SaveData : MonoBehaviour
@@ -14,6 +15,10 @@ public class SaveData : MonoBehaviour
     public PlayerSettingsConfig playerSettingsConfig = new PlayerSettingsConfig();
     public PracticeModeLevelSettings practiceModeLevelSettings = new PracticeModeLevelSettings();
     public static SaveData instance;
+
+    public AudioMixer musicMixer;
+    public AudioMixer sfxMixer;
+
     private void Awake()
     {
         if(instance == null)
@@ -29,6 +34,13 @@ public class SaveData : MonoBehaviour
             //Delete a copy if it exists.
             Destroy(this.gameObject);
         }
+    }
+
+    private void Start()
+    {
+        //Restore saved audio volume settings on game start.
+        musicMixer.SetFloat("MMM", Mathf.Log10(SaveData.instance.playerSettingsConfig.musicVolume) * 20);
+        sfxMixer.SetFloat("SFXMasterVolume", Mathf.Log10(SaveData.instance.playerSettingsConfig.sfxVolume) * 20);
     }
 
 

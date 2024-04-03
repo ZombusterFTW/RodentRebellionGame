@@ -9,19 +9,43 @@ public class ContinueButton : MonoBehaviour
 {
     [SerializeField] Button continueButton;
     [SerializeField] TextMeshProUGUI currentLevelText;
+    [SerializeField] TextMeshProUGUI completeGameHint;
+    [SerializeField] Button RunsButton;
+    [SerializeField] Button TimeWarpButton;
+
+
     void Start()
     {
         SaveData.instance.LoadFromJson();
-        //Allow for continue button functionality if the player has save progress.
-        if (SaveData.instance.playerSaveData.currentLevel != "" && SaveData.instance.playerSaveData.currentLevel != "MainMenu")
+
+
+        if(continueButton != null)
         {
-            currentLevelText.text = "Current Level: " + GetLevelNamePretty(SaveData.instance.playerSaveData.currentLevel);
-            continueButton.interactable = true;
+            //Allow for continue button functionality if the player has save progress.
+            if (SaveData.instance.playerSaveData.currentLevel != "" && SaveData.instance.playerSaveData.currentLevel != "MainMenu")
+            {
+                currentLevelText.text = "Current Level: " + GetLevelNamePretty(SaveData.instance.playerSaveData.currentLevel);
+                continueButton.interactable = true;
+            }
+            else
+            {
+                currentLevelText.text = "";
+                continueButton.interactable = false;
+            }
+        }
+
+        //Prevent player from accessing menus
+        if(RunsButton != null && TimeWarpButton != null  && SaveData.instance.playerSaveData.isPracticeModeUnlocked) 
+        {
+            RunsButton.interactable = true;
+            TimeWarpButton.interactable = true;
+            completeGameHint.gameObject.SetActive(false);
         }
         else
         {
-            currentLevelText.text = "";
-            continueButton.interactable = false;
+            RunsButton.interactable = false;
+            TimeWarpButton.interactable = false;
+            completeGameHint.gameObject.SetActive(true);
         }
     }
 
@@ -49,4 +73,9 @@ public class ContinueButton : MonoBehaviour
                 return "The Surface";
         }
     }
+
+
+
+
+
 }
