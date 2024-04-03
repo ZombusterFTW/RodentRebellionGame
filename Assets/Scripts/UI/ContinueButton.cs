@@ -33,11 +33,11 @@ public class ContinueButton : MonoBehaviour
                 return "Error :(";
             case "0Tutorial":
                 return "Tutorial";
-            case "Labyrinth1":
+            case "Labyrinth3":
                 return "Labyrinth α";
             case "Labyrinth2":
                 return "Labyrinth δ";
-            case "Labyrinth3":
+            case "Labyrinth1":
                 return "Labyrinth Ω";
             case "RadioactiveCave":
                 return "Radioactive Cave";
