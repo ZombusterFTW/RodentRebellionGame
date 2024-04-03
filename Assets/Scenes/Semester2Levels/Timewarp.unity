@@ -1461,11 +1461,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7542348746793498301, guid: 9de3c48fb4b7eea47a2b6ca034b4a331, type: 3}
       propertyPath: m_text
-      value: Labyrinth 3
+      value: "Labyrinth \u03B1"
       objectReference: {fileID: 0}
     - target: {fileID: 7542348746793498301, guid: 9de3c48fb4b7eea47a2b6ca034b4a331, type: 3}
       propertyPath: m_fontSize
-      value: 62.7
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 7717535506759517001, guid: 9de3c48fb4b7eea47a2b6ca034b4a331, type: 3}
       propertyPath: m_Name
@@ -2733,11 +2733,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7542348746793498301, guid: 9de3c48fb4b7eea47a2b6ca034b4a331, type: 3}
       propertyPath: m_text
-      value: Labyrinth 1
+      value: "Labyrinth \u03A9"
       objectReference: {fileID: 0}
     - target: {fileID: 7542348746793498301, guid: 9de3c48fb4b7eea47a2b6ca034b4a331, type: 3}
       propertyPath: m_fontSize
-      value: 62.6
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 7542348746793498301, guid: 9de3c48fb4b7eea47a2b6ca034b4a331, type: 3}
       propertyPath: m_fontSizeMin
@@ -3160,11 +3160,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7542348746793498301, guid: 9de3c48fb4b7eea47a2b6ca034b4a331, type: 3}
       propertyPath: m_text
-      value: Labyrinth 2
+      value: "Labyrinth \u03B4"
       objectReference: {fileID: 0}
     - target: {fileID: 7542348746793498301, guid: 9de3c48fb4b7eea47a2b6ca034b4a331, type: 3}
       propertyPath: m_fontSize
-      value: 62.7
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 7717535506759517001, guid: 9de3c48fb4b7eea47a2b6ca034b4a331, type: 3}
       propertyPath: m_Name
