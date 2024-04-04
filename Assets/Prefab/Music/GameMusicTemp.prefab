@@ -144,7 +144,9 @@ MonoBehaviour:
   area1Intro: {fileID: 8300000, guid: 7353790088ec3974e9835d18a8eef93a, type: 3}
   area2Intro: {fileID: 8300000, guid: 24f6370de5bb62c4c827df4b378865bc, type: 3}
   area3Intro: {fileID: 8300000, guid: 63518afa1c02bd742b26a962e0bb730f, type: 3}
+  area4Intro: {fileID: 8300000, guid: 33df06992541a1a48ae11f87013880dc, type: 3}
   area1Loop: {fileID: 8300000, guid: cb687bb362472bb4aa9a79891ab37bc6, type: 3}
   area2Loop: {fileID: 8300000, guid: 740e41aac63318b4db17f1cb9f0e4fd6, type: 3}
   area3Loop: {fileID: 8300000, guid: dc5f6bd46a79ca849992652fc83f6ee1, type: 3}
+  area4Loop: {fileID: 8300000, guid: 50b74812bf637ef4d98954ec824c69e0, type: 3}
   musicSource: {fileID: 4994041264400409207}

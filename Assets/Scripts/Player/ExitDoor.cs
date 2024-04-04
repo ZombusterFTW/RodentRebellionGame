@@ -9,6 +9,7 @@ public class ExitDoor : MonoBehaviour,R4Activatable
     bool isActive = false;
     [SerializeField] bool activatedByOtherObject = false;
     [SerializeField] private GameObject visualCue;
+    [Tooltip("Set this to true if you want a scene change to happen on a switch pull for example. ACTIVATED BY GAMEOBJECT MUST BE TRUE! Place the door outside of the playable space if you use this.")][SerializeField] private bool forceSceneChangeOnDoorActivation = false;
 
 
     private void Awake()
@@ -27,15 +28,19 @@ public class ExitDoor : MonoBehaviour,R4Activatable
         {
             if (PlayerController.instance.GetInteractPressed())
             {
-                isActive = false;
-
-                if (SaveData.instance.playerSettingsConfig.playerInTimeWarpMode) SceneTransitionerManager.instance.StartTransition("TimeWarp");
-                else SceneTransitionerManager.instance.StartTransition(sceneToLoad);
-                //Lap level time
-                PlayerController.instance.GetPlayerUI().GetComponent<MatchTimer>().LapTime();
-                SavePlayerVariables();
+                HandleSceneChange();
             }
         }
+    }
+
+    private void HandleSceneChange()
+    {
+        isActive = false;
+        if (SaveData.instance.playerSettingsConfig.playerInTimeWarpMode) SceneTransitionerManager.instance.StartTransition("TimeWarp");
+        else SceneTransitionerManager.instance.StartTransition(sceneToLoad);
+        //Lap level time
+        PlayerController.instance.GetPlayerUI().GetComponent<MatchTimer>().LapTime();
+        SavePlayerVariables();
     }
 
     private void SavePlayerVariables()
@@ -88,9 +93,13 @@ public class ExitDoor : MonoBehaviour,R4Activatable
 
     public void Activate()
     {
-        if(activatedByOtherObject)
+        if(activatedByOtherObject && !isActive)
         {
             isActive = true;
+            if(forceSceneChangeOnDoorActivation)
+            {
+                HandleSceneChange();
+            }
         }
         
     }

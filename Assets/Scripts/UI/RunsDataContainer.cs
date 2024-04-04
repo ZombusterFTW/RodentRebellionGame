@@ -55,9 +55,12 @@ public class RunsDataContainer : MonoBehaviour
                 levelSpeeds[i].text = ts.ToString("mm") + ":" + ts.ToString("ss") + ":" + ts.ToString("ff");
             }
         }
-        TimeSpan totalTimeT = TimeSpan.FromSeconds(runDataSet.runTotalTime);
-        totalTime.text = totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss") + ":" + totalTimeT.ToString("ff");
-
+        if(runDataSet.runTotalTime > 0)
+        {
+            TimeSpan totalTimeT = TimeSpan.FromSeconds(runDataSet.runTotalTime);
+            totalTime.text = totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss") + ":" + totalTimeT.ToString("ff");
+        }
+        else totalTime.text = "     -";
     }
 }
 

@@ -14,6 +14,9 @@ public class Collectible : MonoBehaviour
     //[Tooltip("The sprites the collectible can be.")][SerializeField] private Sprite[] collectibleSprites;
     private SpriteRenderer spriteRenderer;
     private CircleCollider2D circleCollider;
+    [SerializeField]private Sprite coinImage;
+    [SerializeField] private Sprite frenzyCanister;
+    [SerializeField] private Sprite healthCanister;
 
     [SerializeField] private AudioSource audioSource;
     public CollectibleType GetCollectibleType() { return collectibleType; }
@@ -38,17 +41,20 @@ public class Collectible : MonoBehaviour
                 }
             case CollectibleType.Coin:
                 {
-                    spriteRenderer.color = Color.yellow; 
+                    //spriteRenderer.color = Color.yellow; 
+                    spriteRenderer.sprite = coinImage;
                     break;
                 }
             case CollectibleType.Health: 
                 {
-                    spriteRenderer.color = Color.green;
+                    //spriteRenderer.color = Color.green;
+                    spriteRenderer.sprite = healthCanister;
                     break;
                 }
             case CollectibleType.Frenzy:
                 {
-                    spriteRenderer.color = Color.red;
+                    //spriteRenderer.color = Color.red;
+                    spriteRenderer.sprite = frenzyCanister;
                     break;
                 }
         }
@@ -78,13 +84,13 @@ public class Collectible : MonoBehaviour
                 case CollectibleType.Health:
                     {
                         //Health collectible gives player 15% health
-                        controller.GetHealthComponent().AddToHealth(controller.GetHealthComponent().GetCurrentHealth() * 0.15f);
+                        controller.GetHealthComponent().AddToHealth(controller.GetHealthComponent().GetCurrentHealth() * 0.3f);
                         break;
                     }
                 case CollectibleType.Frenzy:
                     {
                         //Frenzy collectible gives player 15% of their meter. Unhandled null exception but one shouldn't be possible here.
-                        FrenzyManager.instance.AddToFrenzyMeter(0.15f);
+                        FrenzyManager.instance.AddToFrenzyMeter(0.50f);
                         break;
                     }
             }

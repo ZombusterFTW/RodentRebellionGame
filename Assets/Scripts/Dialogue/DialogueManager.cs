@@ -39,7 +39,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private bool makePredictable;
     private DialogueAudioInfoSO currentAudioInfo;
     private Dictionary<string, DialogueAudioInfoSO> audioInfoDictionary;
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
 
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
@@ -76,7 +76,7 @@ public class DialogueManager : MonoBehaviour
 
             dialogueVariables = new DialogueVariables(loadGlobalsJSON);
 
-            audioSource = this.gameObject.AddComponent<AudioSource>();
+            //audioSource = this.gameObject.AddComponent<AudioSource>();
             currentAudioInfo = defaultAudioInfo;
 
 

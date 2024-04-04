@@ -39,7 +39,7 @@ public class ContinueButton : MonoBehaviour
         {
             RunsButton.interactable = true;
             TimeWarpButton.interactable = true;
-            completeGameHint.gameObject.SetActive(false);
+            completeGameHint.text = "Thanks for completing the Rodent Rebellion Beta! Sincerely AJ, Ainsley, Brandon, Caden, Carol, and Jen M.";
         }
         else
         {

@@ -8,7 +8,7 @@ public class GameMusicTempSolution : MonoBehaviour
 
     //Area 1 should be tutorial and all labyrinths
     //Area 2 is cave, area 3 is lab, and area 4 should be surface
-    [SerializeField] AudioClip area1Intro, area2Intro, area3Intro, area1Loop, area2Loop, area3Loop;
+    [SerializeField] AudioClip area1Intro, area2Intro, area3Intro, area4Intro, area1Loop, area2Loop, area3Loop, area4Loop;
     private AudioClip intro, loop;
     private string sceneName;
     [SerializeField] AudioSource musicSource;
@@ -26,19 +26,25 @@ public class GameMusicTempSolution : MonoBehaviour
             intro = area2Intro;
             loop = area2Loop;
         }
-        else if(sceneName == "Surface")
+        else if(sceneName == "LabLevel")
         {
             intro = area3Intro;
             loop = area3Loop;
         }
+        else if (sceneName == "Surface")
+        {
+            intro = area4Intro;
+            loop = area4Loop;
+        }
         musicSource.clip = intro;
         musicSource.Play();
-        StartCoroutine(WaitAndPlayLoop(intro.length-0.15f));
+        StartCoroutine(WaitAndPlayLoop(intro.length-1f));
     }
 
    IEnumerator WaitAndPlayLoop(float timeToWait)
     {
-        yield return new WaitForSeconds(timeToWait);
+        yield return new WaitForSecondsRealtime(timeToWait);
+        musicSource.Stop();
         musicSource.clip = loop;
         musicSource.loop = true;
         musicSource.Play();

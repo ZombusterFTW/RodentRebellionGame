@@ -37,11 +37,13 @@ public class RunsDataManager : MonoBehaviour
 
     void PresentDataLoadingScreen()
     {
+        float bestRunTotal = 0;
         //Best run
         //Loop over the recorded level completion speeds
         for (int i = 0; i < playerBestRun.levelSpeeds.Length; i++)
         {
             //Convert each float to a timespan and display it
+            bestRunTotal += playerData.playerBestRun[i];
             TimeSpan ts = TimeSpan.FromSeconds(playerData.playerBestRun[i]);
             playerBestRun.levelSpeeds[i].text = ts.ToString("mm") + ":" + ts.ToString("ss") + ":" + ts.ToString("ff");
 
@@ -61,30 +63,49 @@ public class RunsDataManager : MonoBehaviour
                 playerBestRun.levelImages[i].color = Color.red;
             }
         }
+        
+        if (bestRunTotal > 0)
+        {
+            TimeSpan totalTimeT = TimeSpan.FromSeconds(bestRunTotal);
+            playerBestRun.totalTime.text = totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss") + ":" + totalTimeT.ToString("ff");
+        }
+        else playerBestRun.totalTime.text = "     -";
+
         //Set the current run name
         runsDataHolders[0].runName.text = "Run: " + (SaveData.instance.playerSaveData.currentRunCount + 1);
+        float totalCurrentRunTime = 0;
         //Present data from the current player run
         for (int i = 0; i < runsDataHolders[0].levelSpeeds.Length; i++)
         {
             //Convert each float to a timespan and display it
             TimeSpan ts = TimeSpan.FromSeconds(playerData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount][i]);
-            runsDataHolders[SaveData.instance.playerSaveData.currentRunCount].levelSpeeds[i].text = ts.ToString("mm") + ":" + ts.ToString("ss") + ":" + ts.ToString("ff");
+            totalCurrentRunTime += playerData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount][i];
+            //RunDataSet runData = runsDataHolders[i].ConvertDataToRunDataset(playerData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount][i], "Run: " + (i + 1), i);
+
+            runsDataHolders[0].levelSpeeds[i].text = ts.ToString("mm") + ":" + ts.ToString("ss") + ":" + ts.ToString("ff");
             //If the player is under the avg time we set the background behind the text to green
-            if (playerData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount][i] <= gameAvgTimes[i] && playerData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount][i] != 0)
+            if (playerData.playerCurrentRuns[0][i] <= gameAvgTimes[i] && playerData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount][i] != 0)
             {
-                runsDataHolders[SaveData.instance.playerSaveData.currentRunCount].levelImages[i].color = Color.green;
+                runsDataHolders[0].levelImages[i].color = Color.green;
             }
-            else if (playerData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount][i] == 0)
+            else if (playerData.playerCurrentRuns[0][i] == 0)
             {
-                runsDataHolders[SaveData.instance.playerSaveData.currentRunCount].levelImages[i].color = Color.yellow;
-                runsDataHolders[SaveData.instance.playerSaveData.currentRunCount].levelSpeeds[i].text = "     -";
+                runsDataHolders[0].levelImages[i].color = Color.yellow;
+                runsDataHolders[0].levelSpeeds[i].text = "     -";
             }
             //Else we set it to red
             else
             {
-                runsDataHolders[SaveData.instance.playerSaveData.currentRunCount].levelImages[i].color = Color.red;
+                runsDataHolders[0].levelImages[i].color = Color.red;
             }
+            
         }
+        if (totalCurrentRunTime > 0)
+        {
+            TimeSpan totalTimeT = TimeSpan.FromSeconds(totalCurrentRunTime);
+            runsDataHolders[0].totalTime.text = totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss") + ":" + totalTimeT.ToString("ff");
+        }
+        else runsDataHolders[0].totalTime.text = "     -";
     }
 
 

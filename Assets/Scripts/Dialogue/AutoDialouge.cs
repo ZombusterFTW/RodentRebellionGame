@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AutoDialouge : MonoBehaviour, R4Activatable
@@ -79,13 +80,20 @@ public class AutoDialouge : MonoBehaviour, R4Activatable
 
     private void OnDestroy()
     {
-        //Activate items after the dialouge has completed. If its set.
-        if(activatesItems)
+        if(this != null)
         {
-            foreach(var item in itemsToActivate)
+            //Activate items after the dialouge has completed. If its set.
+            if (activatesItems)
             {
-                item.GetComponent<R4Activatable>()?.Activate();
+                if(itemsToActivate != null)
+                {
+                    foreach (var item in itemsToActivate)
+                    {
+                        if (item != null && item.GetComponent<R4Activatable>() != null) item.GetComponent<R4Activatable>()?.Activate();
+                    }
+                }
             }
         }
+        
     }
 }

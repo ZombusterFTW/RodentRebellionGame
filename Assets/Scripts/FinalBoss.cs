@@ -10,6 +10,7 @@ public class FinalBoss : MonoBehaviour, R4Activatable, OneHitHealthEnemy
     /// ////Temp final boss flow. Joe speaks to whiskers and they have an argument with whiskers begging joe to reconsider. This dialouge activates this script, 
     /// on activation the shield appears over whiskers and players must find three switches that disable it.
     /// upon the activation of 3 switches the player can hit whiskers once resulting in his death. This script is an activator that can activate dialouge on its death.
+    /// NEED TO ADD REINFORCEMENT CALLS
     /// </summary>
     [Tooltip("The array of switches that must be activated to deactivate the shield.")][SerializeField] private GameObject[] switchesToActivate;
     [Tooltip("This is the dialouge object or objects that will be activated on boss death")][SerializeField] private GameObject[] itemsToActivateOnDeath;
@@ -19,8 +20,9 @@ public class FinalBoss : MonoBehaviour, R4Activatable, OneHitHealthEnemy
     private int currentSwitchesActivatedCount = 0;
     private bool allSwitchesActivated = false;
     private CapsuleCollider2D whiskersCapsuleCollider;
+    [SerializeField] Animator animator;
+    [SerializeField] Animator animator2;
 
-   
     // Start is called before the first frame update
     void Start()
     {
@@ -56,8 +58,11 @@ public class FinalBoss : MonoBehaviour, R4Activatable, OneHitHealthEnemy
                         item.GetComponent<Collider2D>().enabled = true;
                     }
                 }
-                shield.GetComponent<SpriteRenderer>().DOFade(0.25f, 0.5f);
+                shield.GetComponent<SpriteRenderer>().DOFade(0.25f, 0.5f).SetUpdate(true);
                 bossActivated = true;
+                animator.SetTrigger("ShieldUp");
+                animator2.SetTrigger("ShieldUp");
+                Debug.Log("SHIELD");
             }
             else
             {
@@ -83,7 +88,9 @@ public class FinalBoss : MonoBehaviour, R4Activatable, OneHitHealthEnemy
         if(allSwitchesActivated)
         {
             Debug.Log("Boss officially dead. Play dialouge now");
-            drWhiskersSpriteRenderer.DOFade(0, 1);
+            animator.SetTrigger("Death");
+            animator2.SetTrigger("Death");
+            drWhiskersSpriteRenderer.DOFade(0, 1.5f);
             whiskersCapsuleCollider.enabled = false;
             ActivateItemsOnDeath();
             Destroy(gameObject, 1.5f);

@@ -59,7 +59,7 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
     //Will pursue players within its relatively short sight range. When a player is out of range it creates a new patrol range starting from the position it lost sight of the player. Use majority logic of basic rat but add the health component.
     void Start()
     {
-        playerController = FindObjectOfType<PlayerController>();
+        playerController = PlayerController.instance;
         playerHealthObj = playerController.GetComponent<Health>();
         health = GetComponent<Health>();
         rightOffset = new Vector2(0.45f, 0);
