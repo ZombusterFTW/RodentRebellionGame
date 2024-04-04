@@ -240,7 +240,7 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
         while (isAlive)
         {
             yield return new WaitForSeconds(5);
-            playerHealth.SubtractFromHealth(damageOnCollision, transform.position);
+            playerHealth.SubtractFromHealth(damageOnCollision, Vector2.zero);
         }
 
     }

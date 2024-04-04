@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3145399672351796508}
   - component: {fileID: 2699650575514016794}
-  - component: {fileID: 8684724551020372095}
+  - component: {fileID: 349202305056804148}
   m_Layer: 3
   m_Name: GravityInversionTrap
   m_TagString: Untagged
@@ -52,8 +52,8 @@ MonoBehaviour:
   activatedImage: {fileID: 1270769361, guid: 24dde03975fb7554594454c5fcfd6e9b, type: 3}
   deActivatedImage: {fileID: 1471417043, guid: 24dde03975fb7554594454c5fcfd6e9b, type: 3}
   spriteRenderer: {fileID: 4595041985141091661}
---- !u!61 &8684724551020372095
-BoxCollider2D:
+--- !u!70 &349202305056804148
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -84,19 +84,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.58, y: 0.51}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: -0.38}
+  m_Size: {x: 3.3, y: 0.93}
+  m_Direction: 1
 --- !u!1 &7497245904868115999
 GameObject:
   m_ObjectHideFlags: 0

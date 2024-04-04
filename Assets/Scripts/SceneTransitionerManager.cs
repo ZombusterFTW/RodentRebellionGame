@@ -43,7 +43,14 @@ public class SceneTransitionerManager : MonoBehaviour
             DestroyImmediate(this.gameObject);
         }
     }
-
+    //Reference for ability order.
+    /*canWallClimb = saveData.currentAbilities[0];
+    canDash = saveData.currentAbilities[1];
+    canGroundPound = saveData.currentAbilities[2];
+    canDoubleJump = saveData.currentAbilities[3];
+    canWallJump = saveData.currentAbilities[4];
+    canEnterRageMode = saveData.currentAbilities[5];
+    canPhaseShift = saveData.currentAbilities[6];*/
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         //Play animator animation

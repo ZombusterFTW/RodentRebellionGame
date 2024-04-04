@@ -30,7 +30,7 @@ public class NewGameButton : MonoBehaviour
             SaveData.instance.playerSaveData.playerCurrentRuns[SaveData.instance.playerSaveData.currentRunCount] = new float[8];
 
             ///Debug to manually reset the players best run
-            SaveData.instance.playerSaveData.playerBestRun = new float[8];
+            //SaveData.instance.playerSaveData.playerBestRun = new float[8];
 
             //Set level as lv0
             SaveData.instance.playerSaveData.currentLevel = "0Tutorial";

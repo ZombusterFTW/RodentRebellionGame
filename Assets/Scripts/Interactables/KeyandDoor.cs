@@ -46,15 +46,15 @@ public class KeyandDoor : MonoBehaviour, R4Activatable
                 doorName = "Green";
                 break;
             case LockedDoorColors.Orange:
-                doorColor = new Color(255, 148, 112);
+                doorColor = new Color(255, 65, 0);
                 doorName = "Orange";
                 break;
             case LockedDoorColors.Pink:
-                doorColor = new Color(227, 61, 148);
+                doorColor = new Color(255, 0, 214);
                 doorName = "Pink";
                 break;
             case LockedDoorColors.Purple:
-                doorColor = new Color(90, 34, 138);
+                doorColor = new Color(115, 0, 255);
                 doorName = "Purple";
                 break;
             case LockedDoorColors.Red:

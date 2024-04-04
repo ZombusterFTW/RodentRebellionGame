@@ -64,83 +64,90 @@ public class TimeWarpMenuManager : MonoBehaviour
         PlayerSaveData presetDataForWarp = SaveData.instance.playerSaveData;
         //Here we edit the playerDatafile to give the player the items they should have on the specific level chosen
         //Reference for ability order.
-        /*canWallClimb = saveData.currentAbilities[0];
-        canDash = saveData.currentAbilities[1];
-        canGroundPound = saveData.currentAbilities[2];
-        canDoubleJump = saveData.currentAbilities[3];
-        canWallJump = saveData.currentAbilities[4];
-        canEnterRageMode = saveData.currentAbilities[5];
-        canPhaseShift = saveData.currentAbilities[6];*/
-        switch (levelToLoad) 
-        {
-            case "TestLevel":
-                {
-                    presetDataForWarp.currentWeapon = PlayerWeaponType.Dagger;
-                    presetDataForWarp.currentAbilities = new bool[7] {true,true,true,true,true,true,true };
-                    presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None, PlayerWeaponType.Dagger };
-                    break;
-                }
-            case "0Tutorial":
-                {
-                    presetDataForWarp.currentWeapon = PlayerWeaponType.None;
-                    presetDataForWarp.currentAbilities = new bool[7] { false, false, false, false, false, false, false };
-                    presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None };
-                    break;
-                }
-            case "Labyrinth1":
-                {
-                    presetDataForWarp.currentWeapon = PlayerWeaponType.None;
-                    presetDataForWarp.currentAbilities = new bool[7] { false, false, false, false, false, true, true };
-                    presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None };
-                    break;
-                }
-            case "RadioactiveCave":
-                {
-                    presetDataForWarp.currentWeapon = PlayerWeaponType.None;
-                    presetDataForWarp.currentAbilities = new bool[7] { false, false, false, false, false, true, true };
-                    presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None };
-                    break;
-                }
-            case "Labyrinth2":
-                {
-                    presetDataForWarp.currentWeapon = PlayerWeaponType.Dagger;
-                    presetDataForWarp.currentAbilities = new bool[7] { false, true, false, false, false, true, true };
-                    presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None, PlayerWeaponType.Dagger };
-                    break;
-                }
-            case "LabLevel":
-                {
-                    presetDataForWarp.currentWeapon = PlayerWeaponType.Dagger;
-                    presetDataForWarp.currentAbilities = new bool[7] { false, true, false, false, false, true, true };
-                    presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None, PlayerWeaponType.Dagger };
-                    break;
-                }
-            case "Labyrinth3":
-                {
-                    presetDataForWarp.currentWeapon = PlayerWeaponType.LaserGun;
-                    presetDataForWarp.currentAbilities = new bool[7] { true, true, false, false, true, true, true };
-                    presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None, PlayerWeaponType.Dagger, PlayerWeaponType.LaserGun };
-                    break;
-                }
-            case "Surface":
-                {
-                    presetDataForWarp.currentWeapon = PlayerWeaponType.LaserGun;
-                    presetDataForWarp.currentAbilities = new bool[7] { true, true, false, false, true, true, true };
-                    presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None, PlayerWeaponType.Dagger, PlayerWeaponType.LaserGun };
-                    break;
-                }
-            case "FinalBossTest":
-                {
-                    presetDataForWarp.currentWeapon = PlayerWeaponType.ChainWhip;
-                    presetDataForWarp.currentAbilities = new bool[7] { true, true, true, true, true, true, true };
-                    presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None, PlayerWeaponType.Dagger, PlayerWeaponType.LaserGun, PlayerWeaponType.ChainWhip };
-                    break;
-                }
+/*canWallClimb = saveData.currentAbilities[0];
+canDash = saveData.currentAbilities[1];
+canGroundPound = saveData.currentAbilities[2];
+canDoubleJump = saveData.currentAbilities[3];
+canWallJump = saveData.currentAbilities[4];
+canEnterRageMode = saveData.currentAbilities[5];
+canPhaseShift = saveData.currentAbilities[6];*/
 
+
+/*Dagger and dash are added during caves, wall jump and laser are added during lab, and double jump and chain whip are added during the surface
+So they should *not* have those items at the beginning of those areas
+And I suppose phase shift and ground pound are added during tutorial*/
+
+switch (levelToLoad) 
+{
+    case "TestLevel":
+        {
+            presetDataForWarp.currentWeapon = PlayerWeaponType.Dagger;
+            presetDataForWarp.currentAbilities = new bool[7] {true,true,true,true,true,true,true };
+            presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None, PlayerWeaponType.Dagger };
+            break;
         }
-        //We save the data into the player save data so it can be temporarily stored. //DO NOT SAVE THIS OR PLAYER PROGRESSION WILL BE DESTROYED.
-        SaveData.instance.playerSaveData = presetDataForWarp;
+    case "0Tutorial":
+        {
+            presetDataForWarp.currentWeapon = PlayerWeaponType.None;
+            presetDataForWarp.currentAbilities = new bool[7] { false, false, false, false, false, false, false };
+            presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None };
+            break;
+        }
+    case "Labyrinth1":
+        {
+            presetDataForWarp.currentWeapon = PlayerWeaponType.None;
+            presetDataForWarp.currentAbilities = new bool[7] { false, false, true, false, false, true, true };
+            presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None };
+            break;
+        }
+    case "RadioactiveCave":
+        {
+           presetDataForWarp.currentWeapon = PlayerWeaponType.None;
+           presetDataForWarp.currentAbilities = new bool[7] { false, false, true, false, false, true, true };
+           presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None };
+           break;
+        }
+    case "Labyrinth2":
+        {
+            presetDataForWarp.currentWeapon = PlayerWeaponType.Dagger;
+            presetDataForWarp.currentAbilities = new bool[7] { false, true, true, false, false, true, true };
+            presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None, PlayerWeaponType.Dagger };
+            break;
+        }
+    case "LabLevel":
+        {
+            presetDataForWarp.currentWeapon = PlayerWeaponType.Dagger;
+            presetDataForWarp.currentAbilities = new bool[7] { false, true, true, false, false, true, true };
+            presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None, PlayerWeaponType.Dagger };
+            break;
+        }
+    case "Labyrinth3":
+        {
+            presetDataForWarp.currentWeapon = PlayerWeaponType.LaserGun;
+            presetDataForWarp.currentAbilities = new bool[7] { true, true, true, false, true, true, true };
+            presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None, PlayerWeaponType.Dagger, PlayerWeaponType.LaserGun };
+            break;
+        }
+    case "Surface":
+        {
+            presetDataForWarp.currentWeapon = PlayerWeaponType.LaserGun;
+            presetDataForWarp.currentAbilities = new bool[7] { true, true, true, false, true, true, true };
+            presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None, PlayerWeaponType.Dagger, PlayerWeaponType.LaserGun };
+            break;
+        }
+    case "FinalBossTest":
+        {
+            presetDataForWarp.currentWeapon = PlayerWeaponType.ChainWhip;
+            presetDataForWarp.currentAbilities = new bool[7] { true, true, true, true, true, true, true };
+            presetDataForWarp.currentPlayerWeapons = new List<PlayerWeaponType> { PlayerWeaponType.None, PlayerWeaponType.Dagger, PlayerWeaponType.LaserGun, PlayerWeaponType.ChainWhip };
+            break;
+        }
+
     }
+    //We save the data into the player save data so it can be temporarily stored. //DO NOT SAVE THIS OR PLAYER PROGRESSION WILL BE DESTROYED.
+    SaveData.instance.playerSaveData = presetDataForWarp;
+    }
+
 }
 
 
