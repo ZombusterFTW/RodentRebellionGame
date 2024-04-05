@@ -42,7 +42,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
     private void Awake()
     {
         capsuleCollider = GetComponent<CapsuleCollider2D>();
-        playerController = FindObjectOfType<PlayerController>();
+        //playerController = FindObjectOfType<PlayerController>();
         enemyRB = GetComponent<Rigidbody2D>();
         UIClone = Instantiate(playerUI, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         UIClone.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
@@ -55,7 +55,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
     private void Start()
     {
         frenzyManager = FrenzyManager.instance;
-        playerController = FindObjectOfType<PlayerController>();
+        playerController = PlayerController.instance;
     }
 
 
@@ -104,7 +104,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
 
     private void FixedUpdate()
     {
-        if (isAlive)
+        if (isAlive && playerController != null)
         {
             if (frenzyManager.inRubberMode)
             {
@@ -132,7 +132,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
         if (currentState == EnemyStates.Perched)
         {
             RaycastHit2D hit = Physics2D.Linecast(gameObject.transform.position, playerController.gameObject.transform.position, ~ignore);
-            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange)
+            if (hit && !GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange)
             {
                 //Debug.DrawLine(gameObject.transform.position, playerController.transform.position, Color.green);
                 //Debug.Log("SpiderCat saw player");
@@ -215,7 +215,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
                 enemyRB.velocity = Vector2.zero;
                 enemyAnimatorRat.SetTrigger("Attack");
                 enemyAnimatorRubber.SetTrigger("Attack");
-                playerController.GetComponent<Health>().SubtractFromHealth(attackDamage, transform.position);
+                playerController.GetComponent<Health>().SubtractFromHealth(attackDamage, Vector2.zero);
                 //only run coroutine if it isn't already active.
                 if (attackCooldown == null) attackCooldown = StartCoroutine(AttackDelayTimer());
             }

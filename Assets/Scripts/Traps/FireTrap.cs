@@ -109,7 +109,7 @@ public class FireTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     {
         yield return new WaitForFixedUpdate();
         Health playerHealth = controller.GetHealthComponent();
-        playerHealth.SubtractFromHealth(dmgPerTick, transform.position);
+        playerHealth.SubtractFromHealth(dmgPerTick, Vector2.zero);
         isDamaging = false;
     }
 
