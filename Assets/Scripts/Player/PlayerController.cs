@@ -666,12 +666,12 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                     if (scrollAmount > 0)
                     {
                         playerUpgrade.SwapWeapon(false);
-                        Debug.Log("swaped down");
+                        //Debug.Log("swaped down");
                     }
                     else if (scrollAmount < 0)
                     {
                         playerUpgrade.SwapWeapon();
-                        Debug.Log("swaped up");
+                        //Debug.Log("swaped up");
                     }
                     if (playerWeapon != playerUpgrade.playerWeaponType)
                     {

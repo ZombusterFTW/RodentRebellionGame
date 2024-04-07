@@ -15,6 +15,8 @@ public class MatchTimer : MonoBehaviour
     private float elapsedTime;
     DialogueManager dialogueManager;
     Coroutine timeSaver = null;
+    [SerializeField] GameObject levelIntroName;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,8 @@ public class MatchTimer : MonoBehaviour
         dialogueManager = DialogueManager.GetInstance();
         SceneManager.sceneLoaded += OnSceneLoaded;
         levelName.text = GetLevelNamePretty(SceneManager.GetActiveScene().name);
+        Debug.Log("Spawned iuntr");
+        
         if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled || SaveData.instance.playerSettingsConfig.playerInTimeWarpMode)
         {
             //time exploit fix commented for now
@@ -32,6 +36,7 @@ public class MatchTimer : MonoBehaviour
         {
             matchTimerParent.SetActive(false);
         }
+        Instantiate(levelIntroName).GetComponentInChildren<TextMeshProUGUI>().text = GetLevelNamePretty(SceneManager.GetActiveScene().name);
     }
 
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
@@ -41,6 +46,9 @@ public class MatchTimer : MonoBehaviour
             elapsedTime = 0;
             //Set level name to the new scene
             levelName.text = GetLevelNamePretty(arg0.name);
+            //Spawn our level name intro thingy
+            Debug.Log("Spawned iuntr");
+            Instantiate(levelIntroName).GetComponentInChildren<TextMeshProUGUI>().text = GetLevelNamePretty(SceneManager.GetActiveScene().name);
             //time exploit fix commented for now
             //if (SaveData.instance.playerSettingsConfig.isSpeedrunModeEnabled) elapsedTime += SaveData.instance.practiceModeLevelSettings.lastLevelAccruedTime;
         }

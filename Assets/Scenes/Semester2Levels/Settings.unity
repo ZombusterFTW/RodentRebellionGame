@@ -2586,7 +2586,7 @@ MonoBehaviour:
   buttonText: {fileID: 1217782855}
   musicSlider: {fileID: 85548999}
   sfxSlider: {fileID: 375552107}
-  musicMixer: {fileID: 24100000, guid: 4001cac311af4f4468d47ac8e07a0b56, type: 2}
+  musicMixer: {fileID: 24100000, guid: 054cd3b6fae6ecc45af1834d4e89523d, type: 2}
   sfxMixer: {fileID: 24100000, guid: b163ab8745f87ed4b8a95022e302d028, type: 2}
 --- !u!1 &2145209143
 GameObject:

@@ -141,6 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b2d292261c86b44890542b6072b8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullOn: {fileID: 24500006, guid: 4001cac311af4f4468d47ac8e07a0b56, type: 2}
-  fullOff: {fileID: 247608586848731102, guid: 4001cac311af4f4468d47ac8e07a0b56, type: 2}
+  fullOn: {fileID: -8479208810280980728, guid: 4001cac311af4f4468d47ac8e07a0b56, type: 2}
+  fullOff: {fileID: -5953905589068780758, guid: 4001cac311af4f4468d47ac8e07a0b56, type: 2}
   audioTransitionTime: 1

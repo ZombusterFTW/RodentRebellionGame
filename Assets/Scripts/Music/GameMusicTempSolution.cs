@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class GameMusicTempSolution : MonoBehaviour
@@ -11,10 +12,18 @@ public class GameMusicTempSolution : MonoBehaviour
     [SerializeField] AudioClip area1Intro, area2Intro, area3Intro, area4Intro, area1Loop, area2Loop, area3Loop, area4Loop;
     private AudioClip intro, loop;
     private string sceneName;
-    [SerializeField] AudioSource musicSource;
+    [SerializeField] AudioSource introMusicSource;
+    [SerializeField] AudioSource loopMusicSource;
+
+
+
+    [SerializeField] AudioMixerSnapshot introOnly;
+    [SerializeField] AudioMixerSnapshot loopOnly;
+    [SerializeField] AudioMixerSnapshot unmuteGame;
     // Start is called before the first frame update
     void Start()
     {
+        unmuteGame.TransitionTo(0);
         sceneName = SceneManager.GetActiveScene().name;
         if (sceneName == "0Tutorial" || sceneName == "Labyrinth1" || sceneName == "Labyrinth2" || sceneName == "Labyrinth3")
         {
@@ -26,7 +35,7 @@ public class GameMusicTempSolution : MonoBehaviour
             intro = area2Intro;
             loop = area2Loop;
         }
-        else if(sceneName == "LabLevel")
+        else if (sceneName == "LabLevel")
         {
             intro = area3Intro;
             loop = area3Loop;
@@ -36,17 +45,20 @@ public class GameMusicTempSolution : MonoBehaviour
             intro = area4Intro;
             loop = area4Loop;
         }
-        musicSource.clip = intro;
-        musicSource.Play();
-        StartCoroutine(WaitAndPlayLoop(intro.length-1f));
+
+
+        introMusicSource.clip = intro;
+        loopMusicSource.clip = loop;
+        introOnly.TransitionTo(0);
+        introMusicSource.Play();
+        
+        StartCoroutine(WaitAndPlayLoop(intro.length*0.70f));
     }
 
    IEnumerator WaitAndPlayLoop(float timeToWait)
     {
         yield return new WaitForSecondsRealtime(timeToWait);
-        musicSource.Stop();
-        musicSource.clip = loop;
-        musicSource.loop = true;
-        musicSource.Play();
+        loopMusicSource.Play();
+        loopOnly.TransitionTo(0.1f);
     }
 }
