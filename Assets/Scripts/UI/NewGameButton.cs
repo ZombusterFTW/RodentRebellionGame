@@ -17,7 +17,9 @@ public class NewGameButton : MonoBehaviour
             //prevent a double click of this button.
             hasRun = true;
             //Increment run only if the player has completed the game. If they begin a new game before finishing we reset their current run.
-            if (SaveData.instance.playerSaveData.currentRunCount < 10 && SaveData.instance.playerSaveData.currentRunCount != 0 && SaveData.instance.playerSaveData.currentLevel == "MainMenu")
+
+            //Fixed bug where clicking new game would delete your current run.
+            if (SaveData.instance.playerSaveData.currentRunCount < 10 && SaveData.instance.playerSaveData.currentLevel == "MainMenu")
             {
                 //Increment the run
                 SaveData.instance.playerSaveData.currentRunCount++;

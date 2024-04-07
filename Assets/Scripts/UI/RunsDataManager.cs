@@ -67,7 +67,7 @@ public class RunsDataManager : MonoBehaviour
         if (bestRunTotal > 0)
         {
             TimeSpan totalTimeT = TimeSpan.FromSeconds(bestRunTotal);
-            playerBestRun.totalTime.text = totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss") + ":" + totalTimeT.ToString("ff");
+            playerBestRun.totalTime.text = totalTimeT.ToString("hh") + ":" + totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss");
         }
         else playerBestRun.totalTime.text = "     -";
 
@@ -103,7 +103,7 @@ public class RunsDataManager : MonoBehaviour
         if (totalCurrentRunTime > 0)
         {
             TimeSpan totalTimeT = TimeSpan.FromSeconds(totalCurrentRunTime);
-            runsDataHolders[0].totalTime.text = totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss") + ":" + totalTimeT.ToString("ff");
+            runsDataHolders[0].totalTime.text = totalTimeT.ToString("hh") + ":" + totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss");
         }
         else runsDataHolders[0].totalTime.text = "     -";
     }
@@ -113,6 +113,7 @@ public class RunsDataManager : MonoBehaviour
 
     void PresentPlayerData()
     {
+        float bestRunTimeTotal = 0;
         //Best run
         //Loop over the recorded level completion speeds
         for(int i = 0; i < playerBestRun.levelSpeeds.Length; i++)
@@ -136,11 +137,20 @@ public class RunsDataManager : MonoBehaviour
             {
                 playerBestRun.levelImages[i].color = Color.red;
             }
+            bestRunTimeTotal += playerData.playerBestRun[i];
         }
-        
+
+        if (bestRunTimeTotal > 0)
+        {
+            TimeSpan totalTimeT = TimeSpan.FromSeconds(bestRunTimeTotal);
+            playerBestRun.totalTime.text = totalTimeT.ToString("hh") + ":" + totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss");
+        }
+        else playerBestRun.totalTime.text = "     -";
+
+
         //Other runs
         //Loop over jagged array
-        for(int j = 0; j < playerData.playerCurrentRuns.Length; j++) 
+        for (int j = 0; j < playerData.playerCurrentRuns.Length; j++) 
         {
             runsDataHolders[j].runName.text = "Run: " + (j + 1);
             //If the run is in progress we show an identifier
@@ -186,7 +196,7 @@ public class RunsDataManager : MonoBehaviour
                 if(runData.runTotalTime > 0)
                 {
                     TimeSpan totalTimeT = TimeSpan.FromSeconds(runData.runTotalTime);
-                    runsDataHolders[j].totalTime.text = totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss") + ":" + totalTimeT.ToString("ff");
+                    runsDataHolders[j].totalTime.text = totalTimeT.ToString("hh") + ":" + totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss");
                 }
                 else runsDataHolders[j].totalTime.text = "     -";
                 Debug.Log(Application.persistentDataPath);

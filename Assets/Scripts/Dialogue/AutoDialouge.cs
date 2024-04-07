@@ -9,7 +9,7 @@ public class AutoDialouge : MonoBehaviour, R4Activatable
     [Tooltip("The Ink JSON file that will player when the player overlaps the trigger.")][SerializeField] private TextAsset inkJSON;
     [Tooltip("If true the dialouge will begin at Start after dialougeDelay seconds.")][SerializeField] bool playDialougeAutomatically;
     [Tooltip("The time before dialouge plays. Only taken into account if playDialougeAutomatically is set to true.")][ SerializeField] float dialougeDelay;
-    [Tooltip("If true this object will be destroyed on dialouge exit.")][SerializeField] bool cleanupOnDialougeExit = false;
+   // [Tooltip("If true this object will be destroyed on dialouge exit.")][SerializeField] bool cleanupOnDialougeExit = false;
     //Dialouge has been changed to always pause time since player movement is disabled during dialouge.
     bool stopTime = true;
     [Tooltip("Set this to true if you want this dialouge to be activated by a button or other R4Activator means.")][SerializeField] bool activatedByGameObject = false;
@@ -39,7 +39,7 @@ public class AutoDialouge : MonoBehaviour, R4Activatable
         if(!playDialougeAutomatically && !activatedByGameObject)
         {
             GameObject.FindObjectOfType<PlayerController>().DisableControls(true);
-            DialogueManager.GetInstance().EnterDialogueMode(inkJSON, gameObject, cleanupOnDialougeExit);
+            DialogueManager.GetInstance().EnterDialogueMode(inkJSON, gameObject, true);
             if(stopTime)
             {
                 //DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 0.25f);
@@ -50,7 +50,7 @@ public class AutoDialouge : MonoBehaviour, R4Activatable
     private void PlayDialougeScheduled()
     {
             GameObject.FindObjectOfType<PlayerController>().DisableControls(true);
-            DialogueManager.GetInstance().EnterDialogueMode(inkJSON, gameObject, cleanupOnDialougeExit);
+            DialogueManager.GetInstance().EnterDialogueMode(inkJSON, gameObject, true);
             if (stopTime)
             {
                 //DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 0.25f);
@@ -64,7 +64,7 @@ public class AutoDialouge : MonoBehaviour, R4Activatable
        if(activatedByGameObject)
         {
             GameObject.FindObjectOfType<PlayerController>().DisableControls(true);
-            DialogueManager.GetInstance().EnterDialogueMode(inkJSON, gameObject, cleanupOnDialougeExit);
+            DialogueManager.GetInstance().EnterDialogueMode(inkJSON, gameObject, true);
             if (stopTime)
             {
                 //DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0, 0.25f);
@@ -78,6 +78,8 @@ public class AutoDialouge : MonoBehaviour, R4Activatable
         Debug.Log("cannot deactivate autodialouge");
     }
 
+    /*
+     * To fix bug that caused the exit dialouge to trigger on closing the level, breaking level progression.
     private void OnDestroy()
     {
         if(this != null)
@@ -95,5 +97,20 @@ public class AutoDialouge : MonoBehaviour, R4Activatable
             }
         }
         
+    }
+    */
+
+    public void OnDialougeCompleted()
+    {
+            //Activate items after the dialouge has completed. If its set.
+            if (activatesItems)
+            {
+                    foreach (var item in itemsToActivate)
+                    {
+                        if (item.GetComponent<R4Activatable>() != null) item.GetComponent<R4Activatable>().Activate();
+                    }
+            Debug.Log("dialouge activated something");
+            }
+            Destroy(this.gameObject);
     }
 }

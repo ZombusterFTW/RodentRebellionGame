@@ -58,7 +58,7 @@ public class RunsDataContainer : MonoBehaviour
         if(runDataSet.runTotalTime > 0)
         {
             TimeSpan totalTimeT = TimeSpan.FromSeconds(runDataSet.runTotalTime);
-            totalTime.text = totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss") + ":" + totalTimeT.ToString("ff");
+            totalTime.text = totalTimeT.ToString("hh") + ":" + totalTimeT.ToString("mm") + ":" + totalTimeT.ToString("ss");
         }
         else totalTime.text = "     -";
     }

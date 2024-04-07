@@ -107,7 +107,7 @@ public class SoundManager : MonoBehaviour
         //check dialogue mode
         if (dialogueManager != null && dialogueManager.dialogueIsPlaying)
         {
-            Debug.Log("Dialogue is playing!!!");
+            //Debug.Log("Dialogue is playing!!!");
             //enter dialogue snapshot
             
             audioMixer.FindSnapshot("Dialogue").TransitionTo(0.2f);

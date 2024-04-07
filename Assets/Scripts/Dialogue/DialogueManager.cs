@@ -168,8 +168,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON, GameObject dialougeGameObj = null, bool destroyDialougeParentOnExit = false) 
+    public void EnterDialogueMode(TextAsset inkJSON, GameObject dialougeGameObj = null, bool destroyDialougeParentOnExitIn = false) 
     {
+        destroyDialougeParentOnExit = destroyDialougeParentOnExitIn;
         PlayerController.instance.DisableControls(true);
         //Kick player out of rubbermode
         if(PlayerController.instance.frenzyManager.inRubberMode) PlayerController.instance.frenzyManager.ToggleRubberMode();
@@ -196,7 +197,8 @@ public class DialogueManager : MonoBehaviour
         dialogueBGDampen.GetComponent<Image>().DOFade(0, 0.25f);
         if (dialougeContainerGameObject != null && destroyDialougeParentOnExit)
         {
-            DestroyImmediate(dialougeContainerGameObject);
+            //Fire activation from the dialouge object
+            dialougeContainerGameObject.GetComponent<AutoDialouge>().OnDialougeCompleted();
         }
         PlayerController.instance.DisableControls(false);
         yield return new WaitForSecondsRealtime(0.2f);
