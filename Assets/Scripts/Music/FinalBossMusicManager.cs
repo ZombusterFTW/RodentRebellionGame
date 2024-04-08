@@ -39,6 +39,7 @@ public class FinalBossMusicManager : MonoBehaviour
         introPlaying = false;
         levelLoop.Play();
         gameLoopFull.TransitionTo(0.1f);
+        bossArea1.TransitionTo(0.1f);
         area1Loop.Play();
         area2Loop.Play();
         area3Loop.Play();
