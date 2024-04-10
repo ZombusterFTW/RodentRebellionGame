@@ -116,9 +116,9 @@ public class MatchTimer : MonoBehaviour
     private void UpdateTimer()
     {
         var ts = TimeSpan.FromSeconds(elapsedTime);
-        timerText1.text = "<mspace=0.8em>" + ts.ToString("mm");
-        timerText2.text = "<mspace=0.8em>" + ts.ToString("ss");
-        timerText3.text = "<mspace=0.8em>" + ts.ToString("ff");
+        timerText1.text = "<mspace=0.5em>" + ts.ToString("mm");
+        timerText2.text = "<mspace=0.5em>" + ts.ToString("ss");
+        timerText3.text = "<mspace=0.5em>" + ts.ToString("ff");
     }
 
     public void LapTime()
