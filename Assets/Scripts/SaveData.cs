@@ -1,12 +1,14 @@
 using Ink.Parsed;
 using Newtonsoft;
 using Newtonsoft.Json;
+using Pathfinding;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Audio;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 
 public class SaveData : MonoBehaviour
@@ -46,43 +48,46 @@ public class SaveData : MonoBehaviour
 
     public void SaveIntoJson()
     {
+        bool exists = System.IO.Directory.Exists(Application.persistentDataPath + "/TheBalls");
+        if (!exists) System.IO.Directory.CreateDirectory(Application.persistentDataPath + "/TheBalls");
         //ONLY SAVE AT THE END OF A LEVEL ON EXIT DOOR!
         string playerData = JsonConvert.SerializeObject(playerSaveData);
         string playerSettings = JsonConvert.SerializeObject(playerSettingsConfig);
         string practiceModeSettings = JsonConvert.SerializeObject(practiceModeLevelSettings);
-        if(!playerSettingsConfig.playerInTimeWarpMode) System.IO.File.WriteAllText(Application.persistentDataPath + "/PlayerData.json", playerData);
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/PlayerConfigSettings.json", playerSettings);
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/PracticeModeSettings.json", practiceModeSettings);
+        if(!playerSettingsConfig.playerInTimeWarpMode) System.IO.File.WriteAllText(Application.persistentDataPath + "/TheBalls/PlayerData.json", playerData);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/TheBalls/PlayerConfigSettings.json", playerSettings);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/TheBalls/PracticeModeSettings.json", practiceModeSettings);
         Debug.Log("Saved Player Data");
     }
 
     public void SaveLevelTime()
     {
         string practiceModeSettings = JsonConvert.SerializeObject(practiceModeLevelSettings);
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/PracticeModeSettings.json", practiceModeSettings);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/TheBalls/PracticeModeSettings.json", practiceModeSettings);
         Debug.Log("Saved Player Data");
     }
-
     public void LoadFromJson()
     {
+        bool exists = System.IO.Directory.Exists(Application.persistentDataPath + "/TheBalls");
+        if (!exists) System.IO.Directory.CreateDirectory(Application.persistentDataPath + "/TheBalls");
         Debug.Log("Loaded Save Data");
         //Attempt to load existing save data. 
-        if(File.Exists(Application.persistentDataPath + "/PlayerData.json"))
+        if(File.Exists(Application.persistentDataPath + "/TheBalls/PlayerData.json"))
         {
             //If the file exists we turn it into a string and convert from a Json to a PlayerSaveData type
-            string playerData = File.ReadAllText(Application.persistentDataPath + "/PlayerData.json");
+            string playerData = File.ReadAllText(Application.persistentDataPath + "/TheBalls/PlayerData.json");
             playerSaveData = JsonConvert.DeserializeObject<PlayerSaveData>(playerData);
         }
-        if (File.Exists(Application.persistentDataPath + "/PlayerConfigSettings.json"))
+        if (File.Exists(Application.persistentDataPath + "/TheBalls/PlayerConfigSettings.json"))
         {
             //If the file exists we turn it into a string and convert from a Json to a PlayerSaveData type
-            string playerConfigSettings = File.ReadAllText(Application.persistentDataPath + "/PlayerConfigSettings.json");
+            string playerConfigSettings = File.ReadAllText(Application.persistentDataPath + "/TheBalls/PlayerConfigSettings.json");
             playerSettingsConfig = JsonConvert.DeserializeObject<PlayerSettingsConfig>(playerConfigSettings);
         }
-        if (File.Exists(Application.persistentDataPath + "/PracticeModeSettings.json"))
+        if (File.Exists(Application.persistentDataPath + "/TheBalls/PracticeModeSettings.json"))
         {
             //If the file exists we turn it into a string and convert from a Json to a PlayerSaveData type
-            string practiceModeSettings = File.ReadAllText(Application.persistentDataPath + "/PracticeModeSettings.json");
+            string practiceModeSettings = File.ReadAllText(Application.persistentDataPath + "/TheBalls/PracticeModeSettings.json");
             practiceModeLevelSettings = JsonConvert.DeserializeObject<PracticeModeLevelSettings>(practiceModeSettings);
         }
     }
