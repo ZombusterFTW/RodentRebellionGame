@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     private bool isFiringLaser = false;
     private bool isAttacking = false;   
 
-    private bool isAlive = true;
+    public bool isAlive { get; private set; } = true;
     private Vector2 movementDirection;
     private Vector2 lastDirection = Vector2.right;
     private Rigidbody2D playerRigidBody;
@@ -126,7 +126,8 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private EventSystem playerEventSystem;
     public static PlayerController instance;
     private float groundPoundDelay = 0.25f;
-    private bool groundPoundDelayActive = false;    
+    private bool groundPoundDelayActive = false;
+    private Coroutine groundPoundDelayCO;
     /// <summary>
     /// Mode switch notes. To enter rubber mode the player must have a portion of their rage meter. In rubber mode the bar slowly drains overtime with the player being kicked out of the mode alltogether if it runs out.
     /// Rubber mode has the increased emphasis on movement with more opportunites being available to the player. 
@@ -507,7 +508,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             cam.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
             //Debug.Log("Hit ground after ground pound");
             //Ground pound delay
-            StartCoroutine(GroundPoundDelay());
+            if(groundPoundDelayCO == null) groundPoundDelayCO = StartCoroutine(GroundPoundDelay());
             //Shake camera here
             //isGroundPounding = false;
             //canJump = true;
@@ -526,6 +527,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         isGroundPounding = false;
         groundPoundDelayActive = false;
         canJump = true;
+        groundPoundDelayCO = null;
     }
 
     IEnumerator ResetDashTimer()
@@ -1161,15 +1163,17 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             playerSprite.DOFade(0, 1);
             playerSpriteRubber.DOFade(0, 1);
             yield return new WaitForSeconds(1);
+            gameObject.transform.position = currentSpawn.transform.position;
             playerAnimator.Play("BigJoeIdle");
             playerAnimatorRubber.Play("BigJoeIdle");
             playerSprite.DOFade(1, .5f);
             playerSpriteRubber.DOFade(1, .5f);
             playerHealth.HealthToMax();
+            yield return null;
         }
         isAlive = true;
         disableAllMoves = false;
-        gameObject.transform.position = currentSpawn.transform.position;
+        
         playerHealth.isInvincible = false;
         playerInput.ActivateInput();
     }
