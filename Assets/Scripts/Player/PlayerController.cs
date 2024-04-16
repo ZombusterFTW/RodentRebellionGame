@@ -3,6 +3,7 @@ using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     [SerializeField] private SpawnPoint currentSpawn = null;
     [SerializeField] private LayerMask playerWalls;
     [SerializeField] private LayerMask playerGround;
+    [SerializeField] private LayerMask shieldLayer;
     [SerializeField] private GameObject frenzyIdentifierText;
     //Make laser gun work with mouse targeting
     //Laser rifle beam like EM1 from Advanced Warfare.
@@ -219,7 +221,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             if (arg0.name == "MainMenu" || arg0.name == "TimeWarp")
             {
                 StopAllCoroutines();
-                DestroyImmediate(gameObject);
+                Destroy(gameObject);
             }
         }
     }
@@ -837,7 +839,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             case InputActionPhase.Performed:
                 break;
             case InputActionPhase.Started:
-                if(!disableAllMoves && playerUpgrade.playerWeaponType == PlayerWeaponType.LaserGun)
+                if(!disableAllMoves && playerUpgrade.playerWeaponType == PlayerWeaponType.LaserGun || playerUpgrade.GetWeaponList().Contains(PlayerWeaponType.LaserGun))
                 {
                     //play lazer sound
                     characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon2);
@@ -890,6 +892,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     {
         bool isFacingLeft = lastDirection.x < 0 ? true : false;
         playerIsAttacking = true;
+        bool hitWallOnTheWay;
         //Vector2 direction = ((lastDirection) - (Vector2)transform.position);
         //Detect which weapon a player has to determine their damage
         if (playerUpgrade.playerWeaponType == PlayerWeaponType.Dagger)
@@ -900,18 +903,18 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             if (isFacingLeft)
             {
                 hit = Physics2D.OverlapCircle((Vector2)transform.position - new Vector2(.6f, 0), .85f, enemyLayer);
-                //hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position - new Vector2(chainWhipDistance/2, 0), groundLayer);
+                hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position - new Vector2(.6f, 0), shieldLayer);
             }
             else
             {
                 hit = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(.6f, 0), .85f, enemyLayer);
-                //hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(chainWhipDistance/2, 0), groundLayer);
+                hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(.6f, 0), shieldLayer);
             }
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon1);
             playerAnimator.SetTrigger("Stab");
             playerAnimatorRubber.SetTrigger("Stab");
-            if (hit && hit.tag != "Shield")
+            if (hit && !hitWallOnTheWay)
             {
                 //Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
@@ -928,7 +931,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 }
             }
         }
-        else if (playerUpgrade.playerWeaponType == PlayerWeaponType.None)
+        else if (playerUpgrade.playerWeaponType == PlayerWeaponType.None || playerUpgrade.playerWeaponType == PlayerWeaponType.LaserGun)
         {
             //RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection.normalized, 1f, enemyLayer);
             //RaycastHit2D hit = Physics2D.OverlapCircle((Vector2)transform.position, 0.6f, enemyLayer);
@@ -936,19 +939,19 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             if (isFacingLeft)
             {
                 hit = Physics2D.OverlapCircle((Vector2)transform.position - new Vector2(.6f, 0), .75f, enemyLayer);
-                //hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position - new Vector2(chainWhipDistance/2, 0), groundLayer);
+                hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position - new Vector2(.6f, 0), shieldLayer);
             }
             else
             {
                 hit = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(.6f, 0), .75f, enemyLayer);
-                //hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(chainWhipDistance/2, 0), groundLayer);
+                hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(.6f, 0), shieldLayer);
             }
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.NoWeapon);
             //replace me with standard attack
             playerAnimator.SetTrigger("StandardAttack");
             playerAnimatorRubber.SetTrigger("StandardAttack");
-            if (hit && hit.tag != "Shield")
+            if (hit && !hitWallOnTheWay)
             {
                 //Debug.Log("Hit");
                 if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
@@ -973,16 +976,15 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             Collider2D[] hitObjects;
             //Chain whip does no damage until it hits delayed sphere cast.
             yield return new WaitForSeconds(chainWhipDeployTime);
-            bool hitWallOnTheWay = false;   
             if (isFacingLeft)
             {
                 hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position - new Vector2(chainWhipDistance, 0), chainWhipSphereSize, enemyLayer);
-                //hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position - new Vector2(chainWhipDistance/2, 0), groundLayer);
+                hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position - new Vector2(chainWhipDistance/2, 0), shieldLayer);
             }
             else
             {
                 hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position + new Vector2(chainWhipDistance,0) , chainWhipSphereSize, enemyLayer);
-                //hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(chainWhipDistance/2, 0), groundLayer);
+                hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(chainWhipDistance/2, 0), shieldLayer);
             }
             // RaycastHit2D hit = Physics2D.LinecastAll(transform.position, lastDirection.normalized, 5f, enemyLayer);
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
@@ -991,7 +993,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             playerAnimator.SetTrigger("ChainWhip");
             playerAnimatorRubber.SetTrigger("ChainWhip");
 
-            if(hitObjects.Length > 0 && !hitWallOnTheWay)
+            if (hitObjects.Length > 0 && !hitWallOnTheWay)
             {
                 foreach(Collider2D hit in hitObjects)
                 {

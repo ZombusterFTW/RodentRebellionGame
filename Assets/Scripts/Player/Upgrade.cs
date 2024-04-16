@@ -31,6 +31,11 @@ public class Upgrade : MonoBehaviour
         weaponList = weaponListIn;
     }
 
+    public List<PlayerWeaponType> GetWeaponList()
+    {
+        return weaponList;
+    }
+
 
     public void SwapWeapon(bool swapUp = true)
     {
