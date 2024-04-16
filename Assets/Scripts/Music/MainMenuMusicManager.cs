@@ -33,7 +33,7 @@ public class MainMenuMusicManager : MonoBehaviour
     {
         Debug.Log(sceneToLoad);
         //if the scene loaded isn't a menu, we need to fade out the audio and destroy this object on fade completion.
-        if(sceneToLoad == "MainMenu" || sceneToLoad == "Runs" || sceneToLoad == "Timewarp" || sceneToLoad == "Settings")
+        if(sceneToLoad == "MainMenu" || sceneToLoad == "Runs" || sceneToLoad == "Timewarp" || sceneToLoad == "Settings" || sceneToLoad == "Credits")
         {
             //if we get here we are still in the menu and we do nothing
             Debug.Log("Loaded a menu");

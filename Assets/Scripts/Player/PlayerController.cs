@@ -180,11 +180,20 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         playerSpeed_Game = playerSpeed;
         jumpForce_Game = jumpForce;
         SceneManager.sceneLoaded += OnSceneChange;
+        SceneManager.activeSceneChanged += CheckIfOnMenu;
         //sceneTransitionerManager = SceneTransitionerManager.instance;
         if(SaveData.instance != null) LoadSaveData();
         else playerWeapon = playerUpgrade.playerWeaponType;
     }
 
+    private void CheckIfOnMenu(Scene arg0, Scene arg1)
+    {
+        if (arg1.name == "MainMenu" || arg1.name == "TimeWarp" || arg1.name == "Credits")
+        {
+            StopAllCoroutines();
+            Destroy(gameObject);
+        }
+    }
 
     void LoadSaveData()
     {
@@ -218,11 +227,6 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         if(this != null)
         {
             if (isFlipped) ToggleGravityFlip();
-            if (arg0.name == "MainMenu" || arg0.name == "TimeWarp")
-            {
-                StopAllCoroutines();
-                Destroy(gameObject);
-            }
         }
     }
 

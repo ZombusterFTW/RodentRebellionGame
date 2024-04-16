@@ -5747,7 +5747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   frenzyMaxAmount: 8
   frenzyDrainMultiplier: 2
-  phaseShiftDrainMultiplier: 1.5
+  phaseShiftDrainMultiplier: 0.66
   frenzyPassiveGainRate: 0.05
   frenzyAmountCurrent: 0
   playerUIManager: {fileID: 0}

@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Semester2Levels/TimeWarp.unity
     guid: 9bfcb517fc540f547aa0af3eddb23df1
+  - enabled: 1
+    path: Assets/Scenes/Semester2Levels/Credits.unity
+    guid: 8efcb2358c282134c946ce1088566d83
   m_configObjects: {}

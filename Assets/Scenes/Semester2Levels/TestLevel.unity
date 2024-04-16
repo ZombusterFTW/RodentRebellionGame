@@ -6391,6 +6391,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShieldCat (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 309708302324056190, guid: 16f4b990ad209744899d8fb5af254b84, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2914655870926839110, guid: 16f4b990ad209744899d8fb5af254b84, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.47290146
@@ -19686,7 +19690,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1973494872080101497, guid: 9c098d76bf4cc9e4e85d4d9b6f9d66ef, type: 3}
       propertyPath: sceneToLoad
-      value: MainMenu
+      value: Credits
       objectReference: {fileID: 0}
     - target: {fileID: 1973494872080101497, guid: 9c098d76bf4cc9e4e85d4d9b6f9d66ef, type: 3}
       propertyPath: activatedByOtherObject

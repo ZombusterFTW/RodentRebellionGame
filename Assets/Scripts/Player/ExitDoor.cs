@@ -54,7 +54,7 @@ public class ExitDoor : MonoBehaviour,R4Activatable
             {
                 SaveData.instance.playerSaveData.currentLevel = sceneToLoad;
                 //If we get here the player completed the game
-                if(sceneToLoad == "MainMenu")
+                if(sceneToLoad == "Credits")
                 {
                     SaveData.instance.playerSaveData.isPracticeModeUnlocked = true; 
                 }
