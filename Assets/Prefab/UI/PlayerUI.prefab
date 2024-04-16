@@ -597,7 +597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &220009136921065044
 RectTransform:
   m_ObjectHideFlags: 0
@@ -883,7 +883,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 1.1856079, y: -1.5401001}
-  m_SizeDelta: {x: 173.5848, y: 107.2287}
+  m_SizeDelta: {x: 114.0854, y: 107.2287}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4750560880469766163
 CanvasRenderer:
@@ -972,8 +972,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarFill: {fileID: 6887740562662660540}
   frenzyBarFill: {fileID: 937907384087148738}
-  weaponIndentifier: {fileID: 4770443197209886036}
   frenzyBar: {fileID: 8953948036725830375}
+  swapItem: {fileID: 1252324744709833086}
+  chainWhip: {fileID: 21300000, guid: ca806aebb6e8f4f4c9ae0f7105e7b427, type: 3}
+  noWeapon: {fileID: 21300000, guid: 8ff8fe736dc8d5646a3d6bcfddfb365f, type: 3}
+  dagger: {fileID: 21300000, guid: e2a267a7d06b1c94b95ebdd2383c5e0c, type: 3}
+  laserGun: {fileID: 21300000, guid: eeed0bb8430e8cd489d10b88962c4e55, type: 3}
 --- !u!114 &4489554545517984131
 MonoBehaviour:
   m_ObjectHideFlags: 0
