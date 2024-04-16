@@ -19,6 +19,7 @@ public class KeyandDoor : MonoBehaviour, R4Activatable
     [SerializeField] AudioSource keyAudio;
     [SerializeField] AudioSource doorAudio;
     [SerializeField] GameObject doorKeyHint;
+    [SerializeField] LockedDoorCompanionKeypad keypadCompanion;
     public void Activate()
     {
         doorKey.gameObject.SetActive(true);
@@ -115,6 +116,7 @@ public class KeyandDoor : MonoBehaviour, R4Activatable
             doorCollider.enabled = false;
             GetComponent<SpriteRenderer>().enabled = false;
             Destroy(gameObject, 3.5f);
+            if(keypadCompanion != null) keypadCompanion.ToggleDoorKeypad(true);
         }
     }
 }

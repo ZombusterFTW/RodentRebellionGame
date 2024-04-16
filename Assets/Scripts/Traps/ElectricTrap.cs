@@ -66,10 +66,13 @@ public class ElectricTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     {
         if (selfActivating)
         {
-            //Trigger trap by player hitting prox trigger. 
-            Debug.Log("Trap triggered");
-            StopCoroutine(TrapActivationProximity());
-            StartCoroutine(TrapActivationProximity());
+            if (controller.frenzyManager.inRubberMode == false)
+            {
+                //Trigger trap by player hitting prox trigger. 
+                Debug.Log("Trap triggered");
+                StopCoroutine(TrapActivationProximity());
+                StartCoroutine(TrapActivationProximity());
+            }
         }
         else
         {
@@ -86,7 +89,7 @@ public class ElectricTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
         {
             if (damage)
             {
-                if (playerCollider.IsTouching(trapElectric) && !isDamaging)
+                if (playerCollider.IsTouching(trapElectric) && !isDamaging && controller.frenzyManager.inRubberMode == false)
                 {
                     isDamaging = true;
                     StartCoroutine(DamageWait());
@@ -106,9 +109,12 @@ public class ElectricTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     IEnumerator DamageWait()
     {
         yield return new WaitForFixedUpdate();
-        //Slow player or character down.
-        Health playerHealth = controller.GetHealthComponent();
-        playerHealth.SubtractFromHealth(dmgPerTick, Vector2.zero);
+        if (controller.frenzyManager.inRubberMode == false)
+        {
+            //Slow player or character down.
+            Health playerHealth = controller.GetHealthComponent();
+            playerHealth.SubtractFromHealth(dmgPerTick, Vector2.zero);
+        }
         isDamaging = false;
     }
 
@@ -139,7 +145,7 @@ public class ElectricTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
         {
             yield return new WaitForSeconds(isPlayerTouchingDelay);
             //check if player is touching trap. if not deactivate spikes and break. If they are we loop and keep spikes up.
-            if (playerCollider.IsTouching(trapTrigger) || playerCollider.IsTouching(trapElectric)) continue;
+            if ((playerCollider.IsTouching(trapTrigger) || playerCollider.IsTouching(trapElectric) )&& controller.frenzyManager.inRubberMode == false) continue;
             else break;
         }
         //reset trap

@@ -53,7 +53,7 @@ public class GravityInversionTrap : MonoBehaviour, R4Activatable
     private void OnCollisionStay2D(Collision2D collision)
     {
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-        if (player != null && !onCooldown)
+        if (player != null && !onCooldown && player.frenzyManager.inRubberMode == false)
         {
             timeCounter += Time.deltaTime;
             if (timeCounter >= activationTime)
