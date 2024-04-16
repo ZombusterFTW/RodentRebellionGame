@@ -105,6 +105,7 @@ public class FrenzyManager : MonoBehaviour
             Debug.Log("Entered Rubber Mode");
             //transitionCanvasAnimator.Play("WorldStateTransition");
             RubberFillImage(true);
+            playerController.characterSoundManager.PlayAudioCallout(CharacterAudioCallout.WorldShift);
         }
 
         else if(frenzyAmountCurrent > 0 && rubberModeBarAnimation != null && inRubberMode && !stateChangeDisabled)
@@ -116,6 +117,7 @@ public class FrenzyManager : MonoBehaviour
             Debug.Log("Exited Rubber Mode");
             //transitionCanvasAnimator.Play("WorldStateTransitionReverse");
             RubberFillImage(false);
+            playerController.characterSoundManager.PlayAudioCallout(CharacterAudioCallout.WorldShift);
         }
         
         else

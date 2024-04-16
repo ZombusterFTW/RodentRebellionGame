@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
     public bool canPhaseShift { get; private set; } = false;
 
     //Audio Manager Class
-    [SerializeField] private CharacterSoundManager characterSoundManager;
+    public  CharacterSoundManager characterSoundManager;
     private Coroutine hurtSound;
     private Coroutine respawnJoe;
     private Coroutine latentAttack;

@@ -10,6 +10,7 @@ public class CharacterSoundManager : MonoBehaviour
     [SerializeField] private AudioSource hurtSource;
     [SerializeField] private AudioSource footstepSource;
     [SerializeField] private AudioSource weaponSource;
+    [SerializeField] private AudioSource worldShiftSource;
 
     [SerializeField] private AudioClip[] attackSounds;
     [SerializeField] private AudioClip[] landingSounds;
@@ -20,6 +21,7 @@ public class CharacterSoundManager : MonoBehaviour
     [SerializeField] private AudioClip weapon2Sound;
     [SerializeField] private AudioClip noWeaponSound;
     [SerializeField] private AudioClip movementLoop;
+    [SerializeField] private AudioClip worldShiftSound;
 
     public bool movementPlaying = false;
 
@@ -83,6 +85,12 @@ public class CharacterSoundManager : MonoBehaviour
                 if (movementSource.clip != null) movementSource.Play();
                 clipToReturn = movementSource.clip;
                 break;
+            case CharacterAudioCallout.WorldShift:
+                worldShiftSource.Stop();
+                worldShiftSource.clip = worldShiftSound;
+                if (worldShiftSource.clip != null) worldShiftSource.Play();
+                clipToReturn = worldShiftSource.clip;
+                break;
         }
         return clipToReturn;
     }
@@ -112,5 +120,6 @@ public enum CharacterAudioCallout
     Weapon2,
     NoWeapon,
     Hurt,
-    Land
+    Land,
+    WorldShift
 }
