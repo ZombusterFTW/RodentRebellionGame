@@ -50,6 +50,7 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
 
     private void Awake()
     {
+        golemAudio = GetComponent<AudioSource>();
         UIClone = Instantiate(playerUI, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         UIClone.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
         UIClone.transform.parent = transform;

@@ -844,7 +844,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             case InputActionPhase.Performed:
                 break;
             case InputActionPhase.Started:
-                if(!disableAllMoves && playerUpgrade.playerWeaponType == PlayerWeaponType.LaserGun || playerUpgrade.GetWeaponList().Contains(PlayerWeaponType.LaserGun))
+                if(!disableAllMoves && (playerUpgrade.playerWeaponType == PlayerWeaponType.LaserGun || playerUpgrade.GetWeaponList().Contains(PlayerWeaponType.LaserGun)))
                 {
                     //play lazer sound
                     characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon2);
@@ -915,7 +915,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position + new Vector2(.6f, 0), .85f, enemyLayer);
                 hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(.6f, 0), shieldLayer);
             }
-            //characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
+            characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon1);
             playerAnimator.SetTrigger("Stab");
             playerAnimatorRubber.SetTrigger("Stab");
@@ -956,7 +956,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position + new Vector2(.6f, 0), .75f, enemyLayer);
                 hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(.6f, 0), shieldLayer);
             }
-            //characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
+            characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.NoWeapon);
             //replace me with standard attack
             playerAnimator.SetTrigger("StandardAttack");

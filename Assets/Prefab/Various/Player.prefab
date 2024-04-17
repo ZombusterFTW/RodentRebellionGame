@@ -5542,23 +5542,12 @@ MonoBehaviour:
   worldShiftSource: {fileID: 2911655112089396261}
   variousSFX: {fileID: 2267946531199523125}
   attackSounds:
-  - {fileID: 8300000, guid: 5fbe7cb467e6aaa479ce90bc2240f669, type: 3}
-  - {fileID: 8300000, guid: 5eb02aef1cbc04c4d89447e79408de78, type: 3}
-  - {fileID: 8300000, guid: c93b485ffd98d72418043fc4411bcffa, type: 3}
-  - {fileID: 8300000, guid: 3056db3bca58c3148b8b08cb5974b4e3, type: 3}
+  - {fileID: 8300000, guid: cd9bb37a2a8fbd84982cd82548c13b95, type: 3}
   landingSounds:
   - {fileID: 8300000, guid: f9b72d3817e88644f88d77da41fa67ee, type: 3}
   hurtSounds:
-  - {fileID: 8300000, guid: d494cce34d5926a4aa54247804ae746b, type: 3}
-  - {fileID: 8300000, guid: 13a5e1aa6cd4a26489ecc14ee3cf1505, type: 3}
-  - {fileID: 8300000, guid: 358ad245d79793540b5138edeee3a96f, type: 3}
-  - {fileID: 8300000, guid: 17bde3451515ca247a84af045ef07e4f, type: 3}
-  - {fileID: 8300000, guid: 6076cd72b3efa3d4eab9678a6ce6df9e, type: 3}
-  - {fileID: 8300000, guid: e552173ba90991d48abf70a563815f7e, type: 3}
-  - {fileID: 8300000, guid: 5f04151209bdf2e4ea251649128da4be, type: 3}
-  - {fileID: 8300000, guid: 151608fda28aa754bb044cbba0fcf3a9, type: 3}
-  - {fileID: 8300000, guid: 30a617d7da23504469867c0620c5046c, type: 3}
-  deathSound: {fileID: 8300000, guid: 59fe44d3f7d167749a166b5cf6fe0a7d, type: 3}
+  - {fileID: 8300000, guid: 03b3d326fc443cc40915e1fad0770d38, type: 3}
+  deathSound: {fileID: 8300000, guid: 0a00269fb0a43d54183e0eaa38a5996f, type: 3}
   weapon1Sound: {fileID: 8300000, guid: 9030df449d6c40f498219a90fabd8cfe, type: 3}
   weapon2Sound: {fileID: 8300000, guid: 5d5f56cb91756404d9a98afc7698d06c, type: 3}
   weapon3Sound: {fileID: 8300000, guid: 2408243142d5da24ab5a99463b8e354d, type: 3}
