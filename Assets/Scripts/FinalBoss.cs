@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Ink.Parsed;
 
 
-public class FinalBoss : MonoBehaviour, R4Activatable, OneHitHealthEnemy
+public class FinalBoss : MonoBehaviour, R4Activatable, OneHitHealthEnemy, NewDialougeActivatable
 {
     /// <summary>
     /// ////Temp final boss flow. Joe speaks to whiskers and they have an argument with whiskers begging joe to reconsider. This dialouge activates this script, 
@@ -23,6 +24,20 @@ public class FinalBoss : MonoBehaviour, R4Activatable, OneHitHealthEnemy
     [SerializeField] Animator animator;
     [SerializeField] Animator animator2;
 
+    [SerializeField] private TriggerCheckerSupervisor triggerSpawnArea;
+    [SerializeField] private Collider2D enemySpawnArea;
+    [SerializeField] private float minSpawnTime = 10f;
+    [SerializeField] private float maxSpawnTime = 30f;
+    [SerializeField] private float minInactiveTime = 25f;
+    [SerializeField] private float maxInactiveTime = 50f;
+    [SerializeField] private int maxEnemiesSpawned = 5;
+    [SerializeField] private GameObject[] enemiesToSpawn;
+    private bool isAlive = true;
+    public List<GameObject> enemiesSpawned;
+    float timeInTrigger = 0;
+    float coolDownTime = 0;
+    float timeToSpawnEnemy = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,10 +51,59 @@ public class FinalBoss : MonoBehaviour, R4Activatable, OneHitHealthEnemy
                 item.GetComponent<Collider2D>().enabled = false;
             }
         }
+        timeToSpawnEnemy = Random.Range(minSpawnTime, maxSpawnTime);
     }
 
-    
 
+
+    private void Update()
+    {
+        if (isAlive && bossActivated)
+        {
+            if (coolDownTime <= 0)
+            {
+                if (triggerSpawnArea.playerIsInsideOfTrigger)
+                {
+                    timeInTrigger += Time.deltaTime;
+                    if (timeInTrigger >= timeToSpawnEnemy && enemiesSpawned.Count < maxEnemiesSpawned)
+                    {
+                        SpawnEnemy();
+                        animator.SetTrigger("GuardSummon");
+                        animator2.SetTrigger("GuardSummon");
+                        timeInTrigger = 0;
+                        timeToSpawnEnemy = Random.Range(minSpawnTime, maxSpawnTime);
+                        coolDownTime = Random.Range(minInactiveTime, maxInactiveTime);
+                    }
+                }
+                else
+                {
+                    if (timeInTrigger > 0) timeInTrigger -= Time.deltaTime;
+                }
+            }
+            else
+            {
+                coolDownTime -= Time.deltaTime;
+            }
+            //Wipe enemies that may have become null references
+            enemiesSpawned.RemoveAll(x => !x);
+        }
+    }
+
+    private void SpawnEnemy()
+    {
+        Debug.Log("SPAWN ENEMY");
+        enemiesSpawned.Add(Instantiate(enemiesToSpawn[Random.Range(0, enemiesToSpawn.Length)], RandomPointInBounds(enemySpawnArea.bounds), Quaternion.identity));
+    }
+
+
+    private Vector3 RandomPointInBounds(Bounds bounds)
+    {
+        return new Vector3(
+            Random.Range(bounds.min.x, bounds.max.x),
+            Random.Range(bounds.min.y, bounds.max.y),
+            0
+        );
+    }
 
 
     public void Activate()
@@ -58,11 +122,11 @@ public class FinalBoss : MonoBehaviour, R4Activatable, OneHitHealthEnemy
                         item.GetComponent<Collider2D>().enabled = true;
                     }
                 }
-                shield.GetComponent<SpriteRenderer>().DOFade(0.25f, 0.5f).SetUpdate(true);
+                //shield.GetComponent<SpriteRenderer>().DOFade(0.25f, 0.5f).SetUpdate(true);
                 bossActivated = true;
-                animator.SetTrigger("ShieldUp");
-                animator2.SetTrigger("ShieldUp");
-                Debug.Log("SHIELD");
+                //animator.SetTrigger("ShieldUp");
+                //animator2.SetTrigger("ShieldUp");
+                //Debug.Log("SHIELD");
             }
             else
             {
@@ -87,6 +151,7 @@ public class FinalBoss : MonoBehaviour, R4Activatable, OneHitHealthEnemy
     {
         if(allSwitchesActivated)
         {
+            isAlive = false;
             Debug.Log("Boss officially dead. Play dialouge now");
             animator.SetTrigger("Death");
             animator2.SetTrigger("Death");
@@ -108,4 +173,18 @@ public class FinalBoss : MonoBehaviour, R4Activatable, OneHitHealthEnemy
         }
     }
 
+    public void DialougeActivate()
+    {
+        shield.SetActive(true);
+        //This is here so the shield activation can occur during dialoge.
+        shield.GetComponent<SpriteRenderer>().DOFade(0.25f, 0.75f).SetUpdate(UpdateType.Normal, true);
+        bossActivated = true;
+        animator.SetTrigger("ShieldUp");
+        animator2.SetTrigger("ShieldUp");
+    }
+}
+
+public interface NewDialougeActivatable
+{
+    public void DialougeActivate();
 }

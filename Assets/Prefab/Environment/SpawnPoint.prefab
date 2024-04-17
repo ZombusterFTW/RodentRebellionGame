@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6736838172014882041}
   - component: {fileID: 5062214767227193972}
   - component: {fileID: 619004041024583698}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6750813592940064399}
   - component: {fileID: 6893069415551440891}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RespawnMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}

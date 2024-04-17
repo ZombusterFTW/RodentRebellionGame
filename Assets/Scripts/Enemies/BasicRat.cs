@@ -17,7 +17,7 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     [Tooltip("Add the wanted activated items to this list. These items must integrate the R4 Activatable interface")][SerializeField] private GameObject[] itemsToActivate;
     [Tooltip("Set this float to the damage a player will take from this enemy")][SerializeField] private float damageToPlayer = 3.5f;
     [Tooltip("The percentage of the frenzy bar killing the enemy will fill")][SerializeField][Range(0.0f, 1.0f)] private float frenzyPercentageFill = 0.15f;
-    [SerializeField] private BasicRatAIStates currentState = BasicRatAIStates.Idle;
+    [SerializeField] private BasicRatAIStates currentState = BasicRatAIStates.MovingRight;
     private float collisionRadius = 0.25f;
     private Vector2 rightOffset, leftOffset, bottomOffset, topOffset;
     private FrenzyManager frenzyManager;
@@ -80,9 +80,9 @@ public class BasicRat : MonoBehaviour, OneHitHealthEnemy
     private void FixedUpdate()
     {
         //This function will check if the AI has bumped against a wall and if it has, we instantly change the AI's movement direction.
-        if (isAlive) CheckAICollision();
         if (isAlive)
         {
+            CheckAICollision();
             if (frenzyManager.inRubberMode)
             {
                 rigidBody.velocity = Vector2.zero;

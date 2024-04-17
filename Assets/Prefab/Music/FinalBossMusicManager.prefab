@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6719502311133842605}
   - component: {fileID: 1472777636772374597}
   - component: {fileID: 9139041611223365503}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zone4Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 3739878190110794918}
   - component: {fileID: 8559695342301390354}
   - component: {fileID: 84297484023711050}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zone2Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 694453042875252279}
   - component: {fileID: 2603174482889124525}
   - component: {fileID: 8416768926493139734}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zone3Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -980,7 +980,7 @@ GameObject:
   - component: {fileID: 2796306843716215775}
   - component: {fileID: 5627048344265134977}
   - component: {fileID: 618961353581484228}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Zone1Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

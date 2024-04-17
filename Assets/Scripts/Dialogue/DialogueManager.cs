@@ -181,9 +181,7 @@ public class DialogueManager : MonoBehaviour
 
         dialogueVariables.StartListening(currentStory);
         dialogueBGDampen.GetComponent<Image>().DOFade(0.5f, 0.25f);
-        //currentStory.BindExternalFunction("dialougeActivate", (string objectTag) => GameObject.FindGameObjectWithTag(objectTag)?.GetComponent<DialougeActivated>()?.Activate());
-        //currentStory.BindExternalFunction("dialougeDeactivate", (string objectTag) => GameObject.FindGameObjectWithTag(objectTag)?.GetComponent<DialougeActivated>()?.Deactivate());
-
+        currentStory.BindExternalFunction("dialougeActivate", (string objectTag) => GameObject.FindGameObjectWithTag(objectTag)?.GetComponent<NewDialougeActivatable>()?.DialougeActivate());
         // reset portrait, layout, and speaker
         displayNameText.text = "???";
         portraitAnimator.Play("default");
@@ -205,10 +203,10 @@ public class DialogueManager : MonoBehaviour
 
         dialogueVariables.StopListening(currentStory);
 
-        //currentStory.UnbindExternalFunction("dialougeActivate");
-        //currentStory.UnbindExternalFunction("dialougeDeactivate");
+       // currentStory.UnbindExternalFunction("dialougeActivate");
 
-        if(dialougeContainerGameObject != null) 
+
+        if (dialougeContainerGameObject != null) 
         {
             DestroyImmediate(dialougeContainerGameObject);
         }

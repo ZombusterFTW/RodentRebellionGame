@@ -18,6 +18,7 @@ public class Switch : MonoBehaviour
     private AudioSource switchAudioSource;
     [SerializeField] private AudioClip switchOn;
     [SerializeField] private AudioClip switchOff;
+    [SerializeField] private bool disableActivationByLaser = false;
     //private AudioClip switchPullSound;
     //private AudioSource switchAudioSource;
 
@@ -43,12 +44,13 @@ public class Switch : MonoBehaviour
         Debug.Log("hit switch");
         //If switch is only activatiable with a certain attack prevent activation if the wrong attack is used.
         if (attackTypeRequired)
-        { 
-            if(inType != requiredAttackType)
+        {
+            if (inType != requiredAttackType)
             {
                 return;
             }
         }
+        else if (disableActivationByLaser && inType == PlayerAttackType.LaserBlast) return;
         //The switch delay will prevent a player from activating the switch multiple times in a single frame. 
         if(!switchDelayActive)
         {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2524053836572339139}
   - component: {fileID: 6195349759207421085}
   - component: {fileID: 192908852202831665}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CameraBlockingVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
