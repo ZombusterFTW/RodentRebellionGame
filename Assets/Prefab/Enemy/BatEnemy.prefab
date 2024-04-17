@@ -325,7 +325,7 @@ MonoBehaviour:
   playerUI: {fileID: 2242242107883657181, guid: 8108fa41987221346bcccebd5055a2a5, type: 3}
   ignore:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 129
   activateItemsOnDeath: 0
   itemsToActivate: []
   projectile: {fileID: 8155977222592638469, guid: 3b0a644cf6451d641a9e0b2b0dc102e1, type: 3}

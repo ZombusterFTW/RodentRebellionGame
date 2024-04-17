@@ -38,9 +38,16 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
     //[SerializeField] private float collRadiusWall;
    // [SerializeField] private Vector2 leftCollCheck, rightCollCheck;
     private Color debugColor = Color.red;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource footstepsLoop;
+
+
+
+
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
         //playerController = FindObjectOfType<PlayerController>();
         enemyRB = GetComponent<Rigidbody2D>();
@@ -120,6 +127,11 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
                 enemyRB.simulated = true;
                 capsuleCollider.enabled = true;
                 UpdateState();
+                if(currentState == EnemyStates.Pursuing && enemyRB.velocity.x != 0)
+                {
+                    footstepsLoop.Play();
+                }
+                else footstepsLoop.Stop();
             }
         }
     }
@@ -154,6 +166,7 @@ public class SpiderCat : MonoBehaviour, ControlledCharacter, EnemyAI
                 //Must be on the ground to start moving.
                 currentState = EnemyStates.Pursuing;
                 UIClone.SetActive(true);
+                audioSource.Play();
             }
             else
             {

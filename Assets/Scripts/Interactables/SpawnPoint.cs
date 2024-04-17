@@ -23,12 +23,13 @@ public class SpawnPoint : MonoBehaviour, R4Activatable
     [SerializeField] private PlayerController playerController;
     [SerializeField] private SpawnPoint spawnPoint;
 
-
+    private AudioSource spawnPointAudio;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        spawnPointAudio = GetComponent<AudioSource>();
         playerController = PlayerController.instance;
         spawnPoint = GetComponent<SpawnPoint>(); 
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -95,6 +96,11 @@ public class SpawnPoint : MonoBehaviour, R4Activatable
     public bool GetIsActive()
     {
         return isActive;
+    }
+
+    public void PlaySpawnSound()
+    {
+        if(!spawnPointAudio.isPlaying) spawnPointAudio.Play();
     }
 
 }

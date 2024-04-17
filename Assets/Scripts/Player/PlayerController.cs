@@ -1158,6 +1158,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     IEnumerator RespawnJoe(bool returnToCheckpoint = false)
     {
+        currentSpawn.PlaySpawnSound();  
         disableAllMoves = true;
         playerInput.DeactivateInput();
         if (returnToCheckpoint)
