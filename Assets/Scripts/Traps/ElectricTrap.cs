@@ -18,10 +18,12 @@ public class ElectricTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     private bool isTriggered = false;
     private bool isDamaging = false;
     public Animator electricTrapAnimator;
+    private AudioSource electricTrapAudio;
 
     // Start is called before the first frame update
     void Awake()
     {
+        electricTrapAudio = GetComponent<AudioSource>();
         if (selfActivating) isActive = false;
     }
 
@@ -47,6 +49,7 @@ public class ElectricTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     {
         if (!selfActivating)
         {
+            if(!electricTrapAudio.isPlaying) electricTrapAudio.Play();
             isActive = true;
             FireTrapActivation();
         }
@@ -56,6 +59,7 @@ public class ElectricTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     {
         if (!selfActivating)
         {
+            if (electricTrapAudio.isPlaying) electricTrapAudio.Stop();
             isActive = false;
             ResetTrap();
         }

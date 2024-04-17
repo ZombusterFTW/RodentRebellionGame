@@ -37,10 +37,11 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
     [SerializeField] private GameObject ratModeTurret;
     [SerializeField] private GameObject rubberModeTurret;
     Transform playerTransform;
+    private AudioSource turretAudioSource;
 
     private void Awake()
     {
-        
+        turretAudioSource = GetComponent<AudioSource>();    
         //spriteRenderer = GetComponent<SpriteRenderer>();
     }
     // Start is called before the first frame update
@@ -77,7 +78,7 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
         if (Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= turretSightRange && !frenzyManager.inRubberMode && isActive)
         {
             RaycastHit2D hit = Physics2D.Linecast(gameObject.transform.position, playerController.gameObject.transform.position, ~ignore);
-            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null))
+            if (GameObject.ReferenceEquals(hit.collider.gameObject, playerController.gameObject))
             {
                 //New turret rotate to face player
                 Vector3 diff = playerController.transform.position - ratModeTurret.transform.position;
@@ -187,7 +188,8 @@ public class Turret : MonoBehaviour, R4Activatable, OneHitHealthEnemy
             projectileRef.targetPosition = playerPos;
             projectileRef.damageByProjectile = projectileDamage;
             projectileRef.projectileSpeed = projectileSpeed;
-        
+            turretAudioSource.Play();
+
         yield return new WaitForSeconds(turretFireCooldown);
         isOnCooldown = false;
     }

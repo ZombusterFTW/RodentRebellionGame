@@ -19,10 +19,11 @@ public class FireTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     private bool isTriggered = false;
     private bool isDamaging = false;
     [SerializeField] private Animator fireTrapAnimator;
-
+    private AudioSource fireTrap;
     // Start is called before the first frame update
     void Awake()
     {
+        fireTrap = GetComponent<AudioSource>();
         if (selfActivating) isActive = false;
     }
 
@@ -51,6 +52,7 @@ public class FireTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     {
         if (!selfActivating)
         {
+            if (!fireTrap.isPlaying) fireTrap.Play();
             isActive = true;
             FireTrapActivation();
         }
@@ -60,6 +62,7 @@ public class FireTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     {
         if (!selfActivating)
         {
+            if (fireTrap.isPlaying) fireTrap.Stop();
             isActive = false;
             ResetTrap();
         }
