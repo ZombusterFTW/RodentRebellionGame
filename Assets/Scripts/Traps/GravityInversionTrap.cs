@@ -14,6 +14,7 @@ public class GravityInversionTrap : MonoBehaviour, R4Activatable
     private float timeCounter;
     private bool onCooldown;
     private Coroutine cooldown;
+    private AudioSource audioSource;
 
     public void Activate()
     {
@@ -38,7 +39,8 @@ public class GravityInversionTrap : MonoBehaviour, R4Activatable
     // Start is called before the first frame update
     void Start()
     {
-        if(startOn) 
+        audioSource = GetComponent<AudioSource>();  
+        if (startOn) 
         {
             Activate();
         }
@@ -53,12 +55,13 @@ public class GravityInversionTrap : MonoBehaviour, R4Activatable
     private void OnCollisionStay2D(Collision2D collision)
     {
         PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-        if (player != null && !onCooldown)
+        if (player != null && !onCooldown && player.frenzyManager.inRubberMode == false)
         {
             timeCounter += Time.deltaTime;
             if (timeCounter >= activationTime)
             {
                 player.ToggleGravityFlip();
+                audioSource.Play();
                 timeCounter = 0;
                 if(cooldown == null) cooldown = StartCoroutine(TrapCooldown());
             }

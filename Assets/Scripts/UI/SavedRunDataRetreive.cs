@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,16 +47,37 @@ public class SavedRunDataRetreive : MonoBehaviour
                 //If the player is under the avg time we set the background behind the text to green
                 if (runs[i].playerRunTimes[j] < runsDataManager.gameAvgTimes[j] && runs[i].playerRunTimes[j] != 0)
                 {
-                    runDataRef.levelImages[j].color = Color.green;
+                    //runDataRef.levelImages[j].color = Color.green;
+                    runDataRef.levelSpeeds[j].outlineColor = Color.green;
                 }
                 else if (runs[i].playerRunTimes[j] == 0)
                 {
-                    runDataRef.levelImages[j].color = Color.yellow;
+                   // runDataRef.levelImages[j].color = Color.yellow;
+                    runDataRef.levelSpeeds[j].outlineColor = Color.yellow;
                 }
                 //Else we set it to red
                 else
                 {
-                    runDataRef.levelImages[j].color = Color.red;
+                    //runDataRef.levelImages[j].color = Color.red;
+                    runDataRef.levelSpeeds[j].outlineColor = Color.red;
+                }
+
+
+                if (runData.runTotalTime > 0)
+                {
+                    if (runData.runTotalTime < runsDataManager.gameAvgTimes[8])
+                    {
+                        runDataRef.totalTime.outlineColor = Color.green;
+                    }
+                    //Else we set it to red
+                    else
+                    {
+                        runDataRef.totalTime.outlineColor = Color.red;
+                    }
+                }
+                else
+                {
+                    runDataRef.totalTime.outlineColor = Color.yellow;
                 }
             }
             i++;

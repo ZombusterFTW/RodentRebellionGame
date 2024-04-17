@@ -91,7 +91,7 @@ public class FrenzyManager : MonoBehaviour
 
     public void ToggleRubberMode()
     {
-        if (frenzyAmountCurrent > 0 && rubberModeBarAnimation == null && !inRubberMode && !stateChangeDisabled)
+        if (frenzyAmountCurrent >= frenzyMaxAmount*1/3  && rubberModeBarAnimation == null && !inRubberMode && !stateChangeDisabled)
         {
             //Player cannot be in rubber mode while in rage mode, so we check if the player is in rage mode. If they are we kick them out of it.
             if(frenzyActive &&  frenzyBarAnimation != null)
@@ -105,6 +105,7 @@ public class FrenzyManager : MonoBehaviour
             Debug.Log("Entered Rubber Mode");
             //transitionCanvasAnimator.Play("WorldStateTransition");
             RubberFillImage(true);
+            playerController.characterSoundManager.PlayAudioCallout(CharacterAudioCallout.WorldShift);
         }
 
         else if(frenzyAmountCurrent > 0 && rubberModeBarAnimation != null && inRubberMode && !stateChangeDisabled)
@@ -116,6 +117,7 @@ public class FrenzyManager : MonoBehaviour
             Debug.Log("Exited Rubber Mode");
             //transitionCanvasAnimator.Play("WorldStateTransitionReverse");
             RubberFillImage(false);
+            playerController.characterSoundManager.PlayAudioCallout(CharacterAudioCallout.WorldShift);
         }
         
         else

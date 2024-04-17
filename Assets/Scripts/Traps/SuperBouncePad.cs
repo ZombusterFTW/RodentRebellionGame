@@ -17,6 +17,7 @@ public class SuperBouncePad : MonoBehaviour, R4Activatable
 
     PhysicsMaterial2D defaultMaterial;
     PhysicsMaterial2D extraBouncyMaterial;
+    private AudioSource audioSource;
 
 
 
@@ -54,6 +55,7 @@ public class SuperBouncePad : MonoBehaviour, R4Activatable
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         defaultMaterial = new PhysicsMaterial2D("NormalBounciness");
         defaultMaterial.bounciness = wallBounciness;
         extraBouncyMaterial = new PhysicsMaterial2D("NoBounceMaterial");
@@ -61,4 +63,11 @@ public class SuperBouncePad : MonoBehaviour, R4Activatable
         //spriteRenderer = GetComponent<SpriteRenderer>();
         bounceCollider = GetComponent<BoxCollider2D>();
     }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(!audioSource.isPlaying) audioSource.Play();
+    }
 }
+

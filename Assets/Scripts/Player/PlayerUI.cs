@@ -8,9 +8,14 @@ public class PlayerUI : MonoBehaviour
 {
     public Image healthBarFill;
     public Image frenzyBarFill;
-    public TextMeshProUGUI weaponIndentifier;
+    //public TextMeshProUGUI weaponIndentifier;
     private PlayerController playerController;
     [SerializeField] GameObject frenzyBar;
+    public Image swapItem;
+    public Sprite chainWhip;
+    public Sprite noWeapon;
+    public Sprite dagger;
+    public Sprite laserGun;
 
     // Start is called before the first frame update
     void Start()

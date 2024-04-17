@@ -22,7 +22,7 @@ public class ContinueButton : MonoBehaviour
         if(continueButton != null)
         {
             //Allow for continue button functionality if the player has save progress.
-            if (SaveData.instance.playerSaveData.currentLevel != "" && SaveData.instance.playerSaveData.currentLevel != "MainMenu")
+            if (SaveData.instance.playerSaveData.currentLevel != "" && SaveData.instance.playerSaveData.currentLevel != "Credits")
             {
                 currentLevelText.text = "Current Level: " + GetLevelNamePretty(SaveData.instance.playerSaveData.currentLevel);
                 continueButton.interactable = true;
@@ -39,7 +39,7 @@ public class ContinueButton : MonoBehaviour
         {
             RunsButton.interactable = true;
             TimeWarpButton.interactable = true;
-            completeGameHint.text = "Thanks for completing the Rodent Rebellion Beta! Sincerely AJ, Ainsley, Brandon, Caden, Carol, Jen M, and John.";
+            completeGameHint.text = "Thanks for completing the Rodent Rebellion Beta! Sincerely, Rubber Room Studios.";
         }
         else
         {

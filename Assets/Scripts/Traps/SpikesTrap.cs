@@ -47,10 +47,10 @@ public class SpikesTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     {
         if(isTriggered)
         {
-            if (playerCollider.IsTouching(trapSpikes)) 
+            if (playerCollider.IsTouching(trapSpikes) && controller.frenzyManager.inRubberMode == false && controller.isAlive) 
             {
                 Health playerHealth = controller.GetHealthComponent();
-                playerHealth.SubtractFromHealth(playerHealth.GetCurrentHealth(), transform.position);
+                if(playerHealth.GetCurrentHealth() > 0) playerHealth.SubtractFromHealth(playerHealth.GetCurrentHealth(), transform.position);
             }
         }
     }
@@ -78,10 +78,13 @@ public class SpikesTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
     {
         if (selfActivating)
         {
-            //Trigger trap by player hitting prox trigger. 
-            Debug.Log("Trap triggered");
-            StopCoroutine(TrapActivationProximity());
-            StartCoroutine(TrapActivationProximity());
+            if(controller.frenzyManager.inRubberMode == false)
+            {
+                //Trigger trap by player hitting prox trigger. 
+                Debug.Log("Trap triggered");
+                StopCoroutine(TrapActivationProximity());
+                StartCoroutine(TrapActivationProximity());
+            }
         }
         else
         {
@@ -132,8 +135,9 @@ public class SpikesTrap : MonoBehaviour, R4Activatable, R4ActivatableTrap
         {
             yield return new WaitForSeconds(isPlayerTouchingDelay);
             //check if player is touching trap. if not deactivate spikes and break. If they are we loop and keep spikes up.
-            if (playerCollider.IsTouching(trapTrigger) || playerCollider.IsTouching(trapSpikes)) continue;
+            if ((playerCollider.IsTouching(trapTrigger) || playerCollider.IsTouching(trapSpikes)) && controller.frenzyManager.inRubberMode == false) continue;
             else break;
+            
         }
         //reset trap
         ResetTrap();

@@ -20,6 +20,7 @@ public class RadiationCanister : MonoBehaviour
     public Sprite healthCanisterImage;
     public Sprite laserGunWeaponImage;
     public Sprite daggerWeaponImage;
+    public Sprite chainWhipImage;
     [SerializeField] private Collider2D pickupCollider;
 
     // Start is called before the first frame update
@@ -109,7 +110,7 @@ public class RadiationCanister : MonoBehaviour
                 spriteRenderer.color = Color.white;
                 break;
             case UpgradeType.ChainWhip_Weapon:
-                spriteRenderer.sprite = abilityCanisterImage;
+                spriteRenderer.sprite = chainWhipImage;
                 spriteRenderer.color = Color.white;
                 break;
         }

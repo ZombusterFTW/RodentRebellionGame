@@ -21,6 +21,7 @@ public class WeakPlatform : MonoBehaviour, R4Activatable
     private Vector3 startingPosition;
     private BoxCollider2D platformCollider;
     [SerializeField] private Animator animator;
+    private AudioSource platformSource;
 
     public void Activate()
     {
@@ -51,6 +52,7 @@ public class WeakPlatform : MonoBehaviour, R4Activatable
             yield return new WaitForSeconds(platformFallDelay - 0.417f);
         }
         animator.Play("PlatformCrumble");
+        platformSource.Play();
         yield return new WaitForSeconds(0.417f);
         spriteRenderer.color = Color.red;
         spriteRenderer.DOFade(0, 2);
@@ -83,6 +85,7 @@ public class WeakPlatform : MonoBehaviour, R4Activatable
     // Start is called before the first frame update
     void Start()
     {
+        platformSource = GetComponent<AudioSource>();
         startingPosition = gameObject.transform.position;
         targetPosition = gameObject.transform.position + new Vector3(0, fallDistance,0);
         //spriteRenderer = GetComponent<SpriteRenderer>();

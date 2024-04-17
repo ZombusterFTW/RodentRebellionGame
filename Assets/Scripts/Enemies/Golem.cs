@@ -44,6 +44,7 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
     private Coroutine pursueCooldownTimer;
     [SerializeField] private Animator ratModeAnimator;
     [SerializeField] private Animator rubberModeAnimator;
+    private AudioSource golemAudio;
 
     //Like basic rat but chonky!
 
@@ -242,6 +243,11 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
         {
             ratModeAnimator.SetBool("IsMoving", true);
             ratModeAnimator.SetBool("IsMoving", true);
+            if(!golemAudio.isPlaying) golemAudio.Play();
+        }
+        else
+        {
+            if (golemAudio.isPlaying) golemAudio.Stop();
         }
     }
 

@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ignore:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 8320
   drawGizmos: 1
   playerUI: {fileID: 2242242107883657181, guid: 8108fa41987221346bcccebd5055a2a5, type: 3}
   surfaceLayer:
@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 2601052762924994404}
   - component: {fileID: 9130162166755651079}
   - component: {fileID: 1227616543088667031}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: RightShield
   m_TagString: Shield
   m_Icon: {fileID: 0}
@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 8455496774690197134}
   - component: {fileID: 3727109714652395153}
   - component: {fileID: 2229917713891349942}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: LeftShield
   m_TagString: Shield
   m_Icon: {fileID: 0}

@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bc479af30d55bb9429881e3473cf29c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d15b07cb91b0c4548ba3316b81f3b729, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -120,18 +120,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.07, y: 0.03}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.4133334, y: 3.4133334}
+    oldSize: {x: 2.989781, y: 2.989781}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.55, y: 2.56}
+  m_Size: {x: 1.06, y: 2.37}
   m_EdgeRadius: 0
 --- !u!114 &1578620140974666152
 MonoBehaviour:
@@ -160,6 +160,7 @@ MonoBehaviour:
   keyAudio: {fileID: 9086929198238319870}
   doorAudio: {fileID: 7897352965867820272}
   doorKeyHint: {fileID: 3326960352619200342, guid: 6fac9bbc3d0b23544a87c04092b825c9, type: 3}
+  keypadCompanion: {fileID: 0}
 --- !u!82 &7897352965867820272
 AudioSource:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6ccd04998bb0d60469e491a4dd32614e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7356b0724ce2ef444b21559082a0fd4c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

@@ -22,13 +22,33 @@ public class Upgrade : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         playerUIManager = playerController.GetPlayerUI();
         damageCountCurrent = damageCount;
-        playerUIManager.weaponIndentifier.text = weaponList[weaponIndex].ToString();
+        //playerUIManager.weaponIndentifier.text = weaponList[weaponIndex].ToString();
+        switch (playerWeaponType)
+        {
+            case PlayerWeaponType.None:
+                playerUIManager.swapItem.sprite = playerUIManager.noWeapon;
+                break;
+            case PlayerWeaponType.Dagger:
+                playerUIManager.swapItem.sprite = playerUIManager.dagger;
+                break;
+            case PlayerWeaponType.LaserGun:
+                playerUIManager.swapItem.sprite = playerUIManager.laserGun;
+                break;
+            case PlayerWeaponType.ChainWhip:
+                playerUIManager.swapItem.sprite = playerUIManager.chainWhip;
+                break;
+        }
     }
 
     public void SetWeaponList(List<PlayerWeaponType> weaponListIn)
     {
         weaponList.Clear();
         weaponList = weaponListIn;
+    }
+
+    public List<PlayerWeaponType> GetWeaponList()
+    {
+        return weaponList;
     }
 
 
@@ -59,7 +79,23 @@ public class Upgrade : MonoBehaviour
         weaponIndex = tempIndex;
         playerWeaponType = weaponList[tempIndex];
         //Show weapon name.
-        playerUIManager.weaponIndentifier.text = weaponList[tempIndex].ToString();
+        //playerUIManager.weaponIndentifier.text = weaponList[tempIndex].ToString();
+
+        switch (playerWeaponType)
+        {
+            case PlayerWeaponType.None:
+                playerUIManager.swapItem.sprite = playerUIManager.noWeapon;
+                break;
+            case PlayerWeaponType.Dagger:
+                playerUIManager.swapItem.sprite = playerUIManager.dagger;
+                break;
+            case PlayerWeaponType.LaserGun:
+                playerUIManager.swapItem.sprite = playerUIManager.laserGun;
+                break;
+            case PlayerWeaponType.ChainWhip:
+                playerUIManager.swapItem.sprite = playerUIManager.chainWhip;
+                break;
+        } 
     }
 
 
@@ -99,11 +135,26 @@ public class Upgrade : MonoBehaviour
             //Automatically swap player to the new weapon.
             playerWeaponType = weapon;
             weaponIndex = weaponList.IndexOf(weapon);
-            playerUIManager.weaponIndentifier.text = weaponList[weaponIndex].ToString();
+            //playerUIManager.weaponIndentifier.text = weaponList[weaponIndex].ToString();
             if(SaveData.instance !=  null)
             {
                 SaveData.instance.playerSaveData.currentPlayerWeapons = weaponList;
                 SaveData.instance.playerSaveData.currentWeapon = playerWeaponType;
+            }
+            switch (playerWeaponType)
+            {
+                case PlayerWeaponType.None:
+                    playerUIManager.swapItem.sprite = playerUIManager.noWeapon;
+                    break;
+                case PlayerWeaponType.Dagger:
+                    playerUIManager.swapItem.sprite = playerUIManager.dagger;
+                    break;
+                case PlayerWeaponType.LaserGun:
+                    playerUIManager.swapItem.sprite = playerUIManager.laserGun;
+                    break;
+                case PlayerWeaponType.ChainWhip:
+                    playerUIManager.swapItem.sprite = playerUIManager.chainWhip;
+                    break;
             }
         }
     }

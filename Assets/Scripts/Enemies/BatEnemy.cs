@@ -43,9 +43,11 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
     private Color debugColor = Color.red;
     bool isAlive = true;
     private Coroutine extendedDamage;
+    private AudioSource audioSource;
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         UIClone = Instantiate(playerUI, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
         UIClone.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
         UIClone.transform.parent = transform;
@@ -171,6 +173,7 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
         projectileRef.targetPosition = playerPos;
         projectileRef.damageByProjectile = projectileDamage;
         projectileRef.projectileSpeed = projectileSpeed;
+        if (!audioSource.isPlaying) audioSource.Play();
         yield return new WaitForSeconds(turretFireCooldown);
         isOnCooldown = false;
     }
@@ -179,6 +182,7 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
     {
         if(isAlive)
         {
+            if (!audioSource.isPlaying) audioSource.Play();
             isAlive = false;
             frenzyManager.AddToFrenzyMeter(0.15f);
             //Kill turret here.
@@ -241,6 +245,7 @@ public class BatEnemy : MonoBehaviour, EnemyAI, ControlledCharacter
         {
             yield return new WaitForSeconds(5);
             playerHealth.SubtractFromHealth(damageOnCollision, Vector2.zero);
+            if(!audioSource.isPlaying) audioSource.Play();
         }
 
     }
