@@ -11,6 +11,7 @@ public class CharacterSoundManager : MonoBehaviour
     [SerializeField] private AudioSource footstepSource;
     [SerializeField] private AudioSource weaponSource;
     [SerializeField] private AudioSource worldShiftSource;
+    [SerializeField] private AudioSource variousSFX;
 
     [SerializeField] private AudioClip[] attackSounds;
     [SerializeField] private AudioClip[] landingSounds;
@@ -19,9 +20,11 @@ public class CharacterSoundManager : MonoBehaviour
 
     [SerializeField] private AudioClip weapon1Sound;
     [SerializeField] private AudioClip weapon2Sound;
+    [SerializeField] private AudioClip weapon3Sound;
     [SerializeField] private AudioClip noWeaponSound;
     [SerializeField] private AudioClip movementLoop;
     [SerializeField] private AudioClip worldShiftSound;
+    [SerializeField] private AudioClip dashSound;
 
     public bool movementPlaying = false;
 
@@ -67,6 +70,12 @@ public class CharacterSoundManager : MonoBehaviour
                 if (weaponSource.clip != null) weaponSource.Play();
                 clipToReturn = weaponSource.clip;
                 break;
+            case CharacterAudioCallout.Weapon3:
+                weaponSource.Stop();
+                weaponSource.clip = weapon3Sound;
+                if (weaponSource.clip != null) weaponSource.Play();
+                clipToReturn = weaponSource.clip;
+                break;
             case CharacterAudioCallout.NoWeapon:
                 weaponSource.Stop();
                 weaponSource.clip = noWeaponSound;
@@ -90,6 +99,12 @@ public class CharacterSoundManager : MonoBehaviour
                 worldShiftSource.clip = worldShiftSound;
                 if (worldShiftSource.clip != null) worldShiftSource.Play();
                 clipToReturn = worldShiftSource.clip;
+                break;
+            case CharacterAudioCallout.Dash:
+                variousSFX.Stop();
+                variousSFX.clip = dashSound;
+                if (variousSFX.clip != null) variousSFX.Play();
+                clipToReturn = variousSFX.clip;
                 break;
         }
         return clipToReturn;
@@ -118,8 +133,10 @@ public enum CharacterAudioCallout
     Attack,
     Weapon1,
     Weapon2,
+    Weapon3,
     NoWeapon,
     Hurt,
     Land,
+    Dash,
     WorldShift
 }

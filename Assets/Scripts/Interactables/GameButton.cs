@@ -17,12 +17,16 @@ public class GameButton : MonoBehaviour
     private bool buttonDelay = false;
     private bool toggleBehavior_Game = false;
     private float buttonDelayTime = 0.1f;
+    private AudioSource buttonSource;
+    [SerializeField] private AudioClip buttonOn;
+    [SerializeField] private AudioClip buttonOff;
 
     // Start is called before the first frame update
     void Start()
     {
+        buttonSource = GetComponent<AudioSource>();
         //Prevent the possibility of toggle behavior and button delay being active at the same time.
-        if(itemActivateTime < 0 && toggleBehavior) toggleBehavior_Game = true;
+        if (itemActivateTime < 0 && toggleBehavior) toggleBehavior_Game = true;
         if(startOn)
         {
             ActivateButton();
@@ -42,6 +46,8 @@ public class GameButton : MonoBehaviour
 
     void ActivateButton()
     {
+        buttonSource.clip = buttonOn;
+        buttonSource.Play();
         StopCoroutine(ButtonToggleDelay());
         StartCoroutine(ButtonToggleDelay());
         buttonActivated = true;
@@ -52,6 +58,8 @@ public class GameButton : MonoBehaviour
 
     void DeactivateButton()
     {
+        buttonSource.clip = buttonOff;
+        buttonSource.Play();
         StopCoroutine(ButtonToggleDelay());
         StartCoroutine(ButtonToggleDelay());
         DeactivateItems();

@@ -15,6 +15,9 @@ public class Switch : MonoBehaviour
     private float switchDelayTime = 0.25f;
     private bool switchActivated = false;
     private bool switchDelayActive = false;
+    private AudioSource switchAudioSource;
+    [SerializeField] private AudioClip switchOn;
+    [SerializeField] private AudioClip switchOff;
     //private AudioClip switchPullSound;
     //private AudioSource switchAudioSource;
 
@@ -22,6 +25,7 @@ public class Switch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        switchAudioSource = GetComponent<AudioSource>();
         if (startOn)
         {
             switchActivated = true; 
@@ -36,6 +40,7 @@ public class Switch : MonoBehaviour
 
     public void ToggleSwitch(PlayerAttackType inType = PlayerAttackType.StandardAttack)
     {
+        Debug.Log("hit switch");
         //If switch is only activatiable with a certain attack prevent activation if the wrong attack is used.
         if (attackTypeRequired)
         { 
@@ -74,6 +79,8 @@ public class Switch : MonoBehaviour
     //The code under this directly pulls from the button script. The underlying logic is nearly identical. Just need to add support for it to flip between 2 different sprites or play an animation. 
     void ActivateButton()
     {
+        switchAudioSource.clip = switchOn;
+        switchAudioSource.Play();
         switchActivated = true;
         animator.Play("FloorSwitchOn");
         ActivateItems();
@@ -81,6 +88,8 @@ public class Switch : MonoBehaviour
 
     void DeactivateButton()
     {
+        switchAudioSource.clip = switchOff;
+        switchAudioSource.Play();
         DeactivateItems();
         animator.Play("FloorSwitchOff");
         switchActivated = false;

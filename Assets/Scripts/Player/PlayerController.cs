@@ -538,6 +538,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     IEnumerator ResetDashTimer()
     {
+        characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Dash);
         cam.transform.DOComplete();
         cam.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
         dashTrail.SetEnabled(true);
@@ -897,41 +898,47 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         bool isFacingLeft = lastDirection.x < 0 ? true : false;
         playerIsAttacking = true;
         bool hitWallOnTheWay;
+        Collider2D[] hitObjects;
         //Vector2 direction = ((lastDirection) - (Vector2)transform.position);
         //Detect which weapon a player has to determine their damage
         if (playerUpgrade.playerWeaponType == PlayerWeaponType.Dagger)
         {
             //Seperate line casts for each weapon
             //RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection.normalized, 1.2f, enemyLayer);
-            Collider2D hit;
             if (isFacingLeft)
             {
-                hit = Physics2D.OverlapCircle((Vector2)transform.position - new Vector2(.6f, 0), .85f, enemyLayer);
+                hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position - new Vector2(.6f, 0), .85f, enemyLayer);
                 hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position - new Vector2(.6f, 0), shieldLayer);
             }
             else
             {
-                hit = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(.6f, 0), .85f, enemyLayer);
+                hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position + new Vector2(.6f, 0), .85f, enemyLayer);
                 hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(.6f, 0), shieldLayer);
             }
-            characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
+            //characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon1);
             playerAnimator.SetTrigger("Stab");
             playerAnimatorRubber.SetTrigger("Stab");
-            if (hit && !hitWallOnTheWay)
+            if (hitObjects.Length > 0 && !hitWallOnTheWay)
             {
-                //Debug.Log("Hit");
-                if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
+                foreach (Collider2D hit in hitObjects)
                 {
-                    hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike), transform.position);
-                }
-                if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<Switch>(), null))
-                {
-                    hit.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.DaggerStrike);
-                }
-                if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<OneHitHealthEnemy>(), null))
-                {
-                    hit.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
+                    if (hit.gameObject.tag != "Shield")
+                    {
+                        //Debug.Log("Hit");
+                        if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
+                        {
+                            hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.DaggerStrike), transform.position);
+                        }
+                        else if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<Switch>(), null))
+                        {
+                            hit.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.DaggerStrike);
+                        }
+                        else if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<OneHitHealthEnemy>(), null))
+                        {
+                            hit.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
+                        }
+                    }
                 }
             }
         }
@@ -939,36 +946,41 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
         {
             //RaycastHit2D hit = Physics2D.Raycast(transform.position, lastDirection.normalized, 1f, enemyLayer);
             //RaycastHit2D hit = Physics2D.OverlapCircle((Vector2)transform.position, 0.6f, enemyLayer);
-            Collider2D hit;
             if (isFacingLeft)
             {
-                hit = Physics2D.OverlapCircle((Vector2)transform.position - new Vector2(.6f, 0), .75f, enemyLayer);
+                hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position - new Vector2(.6f, 0), .75f, enemyLayer);
                 hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position - new Vector2(.6f, 0), shieldLayer);
             }
             else
             {
-                hit = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(.6f, 0), .75f, enemyLayer);
+                hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position + new Vector2(.6f, 0), .75f, enemyLayer);
                 hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(.6f, 0), shieldLayer);
             }
-            characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
+            //characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.NoWeapon);
             //replace me with standard attack
             playerAnimator.SetTrigger("StandardAttack");
             playerAnimatorRubber.SetTrigger("StandardAttack");
-            if (hit && !hitWallOnTheWay)
+            if (hitObjects.Length > 0 && !hitWallOnTheWay)
             {
-                //Debug.Log("Hit");
-                if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
+                foreach (Collider2D hit in hitObjects)
                 {
-                    hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack), transform.position);
-                }
-                if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<Switch>(), null))
-                {
-                    hit.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.StandardAttack);
-                }
-                if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<OneHitHealthEnemy>(), null))
-                {
-                    hit.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
+                    if (hit.gameObject.tag != "Shield")
+                    {
+                        //Debug.Log("Hit");
+                        if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<EnemyAI>(), null))
+                        {
+                            hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.StandardAttack), transform.position);
+                        }
+                        else if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<Switch>(), null))
+                        {
+                            hit.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.StandardAttack);
+                        }
+                        else if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<OneHitHealthEnemy>(), null))
+                        {
+                            hit.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
+                        }
+                    }
                 }
             }
         }
@@ -977,7 +989,6 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
             float chainWhipDistance = 1f;
             float chainWhipSphereSize = 0.6f;
             float chainWhipDeployTime = 0.334f;
-            Collider2D[] hitObjects;
             //Chain whip does no damage until it hits delayed sphere cast.
             yield return new WaitForSeconds(chainWhipDeployTime);
             if (isFacingLeft)
@@ -990,6 +1001,7 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                 hitObjects = Physics2D.OverlapCircleAll((Vector2)transform.position + new Vector2(chainWhipDistance,0) , chainWhipSphereSize, enemyLayer);
                 hitWallOnTheWay = Physics2D.Linecast(transform.position, (Vector2)transform.position + new Vector2(chainWhipDistance/2, 0), shieldLayer);
             }
+            characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Weapon3);
             // RaycastHit2D hit = Physics2D.LinecastAll(transform.position, lastDirection.normalized, 5f, enemyLayer);
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.Attack);
             characterSoundManager.PlayAudioCallout(CharacterAudioCallout.NoWeapon);
@@ -1008,11 +1020,11 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
                         {
                             hit.gameObject.GetComponent<EnemyAI>().GetHealth().SubtractFromHealth(playerUpgrade.GetAttackDamage(PlayerAttackType.ChainWhipAttack), transform.position);
                         }
-                        if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<Switch>(), null))
+                        else if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<Switch>(), null))
                         {
                             hit.gameObject.GetComponent<Switch>().ToggleSwitch(PlayerAttackType.ChainWhipAttack);
                         }
-                        if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<OneHitHealthEnemy>(), null))
+                        else if (!GameObject.ReferenceEquals(hit.gameObject.GetComponent<OneHitHealthEnemy>(), null))
                         {
                             hit.gameObject.GetComponent<OneHitHealthEnemy>().OnOneHitEnemyDeath();
                         }

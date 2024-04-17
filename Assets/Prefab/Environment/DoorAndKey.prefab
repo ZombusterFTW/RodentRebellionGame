@@ -160,6 +160,7 @@ MonoBehaviour:
   keyAudio: {fileID: 9086929198238319870}
   doorAudio: {fileID: 7897352965867820272}
   doorKeyHint: {fileID: 3326960352619200342, guid: 6fac9bbc3d0b23544a87c04092b825c9, type: 3}
+  keypadCompanion: {fileID: 0}
 --- !u!82 &7897352965867820272
 AudioSource:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6ccd04998bb0d60469e491a4dd32614e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7356b0724ce2ef444b21559082a0fd4c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
