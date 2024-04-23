@@ -115,13 +115,7 @@ public class FinalBoss : MonoBehaviour, R4Activatable, OneHitHealthEnemy, NewDia
             {
                 Debug.Log("Activated the whiskers boss for the first time");
                 shield.SetActive(true);
-                foreach (GameObject item in switchesToActivate)
-                {
-                    if (item.GetComponent<Switch>() != null)
-                    {
-                        item.GetComponent<Collider2D>().enabled = true;
-                    }
-                }
+                
                 //shield.GetComponent<SpriteRenderer>().DOFade(0.25f, 0.5f).SetUpdate(true);
                 bossActivated = true;
                 //animator.SetTrigger("ShieldUp");
@@ -181,6 +175,13 @@ public class FinalBoss : MonoBehaviour, R4Activatable, OneHitHealthEnemy, NewDia
         bossActivated = true;
         animator.SetTrigger("ShieldUp");
         animator2.SetTrigger("ShieldUp");
+        foreach (GameObject item in switchesToActivate)
+        {
+            if (item.GetComponent<Switch>() != null)
+            {
+                item.GetComponent<Collider2D>().enabled = true;
+            }
+        }
     }
 }
 

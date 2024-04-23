@@ -19,6 +19,7 @@ public class Switch : MonoBehaviour
     [SerializeField] private AudioClip switchOn;
     [SerializeField] private AudioClip switchOff;
     [SerializeField] private bool disableActivationByLaser = false;
+    [SerializeField] private bool isFinalBossTerminal = false;
     //private AudioClip switchPullSound;
     //private AudioSource switchAudioSource;
 
@@ -84,7 +85,8 @@ public class Switch : MonoBehaviour
         switchAudioSource.clip = switchOn;
         switchAudioSource.Play();
         switchActivated = true;
-        animator.Play("FloorSwitchOn");
+        if(isFinalBossTerminal) animator.Play("TerminalDestroyed");
+        else animator.Play("FloorSwitchOn");
         ActivateItems();
     }
 
@@ -93,7 +95,8 @@ public class Switch : MonoBehaviour
         switchAudioSource.clip = switchOff;
         switchAudioSource.Play();
         DeactivateItems();
-        animator.Play("FloorSwitchOff");
+        if (isFinalBossTerminal) animator.Play("TerminalOn");
+        else animator.Play("FloorSwitchOff");
         switchActivated = false;
     }
 

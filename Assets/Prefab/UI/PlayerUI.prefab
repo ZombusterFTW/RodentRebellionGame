@@ -974,10 +974,10 @@ MonoBehaviour:
   frenzyBarFill: {fileID: 937907384087148738}
   frenzyBar: {fileID: 8953948036725830375}
   swapItem: {fileID: 1252324744709833086}
-  chainWhip: {fileID: 21300000, guid: ca806aebb6e8f4f4c9ae0f7105e7b427, type: 3}
-  noWeapon: {fileID: 21300000, guid: 8ff8fe736dc8d5646a3d6bcfddfb365f, type: 3}
-  dagger: {fileID: 21300000, guid: e2a267a7d06b1c94b95ebdd2383c5e0c, type: 3}
-  laserGun: {fileID: 21300000, guid: eeed0bb8430e8cd489d10b88962c4e55, type: 3}
+  chainWhip: {fileID: 21300000, guid: 9f91060bcd8696841b7e1a26f06bb758, type: 3}
+  noWeapon: {fileID: 21300000, guid: 2a9e5107dc367144c8e2084c6606cf4a, type: 3}
+  dagger: {fileID: 21300000, guid: fe91fd8edffe81849b066a817e66403c, type: 3}
+  laserGun: {fileID: 21300000, guid: aa9193b0216c78142a0146bd19447070, type: 3}
 --- !u!114 &4489554545517984131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1149,7 +1149,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ca806aebb6e8f4f4c9ae0f7105e7b427, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f91060bcd8696841b7e1a26f06bb758, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1877,6 +1877,81 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5692917688724240167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6612215505782270635}
+  - component: {fileID: 8488326918048694986}
+  - component: {fileID: 2186747523733777435}
+  m_Layer: 5
+  m_Name: FrenzyBarBG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6612215505782270635
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692917688724240167}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3941469654330374304}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 739.2569, y: -388.7938}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8488326918048694986
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692917688724240167}
+  m_CullTransparentMesh: 1
+--- !u!114 &2186747523733777435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692917688724240167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 481f65db2f7b4ae4c985477755ac1b92, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5750033528068663215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,7 +2226,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dde5e2af9fbb5f848973647658d42338, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 25f175b76b040a6448c980cdba11a749, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2191,6 +2266,7 @@ RectTransform:
   m_Children:
   - {fileID: 3244602885000219354}
   - {fileID: 6479013435668642690}
+  - {fileID: 6612215505782270635}
   - {fileID: 1022621058753329890}
   m_Father: {fileID: 3592772288073530421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
