@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3719488379578852401}
   - component: {fileID: 7085704275736066754}
   - component: {fileID: 242866603343291797}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ForcePlayerToNormalGravity
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6153333333869772371}
   - component: {fileID: 1437851582777460375}
   - component: {fileID: 213820833231896769}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RubberModeTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

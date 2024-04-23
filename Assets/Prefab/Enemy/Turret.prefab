@@ -466,7 +466,7 @@ MonoBehaviour:
   drawGizmos: 0
   ignore:
     serializedVersion: 2
-    m_Bits: 8833
+    m_Bits: 9857
   startOn: 1
   turretSightRange: 15
   projectileDamage: 34

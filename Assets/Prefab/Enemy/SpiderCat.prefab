@@ -117,7 +117,7 @@ MonoBehaviour:
   playerUI: {fileID: 2242242107883657181, guid: 8108fa41987221346bcccebd5055a2a5, type: 3}
   ignore:
     serializedVersion: 2
-    m_Bits: 641
+    m_Bits: 9861
   surfaceLayer:
     serializedVersion: 2
     m_Bits: 8
