@@ -19,8 +19,12 @@ public class StartingCutscene : MonoBehaviour, R4Activatable
     // Start is called before the first frame update
     void Start()
     {
-        
-       if(!activatedByGameObject) StartCoroutine(CutsceneLoop());
+
+        if (!activatedByGameObject)
+        {
+            Time.timeScale = 0f;
+            StartCoroutine(CutsceneLoop());
+        }
     }
 
     IEnumerator CutsceneLoop() 
@@ -35,7 +39,8 @@ public class StartingCutscene : MonoBehaviour, R4Activatable
             {
                 i++;
                 frame.SetActive(true);
-                frame.GetComponent<Image>().DOFade(1, frameFadeTime);
+                if (cutsceneFrames.Length > 1) frame.GetComponent<Image>().DOFade(1, frameFadeTime).SetUpdate(UpdateType.Normal, true);
+                else frame.GetComponent<Image>().DOFade(1, 0).SetUpdate(UpdateType.Normal, true);
                 yield return new WaitForSecondsRealtime(frameFadeTime);
                 yield return new WaitForSecondsRealtime(timePerFrame);
             }
@@ -44,10 +49,10 @@ public class StartingCutscene : MonoBehaviour, R4Activatable
             {
                 foreach (GameObject frame in cutsceneFrames)
                 {
-                    frame.SetActive(false);
+                    if (cutsceneFrames.Length > 1) frame.SetActive(false);
                 }
                 cutsceneFrames[cutsceneFrames.Length - 1].gameObject.SetActive(true);
-                cutsceneFrames[cutsceneFrames.Length - 1].gameObject.GetComponent<Image>().DOFade(0, frameFadeTime);
+                cutsceneFrames[cutsceneFrames.Length - 1].gameObject.GetComponent<Image>().DOFade(0, frameFadeTime).SetUpdate(UpdateType.Normal, true);
                 yield return new WaitForSecondsRealtime(timePerFrame);
                 PlayerController.instance.DisableControls(false);
                 Destroy(gameObject, 10);
@@ -59,7 +64,8 @@ public class StartingCutscene : MonoBehaviour, R4Activatable
 
     private void ActivateGameObjects()
     {
-        if(activatesGameObjects)
+        Time.timeScale = 1f;
+        if (activatesGameObjects)
         {
             foreach(GameObject objToActivate in objectsToActivate)
             {
