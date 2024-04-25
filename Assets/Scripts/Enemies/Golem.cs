@@ -155,9 +155,12 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
                             //transform.position = Vector2.MoveTowards(transform.position, leftExtreme, Time.deltaTime * moveSpeed);
                             rigidBody.velocity = new Vector2(-moveSpeed, rigidBody.velocity.y);
                             RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position + lineCastOffset, playerController.gameObject.transform.position, ~ignore);
-                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange && !pursueCooldown)
+                            if(hit && !GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null))
                             {
-                                currentState = BasicRatAIStates.Pursuing;
+                                if ((Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange && !pursueCooldown))
+                                {
+                                    currentState = BasicRatAIStates.Pursuing;
+                                }
                             }
                         }
                         else
@@ -185,9 +188,13 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
                             //transform.position = Vector2.MoveTowards(transform.position, rightExtreme, Time.deltaTime * moveSpeed);
                             rigidBody.velocity = new Vector2(moveSpeed, rigidBody.velocity.y);
                             RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position + lineCastOffset, playerController.gameObject.transform.position, ~ignore);
-                            if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange && !pursueCooldown)
+
+                            if(hit && !GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null))
                             {
-                                currentState = BasicRatAIStates.Pursuing;
+                                if ((Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange && !pursueCooldown))
+                                {
+                                    currentState = BasicRatAIStates.Pursuing;
+                                }
                             }
                         }
                         else
@@ -206,28 +213,31 @@ public class Golem : MonoBehaviour, ControlledCharacter, EnemyAI
                    // enemyAnimatorRat.SetBool("IsMoving", true);
                     //enemyRB.AddForce(direction * speed * Time.deltaTime, ForceMode2D.Force);
                     RaycastHit2D hit = Physics2D.Linecast((Vector2)transform.position + lineCastOffset, playerController.gameObject.transform.position, ~ignore);
-                    if (!GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null) && Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange && !hit.collider.gameObject.GetComponent<PlayerController>().disableAllMoves)
+                    if (hit && !GameObject.ReferenceEquals(hit.collider.gameObject.GetComponent<PlayerController>(), null))
                     {
-                        Debug.DrawLine((Vector2)transform.position + lineCastOffset, playerController.gameObject.transform.position, Color.green);
-
-                        if(capsuleCollider.IsTouching(playerController.GetPlayerCollider()))
+                        if ((Vector2.Distance(gameObject.transform.position, playerController.gameObject.transform.position) <= sightRange && !hit.collider.gameObject.GetComponent<PlayerController>().disableAllMoves) && !onRightWall && !onLeftWall)
                         {
-                            rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
-                            currentState = BasicRatAIStates.Attack;
+                            Debug.DrawLine((Vector2)transform.position + lineCastOffset, playerController.gameObject.transform.position, Color.green);
+
+                            if (capsuleCollider.IsTouching(playerController.GetPlayerCollider()))
+                            {
+                                rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
+                                currentState = BasicRatAIStates.Attack;
+                            }
+                            else
+                            {
+                                rigidBody.velocity = new Vector2(direction.x * moveSpeed, rigidBody.velocity.y);
+                                spriteRendererRat.flipX = rigidBody.velocity.x > 0;
+                                spriteRendererRubber.flipX = rigidBody.velocity.x > 0;
+                            }
                         }
                         else
                         {
-                            rigidBody.velocity = new Vector2(direction.x * moveSpeed, rigidBody.velocity.y);
-                            spriteRendererRat.flipX = rigidBody.velocity.x > 0;
-                            spriteRendererRubber.flipX = rigidBody.velocity.x > 0;
+                            Debug.DrawLine((Vector2)transform.position + lineCastOffset, playerController.gameObject.transform.position, Color.red);
+                            if (direction.x < 0) currentState = BasicRatAIStates.MovingRight;
+                            else currentState = BasicRatAIStates.MovingLeft;
+                            if (pursueCooldownTimer == null) pursueCooldownTimer = StartCoroutine(PursueDelay());
                         }
-                    }
-                    else
-                    {
-                        Debug.DrawLine((Vector2)transform.position + lineCastOffset, playerController.gameObject.transform.position, Color.red);
-                        if (direction.x < 0) currentState = BasicRatAIStates.MovingRight;
-                        else currentState = BasicRatAIStates.MovingLeft;
-                        if (pursueCooldownTimer == null) pursueCooldownTimer = StartCoroutine(PursueDelay());
                     }
                     break;
                 }
