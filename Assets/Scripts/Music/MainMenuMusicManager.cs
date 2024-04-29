@@ -27,6 +27,12 @@ public class MainMenuMusicManager : MonoBehaviour
     private void Start()
     {
         fullOn.TransitionTo(audioTransitionTime);
+        SceneManager.activeSceneChanged += SceneLoadedChange;
+    }
+
+    private void SceneLoadedChange(Scene arg0, Scene arg1)
+    {
+        MainMenuMusicOnSceneLoad(arg1.name);
     }
 
     public void MainMenuMusicOnSceneLoad(string sceneToLoad)
@@ -43,8 +49,15 @@ public class MainMenuMusicManager : MonoBehaviour
             //Else we destroy the player object
             Debug.Log("Loaded a level, destroying menumusicobj");
             fullOff.TransitionTo(audioTransitionTime);
-            Destroy(gameObject, audioTransitionTime + 0.05f);
-
+            StartCoroutine(DestroyInSeconds(audioTransitionTime + 0.05f));
         }
+    }
+
+
+    IEnumerator DestroyInSeconds(float timeToDestroy)
+    {
+        //yield return new WaitForSeconds(timeToDestroy);
+        yield return null;
+        Destroy(gameObject);
     }
 }

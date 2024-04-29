@@ -127,6 +127,10 @@ public class SceneTransitionerManager : MonoBehaviour
         asyncLoad.allowSceneActivation = true;
         Time.timeScale = 1;
         transitionInProgress = false;
+        if (MainMenuMusicManager.Instance != null)
+        {
+            MainMenuMusicManager.Instance.MainMenuMusicOnSceneLoad(SceneManager.GetSceneByBuildIndex(sceneToGo).name);
+        }
     }
 
     // Update is called once per frame
@@ -158,10 +162,6 @@ public class SceneTransitionerManager : MonoBehaviour
             //Commented until anims are added
             //if(gameHintAnimations[index] != null) transitionShowcaseAnimator.Play(gameHintAnimations[index], 1);
             StartCoroutine(SceneTransition(buildIndex));
-            if (MainMenuMusicManager.Instance != null)
-            {
-                MainMenuMusicManager.Instance.MainMenuMusicOnSceneLoad(SceneManager.GetSceneByBuildIndex(buildIndex).name);
-            }
         }
     }
 
@@ -184,10 +184,7 @@ public class SceneTransitionerManager : MonoBehaviour
             //Commented until anims are added
             //if(gameHintAnimations[index] != null) transitionShowcaseAnimator.Play(gameHintAnimations[index], 1);
             StartCoroutine(FastSceneTransition(sceneName));
-            if (MainMenuMusicManager.Instance != null)
-            {
-                MainMenuMusicManager.Instance.MainMenuMusicOnSceneLoad(sceneName);
-            }
+            
         }
     }
 
@@ -203,6 +200,10 @@ public class SceneTransitionerManager : MonoBehaviour
         asyncLoad.allowSceneActivation = true;
         Time.timeScale = 1;
         transitionInProgress = false;
+        if (MainMenuMusicManager.Instance != null)
+        {
+            MainMenuMusicManager.Instance.MainMenuMusicOnSceneLoad(sceneToGo);
+        }
     }
 
 }

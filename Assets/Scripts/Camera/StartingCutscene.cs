@@ -39,8 +39,14 @@ public class StartingCutscene : MonoBehaviour, R4Activatable
             {
                 i++;
                 frame.SetActive(true);
-                if (cutsceneFrames.Length > 1) frame.GetComponent<Image>().DOFade(1, frameFadeTime).SetUpdate(UpdateType.Normal, true);
-                else frame.GetComponent<Image>().DOFade(1, 0).SetUpdate(UpdateType.Normal, true);
+                if (cutsceneFrames.Length > 1)
+                {
+                    frame.GetComponent<Image>().DOFade(1, frameFadeTime).SetUpdate(UpdateType.Normal, true);
+                }
+                else
+                {
+                    frame.GetComponent<Image>().DOFade(1, 0).SetUpdate(UpdateType.Normal, true);
+                }
                 yield return new WaitForSecondsRealtime(frameFadeTime);
                 yield return new WaitForSecondsRealtime(timePerFrame);
             }
@@ -53,9 +59,8 @@ public class StartingCutscene : MonoBehaviour, R4Activatable
                 }
                 cutsceneFrames[cutsceneFrames.Length - 1].gameObject.SetActive(true);
                 cutsceneFrames[cutsceneFrames.Length - 1].gameObject.GetComponent<Image>().DOFade(0, frameFadeTime).SetUpdate(UpdateType.Normal, true);
-                yield return new WaitForSecondsRealtime(timePerFrame);
+                yield return new WaitForSecondsRealtime(frameFadeTime);
                 PlayerController.instance.DisableControls(false);
-                Destroy(gameObject, 10);
             }
             ActivateGameObjects();
         }
@@ -76,6 +81,7 @@ public class StartingCutscene : MonoBehaviour, R4Activatable
                 }
             }
         }
+        Destroy(gameObject);
     }
 
     public void Activate()
