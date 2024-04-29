@@ -115,9 +115,9 @@ TextureImporter:
         serializedVersion: 2
         x: 696
         y: 59
-        width: 670
-        height: 1704
-      alignment: 0
+        width: 633
+        height: 1685
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: console_exploded_resized_1
       rect:
         serializedVersion: 2
-        x: 2577
-        y: 59
+        x: 2581
+        y: 55
         width: 670
         height: 1704
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.52, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

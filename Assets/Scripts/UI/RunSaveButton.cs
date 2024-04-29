@@ -11,8 +11,9 @@ public class RunSaveButton : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public UnityEvent leftClick;
     public UnityEvent middleClick;
     public UnityEvent rightClick;
-    public RunsDataContainer runsData;
+    [SerializeField] private RunsDataContainer runsData;
     public TextMeshProUGUI promptText;
+
 
     private void Awake()
     {
@@ -35,6 +36,19 @@ public class RunSaveButton : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     }
 
 
+
+
+    public void SaveRunAsCSV()
+    {
+        RunSaverLogic runSaver = FindObjectOfType<RunSaverLogic>();
+        if (runSaver != null)
+        {
+            Debug.Log("Begin Save");
+            runSaver.SaveRunCSV(runsData);
+        }
+    }
+
+
     public void SendDataToRunSaver()
     {
         RunSaverLogic runSaver = FindObjectOfType<RunSaverLogic>();
@@ -51,7 +65,7 @@ public class RunSaveButton : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         if (runSaver != null)
         {
             Debug.Log("Begin Save");
-            runSaver.DeleteSingleRunPrompt(runsData, this.gameObject);
+            runSaver.DeleteSingleRunPrompt(runsData, transform.parent.gameObject);
         }
     }
 

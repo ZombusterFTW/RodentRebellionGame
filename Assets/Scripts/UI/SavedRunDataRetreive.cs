@@ -20,20 +20,21 @@ public class SavedRunDataRetreive : MonoBehaviour
         UpdateSavedRunDisplay();
     }
 
-    public void UpdateSavedRunDisplay()
+    IEnumerator RunsWaitForFrame()
     {
-        foreach(GameObject run in savedRuns) 
+        yield return null;  
+        foreach (GameObject run in savedRuns)
         {
             Destroy(run);
         }
-        savedRuns.Clear();  
+        savedRuns.Clear();
         SaveData.instance.LoadFromJson();
         List<RunDataSet> runs = new List<RunDataSet>();
         runs = SaveData.instance.playerSaveData.playerSavedRuns;
         //Sort list by the defined variable
         runs = UpdateSortedList(runs);
         //variable to track current level speed.
-        if (runs.Count == 0) return;
+        if (runs.Count == 0) yield break;
         int i = 0;
         foreach (RunDataSet runData in runs)
         {
@@ -52,7 +53,7 @@ public class SavedRunDataRetreive : MonoBehaviour
                 }
                 else if (runs[i].playerRunTimes[j] == 0)
                 {
-                   // runDataRef.levelImages[j].color = Color.yellow;
+                    // runDataRef.levelImages[j].color = Color.yellow;
                     runDataRef.levelSpeeds[j].outlineColor = Color.yellow;
                 }
                 //Else we set it to red
@@ -82,6 +83,11 @@ public class SavedRunDataRetreive : MonoBehaviour
             }
             i++;
         }
+    }
+
+    public void UpdateSavedRunDisplay()
+    {
+        StartCoroutine(RunsWaitForFrame());
     }
 
 

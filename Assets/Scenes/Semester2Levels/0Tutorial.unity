@@ -963,7 +963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cutsceneFrames:
   - {fileID: 740127209}
-  timePerFrame: 12.57
+  timePerFrame: 12
   frameFadeTime: 3
   activatedByGameObject: 0
   activatesGameObjects: 0

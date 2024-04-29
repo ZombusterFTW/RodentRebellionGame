@@ -126,7 +126,7 @@ public class FinalBoss : MonoBehaviour, R4Activatable, OneHitHealthEnemy, NewDia
             {
                 Debug.Log("Activated a switch");
                 currentSwitchesActivatedCount++;
-                allSwitchesActivated = currentSwitchesActivatedCount >= switchesToActivate.Length;
+                allSwitchesActivated = currentSwitchesActivatedCount > switchesToActivate.Length;
                 if(allSwitchesActivated)
                 {
                     Debug.Log("All switches activated");

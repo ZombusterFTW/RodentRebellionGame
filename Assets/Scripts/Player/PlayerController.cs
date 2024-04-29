@@ -188,10 +188,13 @@ public class PlayerController : MonoBehaviour, R4MovementComponent, MovingPlatfo
 
     private void CheckIfOnMenu(Scene arg0, Scene arg1)
     {
-        if (arg1.name == "MainMenu" || arg1.name == "TimeWarp" || arg1.name == "Credits")
+        if(this != null)
         {
-            StopAllCoroutines();
-            Destroy(gameObject);
+            if (arg1.name == "MainMenu" || arg1.name == "TimeWarp" || arg1.name == "Credits")
+            {
+                StopAllCoroutines();
+                Destroy(gameObject);
+            }
         }
     }
 
